@@ -11,8 +11,10 @@
 
 #import "TyphoonConfigAssembly.h"
 #import "TyphoonDefinition.h"
+#import "TyphoonBlockDefinition.h"
 #import "Knight.h"
 #import "TyphoonConfigPostProcessor.h"
+#import "NSObject+TyphoonConfig.h"
 
 @implementation TyphoonConfigAssembly
 
@@ -27,6 +29,15 @@
 {
     return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(damselsRescued) with:TyphoonConfig(@"hasHorseWillTravel")];
+    }];
+}
+
+- (id)blockKnight
+{
+    return [TyphoonBlockDefinition withClass:[Knight class] block:^id{
+        Knight *knight = [[Knight alloc] init];
+        knight.damselsRescued = [NSNumber typhoonForConfigKey:@"damsels.rescued"].unsignedIntegerValue;
+        return knight;
     }];
 }
 

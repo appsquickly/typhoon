@@ -19,4 +19,6 @@
 
 - (id)anotherKnight;
 
+- (id)blockKnight;
+
 @end

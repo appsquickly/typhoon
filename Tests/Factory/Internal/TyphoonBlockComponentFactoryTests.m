@@ -226,6 +226,8 @@
     CavalryMan *anotherKnight = [factory componentForKey:@"anotherKnight"];
     XCTAssertEqual(anotherKnight.hasHorseWillTravel, NO);
 
+    Knight *blockKnight = [factory componentForKey:@"blockKnight"];
+    XCTAssertEqual(blockKnight.damselsRescued, (NSUInteger)12);
 }
 
 #pragma mark - Infrastructure definitions

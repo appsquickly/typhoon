@@ -31,13 +31,14 @@ TYPHOON_LINK_CATEGORY(TyphoonBlockDefinition_InstanceBuilder)
     if (self.initializerGenerated) {
         return [super initializeInstanceWithArgs:args factory:factory];
     } else {
+        TyphoonInjectionContext *context = [[TyphoonInjectionContext alloc] initWithFactory:factory args:args
+                                                                   raiseExceptionIfCircular:YES];
+        context.classUnderConstruction = self.type;
+        
         __block id instance;
-
-        [[TyphoonBlockDefinitionController currentController] setRoute:TyphoonBlockDefinitionRouteInitializer instance:nil withinBlock:^{
-            TyphoonInjectionContext *context = [[TyphoonInjectionContext alloc] initWithFactory:factory args:args
-                                                                       raiseExceptionIfCircular:YES];
-            
-            instance = [self invokeAssemblySelectorWithContext:context];
+        
+        [[TyphoonBlockDefinitionController currentController] useInitializerRouteWithDefinition:self injectionContext:context withinBlock:^{
+            instance = [self invokeAssemblySelector];
         }];
         
         return instance;
@@ -46,11 +47,12 @@ TYPHOON_LINK_CATEGORY(TyphoonBlockDefinition_InstanceBuilder)
 
 - (void)doInjectionEventsOn:(id)instance withArgs:(TyphoonRuntimeArguments *)args factory:(TyphoonComponentFactory *)factory
 {
-    [[TyphoonBlockDefinitionController currentController] setRoute:TyphoonBlockDefinitionRouteInjections instance:instance withinBlock:^{
-        TyphoonInjectionContext *context = [[TyphoonInjectionContext alloc] initWithFactory:factory args:args
-                                                                   raiseExceptionIfCircular:NO];
-        
-        [self invokeAssemblySelectorWithContext:context];
+    TyphoonInjectionContext *context = [[TyphoonInjectionContext alloc] initWithFactory:factory args:args
+                                                               raiseExceptionIfCircular:NO];
+    context.classUnderConstruction = self.type;
+    
+    [[TyphoonBlockDefinitionController currentController] useInjectionsRouteWithDefinition:self instance:instance injectionContext:context withinBlock:^{
+        [self invokeAssemblySelector];
     }];
     
     [super doInjectionEventsOn:instance withArgs:args factory:factory];
@@ -58,7 +60,7 @@ TYPHOON_LINK_CATEGORY(TyphoonBlockDefinition_InstanceBuilder)
 
 #pragma mark - Invocation
 
-- (id)invokeAssemblySelectorWithContext:(TyphoonInjectionContext *)context
+- (id)invokeAssemblySelector
 {
     id target = self.assembly;
     SEL selector = self.assemblySelector;
@@ -74,6 +76,8 @@ TYPHOON_LINK_CATEGORY(TyphoonBlockDefinition_InstanceBuilder)
     [invocation setTarget:target];
     [invocation setSelector:selector];
     [invocation retainArguments];
+    
+    TyphoonInjectionContext *context = [TyphoonBlockDefinitionController currentController].injectionContext;
     
     [context.args enumerateArgumentsUsingBlock:^(id<TyphoonInjection> argument, NSUInteger index, BOOL *stop) {
         [argument valueToInjectWithContext:context completion:^(id value) {

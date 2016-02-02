@@ -12,6 +12,9 @@
 
 #import <Foundation/Foundation.h>
 
+@class TyphoonBlockDefinition;
+@class TyphoonInjectionContext;
+
 typedef NS_ENUM(NSInteger, TyphoonBlockDefinitionRoute) {
     TyphoonBlockDefinitionRouteInvalid,
     TyphoonBlockDefinitionRouteConfiguration,
@@ -25,8 +28,23 @@ typedef NS_ENUM(NSInteger, TyphoonBlockDefinitionRoute) {
 
 @property (nonatomic, assign, readonly) TyphoonBlockDefinitionRoute route;
 
+@property (nonatomic, assign, readonly, getter = isBuildingInstance) BOOL buildingInstance;
+
+@property (nonatomic, strong, readonly) TyphoonBlockDefinition *definition;
+
 @property (nonatomic, strong, readonly) id instance;
 
-- (void)setRoute:(TyphoonBlockDefinitionRoute)route instance:(id)instance withinBlock:(void (^)())block;
+@property (nonatomic, strong, readonly) TyphoonInjectionContext *injectionContext;
+
+- (void)useConfigurationRouteWithinBlock:(void (^)())block;
+
+- (void)useInitializerRouteWithDefinition:(TyphoonBlockDefinition *)definition
+                         injectionContext:(TyphoonInjectionContext *)context
+                              withinBlock:(void (^)())block;
+
+- (void)useInjectionsRouteWithDefinition:(TyphoonBlockDefinition *)definition
+                                instance:(id)instance
+                        injectionContext:(TyphoonInjectionContext *)context
+                             withinBlock:(void (^)())block;
 
 @end
