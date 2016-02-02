@@ -14,6 +14,7 @@
 #import "TyphoonAssembly.h"
 #import "OCLogTemplate.h"
 #import "TyphoonDefinition+Internal.h"
+#import "TyphoonBlockDefinition.h"
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonAssemblySelectorAdviser.h"
 #import "TyphoonCircularDependencyTerminator.h"
@@ -27,9 +28,10 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 
-static id InjectionForArgumentType(const char *argumentType, NSUInteger index);
 static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSignature *signature);
-static void AssertArgumentType(id target, SEL selector, const char *argumentType, NSUInteger index);
+static id InjectionForArgumentType(const char *argumentType, NSUInteger index);
+static BOOL IsPrimitiveArgumentType(const char *argumentType);
+static BOOL IsPrimitiveArgumentAllowed(id result);
 
 @implementation TyphoonAssemblyDefinitionBuilder
 {
@@ -195,47 +197,61 @@ static void AssertArgumentType(id target, SEL selector, const char *argumentType
 static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSignature *signature)
 {
     if (signature.numberOfArguments > 2) {
-        void *result;
+        void *unsafeResult;
+        NSUInteger primitiveArgumentIndex = NSNotFound;
+        
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
         [invocation setSelector:selector];
         [invocation retainArguments];
         /* Fill invocation arguments with TyphoonInjectionWithRuntimeArgumentAtIndex injections */
         for (NSUInteger i = 0; i < signature.numberOfArguments - 2; i++) {
             const char *argumentType = [signature getArgumentTypeAtIndex:i + 2];
-            AssertArgumentType(target, selector, argumentType, i + 2);
-            id injection = InjectionForArgumentType(argumentType, i);
-            [invocation setArgument:&injection atIndex:(NSInteger)(i + 2)];
+            if (!IsPrimitiveArgumentType(argumentType)) {
+                id injection = InjectionForArgumentType(argumentType, i);
+                [invocation setArgument:&injection atIndex:(NSInteger)(i + 2)];
+            } else if (primitiveArgumentIndex == NSNotFound) {
+                primitiveArgumentIndex = i;
+            }
         }
         [invocation invokeWithTarget:target];
-        [invocation getReturnValue:&result];
-        return (__bridge id) result;
+        [invocation getReturnValue:&unsafeResult];
+        
+        id result = (__bridge id) unsafeResult;
+        
+        if (primitiveArgumentIndex != NSNotFound && !IsPrimitiveArgumentAllowed(result)) {
+            [NSException raise:NSInvalidArgumentException format:@"The method '%@' in assembly '%@', contains a runtime argument of primitive type (BOOL, int, CGFloat, etc) at index %d. Runtime arguments for TyphoonDefinitions can only be objects. Use TyphoonBlockDefinition, or wrappers like NSNumber or NSValue (they will be unwrapped into primitive value during injection) ", [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector], [target class], primitiveArgumentIndex];
+        }
+        
+        return result;
     }
     else {
         return ((id (*)(id, SEL))objc_msgSend)(target, selector);
     }
 }
 
-static void AssertArgumentType(id target, SEL selector, const char *argumentType, NSUInteger index)
-{
-//    BOOL isObject = CStringEquals(argumentType, "@");
-//    BOOL isBlock = CStringEquals(argumentType, "@?");
-//    BOOL isMetaClass = CStringEquals(argumentType, "#");
-
-//    if (!isObject && !isBlock && !isMetaClass) {
-//        [NSException raise:NSInvalidArgumentException format:@"The method '%@' in assembly '%@', contains a runtime argument of primitive type (BOOL, int, CGFloat, etc) at index %d. Runtime arguments can only be objects. Use wrappers like NSNumber or NSValue (they will be unwrapped into primitive value during injection) ", [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector], [target class], (int)index - 2];
-//    }
-}
-
 static id InjectionForArgumentType(const char *argumentType, NSUInteger index)
 {
     /** We are checking here, if argument type is block, then we have to wrap our injection into 'real' block,
     *   otherwise, during assignment runtime will try to call Block_copy and it will crash if object is not 'real' block */
-
+    
     if (CStringEquals(argumentType, "@?")) {
         return TyphoonInjectionWithRuntimeArgumentAtIndexWrappedIntoBlock(index);
     } else {
         return TyphoonInjectionWithRuntimeArgumentAtIndex(index);
     }
+}
+
+static BOOL IsPrimitiveArgumentType(const char *argumentType)
+{
+    return (!CStringEquals(argumentType, "@") &&   // object
+            !CStringEquals(argumentType, "@?") &&  // block
+            !CStringEquals(argumentType, "#"));    // metaClass
+}
+
+static BOOL IsPrimitiveArgumentAllowed(id result)
+{
+    /* Primitive arguments are only allowed for TyphoonBlockDefinition */
+    return [result isKindOfClass:[TyphoonBlockDefinition class]];
 }
 
 - (TyphoonDefinition *)populateCacheWithDefinition:(TyphoonDefinition *)definition forKey:(NSString *)key
