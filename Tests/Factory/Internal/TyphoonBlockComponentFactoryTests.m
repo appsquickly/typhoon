@@ -25,6 +25,7 @@
 #import "TyphoonTypeConverter.h"
 #import "OCLogTemplate.h"
 #import "Sword.h"
+#import "CampaignQuest.h"
 #import "TyphoonConfigAssembly.h"
 #import "SingletonA.h"
 #import "NotSingletonA.h"
@@ -413,7 +414,36 @@ test_currently_resolving_references_dictionary_is_not_overwritten_when_initializ
     XCTAssertEqual(knight.damselsRescued, (NSUInteger)12);
 }
 
-- (void)test_block_definition_can_use_primitive_arguments
+- (void)test_definition_can_use_block_definitions
+{
+    MiddleAgesAssembly *assembly = (MiddleAgesAssembly *)_componentFactory;
+    
+    Knight *knight = [assembly knightWithFoobarBlockKnightWithQuestURL:[NSURL URLWithString:@"https://derp.derp"]];
+    XCTAssertNotNil(knight);
+    XCTAssertNotNil(knight.foobar);
+    
+    Knight *foobarKnight = knight.foobar;
+    XCTAssertEqualObjects(foobarKnight.favoriteDamsels, @[ @"Anna" ]);
+    XCTAssertNotNil(foobarKnight.quest);
+    
+    CampaignQuest *foobarQuest = (CampaignQuest *)foobarKnight.quest;
+    XCTAssertEqualObjects(foobarQuest.imageUrl, [NSURL URLWithString:@"https://derp.derp"]);
+}
+
+- (void)test_block_definition_can_have_arguments
+{
+    MiddleAgesAssembly *assembly = (MiddleAgesAssembly *)_componentFactory;
+    
+    Knight *knight = [assembly blockKnightWithFavoriteDamsels:@[ @"Tarja" ] questURL:[NSURL URLWithString:@"https://foobar.org"]];
+    XCTAssertNotNil(knight);
+    XCTAssertEqualObjects(knight.favoriteDamsels, @[ @"Tarja" ]);
+    XCTAssertNotNil(knight.quest);
+    
+    CampaignQuest *quest = (CampaignQuest *)knight.quest;
+    XCTAssertEqualObjects(quest.imageUrl, [NSURL URLWithString:@"https://foobar.org"]);
+}
+
+- (void)test_block_definition_can_have_primitive_arguments
 {
     MiddleAgesAssembly *assembly = (MiddleAgesAssembly *)_componentFactory;
     
