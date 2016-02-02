@@ -15,6 +15,7 @@
 #import "CampaignQuest.h"
 #import "TyphoonDefinition+Internal.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
+#import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "PrimitiveMan.h"
 #import "TyphoonInjections.h"
 #import "TyphoonUtils.h"

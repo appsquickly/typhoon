@@ -10,7 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonDefinition+Tests.h"
-#import "TyphoonDefinition+InstanceBuilder.h"
+#import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonInjections.h"
 #import "TyphoonInjectionByObjectInstance.h"
 #import "TyphoonInjectionByFactoryReference.h"

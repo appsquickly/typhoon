@@ -13,6 +13,7 @@
 #import <XCTest/XCTest.h>
 #import "TyphoonInjections.h"
 #import "TyphoonDefinition.h"
+#import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonInjectionByObjectInstance.h"
 #import "TyphoonInjectionByObjectFromString.h"

@@ -9,11 +9,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import "TyphoonDefinition.h"
-#import "TyphoonDefinition+Internal.h"
 #import "TyphoonPatcher.h"
+#import "TyphoonDefinition.h"
+#import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonComponentFactory.h"
-#import "TyphoonRuntimeArguments.h"
 
 @interface TyphoonPatcherDefinition : TyphoonDefinition
 
@@ -32,7 +31,6 @@
         self.patchObjectBlock = patchObjectBlock;
         self.scope = definition.scope;
         self.autoInjectionVisibility = definition.autoInjectionVisibility;
-
     }
     return self;
 }

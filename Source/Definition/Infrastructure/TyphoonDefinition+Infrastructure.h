@@ -11,12 +11,20 @@
 
 #import "TyphoonDefinition.h"
 
-@class TyphoonConfigPostProcessor;
-@protocol TyphoonResource;
-@class TyphoonRuntimeArguments;
+@protocol TyphoonPropertyInjection;
+
+
+typedef void(^TyphoonInjectionsEnumerationBlock)(id injection, id*injectionToReplace, BOOL*stop);
+
+typedef NS_OPTIONS(NSInteger, TyphoonInjectionsEnumerationOption) {
+    TyphoonInjectionsEnumerationOptionProperties = 1 << 0,
+    TyphoonInjectionsEnumerationOptionMethods = 1 << 2,
+    TyphoonInjectionsEnumerationOptionAll = TyphoonInjectionsEnumerationOptionProperties | TyphoonInjectionsEnumerationOptionMethods,
+};
+
 
 /**
- * Declares short-hand definition factory methods for infrastructure components.
+ * Declares definition methods & properties that may be useful for building infrastructure components.
  */
 @interface TyphoonDefinition (Infrastructure)
 
@@ -46,7 +54,41 @@
  */
 @property (nonatomic, getter = isInitializerGenerated) BOOL initializerGenerated;
 
+
+- (BOOL)isCandidateForInjectedClass:(Class)clazz includeSubclasses:(BOOL)includeSubclasses;
+
+- (BOOL)isCandidateForInjectedProtocol:(Protocol *)aProtocol;
+
+- (TyphoonMethod *)beforeInjections;
+
+- (NSSet *)injectedProperties;
+
+- (NSOrderedSet *)injectedMethods;
+
+- (TyphoonMethod *)afterInjections;
+
+- (BOOL)hasRuntimeArgumentInjections;
+
+- (void)addInjectedProperty:(id <TyphoonPropertyInjection>)property;
+
+- (void)addInjectedPropertyIfNotExists:(id <TyphoonPropertyInjection>)property;
+
+- (void)enumerateInjectionsOfKind:(Class)injectionClass options:(TyphoonInjectionsEnumerationOption)options
+                       usingBlock:(TyphoonInjectionsEnumerationBlock)block;
+
+@end
+
+
+@interface TyphoonDefinition ()
+
+- (instancetype)initWithClass:(Class)clazz key:(NSString *)key;
+
 + (instancetype)withClass:(Class)clazz key:(NSString *)key;
+
+@end
+
+
+@interface TyphoonDefinition (Config)
 
 /**
  * Factory method for a TyphoonConfigPostProcessor. Don't use it in test targets!
@@ -69,10 +111,6 @@
  * @return a definition.
  */
 + (instancetype)withConfigPath:(NSString *)filePath;
-
-- (BOOL)isCandidateForInjectedClass:(Class)clazz includeSubclasses:(BOOL)includeSubclasses;
-
-- (BOOL)isCandidateForInjectedProtocol:(Protocol *)aProtocol;
 
 #pragma mark - Deprecated methods
 

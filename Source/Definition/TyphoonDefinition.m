@@ -10,13 +10,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-
-#import "TyphoonMethod.h"
 #import "TyphoonDefinition.h"
-#import "TyphoonMethod+InstanceBuilder.h"
-#import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonDefinition+Internal.h"
-
+#import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonDefinition+InstanceBuilder.h"
+#import "TyphoonMethod.h"
 #import "TyphoonMethod+InstanceBuilder.h"
 #import "TyphoonPropertyInjection.h"
 #import "TyphoonObjectWithCustomInjection.h"
@@ -84,6 +82,11 @@ static NSString *TyphoonScopeToString(TyphoonScope scope)
         [self validateRequiredParametersAreSet];
     }
     return self;
+}
+
++ (instancetype)withClass:(Class)clazz key:(NSString *)key
+{
+    return [[self alloc] initWithClass:clazz key:key];
 }
 
 //-------------------------------------------------------------------------------------------

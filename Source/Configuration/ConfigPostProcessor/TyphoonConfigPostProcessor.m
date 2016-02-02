@@ -14,7 +14,7 @@
 #import "TyphoonResource.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonInjectionByConfig.h"
-#import "TyphoonDefinition+InstanceBuilder.h"
+#import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonPropertyStyleConfiguration.h"
 #import "TyphoonInjections.h"
 #import "TyphoonJsonStyleConfiguration.h"
