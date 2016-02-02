@@ -34,7 +34,10 @@ TYPHOON_LINK_CATEGORY(TyphoonBlockDefinition_InstanceBuilder)
         __block id instance;
 
         [[TyphoonBlockDefinitionController currentController] setRoute:TyphoonBlockDefinitionRouteInitializer instance:nil withinBlock:^{
-            instance = [self invokeTargetSelectorWithArgs:args factory:factory isInitializer:YES];
+            TyphoonInjectionContext *context = [[TyphoonInjectionContext alloc] initWithFactory:factory args:args
+                                                                       raiseExceptionIfCircular:YES];
+            
+            instance = [self invokeAssemblySelectorWithContext:context];
         }];
         
         return instance;
@@ -44,7 +47,10 @@ TYPHOON_LINK_CATEGORY(TyphoonBlockDefinition_InstanceBuilder)
 - (void)doInjectionEventsOn:(id)instance withArgs:(TyphoonRuntimeArguments *)args factory:(TyphoonComponentFactory *)factory
 {
     [[TyphoonBlockDefinitionController currentController] setRoute:TyphoonBlockDefinitionRouteInjections instance:instance withinBlock:^{
-        [self invokeTargetSelectorWithArgs:args factory:factory isInitializer:NO];
+        TyphoonInjectionContext *context = [[TyphoonInjectionContext alloc] initWithFactory:factory args:args
+                                                                   raiseExceptionIfCircular:NO];
+        
+        [self invokeAssemblySelectorWithContext:context];
     }];
     
     [super doInjectionEventsOn:instance withArgs:args factory:factory];
@@ -52,7 +58,8 @@ TYPHOON_LINK_CATEGORY(TyphoonBlockDefinition_InstanceBuilder)
 
 #pragma mark - Invocation
 
-- (id)invokeTargetSelectorWithArgs:(TyphoonRuntimeArguments *)args factory:(TyphoonComponentFactory *)factory isInitializer:(BOOL)isInitializer {
+- (id)invokeAssemblySelectorWithContext:(TyphoonInjectionContext *)context
+{
     id target = self.assembly;
     SEL selector = self.assemblySelector;
     
@@ -68,10 +75,7 @@ TYPHOON_LINK_CATEGORY(TyphoonBlockDefinition_InstanceBuilder)
     [invocation setSelector:selector];
     [invocation retainArguments];
     
-    TyphoonInjectionContext *context = [[TyphoonInjectionContext alloc] initWithFactory:factory args:args
-                                                               raiseExceptionIfCircular:isInitializer];
-    
-    [args enumerateArgumentsUsingBlock:^(id<TyphoonInjection> argument, NSUInteger index, BOOL *stop) {
+    [context.args enumerateArgumentsUsingBlock:^(id<TyphoonInjection> argument, NSUInteger index, BOOL *stop) {
         [argument valueToInjectWithContext:context completion:^(id value) {
             [invocation typhoon_setArgumentObject:value atIndex:(NSInteger)index + 2];
         }];
