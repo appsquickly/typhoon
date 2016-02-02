@@ -37,6 +37,8 @@
     return self;
 }
 
+#pragma mark - Overriden methods
+
 - (id)targetForInitializerWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
 {
     return self.patchObjectBlock();
@@ -45,6 +47,15 @@
 - (id)initializer
 {
     return nil;
+}
+
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    TyphoonPatcherDefinition *copy = [super copyWithZone:zone];
+    copy->_patchObjectBlock = _patchObjectBlock;
+    return copy;
 }
 
 @end

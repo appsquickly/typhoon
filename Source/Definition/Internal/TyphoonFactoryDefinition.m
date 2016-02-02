@@ -25,19 +25,6 @@
     id <TyphoonInjection> _factoryInjection;
 };
 
-- (id)targetForInitializerWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
-{
-    __block id result = nil;
-
-    TyphoonInjectionContext *context = [[TyphoonInjectionContext alloc] initWithFactory:factory args:args raiseExceptionIfCircular:YES];
-    [_factoryInjection valueToInjectWithContext:context completion:^(id value) {
-        result = value;
-    }];
-
-    return result;
-}
-
-
 - (id)initWithFactory:(id)factory selector:(SEL)selector parameters:(void (^)(TyphoonMethod *method))params
 {
     self = [super initWithClass:[NSObject class] key:nil];
@@ -49,6 +36,20 @@
     return self;
 }
 
+#pragma mark - Overriden methods
+
+- (id)targetForInitializerWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
+{
+    __block id result = nil;
+    
+    TyphoonInjectionContext *context = [[TyphoonInjectionContext alloc] initWithFactory:factory args:args raiseExceptionIfCircular:YES];
+    [_factoryInjection valueToInjectWithContext:context completion:^(id value) {
+        result = value;
+    }];
+    
+    return result;
+}
+
 - (void)useInitializer:(SEL)selector parameters:(void (^)(TyphoonMethod *initializer))parametersBlock
 {
     NSAssert(NO, @"You cannot change initializer of TyphoonFactoryDefinition");
@@ -58,10 +59,6 @@
 {
     NSAssert(NO, @"You cannot change initializer of TyphoonFactoryDefinition");
 }
-
-//-------------------------------------------------------------------------------------------
-#pragma mark - Overridden Methods
-//-------------------------------------------------------------------------------------------
 
 - (BOOL)isCandidateForInjectedClass:(Class)clazz includeSubclasses:(BOOL)includeSubclasses
 {
@@ -91,5 +88,14 @@
     return result;
 }
 
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    TyphoonFactoryDefinition *copy = [super copyWithZone:zone];
+    copy->_classOrProtocolForAutoInjection = _classOrProtocolForAutoInjection;
+    copy->_factoryInjection = [_factoryInjection copyWithZone:zone];
+    return copy;
+}
 
 @end

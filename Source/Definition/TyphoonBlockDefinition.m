@@ -104,4 +104,13 @@
     return !self.hasInitializerBlock;
 }
 
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    TyphoonBlockDefinition *copy = [super copyWithZone:zone];
+    copy->_hasInitializerBlock = _hasInitializerBlock;
+    return copy;
+}
+
 @end

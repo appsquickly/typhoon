@@ -356,6 +356,8 @@ static NSString *TyphoonScopeToString(TyphoonScope scope)
     copy->_afterInjections = [_afterInjections copy];
     copy->_parent = _parent;
     copy->_abstract = _abstract;
+    copy->_assembly = _assembly;
+    copy->_assemblySelector = _assemblySelector;
     return copy;
 }
 

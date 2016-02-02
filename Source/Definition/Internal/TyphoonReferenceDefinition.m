@@ -40,6 +40,8 @@
     return refDefinition;
 }
 
+#pragma mark - Overriden methods
+
 - (id)targetForInitializerWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args
 {
     if (_referringKey) {
@@ -52,6 +54,16 @@
 - (TyphoonMethod *)initializer
 {
     return nil;
+}
+
+#pragma mark - NSCopying
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    TyphoonShortcutDefinition *copy = [super copyWithZone:zone];
+    copy->_referringArgs = [_referringArgs copy];
+    copy->_referringKey = _referringKey;
+    return copy;
 }
 
 @end
