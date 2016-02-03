@@ -219,7 +219,7 @@ static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSigna
         id result = (__bridge id) unsafeResult;
         
         if (primitiveArgumentIndex != NSNotFound && !IsPrimitiveArgumentAllowed(result)) {
-            [NSException raise:NSInvalidArgumentException format:@"The method '%@' in assembly '%@', contains a runtime argument of primitive type (BOOL, int, CGFloat, etc) at index %d. Runtime arguments for TyphoonDefinitions can only be objects. Use TyphoonBlockDefinition, or wrappers like NSNumber or NSValue (they will be unwrapped into primitive value during injection) ", [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector], [target class], primitiveArgumentIndex];
+            [NSException raise:NSInvalidArgumentException format:@"The method '%@' in assembly '%@', contains a runtime argument of primitive type (BOOL, int, CGFloat, etc) at index %@. Runtime arguments for TyphoonDefinitions can only be objects. Use TyphoonBlockDefinition, or wrappers like NSNumber or NSValue (they will be unwrapped into primitive value during injection) ", [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector], [target class], @(primitiveArgumentIndex)];
         }
         
         return result;
