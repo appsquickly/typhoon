@@ -14,6 +14,9 @@
 #import "TyphoonDefinition+Internal.h"
 #import "TyphoonConfigPostProcessor.h"
 #import "TyphoonResource.h"
+#import "TyphoonLinkerCategoryBugFix.h"
+
+TYPHOON_LINK_CATEGORY(TyphoonDefinition_Config)
 
 @implementation TyphoonDefinition (Config)
 

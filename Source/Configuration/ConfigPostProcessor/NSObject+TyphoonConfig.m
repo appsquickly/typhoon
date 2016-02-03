@@ -16,6 +16,9 @@
 #import "TyphoonBlockDefinition.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonInjectionContext.h"
+#import "TyphoonLinkerCategoryBugFix.h"
+
+TYPHOON_LINK_CATEGORY(NSObject_TyphoonConfig)
 
 @interface TyphoonConfigPostProcessor ()
 
