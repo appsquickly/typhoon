@@ -416,4 +416,76 @@
     }];
 }
 
+- (id)blockSingletonKnight
+{
+    return [TyphoonBlockDefinition withClass:[Knight class] initializer:^id{
+        return [[Knight alloc] initWithQuest:[self defaultQuest]];
+    } injections:^(Knight *knight) {
+        knight.damselsRescued = 42;
+        [knight setFoobar:@(123) andHasHorse:YES friends:nil];
+    } configuration:^(TyphoonDefinition *definition) {
+        definition.scope = TyphoonScopeWeakSingleton;
+    }];
+}
+
+- (CampaignQuest *)blockQuest
+{
+    return [TyphoonBlockDefinition withClass:[CampaignQuest class] block:^id{
+        return [self blockQuestWithURL:[NSURL URLWithString:@"https://foo.bar"]];
+    }];
+}
+
+- (CampaignQuest *)blockQuestWithURL:(NSURL *)URL
+{
+    return [TyphoonBlockDefinition withClass:[CampaignQuest class] block:^id{
+        return [[CampaignQuest alloc] initWithImageUrl:URL];
+    }];
+}
+
+- (Knight *)notSoBlockKnight
+{
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition useInitializer:@selector(initWithDamselsRescued:foo:) parameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:@(12)];
+            [initializer injectParameterWith:nil];
+        }];
+    }];
+}
+
+- (id)blockKnightCallingMethodsOnDefinitions
+{
+    return [TyphoonBlockDefinition withClass:[Knight class] block:^id{
+        Knight *knight = [[Knight alloc] init];
+        knight.foobar = [self blockQuest].imageUrl;
+        knight.damselsRescued = [self notSoBlockKnight].damselsRescued;
+        return knight;
+    }];
+}
+
+- (id)blockKnightWithFavoriteDamsels:(NSArray *)favoriteDamsels questURL:(NSURL *)questURL
+{
+    return [TyphoonBlockDefinition withClass:[Knight class] block:^id{
+        Knight *knight = [[Knight alloc] init];
+        knight.favoriteDamsels = favoriteDamsels;
+        knight.quest = [self blockQuestWithURL:questURL];        
+        return knight;
+    }];
+}
+
+- (id)blockKnightWithPrimitiveDamsels:(NSUInteger)damsels
+{
+    return [TyphoonBlockDefinition withClass:[Knight class] block:^id{
+        Knight *knight = [[Knight alloc] init];
+        knight.damselsRescued = damsels;
+        return knight;
+    }];
+}
+
+- (id)knightWithFoobarBlockKnightWithQuestURL:(NSURL *)questURL
+{
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(foobar) with:[self blockKnightWithFavoriteDamsels:@[ @"Anna" ] questURL:questURL]];
+    }];
+}
+
 @end

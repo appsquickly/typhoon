@@ -26,6 +26,7 @@
 #import "TyphoonBlockComponentFactory.h"
 #import "TyphoonCollaboratingAssembliesCollector.h"
 #import "TyphoonConfigPostProcessor.h"
+#import "TyphoonMemoryManagementUtils.h"
 
 static NSMutableSet *reservedSelectorsAsStrings;
 
@@ -37,7 +38,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 @property(readwrite) NSDictionary *assemblyClassPerDefinitionKey;
 
 @property(readonly) TyphoonAssemblyAdviser *adviser;
-@property(readonly) TyphoonComponentFactory *factory;
+@property(readonly, unsafe_unretained) TyphoonComponentFactory *factory;
 @property(readonly) TyphoonCollaboratingAssembliesCollector *collector;
 
 @end
@@ -284,9 +285,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 
     TyphoonBlockComponentFactory *factory = [TyphoonBlockComponentFactory factoryWithAssemblies:
             [reconciledAssemblies allObjects]];
-    for (TyphoonAssembly *assembly in reconciledAssemblies) {
-        [assembly activateWithFactory:factory collaborators:reconciledAssemblies];
-    }
+    [TyphoonMemoryManagementUtils makeAssemblies:reconciledAssemblies retainFactory:factory];
     return self;
 }
 
@@ -312,6 +311,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
 
 - (void)activateWithFactory:(TyphoonComponentFactory *)factory collaborators:(NSSet *)collaborators {
     _factory = factory;
+    
     for (NSString *propertyName in [self typhoonPropertiesUpToParentClass:[TyphoonAssembly class]]) {
         TyphoonTypeDescriptor *descriptor = [self typhoonTypeForPropertyNamed:propertyName];
         if (descriptor.typeBeingDescribed == [TyphoonAssembly class]) {

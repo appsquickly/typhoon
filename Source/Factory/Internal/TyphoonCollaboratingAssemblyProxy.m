@@ -10,14 +10,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonCollaboratingAssemblyProxy.h"
-#import <objc/runtime.h>
-#import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonDefinition+Internal.h"
 #import "TyphoonAssemblySelectorAdviser.h"
 #import "TyphoonReferenceDefinition.h"
 #import "TyphoonObjectWithCustomInjection.h"
 #import "TyphoonInjectionByComponentFactory.h"
 #import "TyphoonRuntimeArguments.h"
 #import "TyphoonIntrospectionUtils.h"
+#import <objc/runtime.h>
 
 @interface TyphoonCollaboratingAssemblyProxy () <TyphoonObjectWithCustomInjection>
 

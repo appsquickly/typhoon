@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 //  TYPHOON FRAMEWORK
-//  Copyright 2013, Typhoon Framework Contributors
+//  Copyright 2016, Typhoon Framework Contributors
 //  All Rights Reserved.
 //
 //  NOTICE: The authors permit you to use, modify, and distribute this file
@@ -9,16 +9,15 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+
 #import <Foundation/Foundation.h>
-#import "TyphoonAssembly.h"
 
+@class TyphoonComponentFactory;
 
-@interface TyphoonConfigAssembly : TyphoonAssembly
+@interface TyphoonMemoryManagementUtils : NSObject
 
-- (id)knight;
++ (void)makeFactory:(TyphoonComponentFactory *)factory retainAssemblies:(NSSet *)assemblies;
 
-- (id)anotherKnight;
-
-- (id)blockKnight;
++ (void)makeAssemblies:(NSSet *)assemblies retainFactory:(TyphoonComponentFactory *)factory;
 
 @end

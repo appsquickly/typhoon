@@ -104,4 +104,14 @@
 
 - (id)occasionallyNilKnightWithMethodInjections;
 
+- (id)blockSingletonKnight;
+
+- (id)blockKnightCallingMethodsOnDefinitions;
+
+- (id)blockKnightWithFavoriteDamsels:(NSArray *)favoriteDamsels questURL:(NSURL *)questURL;
+
+- (id)blockKnightWithPrimitiveDamsels:(NSUInteger)damsels;
+
+- (id)knightWithFoobarBlockKnightWithQuestURL:(NSURL *)questURL;
+
 @end

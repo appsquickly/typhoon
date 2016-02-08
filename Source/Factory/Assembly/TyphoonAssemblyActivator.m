@@ -13,12 +13,8 @@
 #import "TyphoonAssemblyActivator.h"
 #import "TyphoonAssembly.h"
 #import "TyphoonBlockComponentFactory.h"
-
-@interface TyphoonAssembly (Activation)
-
-- (void)activateWithFactory:(TyphoonComponentFactory *)factory collaborators:(NSSet *)collaborators;
-
-@end
+#import "TyphoonAssembly+TyphoonAssemblyFriend.h"
+#import "TyphoonMemoryManagementUtils.h"
 
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-implementations"
@@ -60,7 +56,7 @@
     for (TyphoonAssembly *assembly in _assemblies) {
         [assembly activateWithFactory:factory collaborators:[NSSet setWithArray:_assemblies]];
     }
+    [TyphoonMemoryManagementUtils makeAssemblies:[NSSet setWithArray:_assemblies] retainFactory:factory];
 }
-
 
 @end

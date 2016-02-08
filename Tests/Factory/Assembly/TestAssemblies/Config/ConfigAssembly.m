@@ -13,7 +13,7 @@
 #import "TyphoonConfigPostProcessor.h"
 #import "CavalryMan.h"
 #import "Knight.h"
-#import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonDefinition+Config.h"
 
 
 @implementation ConfigAssembly

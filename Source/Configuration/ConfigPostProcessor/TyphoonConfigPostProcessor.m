@@ -14,7 +14,7 @@
 #import "TyphoonResource.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonInjectionByConfig.h"
-#import "TyphoonDefinition+InstanceBuilder.h"
+#import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonPropertyStyleConfiguration.h"
 #import "TyphoonInjections.h"
 #import "TyphoonJsonStyleConfiguration.h"
@@ -23,6 +23,9 @@
 #import "TyphoonInjectionByReference.h"
 #import "TyphoonRuntimeArguments.h"
 #import "TyphoonDefinitionNamespace.h"
+#import "TyphoonBlockDefinitionController.h"
+#import "TyphoonTypeConverterRegistry.h"
+#import "TyphoonTypeConverter.h"
 #import "OCLogTemplate.h"
 
 static NSMutableDictionary *propertyPlaceholderRegistry;
@@ -233,6 +236,18 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
     return result;
 }
 
+- (id)valueForConfigKey:(NSString *)configKey type:(Class)type typeConverterRegistry:(TyphoonTypeConverterRegistry *)typeConverterRegistry
+{
+    id value = [self configurationValueForKey:configKey];
+    
+    if ([value isKindOfClass:[NSString class]]) {
+        id<TyphoonTypeConverter> typeConverter = [typeConverterRegistry converterForType:NSStringFromClass(type)];
+        value = [typeConverter convert:value];
+    }
+    
+    return value;
+}
+
 - (BOOL)shouldInjectDefinition:(TyphoonDefinition *)definition
 {
     return [_space isEqual:definition.space] || [_space isGlobalNamespace];
@@ -240,7 +255,13 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 
 @end
 
+
 id TyphoonConfig(NSString *configKey)
 {
+    if ([TyphoonBlockDefinitionController currentController].buildingInstance) {
+        [NSException raise:NSInternalInconsistencyException format:@"TyphoonConfig(%@) cannot be used with TyphoonBlockDefinition. Please use [NSObject typhoonForConfigKey:] instead.", configKey];
+        return nil;
+    }
+    
     return TyphoonInjectionWithConfigKey(configKey);
 }

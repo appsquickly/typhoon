@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 //  TYPHOON FRAMEWORK
-//  Copyright 2013, Typhoon Framework Contributors
+//  Copyright 2016, Typhoon Framework Contributors
 //  All Rights Reserved.
 //
 //  NOTICE: The authors permit you to use, modify, and distribute this file
@@ -9,16 +9,12 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+
 #import <Foundation/Foundation.h>
-#import "TyphoonAssembly.h"
 
+@interface NSInvocation (TCFWrapValues)
 
-@interface TyphoonConfigAssembly : TyphoonAssembly
-
-- (id)knight;
-
-- (id)anotherKnight;
-
-- (id)blockKnight;
+/** Get argument at index, wrapping primitive values in NSValue if needed */
+- (id)typhoon_getArgumentObjectAtIndex:(NSInteger)idx;
 
 @end

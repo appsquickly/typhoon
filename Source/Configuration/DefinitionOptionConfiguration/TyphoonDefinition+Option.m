@@ -18,6 +18,7 @@
 #import "TyphoonRuntimeArguments.h"
 #import "TyphoonInjectionContext.h"
 #import "TyphoonInjection.h"
+#import "TyphoonDefinition+Internal.h"
 #import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 
