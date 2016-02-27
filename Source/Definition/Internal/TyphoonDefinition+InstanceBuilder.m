@@ -54,22 +54,20 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
 
 - (void)doInjectionEventsOn:(id)instance withArgs:(TyphoonRuntimeArguments *)args factory:(TyphoonComponentFactory *)factory
 {
-    TyphoonMethod *beforeInjections = [self beforeInjections];
-    if (beforeInjections) {
-        [self doMethodInjection:beforeInjections onInstance:instance args:args factory:factory];
+    if (self.beforeInjections) {
+        [self doMethodInjection:self.beforeInjections onInstance:instance args:args factory:factory];
     }
     
-    for (id<TyphoonPropertyInjection> property in [self injectedProperties]) {
+    for (id<TyphoonPropertyInjection> property in self.injectedProperties) {
         [self doPropertyInjectionOn:instance property:property args:args factory:factory];
     }
     
-    for (TyphoonMethod *method in [self injectedMethods]) {
+    for (TyphoonMethod *method in self.injectedMethods) {
         [self doMethodInjection:method onInstance:instance args:args factory:factory];
     }
     
-    TyphoonMethod *afterInjections = [self afterInjections];
-    if (afterInjections) {
-        [self doMethodInjection:afterInjections onInstance:instance args:args factory:factory];
+    if (self.afterInjections) {
+        [self doMethodInjection:self.afterInjections onInstance:instance args:args factory:factory];
     }
 }
 

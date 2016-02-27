@@ -13,7 +13,7 @@
 #import "Typhoon.h"
 #import "Knight.h"
 #import "CampaignQuest.h"
-#import "TyphoonDefinition+Internal.h"
+#import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonComponentFactory+InstanceBuilder.h"
 #import "PrimitiveMan.h"

@@ -67,17 +67,6 @@ typedef void(^TyphoonDefinitionBlock)(TyphoonDefinition *definition);
 * @ingroup Definition
 */
 @interface TyphoonDefinition : NSObject <NSCopying>
-{
-    // TODO: cleanup these
-    
-    TyphoonMethod *_initializer;
-    TyphoonMethod *_beforeInjections;
-    NSMutableSet *_injectedProperties;
-    NSMutableOrderedSet *_injectedMethods;
-    TyphoonMethod *_afterInjections;
-    
-    TyphoonDefinition *_parent;
-}
 
 @property (nonatomic, readonly) Class type;
 

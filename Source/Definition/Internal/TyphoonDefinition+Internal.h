@@ -18,8 +18,6 @@
 
 @interface TyphoonDefinition ()
 
-@property (nonatomic) NSString *key;
-
 @property (nonatomic) TyphoonRuntimeArguments *currentRuntimeArguments;
 
 /**
@@ -39,12 +37,9 @@
  */
 @property (nonatomic, weak) TyphoonAssembly *assembly;
 
+/**
+ * An assembly selector this definition has originated from.
+ */
 @property (nonatomic, assign) SEL assemblySelector;
-
-@property (nonatomic, readonly) TyphoonMethod *initializer;
-
-@property (nonatomic, getter = isInitializerGenerated) BOOL initializerGenerated;
-
-- (instancetype)initWithClass:(Class)clazz key:(NSString *)key;
 
 @end

@@ -12,9 +12,10 @@
 
 #import "TyphoonReferenceDefinition.h"
 #import "TyphoonDefinition+Internal.h"
+#import "TyphoonDefinition+Infrastructure.h"
+#import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonRuntimeArguments.h"
 #import "TyphoonComponentFactory.h"
-#import "TyphoonDefinition+InstanceBuilder.h"
 
 //TODO: Merge TyphoonReferenceDefinition and TyphoonShortcutDefinition with keeping simple logic
 

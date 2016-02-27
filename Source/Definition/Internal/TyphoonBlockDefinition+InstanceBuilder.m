@@ -11,8 +11,9 @@
 
 
 #import "TyphoonBlockDefinition+InstanceBuilder.h"
-#import "TyphoonDefinition+InstanceBuilder.h"
 #import "TyphoonDefinition+Internal.h"
+#import "TyphoonDefinition+InstanceBuilder.h"
+#import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonRuntimeArguments.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonBlockDefinitionController.h"

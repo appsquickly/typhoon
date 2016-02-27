@@ -14,6 +14,7 @@
 #import "TyphoonAssembly.h"
 #import "OCLogTemplate.h"
 #import "TyphoonDefinition+Internal.h"
+#import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonBlockDefinition.h"
 #import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 #import "TyphoonAssemblySelectorAdviser.h"

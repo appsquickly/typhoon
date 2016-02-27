@@ -13,7 +13,7 @@
 #import "Typhoon.h"
 #import "Knight.h"
 #import "OCLogTemplate.h"
-#import "TyphoonDefinition+Internal.h"
+#import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonTestAssemblyConfigPostProcessor.h"
 
 @interface TyphoonConfigPostProcessorTests : XCTestCase

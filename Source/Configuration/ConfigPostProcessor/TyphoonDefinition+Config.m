@@ -11,7 +11,7 @@
 
 
 #import "TyphoonDefinition+Config.h"
-#import "TyphoonDefinition+Internal.h"
+#import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonConfigPostProcessor.h"
 #import "TyphoonResource.h"
 #import "TyphoonLinkerCategoryBugFix.h"
