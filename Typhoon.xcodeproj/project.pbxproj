@@ -17,7 +17,7 @@
 		017AD5C11C616A670089B5E0 /* NSObject+TyphoonConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 017AD5BD1C616A670089B5E0 /* NSObject+TyphoonConfig.m */; };
 		01A28DC01C5D2640006F0A95 /* Typhoon+Infrastructure.h in Headers */ = {isa = PBXBuildFile; fileRef = 01A28DBF1C5D2636006F0A95 /* Typhoon+Infrastructure.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		01A28DC61C5D268C006F0A95 /* TyphoonDefinition+Infrastructure.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A28DC31C5D268C006F0A95 /* TyphoonDefinition+Infrastructure.m */; };
-		01A28DC81C5D2695006F0A95 /* TyphoonDefinition+Infrastructure.h in Headers */ = {isa = PBXBuildFile; fileRef = 01A28DC21C5D268C006F0A95 /* TyphoonDefinition+Infrastructure.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		01A28DC81C5D2695006F0A95 /* TyphoonDefinition+Infrastructure.h in Headers */ = {isa = PBXBuildFile; fileRef = 01A28DC21C5D268C006F0A95 /* TyphoonDefinition+Infrastructure.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		01A28DCA1C5D26B4006F0A95 /* TyphoonDefinition+Infrastructure.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A28DC31C5D268C006F0A95 /* TyphoonDefinition+Infrastructure.m */; };
 		01A28DCB1C5D26B5006F0A95 /* TyphoonDefinition+Infrastructure.m in Sources */ = {isa = PBXBuildFile; fileRef = 01A28DC31C5D268C006F0A95 /* TyphoonDefinition+Infrastructure.m */; };
 		01A28DD61C5D28BC006F0A95 /* TyphoonDefinition+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 01A28DD41C5D28BC006F0A95 /* TyphoonDefinition+Internal.h */; };
@@ -511,7 +511,7 @@
 		90ABC48F1A36B2A0008D8162 /* NSMethodSignature+TCFUnwrapValues.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F0C1936F63A0083714E /* NSMethodSignature+TCFUnwrapValues.h */; };
 		90ABC4901A36B2A0008D8162 /* NSValue+TCFUnwrapValues.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F0E1936F63A0083714E /* NSValue+TCFUnwrapValues.h */; };
 		90ABC4911A36B2A0008D8162 /* TyphoonCallStack.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F101936F63A0083714E /* TyphoonCallStack.h */; };
-		90ABC4921A36B2A0008D8162 /* TyphoonComponentFactory+InstanceBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F121936F63A0083714E /* TyphoonComponentFactory+InstanceBuilder.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		90ABC4921A36B2A0008D8162 /* TyphoonComponentFactory+InstanceBuilder.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F121936F63A0083714E /* TyphoonComponentFactory+InstanceBuilder.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		90ABC4931A36B2A0008D8162 /* TyphoonComponentFactory+TyphoonDefinitionRegisterer.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F141936F63A0083714E /* TyphoonComponentFactory+TyphoonDefinitionRegisterer.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		90ABC4941A36B2A1008D8162 /* TyphoonFactoryPropertyInjectionPostProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F151936F63A0083714E /* TyphoonFactoryPropertyInjectionPostProcessor.h */; };
 		90ABC4951A36B2A1008D8162 /* TyphoonParentReferenceHydratingPostProcessor.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F171936F63A0083714E /* TyphoonParentReferenceHydratingPostProcessor.h */; };

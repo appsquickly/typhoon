@@ -30,6 +30,7 @@ FOUNDATION_EXPORT const unsigned char TyphoonVersionString[];
 #import "TyphoonBundleResource.h"
 #import "TyphoonComponentFactory.h"
 #import "TyphoonBlockComponentFactory.h"
+#import "TyphoonFactoryDefinition.h"
 #import "TyphoonDefinitionPostProcessor.h"
 #import "TyphoonInstancePostProcessor.h"
 #import "TyphoonTypeConverter.h"
