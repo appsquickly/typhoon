@@ -19,6 +19,17 @@ typedef void (^TyphoonBlockDefinitionInjectionsBlock)(id instance);
 
 @interface TyphoonBlockDefinition : TyphoonDefinition
 
++ (id)withBlock:(TyphoonBlockDefinitionInitializerBlock)block;
+
++ (id)withBlock:(TyphoonBlockDefinitionInitializerBlock)block configuration:(TyphoonDefinitionBlock)configuration;
+
++ (id)withInitializer:(TyphoonBlockDefinitionInitializerBlock)initializer
+           injections:(TyphoonBlockDefinitionInjectionsBlock)injections;
+
++ (id)withInitializer:(TyphoonBlockDefinitionInitializerBlock)initializer
+           injections:(TyphoonBlockDefinitionInjectionsBlock)injections
+        configuration:(TyphoonDefinitionBlock)configuration;
+
 + (id)withClass:(Class)clazz block:(TyphoonBlockDefinitionInitializerBlock)block;
 
 + (id)withClass:(Class)clazz block:(TyphoonBlockDefinitionInitializerBlock)block

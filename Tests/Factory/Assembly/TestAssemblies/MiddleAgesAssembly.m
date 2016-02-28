@@ -498,7 +498,7 @@
 }
 
 - (id)blockKnightWithQuestsByType {
-    return [TyphoonBlockDefinition withClass:[Knight class] block:^id{
+    return [TyphoonBlockDefinition withBlock:^id{
         Knight *knight = [[Knight alloc] init];
         knight.quest = [MediocreQuest typhoonInjectByType];
         [knight setFavoriteQuest:[TyphoonInject byType:@protocol(RescueQuest)]];

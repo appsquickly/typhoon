@@ -25,6 +25,29 @@
 
 #pragma mark - Definitions
 
++ (id)withBlock:(TyphoonBlockDefinitionInitializerBlock)block
+{
+    return [self withInitializer:block injections:nil configuration:nil];
+}
+
++ (id)withBlock:(TyphoonBlockDefinitionInitializerBlock)block configuration:(TyphoonDefinitionBlock)configuration
+{
+    return [self withInitializer:block injections:nil configuration:configuration];
+}
+
++ (id)withInitializer:(TyphoonBlockDefinitionInitializerBlock)initializer
+           injections:(TyphoonBlockDefinitionInjectionsBlock)injections
+{
+    return [self withInitializer:initializer injections:injections configuration:nil];
+}
+
++ (id)withInitializer:(TyphoonBlockDefinitionInitializerBlock)initializer
+           injections:(TyphoonBlockDefinitionInjectionsBlock)injections
+        configuration:(TyphoonDefinitionBlock)configuration
+{
+    return [self withClass:[NSObject class] initializer:initializer injections:injections configuration:configuration];
+}
+
 + (id)withClass:(Class)clazz block:(TyphoonBlockDefinitionInitializerBlock)block
 {
     return [self withClass:clazz initializer:block injections:nil configuration:nil];
