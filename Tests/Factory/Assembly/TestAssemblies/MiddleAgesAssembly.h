@@ -114,6 +114,8 @@
 
 - (id)blockKnightWithQuestsByType;
 
+- (id)blockKnightWithoutInitializer;
+
 - (id)knightWithFoobarBlockKnightWithQuestURL:(NSURL *)questURL;
 
 @end

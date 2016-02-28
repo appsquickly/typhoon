@@ -497,12 +497,20 @@
     }];
 }
 
-- (id)blockKnightWithQuestsByType {
+- (id)blockKnightWithQuestsByType
+{
     return [TyphoonBlockDefinition withBlock:^id{
         Knight *knight = [[Knight alloc] init];
         knight.quest = [MediocreQuest typhoonInjectByType];
         [knight setFavoriteQuest:[TyphoonInject byType:@protocol(RescueQuest)]];
         return knight;
+    }];
+}
+
+- (id)blockKnightWithoutInitializer
+{
+    return [TyphoonBlockDefinition withClass:[Knight class] injections:^(Knight *instance) {
+        instance.damselsRescued = 12;
     }];
 }
 

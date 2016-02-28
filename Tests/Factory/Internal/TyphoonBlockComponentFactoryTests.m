@@ -471,5 +471,14 @@ test_currently_resolving_references_dictionary_is_not_overwritten_when_initializ
     XCTAssertEqual(favoriteQuest.bounty, 10000);
 }
 
+- (void)test_block_definition_without_initializer
+{
+    MiddleAgesAssembly *assembly = (MiddleAgesAssembly *)_componentFactory;
+    
+    Knight *knight = [assembly blockKnightWithoutInitializer];
+    XCTAssertNotNil(knight);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)12);
+}
+
 @end
 

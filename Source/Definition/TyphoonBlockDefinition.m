@@ -119,12 +119,12 @@
 
 - (TyphoonMethod *)initializer
 {
-    return nil;
+    return self.hasInitializerBlock ? nil : [super initializer];
 }
 
 - (BOOL)isInitializerGenerated
 {
-    return !self.hasInitializerBlock;
+    return self.hasInitializerBlock ? NO : [super isInitializerGenerated];
 }
 
 #pragma mark - NSCopying
