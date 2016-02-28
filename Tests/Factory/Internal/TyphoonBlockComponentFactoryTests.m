@@ -468,7 +468,7 @@ test_currently_resolving_references_dictionary_is_not_overwritten_when_initializ
     
     id<RescueQuest> favoriteQuest = (id<RescueQuest>)[knight favoriteQuest];
     XCTAssertNotNil(favoriteQuest);
-    XCTAssertEqual(favoriteQuest.bounty, 10000);
+    XCTAssertEqual(favoriteQuest.bounty, (NSUInteger)10000);
 }
 
 - (void)test_block_definition_without_initializer
@@ -478,6 +478,19 @@ test_currently_resolving_references_dictionary_is_not_overwritten_when_initializ
     Knight *knight = [assembly blockKnightWithoutInitializer];
     XCTAssertNotNil(knight);
     XCTAssertEqual(knight.damselsRescued, (NSUInteger)12);
+}
+
+- (void)test_block_definition_with_circular_dependency
+{
+    MiddleAgesAssembly *assembly = (MiddleAgesAssembly *)_componentFactory;
+    
+    Knight *knight = [assembly blockKnightWithCircularDependency];
+    XCTAssertNotNil(knight);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)123);
+    
+    id<RescueQuest> quest = (id<RescueQuest>)knight.quest;
+    XCTAssertNotNil(quest);
+    XCTAssertEqual(quest.bounty, (NSUInteger)123);
 }
 
 @end

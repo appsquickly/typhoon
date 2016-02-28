@@ -116,6 +116,8 @@
 
 - (id)blockKnightWithoutInitializer;
 
+- (id)blockKnightWithCircularDependency;
+
 - (id)knightWithFoobarBlockKnightWithQuestURL:(NSURL *)questURL;
 
 @end

@@ -14,6 +14,6 @@
 
 @protocol RescueQuest <Quest>
 
-@property (nonatomic) NSInteger bounty;
+@property (nonatomic) NSUInteger bounty;
 
 @end

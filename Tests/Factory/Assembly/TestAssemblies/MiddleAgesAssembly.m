@@ -436,9 +436,11 @@
 {
     return [TyphoonBlockDefinition withClass:[Knight class] initializer:^id{
         return [[Knight alloc] initWithQuest:[self defaultQuest]];
+        
     } injections:^(Knight *knight) {
         knight.damselsRescued = 42;
         [knight setFoobar:@(123) andHasHorse:YES friends:nil];
+        
     } configuration:^(TyphoonDefinition *definition) {
         definition.scope = TyphoonScopeWeakSingleton;
     }];
@@ -511,6 +513,26 @@
 {
     return [TyphoonBlockDefinition withClass:[Knight class] injections:^(Knight *instance) {
         instance.damselsRescued = 12;
+    }];
+}
+
+- (id)blockKnightWithCircularDependency
+{
+    return [TyphoonBlockDefinition withInitializer:^id{
+        return [[Knight alloc] initWithDamselsRescued:123 foo:nil];
+        
+    } injections:^(Knight *instance) {
+        instance.quest = [self blockQuestForKnightWithCircularDependency];
+    }];
+}
+
+- (id)blockQuestForKnightWithCircularDependency
+{
+    return [TyphoonBlockDefinition withInitializer:^id{
+        return [[DamselQuest alloc] init];
+        
+    } injections:^(DamselQuest *instance) {
+        instance.bounty = ((Knight *)[self blockKnightWithCircularDependency]).damselsRescued;
     }];
 }
 
