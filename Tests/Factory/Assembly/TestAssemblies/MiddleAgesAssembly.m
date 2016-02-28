@@ -14,11 +14,13 @@
 #import "MiddleAgesAssembly.h"
 #import "Knight.h"
 #import "CampaignQuest.h"
+#import "MediocreQuest.h"
+#import "DamselQuest.h"
 #import "Typhoon.h"
 #import "CavalryMan.h"
 #import "SwordFactory.h"
 #import "Mock.h"
-#import "TyphoonInjections.h"
+#import "TyphoonInject.h"
 #import "CollaboratingMiddleAgesAssembly.h"
 
 @implementation MiddleAgesAssembly
@@ -111,6 +113,20 @@
 - (id)environmentDependentQuest
 {
     return [TyphoonDefinition withClass:[CampaignQuest class]];
+}
+
+- (id)boringQuest
+{
+    return [TyphoonDefinition withClass:[MediocreQuest class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(imageUrl) with:[NSURL URLWithString:@"http://boring.com"]];
+    }];
+}
+
+- (id)damselQuest
+{
+    return [TyphoonDefinition withClass:[DamselQuest class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(bounty) with:@(10000)];
+    }];
 }
 
 - (id)serviceUrl
@@ -477,6 +493,15 @@
     return [TyphoonBlockDefinition withClass:[Knight class] block:^id{
         Knight *knight = [[Knight alloc] init];
         knight.damselsRescued = damsels;
+        return knight;
+    }];
+}
+
+- (id)blockKnightWithQuestsByType {
+    return [TyphoonBlockDefinition withClass:[Knight class] block:^id{
+        Knight *knight = [[Knight alloc] init];
+        knight.quest = [MediocreQuest typhoonInjectByType];
+        [knight setFavoriteQuest:[TyphoonInject byType:@protocol(RescueQuest)]];
         return knight;
     }];
 }

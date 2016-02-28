@@ -21,6 +21,8 @@
 		0183B7621C827DE100644B62 /* TyphoonInject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0183B7601C827DE100644B62 /* TyphoonInject.m */; };
 		0183B7631C827DE100644B62 /* TyphoonInject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0183B7601C827DE100644B62 /* TyphoonInject.m */; };
 		0183B7641C827DE100644B62 /* TyphoonInject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0183B7601C827DE100644B62 /* TyphoonInject.m */; };
+		0183B7681C8295B000644B62 /* DamselQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0183B7671C8295B000644B62 /* DamselQuest.m */; };
+		0183B7691C8295B000644B62 /* DamselQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = 0183B7671C8295B000644B62 /* DamselQuest.m */; };
 		01A28DC01C5D2640006F0A95 /* Typhoon+Infrastructure.h in Headers */ = {isa = PBXBuildFile; fileRef = 01A28DBF1C5D2636006F0A95 /* Typhoon+Infrastructure.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		01A28DC81C5D2695006F0A95 /* TyphoonDefinition+Infrastructure.h in Headers */ = {isa = PBXBuildFile; fileRef = 01A28DC21C5D268C006F0A95 /* TyphoonDefinition+Infrastructure.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		01A28DD61C5D28BC006F0A95 /* TyphoonDefinition+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 01A28DD41C5D28BC006F0A95 /* TyphoonDefinition+Internal.h */; };
@@ -796,6 +798,9 @@
 		0183B75A1C827DD100644B62 /* TyphoonBlockDefinition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonBlockDefinition.m; sourceTree = "<group>"; };
 		0183B75F1C827DE100644B62 /* TyphoonInject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonInject.h; sourceTree = "<group>"; };
 		0183B7601C827DE100644B62 /* TyphoonInject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonInject.m; sourceTree = "<group>"; };
+		0183B7651C82952400644B62 /* RescueQuest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RescueQuest.h; sourceTree = "<group>"; };
+		0183B7661C8295B000644B62 /* DamselQuest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DamselQuest.h; sourceTree = "<group>"; };
+		0183B7671C8295B000644B62 /* DamselQuest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DamselQuest.m; sourceTree = "<group>"; };
 		01A28DBF1C5D2636006F0A95 /* Typhoon+Infrastructure.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Typhoon+Infrastructure.h"; sourceTree = "<group>"; };
 		01A28DC21C5D268C006F0A95 /* TyphoonDefinition+Infrastructure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TyphoonDefinition+Infrastructure.h"; sourceTree = "<group>"; };
 		01A28DD41C5D28BC006F0A95 /* TyphoonDefinition+Internal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TyphoonDefinition+Internal.h"; sourceTree = "<group>"; };
@@ -2204,6 +2209,8 @@
 				6B07704E1936F63A0083714E /* CROSingletonA.m */,
 				6B07704F1936F63A0083714E /* CROSingletonB.h */,
 				6B0770501936F63A0083714E /* CROSingletonB.m */,
+				0183B7661C8295B000644B62 /* DamselQuest.h */,
+				0183B7671C8295B000644B62 /* DamselQuest.m */,
 				6B0770511936F63A0083714E /* Factory */,
 				6B0770561936F63A0083714E /* Fort.h */,
 				6B0770571936F63A0083714E /* Fort.m */,
@@ -2213,6 +2220,7 @@
 				6B07705B1936F63A0083714E /* MediocreQuest.h */,
 				6B07705C1936F63A0083714E /* MediocreQuest.m */,
 				6B07705D1936F63A0083714E /* Quest.h */,
+				0183B7651C82952400644B62 /* RescueQuest.h */,
 				6B07705E1936F63A0083714E /* SingletonsChain */,
 				C949792A85FC9383BEAD631B /* Mock.m */,
 				C949758EA994B0137DD95E6D /* Mock.h */,
@@ -3234,6 +3242,7 @@
 				6B0771561936FEA80083714E /* ClassWithPrimitiveTypesForConversion.m in Sources */,
 				6B0771581936FEA80083714E /* TyphoonPassthroughTypeConverterTests.m in Sources */,
 				6B0771591936FEA80083714E /* TyphoonPrimitiveTypeConverterTests.m in Sources */,
+				0183B7681C8295B000644B62 /* DamselQuest.m in Sources */,
 				6B07715A1936FEA80083714E /* TyphoonTypeConverterRegistryTests.m in Sources */,
 				6B07715B1936FEA80083714E /* TyphoonTypeDescriptorTests.m in Sources */,
 				6B07715D1936FEA80083714E /* TyphoonInvocationUtilsTestObjects.m in Sources */,
@@ -3442,6 +3451,7 @@
 				6B07743A1937839D0083714E /* PrototypePropertyInjected.m in Sources */,
 				6B07743B1937839D0083714E /* UnsatisfiableClassFDependsOnGInInitializer.m in Sources */,
 				6B07743C1937839D0083714E /* UnsatisfiableClassGDependsOnFInInitializer.m in Sources */,
+				0183B7691C8295B000644B62 /* DamselQuest.m in Sources */,
 				6B07743D1937839D0083714E /* CROPrototypeA.m in Sources */,
 				6B07743E1937839D0083714E /* CROPrototypeB.m in Sources */,
 				6B07743F1937839D0083714E /* CROSingletonA.m in Sources */,

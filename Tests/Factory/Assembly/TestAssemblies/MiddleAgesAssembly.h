@@ -112,6 +112,8 @@
 
 - (id)blockKnightWithPrimitiveDamsels:(NSUInteger)damsels;
 
+- (id)blockKnightWithQuestsByType;
+
 - (id)knightWithFoobarBlockKnightWithQuestURL:(NSURL *)questURL;
 
 @end

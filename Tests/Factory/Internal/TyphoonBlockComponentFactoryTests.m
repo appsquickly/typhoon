@@ -26,6 +26,7 @@
 #import "OCLogTemplate.h"
 #import "Sword.h"
 #import "CampaignQuest.h"
+#import "RescueQuest.h"
 #import "TyphoonConfigAssembly.h"
 #import "SingletonA.h"
 #import "NotSingletonA.h"
@@ -452,6 +453,22 @@ test_currently_resolving_references_dictionary_is_not_overwritten_when_initializ
     Knight *knight = [assembly blockKnightWithPrimitiveDamsels:42];
     XCTAssertNotNil(knight);
     XCTAssertEqual(knight.damselsRescued, (NSUInteger)42);
+}
+
+- (void)test_block_definition_with_injection_by_type
+{
+    MiddleAgesAssembly *assembly = (MiddleAgesAssembly *)_componentFactory;
+    
+    Knight *knight = [assembly blockKnightWithQuestsByType];
+    XCTAssertNotNil(knight);
+    
+    id<Quest> quest = knight.quest;
+    XCTAssertNotNil(quest);
+    XCTAssertEqualObjects(quest.imageUrl, [NSURL URLWithString:@"http://boring.com"]);
+    
+    id<RescueQuest> favoriteQuest = (id<RescueQuest>)[knight favoriteQuest];
+    XCTAssertNotNil(favoriteQuest);
+    XCTAssertEqual(favoriteQuest.bounty, 10000);
 }
 
 @end
