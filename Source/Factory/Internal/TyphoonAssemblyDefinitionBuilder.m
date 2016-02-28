@@ -64,15 +64,14 @@ static BOOL IsPrimitiveArgumentAllowed(id result);
 
 - (void)populateCache
 {
-    // Make sure we use the configuration route for potential TyphoonBlockDefinitions.
+    // Use the configuration route for potential TyphoonBlockDefinitions.
+    
     [[TyphoonBlockDefinitionController currentController] useConfigurationRouteWithinBlock:^{
-        
         [[self.assembly definitionSelectors] enumerateObjectsUsingBlock:^(TyphoonSelector *wrappedSEL, BOOL *stop) {
             SEL selector = [wrappedSEL selector];
             NSString *key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector];
             [self buildDefinitionForKey:key];
         }];
-        
     }];
 }
 

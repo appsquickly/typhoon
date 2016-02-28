@@ -100,23 +100,6 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 }
 
 //-------------------------------------------------------------------------------------------
-#pragma mark - Property Injection
-//-------------------------------------------------------------------------------------------
-
-- (void)doPropertyInjectionOn:(id)instance property:(id<TyphoonPropertyInjection>)property
-    args:(TyphoonRuntimeArguments *)args
-{
-    TyphoonInjectionContext *context = [[TyphoonInjectionContext alloc] initWithFactory:self args:args
-        raiseExceptionIfCircular:NO];
-    context.destinationType = [instance typhoonTypeForPropertyNamed:property.propertyName];
-    context.classUnderConstruction = [instance class];
-
-    [property valueToInjectWithContext:context completion:^(id value) {
-        [instance typhoon_injectValue:value forPropertyName:property.propertyName];
-    }];
-}
-
-//-------------------------------------------------------------------------------------------
 #pragma mark - Circular dependencies support
 //-------------------------------------------------------------------------------------------
 
