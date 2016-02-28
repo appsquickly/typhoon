@@ -12,9 +12,9 @@
 #import "TyphoonConfigAssembly.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonBlockDefinition.h"
-#import "Knight.h"
 #import "TyphoonConfigPostProcessor.h"
-#import "NSObject+TyphoonConfig.h"
+#import "TyphoonInject.h"
+#import "Knight.h"
 
 @implementation TyphoonConfigAssembly
 
@@ -36,7 +36,7 @@
 {
     return [TyphoonBlockDefinition withClass:[Knight class] block:^id{
         Knight *knight = [[Knight alloc] init];
-        knight.damselsRescued = [NSNumber typhoonForConfigKey:@"damsels.rescued"].unsignedIntegerValue;
+        knight.damselsRescued = [NSNumber typhoonInjectByConfigKey:@"damsels.rescued"].unsignedIntegerValue;
         return knight;
     }];
 }

@@ -23,6 +23,7 @@ FOUNDATION_EXPORT const unsigned char TyphoonVersionString[];
 #import "TyphoonAssembly.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonBlockDefinition.h"
+#import "TyphoonInject.h"
 #import "TyphoonMethod.h"
 #import "TyphoonConfigPostProcessor.h"
 #import "TyphoonDefinition+Config.h"
@@ -41,7 +42,6 @@ FOUNDATION_EXPORT const unsigned char TyphoonVersionString[];
 #import "TyphoonAutoInjection.h"
 #import "TyphoonDefinitionNamespace.h"
 #import "NSObject+FactoryHooks.h"
-#import "NSObject+TyphoonConfig.h"
 
 #import "TyphoonAssemblyActivator.h"
 

@@ -11,6 +11,7 @@
 
 
 #import "TyphoonConfigPostProcessor.h"
+#import "TyphoonConfigPostProcessor+Internal.h"
 #import "TyphoonResource.h"
 #import "TyphoonDefinition.h"
 #import "TyphoonInjectionByConfig.h"
@@ -23,9 +24,7 @@
 #import "TyphoonInjectionByReference.h"
 #import "TyphoonRuntimeArguments.h"
 #import "TyphoonDefinitionNamespace.h"
-#import "TyphoonBlockDefinitionController.h"
-#import "TyphoonTypeConverterRegistry.h"
-#import "TyphoonTypeConverter.h"
+#import "TyphoonInject.h"
 #import "OCLogTemplate.h"
 
 static NSMutableDictionary *propertyPlaceholderRegistry;
@@ -175,12 +174,6 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
 }
 
 //-------------------------------------------------------------------------------------------
-#pragma mark - Interface Methods
-//-------------------------------------------------------------------------------------------
-
-
-
-//-------------------------------------------------------------------------------------------
 #pragma mark - Protocol Methods
 //-------------------------------------------------------------------------------------------
 
@@ -191,6 +184,15 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
         [self configureInjectionsInDefinition:definition];
         [self configureInjectionsInRuntimeArgumentsInDefinition:definition];
     }
+}
+
+//-------------------------------------------------------------------------------------------
+#pragma mark - Private Methods
+//-------------------------------------------------------------------------------------------
+
+- (BOOL)shouldInjectDefinition:(TyphoonDefinition *)definition
+{
+    return [_space isEqual:definition.space] || [_space isGlobalNamespace];
 }
 
 - (void)configureInjectionsInDefinition:(TyphoonDefinition *)definition
@@ -236,32 +238,10 @@ static NSMutableDictionary *propertyPlaceholderRegistry;
     return result;
 }
 
-- (id)valueForConfigKey:(NSString *)configKey type:(Class)type typeConverterRegistry:(TyphoonTypeConverterRegistry *)typeConverterRegistry
-{
-    id value = [self configurationValueForKey:configKey];
-    
-    if ([value isKindOfClass:[NSString class]]) {
-        id<TyphoonTypeConverter> typeConverter = [typeConverterRegistry converterForType:NSStringFromClass(type)];
-        value = [typeConverter convert:value];
-    }
-    
-    return value;
-}
-
-- (BOOL)shouldInjectDefinition:(TyphoonDefinition *)definition
-{
-    return [_space isEqual:definition.space] || [_space isGlobalNamespace];
-}
-
 @end
 
 
 id TyphoonConfig(NSString *configKey)
 {
-    if ([TyphoonBlockDefinitionController currentController].buildingInstance) {
-        [NSException raise:NSInternalInconsistencyException format:@"TyphoonConfig(%@) cannot be used with TyphoonBlockDefinition. Please use [NSObject typhoonForConfigKey:] instead.", configKey];
-        return nil;
-    }
-    
-    return TyphoonInjectionWithConfigKey(configKey);
+    return [TyphoonInject byConfigKey:configKey];
 }

@@ -10,15 +10,17 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-#import <Foundation/Foundation.h>
+#import "TyphoonConfigPostProcessor.h"
 
-/**
- * This category is intended to use with TyphoonBlockDefinition (although it will work as TyphoonConfig() too).
- *
- * (With TyphoonBlockDefinitions, we lack info about config value type, e.g. is it NSString or NSNumber.)
- */
-@interface NSObject (TyphoonConfig)
+@protocol TyphoonInjection;
+@class TyphoonInjectionContext;
+@class TyphoonInjectionByConfig;
 
-+ (instancetype)typhoonForConfigKey:(NSString *)configKey;
+
+@interface TyphoonConfigPostProcessor ()
+
+- (BOOL)shouldInjectDefinition:(TyphoonDefinition *)definition;
+
+- (id<TyphoonInjection>)injectionForConfigInjection:(TyphoonInjectionByConfig *)injection;
 
 @end

@@ -69,7 +69,10 @@
     return [[self alloc] initWithTypeCode:typeCode];
 }
 
-
++ (TyphoonTypeDescriptor *)descriptorWithType:(id)classOrProtocol
+{
+    return [[self alloc] initWithType:classOrProtocol];
+}
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction
@@ -117,6 +120,26 @@
             [self parsePrimitiveType:typeCode];
         }
         _typeCode = typeCode;
+    }
+    return self;
+}
+
+- (id)initWithType:(id)classOrProtocol
+{
+    self = [super init];
+    if (self) {
+        _isPrimitive = NO;
+        _typeCode = [NSString stringWithCString:@encode(id) encoding:NSUTF8StringEncoding];
+        
+        if (IsClass(classOrProtocol)) {
+            _typeBeingDescribed = classOrProtocol;
+        }
+        else if (IsProtocol(classOrProtocol)) {
+            _declaredProtocol = NSStringFromProtocol(classOrProtocol);
+        }
+        else {
+            [NSException raise:NSInternalInconsistencyException format:@"%@ is not class or protocol", classOrProtocol];
+        }
     }
     return self;
 }
