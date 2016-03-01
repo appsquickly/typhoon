@@ -458,22 +458,12 @@
     }];
 }
 
-- (Knight *)notSoBlockKnight
-{
-    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
-        [definition useInitializer:@selector(initWithDamselsRescued:foo:) parameters:^(TyphoonMethod *initializer) {
-            [initializer injectParameterWith:@(12)];
-            [initializer injectParameterWith:nil];
-        }];
-    }];
-}
-
 - (id)blockKnightCallingMethodsOnDefinitions
 {
     return [TyphoonBlockDefinition withClass:[Knight class] block:^id{
         Knight *knight = [[Knight alloc] init];
         knight.foobar = [self blockQuest].imageUrl;
-        knight.damselsRescued = [self notSoBlockKnight].damselsRescued;
+        knight.damselsRescued = [self simpleNumber].unsignedIntegerValue;
         return knight;
     }];
 }
@@ -534,10 +524,22 @@
     }];
 }
 
-- (id)knightWithFoobarBlockKnightWithQuestURL:(NSURL *)questURL
+- (id)knightWithBlockQuestWithURL:(NSURL *)questURL
 {
     return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(foobar) with:[self blockKnightWithFavoriteDamsels:@[ @"Anna" ] questURL:questURL]];
+        [definition useInitializer:@selector(initWithQuest:) parameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:[self blockQuestWithURL:questURL]];
+        }];
+    }];
+}
+
+- (id)notSoBlockKnight
+{
+    return [TyphoonBlockDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition useInitializer:@selector(initWithQuest:) parameters:^(TyphoonMethod *initializer) {
+            [initializer injectParameterWith:[self blockQuest]];
+        }];
+        [definition injectProperty:@selector(damselsRescued) with:@(12)];
     }];
 }
 

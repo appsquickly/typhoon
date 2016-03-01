@@ -11,15 +11,9 @@
 
 
 #import "TyphoonBlockDefinition.h"
+#import "TyphoonBlockDefinition+Internal.h"
 #import "TyphoonDefinition+Infrastructure.h"
 #import "TyphoonBlockDefinitionController.h"
-
-@interface TyphoonBlockDefinition ()
-
-@property (nonatomic, assign) BOOL hasInitializerBlock;
-
-@end
-
 
 @implementation TyphoonBlockDefinition
 

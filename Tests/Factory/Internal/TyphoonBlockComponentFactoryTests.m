@@ -414,23 +414,19 @@ test_currently_resolving_references_dictionary_is_not_overwritten_when_initializ
     Knight *knight = [assembly blockKnightCallingMethodsOnDefinitions];
     XCTAssertNotNil(knight);
     XCTAssertEqualObjects(knight.foobar, [NSURL URLWithString:@"https://foo.bar"]);
-    XCTAssertEqual(knight.damselsRescued, (NSUInteger)12);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)1);
 }
 
 - (void)test_definition_can_use_block_definitions
 {
     MiddleAgesAssembly *assembly = (MiddleAgesAssembly *)_componentFactory;
     
-    Knight *knight = [assembly knightWithFoobarBlockKnightWithQuestURL:[NSURL URLWithString:@"https://derp.derp"]];
+    Knight *knight = [assembly knightWithBlockQuestWithURL:[NSURL URLWithString:@"https://holy.grail"]];
     XCTAssertNotNil(knight);
-    XCTAssertNotNil(knight.foobar);
     
-    Knight *foobarKnight = knight.foobar;
-    XCTAssertEqualObjects(foobarKnight.favoriteDamsels, @[ @"Anna" ]);
-    XCTAssertNotNil(foobarKnight.quest);
-    
-    CampaignQuest *foobarQuest = (CampaignQuest *)foobarKnight.quest;
-    XCTAssertEqualObjects(foobarQuest.imageUrl, [NSURL URLWithString:@"https://derp.derp"]);
+    id<Quest> quest = knight.quest;
+    XCTAssertNotNil(quest);
+    XCTAssertEqualObjects(quest.imageUrl, [NSURL URLWithString:@"https://holy.grail"]);
 }
 
 - (void)test_block_definition_can_have_arguments
@@ -491,6 +487,17 @@ test_currently_resolving_references_dictionary_is_not_overwritten_when_initializ
     id<RescueQuest> quest = (id<RescueQuest>)knight.quest;
     XCTAssertNotNil(quest);
     XCTAssertEqual(quest.bounty, (NSUInteger)123);
+}
+
+- (void)test_block_definitions_without_block_stuff
+{
+    MiddleAgesAssembly *assembly = (MiddleAgesAssembly *)_componentFactory;
+    
+    Knight *knight = [assembly notSoBlockKnight];
+    XCTAssertNotNil(knight);
+    XCTAssertNotNil(knight.quest);
+    XCTAssertEqualObjects(knight.quest.imageUrl, [NSURL URLWithString:@"https://foo.bar"]);
+    XCTAssertEqual(knight.damselsRescued, (NSUInteger)12);
 }
 
 @end
