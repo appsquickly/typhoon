@@ -448,9 +448,7 @@
 
 - (CampaignQuest *)blockQuest
 {
-    return [TyphoonBlockDefinition withClass:[CampaignQuest class] block:^id{
-        return [self blockQuestWithURL:[NSURL URLWithString:@"https://foo.bar"]];
-    }];
+    return [self blockQuestWithURL:[NSURL URLWithString:@"https://foo.bar"]];
 }
 
 - (CampaignQuest *)blockQuestWithURL:(NSURL *)URL

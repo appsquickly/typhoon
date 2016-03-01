@@ -107,6 +107,7 @@ static BOOL IsPrimitiveArgumentAllowed(id result);
 }
 
 #pragma mark - Circular Dependencies
+
 - (NSMutableArray *)resolveStackForKey:(NSString *)key
 {
     NSMutableArray *resolveStack = [_resolveStackForSelector objectForKey:key];
@@ -157,6 +158,7 @@ static BOOL IsPrimitiveArgumentAllowed(id result);
 }
 
 #pragma mark - Building
+
 - (TyphoonDefinition *)populateCacheWithDefinitionForKey:(NSString *)key
 {
     id d = [self cachedDefinitionForKey:key];
@@ -176,8 +178,9 @@ static BOOL IsPrimitiveArgumentAllowed(id result);
 
 - (id)definitionForKey:(NSString *)key
 {
-    // call the user's assembly method to get it.
-    SEL sel = [TyphoonAssemblySelectorAdviser advisedSELForKey:key class:[_assembly assemblyClassForKey:key]];
+    // Call the user's assembly method to get it.
+    
+    SEL sel = [self assemblySelectorForKey:key];
 
     NSMethodSignature *signature = [self.assembly methodSignatureForSelector:sel];
 
@@ -186,12 +189,12 @@ static BOOL IsPrimitiveArgumentAllowed(id result);
     // This method will likely call through to other definition methods on the assembly, which will go through the advising machinery because of this swizzling.
     // Therefore, the definitions a definition depends on will be fully constructed before they are needed to construct that definition.
     
-    if ([cached isKindOfClass:[TyphoonDefinition class]]) {
-        ((TyphoonDefinition *)cached).assembly = self.assembly;
-        ((TyphoonDefinition *)cached).assemblySelector = sel;
-    }
-    
     return cached;
+}
+
+- (SEL)assemblySelectorForKey:(NSString *)key
+{
+    return [TyphoonAssemblySelectorAdviser advisedSELForKey:key class:[self.assembly assemblyClassForKey:key]];
 }
 
 static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSignature *signature)
@@ -273,6 +276,11 @@ static BOOL IsPrimitiveArgumentAllowed(id result)
     
     if (result.processed && ![definition.key isEqualToString:key]) {
         result = [TyphoonShortcutDefinition definitionWithKey:key referringTo:definition];
+    }
+    
+    if (!result.processed) {
+        result.assembly = _assembly;
+        result.assemblySelector = [self assemblySelectorForKey:key];
     }
 
     result.processed = YES;
