@@ -82,9 +82,12 @@
         {
             TyphoonBlockDefinition *definition = [[TyphoonBlockDefinition alloc] initWithClass:clazz key:nil];
             definition.hasInitializerBlock = initializer != nil;
+            definition.hasInjectionsBlock = injections != nil;
+            
             if (configuration) {
                 configuration(definition);
             }
+            
             return definition;
         }
             

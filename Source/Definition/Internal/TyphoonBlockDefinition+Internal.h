@@ -15,5 +15,6 @@
 @interface TyphoonBlockDefinition ()
 
 @property (nonatomic, assign) BOOL hasInitializerBlock;
+@property (nonatomic, assign) BOOL hasInjectionsBlock;
 
 @end
