@@ -721,6 +721,7 @@
 		BA798F16521A24A1D007E159 /* TyphoonAssemblySelectorAdviser.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7989C26D53D0EA7C6A1BE4 /* TyphoonAssemblySelectorAdviser.m */; };
 		BA798F4DA9DF3F578134CB26 /* StoryboardFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798B51F275F5647924B3A1 /* StoryboardFirstViewController.m */; };
 		BA798FAE0A06D231257D5CD1 /* TyphoonFactoryDefinitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7980BEB561ED347412C994 /* TyphoonFactoryDefinitionTests.m */; };
+		BB1348B81CA6F94900DD16F5 /* TyphoonTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F6E1936F63A0083714E /* TyphoonTypeConverter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BB7F975A1CA6EE67003B3E1F /* TyphoonOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = BB7F97591CA6EE67003B3E1F /* TyphoonOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BB7F975F1CA6EE8E003B3E1F /* TyphoonGlobalConfigCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F1187A61BEFE452008859E0 /* TyphoonGlobalConfigCollector.h */; };
 		BB7F97601CA6EE92003B3E1F /* TyphoonGlobalConfigCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1187A71BEFE452008859E0 /* TyphoonGlobalConfigCollector.m */; };
@@ -2992,6 +2993,7 @@
 				BB7F981E1CA6F1D8003B3E1F /* TyphoonLinkerCategoryBugFix.h in Headers */,
 				BB7F97D71CA6F0D3003B3E1F /* TyphoonAssemblyPropertyInjectionPostProcessor.h in Headers */,
 				BB7F97C91CA6F09C003B3E1F /* NSMethodSignature+TCFUnwrapValues.h in Headers */,
+				BB1348B81CA6F94900DD16F5 /* TyphoonTypeConverter.h in Headers */,
 				BB7F97811CA6EF40003B3E1F /* TyphoonBlockDefinition+Internal.h in Headers */,
 				BB7F97C11CA6F031003B3E1F /* TyphoonAssembly.h in Headers */,
 				BB7F97D91CA6F0E4003B3E1F /* TyphoonAssemblySelectorAdviser.h in Headers */,
@@ -4694,6 +4696,7 @@
 		BB7F975D1CA6EE67003B3E1F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -4727,6 +4730,7 @@
 		BB7F975E1CA6EE67003B3E1F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CODE_SIGN_IDENTITY = "-";
