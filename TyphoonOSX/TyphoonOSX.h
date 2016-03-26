@@ -8,15 +8,44 @@
 //  in accordance with the terms of the license agreement accompanying it.
 //
 ////////////////////////////////////////////////////////////////////////////////
+#import <Foundation/Foundation.h>
 
-#import <Cocoa/Cocoa.h>
+#if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+#endif
 
-//! Project version number for TyphoonOSX.
-FOUNDATION_EXPORT double TyphoonOSXVersionNumber;
+//! Project version number for Typhoon.
+FOUNDATION_EXPORT double TyphoonVersionNumber;
 
-//! Project version string for TyphoonOSX.
-FOUNDATION_EXPORT const unsigned char TyphoonOSXVersionString[];
+//! Project version string for Typhoon.
+FOUNDATION_EXPORT const unsigned char TyphoonVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <TyphoonOSX/PublicHeader.h>
+#import "TyphoonAssembly.h"
+#import "TyphoonDefinition.h"
+#import "TyphoonBlockDefinition.h"
+#import "TyphoonInject.h"
+#import "TyphoonMethod.h"
+#import "TyphoonConfigPostProcessor.h"
+#import "TyphoonDefinition+Config.h"
+#import "TyphoonResource.h"
+#import "TyphoonBundleResource.h"
+#import "TyphoonComponentFactory.h"
+#import "TyphoonBlockComponentFactory.h"
+#import "TyphoonFactoryDefinition.h"
+#import "TyphoonDefinitionPostProcessor.h"
+#import "TyphoonInstancePostProcessor.h"
+#import "TyphoonTypeConverter.h"
+#import "TyphoonIntrospectionUtils.h"
+#import "TyphoonCollaboratingAssemblyProxy.h"
+#import "TyphoonTestUtils.h"
+#import "TyphoonPatcher.h"
+#import "TyphoonAutoInjection.h"
+#import "TyphoonDefinitionNamespace.h"
+#import "NSObject+FactoryHooks.h"
 
+#import "TyphoonAssemblyActivator.h"
+
+#if TARGET_OS_IPHONE
+#import "TyphooniOS.h"
+#endif
 

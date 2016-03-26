@@ -918,7 +918,6 @@
 		BB7F98201CA6F1DF003B3E1F /* TyphoonSelector.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B076F8A1936F63A0083714E /* TyphoonSelector.m */; };
 		BB7F98211CA6F1E1003B3E1F /* TyphoonUtils.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F8B1936F63A0083714E /* TyphoonUtils.h */; };
 		BB7F98221CA6F1EA003B3E1F /* OCLogTemplate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F911936F63A0083714E /* OCLogTemplate.h */; };
-		BB7F98231CA6F1F8003B3E1F /* Typhoon.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F731936F63A0083714E /* Typhoon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BB7F98241CA6F1FD003B3E1F /* Typhoon+Infrastructure.h in Headers */ = {isa = PBXBuildFile; fileRef = 01A28DBF1C5D2636006F0A95 /* Typhoon+Infrastructure.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		C9497A0F3C744433419C9D5D /* TyphoonInjectionByCurrentRuntimeArguments.m in Sources */ = {isa = PBXBuildFile; fileRef = C94972BE857448DEBA12C1CE /* TyphoonInjectionByCurrentRuntimeArguments.m */; };
 		C9497BE0FC290233160074AC /* Mock.m in Sources */ = {isa = PBXBuildFile; fileRef = C949792A85FC9383BEAD631B /* Mock.m */; };
@@ -3027,7 +3026,6 @@
 				BB7F97A01CA6EFC3003B3E1F /* TyphoonInjectionByReference.h in Headers */,
 				BB7F97C61CA6F09C003B3E1F /* NSInvocation+TCFInstanceBuilder.h in Headers */,
 				BB7F97A41CA6EFD0003B3E1F /* TyphoonInjectionByCurrentRuntimeArguments.h in Headers */,
-				BB7F98231CA6F1F8003B3E1F /* Typhoon.h in Headers */,
 				BB7F979C1CA6EFC3003B3E1F /* TyphoonInjectionByDictionary.h in Headers */,
 				BB7F97BE1CA6F01C003B3E1F /* TyphoonBlockDefinition.h in Headers */,
 				BB7F97D81CA6F0D8003B3E1F /* TyphoonRuntimeArguments.h in Headers */,
@@ -4850,6 +4848,7 @@
 				BB7F975E1CA6EE67003B3E1F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
