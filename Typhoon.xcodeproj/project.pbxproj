@@ -722,7 +722,7 @@
 		BA798F4DA9DF3F578134CB26 /* StoryboardFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798B51F275F5647924B3A1 /* StoryboardFirstViewController.m */; };
 		BA798FAE0A06D231257D5CD1 /* TyphoonFactoryDefinitionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA7980BEB561ED347412C994 /* TyphoonFactoryDefinitionTests.m */; };
 		BB1348B81CA6F94900DD16F5 /* TyphoonTypeConverter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F6E1936F63A0083714E /* TyphoonTypeConverter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BB7F975A1CA6EE67003B3E1F /* TyphoonOSX.h in Headers */ = {isa = PBXBuildFile; fileRef = BB7F97591CA6EE67003B3E1F /* TyphoonOSX.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BB1F0CE51CA762890016609D /* Typhoon.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076F731936F63A0083714E /* Typhoon.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BB7F975F1CA6EE8E003B3E1F /* TyphoonGlobalConfigCollector.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F1187A61BEFE452008859E0 /* TyphoonGlobalConfigCollector.h */; };
 		BB7F97601CA6EE92003B3E1F /* TyphoonGlobalConfigCollector.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F1187A71BEFE452008859E0 /* TyphoonGlobalConfigCollector.m */; };
 		BB7F97611CA6EE99003B3E1F /* TyphoonOptionMatcher+Internal.h in Headers */ = {isa = PBXBuildFile; fileRef = 6B076E9D1936F63A0083714E /* TyphoonOptionMatcher+Internal.h */; };
@@ -1479,9 +1479,7 @@
 		BA798F958813EEAAAF528D26 /* TyphoonStartupTests_OSX.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonStartupTests_OSX.m; sourceTree = "<group>"; };
 		BA798FD5D1EF1D40E236F6DA /* TyphoonAssemblyPropertyInjectionPostProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAssemblyPropertyInjectionPostProcessor.h; sourceTree = "<group>"; };
 		BB7F97511CA6EE25003B3E1F /* Typhoon copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Typhoon copy-Info.plist"; path = "/Users/jozsefvesza/Projects/Open source/Typhoon/Typhoon copy-Info.plist"; sourceTree = "<absolute>"; };
-		BB7F97571CA6EE67003B3E1F /* TyphoonOSX.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TyphoonOSX.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		BB7F97591CA6EE67003B3E1F /* TyphoonOSX.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TyphoonOSX.h; sourceTree = "<group>"; };
-		BB7F975B1CA6EE67003B3E1F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB7F97571CA6EE67003B3E1F /* Typhoon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Typhoon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C94972BE857448DEBA12C1CE /* TyphoonInjectionByCurrentRuntimeArguments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonInjectionByCurrentRuntimeArguments.m; sourceTree = "<group>"; };
 		C949758EA994B0137DD95E6D /* Mock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mock.h; sourceTree = "<group>"; };
 		C949766E39C445A43A7517B8 /* TyphoonInjectionByCurrentRuntimeArguments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonInjectionByCurrentRuntimeArguments.h; sourceTree = "<group>"; };
@@ -1638,7 +1636,6 @@
 				90ABC3F81A36B09E008D8162 /* TyphoonTests */,
 				90ABC4BC1A36BA53008D8162 /* TyphoonFrameworkSwiftExample */,
 				90ABC4D21A36BA53008D8162 /* TyphoonFrameworkSwiftExampleTests */,
-				BB7F97581CA6EE67003B3E1F /* TyphoonOSX */,
 				6B076E5C1936F5850083714E /* Frameworks */,
 				6B076E5B1936F5850083714E /* Products */,
 				BB7F97511CA6EE25003B3E1F /* Typhoon copy-Info.plist */,
@@ -1656,7 +1653,7 @@
 				90ABC3F41A36B09E008D8162 /* TyphoonTests.xctest */,
 				90ABC4BB1A36BA53008D8162 /* TyphoonFrameworkSwiftExample.app */,
 				90ABC4CF1A36BA53008D8162 /* TyphoonFrameworkSwiftExampleTests.xctest */,
-				BB7F97571CA6EE67003B3E1F /* TyphoonOSX.framework */,
+				BB7F97571CA6EE67003B3E1F /* Typhoon.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2825,15 +2822,6 @@
 			path = Startup;
 			sourceTree = "<group>";
 		};
-		BB7F97581CA6EE67003B3E1F /* TyphoonOSX */ = {
-			isa = PBXGroup;
-			children = (
-				BB7F97591CA6EE67003B3E1F /* TyphoonOSX.h */,
-				BB7F975B1CA6EE67003B3E1F /* Info.plist */,
-			);
-			path = TyphoonOSX;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -3030,8 +3018,8 @@
 				BB7F97A41CA6EFD0003B3E1F /* TyphoonInjectionByCurrentRuntimeArguments.h in Headers */,
 				BB7F979C1CA6EFC3003B3E1F /* TyphoonInjectionByDictionary.h in Headers */,
 				BB7F97BE1CA6F01C003B3E1F /* TyphoonBlockDefinition.h in Headers */,
+				BB1F0CE51CA762890016609D /* Typhoon.h in Headers */,
 				BB7F97D81CA6F0D8003B3E1F /* TyphoonRuntimeArguments.h in Headers */,
-				BB7F975A1CA6EE67003B3E1F /* TyphoonOSX.h in Headers */,
 				BB7F97821CA6EF43003B3E1F /* TyphoonBlockDefinition+InstanceBuilder.h in Headers */,
 				BB7F98051CA6F194003B3E1F /* TyphoonPrimitiveTypeConverter.h in Headers */,
 				BB7F97741CA6EF03003B3E1F /* TyphoonPathResource.h in Headers */,
@@ -3246,7 +3234,7 @@
 			);
 			name = TyphoonOSX;
 			productName = TyphoonOSX;
-			productReference = BB7F97571CA6EE67003B3E1F /* TyphoonOSX.framework */;
+			productReference = BB7F97571CA6EE67003B3E1F /* Typhoon.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -4713,13 +4701,13 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Source/Prefix.pch";
-				INFOPLIST_FILE = TyphoonOSX/Info.plist;
+				INFOPLIST_FILE = Typhoon/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = typhoonframework.org.TyphoonOSX;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = typhoonframework.org.Typhoon;
+				PRODUCT_NAME = Typhoon;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -4747,13 +4735,13 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/Source/Prefix.pch";
-				INFOPLIST_FILE = TyphoonOSX/Info.plist;
+				INFOPLIST_FILE = Typhoon/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = typhoonframework.org.TyphoonOSX;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = typhoonframework.org.Typhoon;
+				PRODUCT_NAME = Typhoon;
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
 				VERSIONING_SYSTEM = "apple-generic";
