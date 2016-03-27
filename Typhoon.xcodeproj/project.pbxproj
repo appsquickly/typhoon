@@ -3219,9 +3219,9 @@
 			productReference = 90ABC4CF1A36BA53008D8162 /* TyphoonFrameworkSwiftExampleTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		BB7F97561CA6EE67003B3E1F /* TyphoonOSX */ = {
+		BB7F97561CA6EE67003B3E1F /* Typhoon OSX */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BB7F975C1CA6EE67003B3E1F /* Build configuration list for PBXNativeTarget "TyphoonOSX" */;
+			buildConfigurationList = BB7F975C1CA6EE67003B3E1F /* Build configuration list for PBXNativeTarget "Typhoon OSX" */;
 			buildPhases = (
 				BB7F97521CA6EE67003B3E1F /* Sources */,
 				BB7F97531CA6EE67003B3E1F /* Frameworks */,
@@ -3232,7 +3232,7 @@
 			);
 			dependencies = (
 			);
-			name = TyphoonOSX;
+			name = "Typhoon OSX";
 			productName = TyphoonOSX;
 			productReference = BB7F97571CA6EE67003B3E1F /* Typhoon.framework */;
 			productType = "com.apple.product-type.framework";
@@ -3293,7 +3293,7 @@
 				90ABC3F31A36B09E008D8162 /* TyphoonTests */,
 				90ABC4BA1A36BA53008D8162 /* TyphoonFrameworkSwiftExample */,
 				90ABC4CE1A36BA53008D8162 /* TyphoonFrameworkSwiftExampleTests */,
-				BB7F97561CA6EE67003B3E1F /* TyphoonOSX */,
+				BB7F97561CA6EE67003B3E1F /* Typhoon OSX */,
 			);
 		};
 /* End PBXProject section */
@@ -4833,7 +4833,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BB7F975C1CA6EE67003B3E1F /* Build configuration list for PBXNativeTarget "TyphoonOSX" */ = {
+		BB7F975C1CA6EE67003B3E1F /* Build configuration list for PBXNativeTarget "Typhoon OSX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				BB7F975D1CA6EE67003B3E1F /* Debug */,

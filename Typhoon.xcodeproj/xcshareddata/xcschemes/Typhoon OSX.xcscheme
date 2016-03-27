@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "BB7F97561CA6EE67003B3E1F"
-               BuildableName = "TyphoonOSX.framework"
-               BlueprintName = "TyphoonOSX"
+               BuildableName = "Typhoon.framework"
+               BlueprintName = "Typhoon OSX"
                ReferencedContainer = "container:Typhoon.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -46,8 +46,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BB7F97561CA6EE67003B3E1F"
-            BuildableName = "TyphoonOSX.framework"
-            BlueprintName = "TyphoonOSX"
+            BuildableName = "Typhoon.framework"
+            BlueprintName = "Typhoon OSX"
             ReferencedContainer = "container:Typhoon.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,8 +64,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "BB7F97561CA6EE67003B3E1F"
-            BuildableName = "TyphoonOSX.framework"
-            BlueprintName = "TyphoonOSX"
+            BuildableName = "Typhoon.framework"
+            BlueprintName = "Typhoon OSX"
             ReferencedContainer = "container:Typhoon.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
