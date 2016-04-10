@@ -11,6 +11,14 @@ Visit <a href="http://typhoonframework.org">the Typhoon website</a> for an intro
 
 Check out the <a href="http://www.typhoonframework.org/#features">feature list</a>. 
 
+### Looking for a pure Swift Solution?
+
+Typhoon works with Swift, but is written in Objective-C and uses the Objective-C runtime for reflection, injection and instrumenting assemblies. If you're looking for a static and pure Swift solution: 
+
+* <a href="https://github.com/jkolb/FieryCrucible">Fiery Crucible</a>
+* <a href="https://github.com/Swinject/Swinject">Swinject</a>
+* <a href="https://github.com/AliSoftware/Dip">Dip</a>
+
 ---------------------------------------
 
 # Usage
