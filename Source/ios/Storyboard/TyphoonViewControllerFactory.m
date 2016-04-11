@@ -36,7 +36,7 @@
 
 - (UIViewController *)viewControllerWithStoryboardContext:(TyphoonStoryboardDefinitionContext *)context
 {
-    NSMutableDictionary *storyboardPool = [self.factory storyboardPool];
+    id<TyphoonComponentsPool> storyboardPool = [self.factory storyboardPool];
     
     UIStoryboard *storyboard = storyboardPool[context.storyboardName];
     if (!storyboard) {

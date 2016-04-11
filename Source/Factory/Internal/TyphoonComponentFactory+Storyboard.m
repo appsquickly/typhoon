@@ -13,6 +13,7 @@
 
 #import "TyphoonDefinition.h"
 #import "TyphoonStoryboard.h"
+#import "TyphoonWeakComponentsPool.h"
 
 @interface TyphoonComponentFactory (Private)
 
@@ -30,17 +31,17 @@
 
 static const char *kStoryboardPool;
 
-- (void)setStoryboardPool:(NSMutableDictionary *)storyboardsPool
+- (void)setStoryboardPool:(id<TyphoonComponentsPool>)storyboardsPool
 {
     objc_setAssociatedObject(self, &kStoryboardPool, storyboardsPool, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (NSMutableDictionary *)storyboardPool
+- (id<TyphoonComponentsPool>)storyboardPool
 {
-    NSMutableDictionary *pool = objc_getAssociatedObject(self, &kStoryboardPool);
+    id<TyphoonComponentsPool> pool = objc_getAssociatedObject(self, &kStoryboardPool);
     if (pool == nil) {
         @synchronized (self) {
-            pool = [NSMutableDictionary new];
+            pool = [TyphoonWeakComponentsPool new];
             [self setStoryboardPool:pool];
         }
     }

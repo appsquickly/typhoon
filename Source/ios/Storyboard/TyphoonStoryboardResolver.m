@@ -14,6 +14,7 @@
 #import "TyphoonStoryboard.h"
 #import "TyphoonStoryboardProvider.h"
 #import "TyphoonComponentFactory+Storyboard.h"
+#import "TyphoonComponentsPool.h"
 
 #import <objc/runtime.h>
 
@@ -43,7 +44,7 @@
         if ([instance class] == [UIStoryboard class] && componentFactory && [storyboardNames containsObject:name]) {
             TyphoonStoryboard *storyboard = [TyphoonStoryboard storyboardWithName:name factory:componentFactory bundle:bundle];
             @synchronized(self) {
-                NSMutableDictionary *storyboardPool = [componentFactory storyboardPool];
+                id<TyphoonComponentsPool> storyboardPool = [componentFactory storyboardPool];
                 storyboardPool[name] = storyboard;
             }
             return storyboard;
