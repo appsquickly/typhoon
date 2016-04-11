@@ -154,6 +154,10 @@ static NSString *TyphoonScopeToString(TyphoonScope scope)
     if (configuration) {
         configuration(definition);
     }
+    
+    if ([self isOldStyleStoryboardDefinitionWithFactory:factory]) {
+        LogInfo(@"*** Warning *** You are using TyphoonFactoryDefinition for ViewController injections. The preferred way are special TyphoonStoryboardDefinitions.");
+    }
 
     return definition;
 }
@@ -363,11 +367,6 @@ static NSString *TyphoonScopeToString(TyphoonScope scope)
     }
 }
 
-
-//-------------------------------------------------------------------------------------------
-#pragma mark - Private Methods
-//-------------------------------------------------------------------------------------------
-
 - (void)validateRequiredParametersAreSet
 {
     if (_type == nil) {
@@ -380,7 +379,18 @@ static NSString *TyphoonScopeToString(TyphoonScope scope)
     }
 }
 
++ (BOOL)isOldStyleStoryboardDefinitionWithFactory:(id)factory {
+    if ([factory isKindOfClass:[TyphoonDefinition class]]) {
+        Class factoryClass = ((TyphoonDefinition *)factory).type;
+        return [factoryClass isSubclassOfClass:[UIStoryboard class]];
+    }
+    
+    if ([factory isKindOfClass:[UIStoryboard class]]) {
+        return YES;
+    }
+    
+    return NO;
+}
+
 @end
-
-
 
