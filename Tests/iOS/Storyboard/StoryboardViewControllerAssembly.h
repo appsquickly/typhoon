@@ -34,4 +34,6 @@
 
 - (UIStoryboard *)storyboard;
 
+- (UIViewController *)oneMoreViewControllerWithId:(NSString *)controllerId title:(NSString *)title;
+
 @end

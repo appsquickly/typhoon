@@ -14,6 +14,8 @@
 #import "TyphoonViewControllerFactory.h"
 #import "TyphoonStoryboardDefinitionContext.h"
 #import "TyphoonDefinition+InstanceBuilder.h"
+#import "TyphoonAbstractInjection.h"
+#import "TyphoonInjections.h"
 
 @interface TyphoonStoryboardDefinition ()
 
@@ -29,12 +31,13 @@
         return [super targetForInitializerWithFactory:factory args:args];
     }
     
+    TyphoonInjectionContext *injectionContext = [[TyphoonInjectionContext alloc] initWithFactory:factory args:args raiseExceptionIfCircular:YES];
     TyphoonViewControllerFactory *viewControllerFactory = [[TyphoonViewControllerFactory alloc] initWithFactory:factory];
-    UIViewController *result = [viewControllerFactory viewControllerWithStoryboardContext:self.context];
+    UIViewController *result = [viewControllerFactory viewControllerWithStoryboardContext:self.context injectionContext:injectionContext];
     return result;
 }
 
-- (id)initWithStoryboardName:(NSString *)storyboardName viewControllerId:(NSString *)viewControllerId
+- (id)initWithStoryboardName:(id)storyboardName viewControllerId:(id)viewControllerId
 {
     if (!storyboardName) {
         [NSException raise:NSInvalidArgumentException
@@ -42,22 +45,22 @@
     }
     self = [super initWithClass:[NSObject class] key:nil];
     if (self) {
-        _context = [TyphoonStoryboardDefinitionContext contextWithStoryboardName:storyboardName
-                                                                viewControllerId:viewControllerId];
+        _context = [TyphoonStoryboardDefinitionContext contextWithStoryboardName:TyphoonMakeInjectionFromObjectIfNeeded(storyboardName)
+                                                                viewControllerId:TyphoonMakeInjectionFromObjectIfNeeded(viewControllerId)];
         _scope = TyphoonScopePrototype;
     }
     return self;
 }
 
-- (id)initWithStoryboard:(UIStoryboard *)storyboard viewControllerId:(NSString *)viewControllerId
+- (id)initWithStoryboard:(UIStoryboard *)storyboard viewControllerId:(id)viewControllerId
 {
     self = [super initWithFactory:storyboard
                          selector:@selector(instantiateViewControllerWithIdentifier:)
                        parameters:^(TyphoonMethod *method) {
-                           [method injectParameterWith:viewControllerId];
+                           [method injectParameterWith:TyphoonMakeInjectionFromObjectIfNeeded(viewControllerId)];
                        }];
     if (self) {
-        _context = [TyphoonStoryboardDefinitionContext contextForPreconfiguredStoryboardWithViewControllerId:viewControllerId];
+        _context = [TyphoonStoryboardDefinitionContext contextForPreconfiguredStoryboardWithViewControllerId:TyphoonMakeInjectionFromObjectIfNeeded(viewControllerId)];
     }
     return self;
 }

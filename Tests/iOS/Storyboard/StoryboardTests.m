@@ -143,4 +143,11 @@
     XCTAssertEqualObjects(oneMoreViewController.title, @"OneMoreViewController");
 }
 
+- (void)test_controller_with_runtime_attributes {
+    NSString *controllerId = @"OneMoreViewController";
+    NSString *testTitle = @"Test Title";
+    UIViewController *result = [self.factory oneMoreViewControllerWithId:controllerId title:testTitle];
+    XCTAssertEqualObjects(result.title, testTitle);
+}
+
 @end

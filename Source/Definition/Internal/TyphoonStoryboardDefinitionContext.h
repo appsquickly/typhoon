@@ -19,10 +19,10 @@ typedef NS_ENUM(NSUInteger, TyphoonStoryboardDefinitionType) {
 @interface TyphoonStoryboardDefinitionContext : NSObject
 
 @property (assign, nonatomic, readonly) TyphoonStoryboardDefinitionType type;
-@property (strong, nonatomic, readonly) NSString *storyboardName;
-@property (strong, nonatomic, readonly) NSString *viewControllerId;
+@property (strong, nonatomic, readonly) id storyboardName;
+@property (strong, nonatomic, readonly) id viewControllerId;
 
-+ (instancetype)contextForPreconfiguredStoryboardWithViewControllerId:(NSString *)viewControllerId;
-+ (instancetype)contextWithStoryboardName:(NSString *)storyboardName viewControllerId:(NSString *)viewControllerId;
++ (instancetype)contextForPreconfiguredStoryboardWithViewControllerId:(id)viewControllerId;
++ (instancetype)contextWithStoryboardName:(id)storyboardName viewControllerId:(id)viewControllerId;
 
 @end

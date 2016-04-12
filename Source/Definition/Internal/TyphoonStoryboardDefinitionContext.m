@@ -14,14 +14,14 @@
 @interface TyphoonStoryboardDefinitionContext ()
 
 @property (assign, nonatomic, readwrite) TyphoonStoryboardDefinitionType type;
-@property (strong, nonatomic, readwrite) NSString *storyboardName;
-@property (strong, nonatomic, readwrite) NSString *viewControllerId;
+@property (strong, nonatomic, readwrite) id storyboardName;
+@property (strong, nonatomic, readwrite) id viewControllerId;
 
 @end
 
 @implementation TyphoonStoryboardDefinitionContext
 
-- (instancetype)initWithType:(TyphoonStoryboardDefinitionType)type viewControllerId:(NSString *)viewControllerId storyboardName:(NSString *)storyboardName
+- (instancetype)initWithType:(TyphoonStoryboardDefinitionType)type viewControllerId:(id)viewControllerId storyboardName:(id)storyboardName
 {
     self = [super init];
     if (self) {
@@ -32,14 +32,14 @@
     return self;
 }
 
-+ (instancetype)contextWithStoryboardName:(NSString *)storyboardName viewControllerId:(NSString *)viewControllerId
++ (instancetype)contextWithStoryboardName:(id)storyboardName viewControllerId:(id)viewControllerId
 {
     return [[[self class] alloc] initWithType:TyphoonStoryboardDefinitionByNameType
                              viewControllerId:viewControllerId
                                storyboardName:storyboardName];
 }
 
-+ (instancetype)contextForPreconfiguredStoryboardWithViewControllerId:(NSString *)viewControllerId
++ (instancetype)contextForPreconfiguredStoryboardWithViewControllerId:(id)viewControllerId
 {
     return [[[self class] alloc] initWithType:TyphoonStoryboardDefinitionByFactoryType
                              viewControllerId:viewControllerId

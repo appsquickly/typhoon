@@ -103,11 +103,19 @@
 - (UIViewController *)oneMoreViewController
 {
     return [TyphoonDefinition withStoryboardName:@"Storyboard"
-                                viewControllerId:@"OneMoreViewController" configuration:^(TyphoonDefinition *definition) {
+                                viewControllerId:@"OneMoreViewController"
+                                   configuration:^(TyphoonDefinition *definition) {
                                     [definition injectProperty:@selector(title) with:@"OneMoreViewController"];
                                     definition.scope = TyphoonScopeSingleton;
                                 }];
 }
 
+- (UIViewController *)oneMoreViewControllerWithId:(NSString *)controllerId title:(NSString *)title {
+    return [TyphoonDefinition withStoryboardName:@"Storyboard"
+                                viewControllerId:controllerId
+                                   configuration:^(TyphoonDefinition *definition) {
+                                       [definition injectProperty:@selector(title) with:title];
+                                   }];
+}
 
 @end

@@ -16,6 +16,9 @@
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 #import "UIViewController+TyphoonStoryboardIntegration.h"
 #import "UIView+TyphoonDefinitionKey.h"
+#import "TyphoonDefinition+InstanceBuilder.h"
+#import "TyphoonInjectionContext.h"
+#import "TyphoonAbstractInjection.h"
 
 @interface TyphoonViewControllerFactory ()
 
@@ -35,20 +38,29 @@
 }
 
 - (UIViewController *)viewControllerWithStoryboardContext:(TyphoonStoryboardDefinitionContext *)context
+                                         injectionContext:(TyphoonInjectionContext *)injectionContext
 {
     id<TyphoonComponentsPool> storyboardPool = [self.factory storyboardPool];
-    
-    UIStoryboard *storyboard = storyboardPool[context.storyboardName];
+    __block NSString *storyboardName = nil;
+    [context.storyboardName valueToInjectWithContext:injectionContext completion:^(id value) {
+        storyboardName = value;
+    }];
+
+    UIStoryboard *storyboard = storyboardPool[storyboardName];
     if (!storyboard) {
-        storyboard = [TyphoonStoryboard storyboardWithName:context.storyboardName
+        storyboard = [TyphoonStoryboard storyboardWithName:storyboardName
                                                    factory:self.factory
                                                     bundle:[NSBundle bundleForClass:[self class]]];
         @synchronized(self) {
-            storyboardPool[context.storyboardName] = storyboard;
+            storyboardPool[storyboardName] = storyboard;
         }
     }
     
-    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:context.viewControllerId];
+    __block NSString *viewControllerId = nil;
+    [context.viewControllerId valueToInjectWithContext:injectionContext completion:^(id value) {
+        viewControllerId = value;
+    }];
+    UIViewController *viewController = [storyboard instantiateViewControllerWithIdentifier:viewControllerId];
 
     return viewController;
 }
