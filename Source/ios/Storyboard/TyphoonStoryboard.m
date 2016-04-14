@@ -42,9 +42,8 @@
 {
     NSAssert(self.factory, @"TyphoonStoryboard's factory property can't be nil!");
     
-    TyphoonViewControllerFactory *viewControllerFactory = [[TyphoonViewControllerFactory alloc] initWithFactory:self.factory];
     UIViewController *prototype = [super instantiateViewControllerWithIdentifier:identifier];
-    UIViewController *result = [viewControllerFactory viewControllerWithPrototype:prototype];
+    UIViewController *result = [TyphoonViewControllerFactory viewControllerWithPrototype:prototype factory:self.factory];
 
     return result;
 }

@@ -32,8 +32,7 @@
     }
     
     TyphoonInjectionContext *injectionContext = [[TyphoonInjectionContext alloc] initWithFactory:factory args:args raiseExceptionIfCircular:YES];
-    TyphoonViewControllerFactory *viewControllerFactory = [[TyphoonViewControllerFactory alloc] initWithFactory:factory];
-    UIViewController *result = [viewControllerFactory viewControllerWithStoryboardContext:self.context injectionContext:injectionContext];
+    UIViewController *result = [TyphoonViewControllerFactory viewControllerWithStoryboardContext:self.context injectionContext:injectionContext factory:factory];
     return result;
 }
 

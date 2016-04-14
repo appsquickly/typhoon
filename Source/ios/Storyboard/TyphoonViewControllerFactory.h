@@ -17,9 +17,7 @@
 
 @interface TyphoonViewControllerFactory : NSObject
 
-- (instancetype)initWithFactory:(TyphoonComponentFactory *)factory;
-
-- (UIViewController *)viewControllerWithStoryboardContext:(TyphoonStoryboardDefinitionContext *)context injectionContext:(TyphoonInjectionContext *)injectionContext;
-- (UIViewController *)viewControllerWithPrototype:(UIViewController *)prototype;
++ (UIViewController *)viewControllerWithStoryboardContext:(TyphoonStoryboardDefinitionContext *)context injectionContext:(TyphoonInjectionContext *)injectionContext factory:(TyphoonComponentFactory *)factory;
++ (UIViewController *)viewControllerWithPrototype:(UIViewController *)prototype factory:(TyphoonComponentFactory *)factory;
 
 @end

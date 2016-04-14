@@ -20,27 +20,13 @@
 #import "TyphoonInjectionContext.h"
 #import "TyphoonAbstractInjection.h"
 
-@interface TyphoonViewControllerFactory ()
-
-@property (strong, nonatomic) TyphoonComponentFactory *factory;
-
-@end
-
 @implementation TyphoonViewControllerFactory
 
-- (instancetype)initWithFactory:(TyphoonComponentFactory *)factory
-{
-    self = [super init];
-    if (self) {
-        _factory = factory;
-    }
-    return self;
-}
-
-- (UIViewController *)viewControllerWithStoryboardContext:(TyphoonStoryboardDefinitionContext *)context
++ (UIViewController *)viewControllerWithStoryboardContext:(TyphoonStoryboardDefinitionContext *)context
                                          injectionContext:(TyphoonInjectionContext *)injectionContext
+                                                  factory:(TyphoonComponentFactory *)factory
 {
-    id<TyphoonComponentsPool> storyboardPool = [self.factory storyboardPool];
+    id<TyphoonComponentsPool> storyboardPool = [factory storyboardPool];
     __block NSString *storyboardName = nil;
     [context.storyboardName valueToInjectWithContext:injectionContext completion:^(id value) {
         storyboardName = value;
@@ -49,7 +35,7 @@
     UIStoryboard *storyboard = storyboardPool[storyboardName];
     if (!storyboard) {
         storyboard = [TyphoonStoryboard storyboardWithName:storyboardName
-                                                   factory:self.factory
+                                                   factory:factory
                                                     bundle:[NSBundle bundleForClass:[self class]]];
         @synchronized(self) {
             storyboardPool[storyboardName] = storyboard;
@@ -65,49 +51,54 @@
     return viewController;
 }
 
-- (UIViewController *)viewControllerWithPrototype:(UIViewController *)prototype
++ (UIViewController *)viewControllerWithPrototype:(UIViewController *)prototype
+                                          factory:(TyphoonComponentFactory *)factory
 {
-    UIViewController *result = [self configureOrObtainFromPoolViewControllerForInstance:prototype];
+    UIViewController *result = [self configureOrObtainFromPoolViewControllerForInstance:prototype
+                                                                            withFactory:factory];
     return result;
 }
 
-- (id)configureOrObtainFromPoolViewControllerForInstance:(UIViewController *)instance
++ (id)configureOrObtainFromPoolViewControllerForInstance:(UIViewController *)instance
+                                             withFactory:(TyphoonComponentFactory *)factory
 {
     UIViewController *cachedInstance;
     
-    cachedInstance = [self.factory scopeCachedViewControllerForInstance:instance typhoonKey:instance.typhoonKey];
+    cachedInstance = [factory scopeCachedViewControllerForInstance:instance typhoonKey:instance.typhoonKey];
     
     if (cachedInstance) {
         return cachedInstance;
     }
     
-    [self injectPropertiesForViewController:instance];
+    [self injectPropertiesForViewController:instance withFactory:factory];
     return instance;
 }
 
-- (void)injectPropertiesForViewController:(UIViewController *)viewController
++ (void)injectPropertiesForViewController:(UIViewController *)viewController
+                              withFactory:(TyphoonComponentFactory *)factory
 {
     if (viewController.typhoonKey.length > 0) {
-        [self.factory inject:viewController withSelector:NSSelectorFromString(viewController.typhoonKey)];
+        [factory inject:viewController withSelector:NSSelectorFromString(viewController.typhoonKey)];
     }
     else {
-        [self.factory inject:viewController];
+        [factory inject:viewController];
     }
     
     for (UIViewController *controller in viewController.childViewControllers) {
-        [self injectPropertiesForViewController:controller];
+        [self injectPropertiesForViewController:controller withFactory:factory];
     }
     
     __weak __typeof (viewController) weakViewController = viewController;
     [viewController setViewDidLoadNotificationBlock:^{
-        [self injectPropertiesInView:weakViewController.view];
+        [self injectPropertiesInView:weakViewController.view withFactory:factory];
     }];
 }
 
-- (void)injectPropertiesInView:(UIView *)view
++ (void)injectPropertiesInView:(UIView *)view
+                   withFactory:(TyphoonComponentFactory *)factory
 {
     if (view.typhoonKey.length > 0) {
-        [self.factory inject:view withSelector:NSSelectorFromString(view.typhoonKey)];
+        [factory inject:view withSelector:NSSelectorFromString(view.typhoonKey)];
     }
     
     if ([view.subviews count] == 0) {
@@ -115,7 +106,7 @@
     }
     
     for (UIView *subview in view.subviews) {
-        [self injectPropertiesInView:subview];
+        [self injectPropertiesInView:subview withFactory:factory];
     }
 }
 
