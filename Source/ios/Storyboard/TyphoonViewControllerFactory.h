@@ -13,11 +13,14 @@
 
 @class TyphoonStoryboardDefinitionContext;
 @class TyphoonComponentFactory;
+@class TyphoonStoryboard;
 @class TyphoonInjectionContext;
 
 @interface TyphoonViewControllerFactory : NSObject
 
 + (UIViewController *)viewControllerWithStoryboardContext:(TyphoonStoryboardDefinitionContext *)context injectionContext:(TyphoonInjectionContext *)injectionContext factory:(TyphoonComponentFactory *)factory;
-+ (UIViewController *)viewControllerWithPrototype:(UIViewController *)prototype factory:(TyphoonComponentFactory *)factory;
++ (UIViewController *)viewControllerWithIdentifier:(NSString *)identifier storyboard:(TyphoonStoryboard *)storyboard;
++ (UIViewController *)cachedViewControllerWithIdentifier:(NSString *)identifier storyboardName:(NSString *)storyboardName factory:(TyphoonComponentFactory *)factory;
+
 
 @end

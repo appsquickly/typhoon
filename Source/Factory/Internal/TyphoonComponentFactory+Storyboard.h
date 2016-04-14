@@ -16,5 +16,6 @@
 @property (strong, nonatomic, readonly) id<TyphoonComponentsPool> storyboardPool;
 
 - (id)scopeCachedViewControllerForInstance:(UIViewController *)instance typhoonKey:(NSString *)typhoonKey;
+- (id)scopeCachedViewControllerForClass:(Class)viewControllerClass typhoonKey:(NSString *)typhoonKey;
 
 @end

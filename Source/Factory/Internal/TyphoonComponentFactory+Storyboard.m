@@ -53,16 +53,37 @@ static const char *kStoryboardPool;
     @synchronized (self) {
         [self loadIfNeeded];
         
-        id cachedInstance = nil;
         TyphoonDefinition *definition = [self definitionForInstance:instance typhoonKey:typhoonKey];
+        return [self cachedInstanceForDefinition:definition];
+    }
+}
+
+- (id)scopeCachedViewControllerForClass:(Class)viewControllerClass typhoonKey:(NSString *)typhoonKey {
+    @synchronized (self) {
+        [self loadIfNeeded];
         
-        if (definition) {
-            id<TyphoonComponentsPool> pool = [self poolForDefinition:definition];
-            cachedInstance = [pool objectForKey:typhoonKey];
+        id cachedInstance = nil;
+        TyphoonDefinition *keyDefinition = [self definitionForKey:typhoonKey];
+        if (keyDefinition) {
+            return [self cachedInstanceForDefinition:keyDefinition];
+        }
+        
+        TyphoonDefinition *classDefinition = [self definitionForClass:viewControllerClass];
+        if (classDefinition) {
+            return [self cachedInstanceForDefinition:classDefinition];
         }
         
         return cachedInstance;
     }
+}
+
+- (TyphoonDefinition *)definitionForClass:(Class)viewControllerClass
+{
+    if (!viewControllerClass) {
+        return nil;
+    }
+    TyphoonDefinition *definition = [self definitionForType:viewControllerClass orNil:YES includeSubclasses:NO];
+    return definition;
 }
 
 - (TyphoonDefinition *)definitionForInstance:(UIViewController *)instance typhoonKey:(NSString *)typhoonKey
@@ -75,6 +96,17 @@ static const char *kStoryboardPool;
         definition = [self definitionForType:[instance class] orNil:YES includeSubclasses:NO];
     }
     return definition;
+}
+
+- (id)cachedInstanceForDefinition:(TyphoonDefinition *)definition
+{
+    if (!definition) {
+        return nil;
+    }
+    
+    id<TyphoonComponentsPool> pool = [self poolForDefinition:definition];
+    id cachedInstance = [pool objectForKey:definition.key];
+    return cachedInstance;
 }
 
 @end

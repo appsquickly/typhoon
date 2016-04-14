@@ -35,15 +35,24 @@
 {
     TyphoonStoryboard *storyboard = (id) [super storyboardWithName:name bundle:bundleOrNil];
     storyboard.factory = factory;
+    storyboard.storyboardName = name;
     return storyboard;
+}
+
+- (UIViewController *)instantiatePrototypeViewControllerWithIdentifier:(NSString *)identifier {
+    return [super instantiateViewControllerWithIdentifier:identifier];
 }
 
 - (id)instantiateViewControllerWithIdentifier:(NSString *)identifier
 {
     NSAssert(self.factory, @"TyphoonStoryboard's factory property can't be nil!");
     
-    UIViewController *prototype = [super instantiateViewControllerWithIdentifier:identifier];
-    UIViewController *result = [TyphoonViewControllerFactory viewControllerWithPrototype:prototype factory:self.factory];
+    UIViewController *cachedInstance = [TyphoonViewControllerFactory cachedViewControllerWithIdentifier:identifier storyboardName:self.storyboardName factory:self.factory];
+    if (cachedInstance) {
+        return cachedInstance;
+    }
+    
+    UIViewController *result = [TyphoonViewControllerFactory viewControllerWithIdentifier:identifier storyboard:self];
 
     return result;
 }
