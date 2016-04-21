@@ -378,6 +378,11 @@ BOOL IsClass(id classOrProtocol)
     return class_isMetaClass(object_getClass(classOrProtocol));
 }
 
+BOOL IsBlock(const char *objCType)
+{
+    return strcmp(objCType, "@?") == 0;
+}
+
 BOOL IsProtocol(id classOrProtocol)
 {
     return object_getClass(classOrProtocol) == object_getClass(@protocol(NSObject));

@@ -12,6 +12,7 @@
 
 #import "NSInvocation+TCFWrapValues.h"
 #import "TyphoonUtils.h"
+#import "TyphoonIntrospectionUtils.h"
 
 @implementation NSInvocation (TCFWrapValues)
 
@@ -26,6 +27,11 @@
         void *pointer;
         [self getArgument:&pointer atIndex:idx];
         id argument = (__bridge id) pointer;
+        
+        if (IsBlock(argumentType)) {
+            return [argument copy]; // Converting NSStackBlock to NSMallocBlock
+        }
+        
         return argument;
     } else {
         NSUInteger argumentSize;
