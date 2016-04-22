@@ -12,7 +12,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ObjectInitWithBlock : NSObject
+@interface ObjectBlockArgument : NSObject
 
 + (void)setBlock:(void(^)())block;
 

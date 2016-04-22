@@ -12,7 +12,7 @@
 
 #import "TyphoonInvocationUtilsTestObjects.h"
 
-@implementation ObjectInitWithBlock
+@implementation ObjectBlockArgument
 
 + (void)setBlock:(void (^)())block
 {
@@ -78,6 +78,8 @@
 
     return nil;
 }
+
+
 
 @end
 
