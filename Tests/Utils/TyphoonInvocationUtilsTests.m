@@ -13,6 +13,7 @@
 #import <XCTest/XCTest.h>
 #import "TyphoonInvocationUtilsTestObjects.h"
 #import "NSInvocation+TCFInstanceBuilder.h"
+#import "NSInvocation+TCFWrapValues.h"
 #import <objc/message.h>
 #import "ClassWithConstructor.h"
 
@@ -66,6 +67,26 @@
     [invocation getReturnValue:&arcobject];
 
     XCTAssertEqual(retainCount(arcobject), 1);
+}
+
+- (void)test_block_argument_is_malloc
+{
+    NSObject *retainedObject = [NSObject new];
+    
+    NSInvocation *invocation = [TyphoonInvocationUtilsTests invocationForClassSelector:@selector(setBlock:) class:[ObjectInitWithBlock class]];
+    void (^Block)() = ^{
+        if (retainedObject) {
+            ///
+        }
+    };
+    [invocation setArgument:&Block atIndex:2];
+    [invocation invoke];
+    
+    id value = [invocation typhoon_getArgumentObjectAtIndex:2];
+    
+    XCTAssertTrue([value isKindOfClass:NSClassFromString(@"__NSMallocBlock__")]);
+    XCTAssertEqual(retainCount(value), 1);
+    XCTAssertEqual(retainCount(retainedObject), 3);
 }
 
 - (void)test_object_new_autorelease
