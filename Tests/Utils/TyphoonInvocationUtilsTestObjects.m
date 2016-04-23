@@ -12,6 +12,15 @@
 
 #import "TyphoonInvocationUtilsTestObjects.h"
 
+@implementation ObjectBlockArgument
+
++ (void)setBlock:(void (^)())block
+{
+    block();
+}
+
+@end
+
 @implementation ObjectInitRetained
 
 - (instancetype)init
@@ -69,6 +78,8 @@
 
     return nil;
 }
+
+
 
 @end
 

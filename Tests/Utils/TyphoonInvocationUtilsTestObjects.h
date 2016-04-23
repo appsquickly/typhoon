@@ -12,6 +12,13 @@
 
 #import <Foundation/Foundation.h>
 
+@interface ObjectBlockArgument : NSObject
+
++ (void)setBlock:(void(^)())block;
+
+@end
+
+
 @interface ObjectInitRetained : NSObject
 
 @end
