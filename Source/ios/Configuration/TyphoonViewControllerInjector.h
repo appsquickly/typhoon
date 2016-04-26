@@ -9,8 +9,11 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import <Foundation/Foundation.h>
+#import "TyphoonComponentFactory.h"
 
-#import "TyphoonStoryboard.h"
-#import "TyphoonNibLoader.h"
-#import "TyphoonBundledImageTypeConverter.h"
-#import "TyphoonLoadedView.h"
+@interface TyphoonViewControllerInjector : NSObject
+
+- (void)injectPropertiesForViewController:(UIViewController *)viewController withFactory:(id<TyphoonComponentFactory>)factory;
+
+@end
