@@ -13,13 +13,7 @@ Check out the <a href="http://www.typhoonframework.org/#features">feature list</
 
 ### Looking for a pure Swift Solution?
 
-Typhoon works with Swift, but is written in Objective-C and uses the Objective-C runtime for reflection, injection and instrumenting assemblies. If you're looking for a static and pure Swift solution: 
-
-* <a href="https://github.com/jkolb/FieryCrucible">Fiery Crucible</a>
-* <a href="https://github.com/Swinject/Swinject">Swinject</a>
-* <a href="https://github.com/AliSoftware/Dip">Dip</a>
-
-**Update:** We think Typhoon is an excellent option if you need Dependeny Injection in your Swift projects, however we're happy to announce that we've finally been working on a pure Swift framework. If you've used Typhoon in the past, our Swift library will feel very familiar, and yet better in many ways. 
+Typhoon works with Swift, but is written in Objective-C and uses the Objective-C runtime for reflection, injection and instrumenting assemblies. We think Typhoon is an excellent option if you need Dependeny Injection in your Swift projects, however we're happy to announce that we've been working on a pure Swift framework! If you've used Typhoon in the past, our Swift library will feel very familiar, yet better in every way, and yet completely harmonious with static, idiomatic Swift. 
 
 ---------------------------------------
 
