@@ -19,6 +19,8 @@ Typhoon works with Swift, but is written in Objective-C and uses the Objective-C
 * <a href="https://github.com/Swinject/Swinject">Swinject</a>
 * <a href="https://github.com/AliSoftware/Dip">Dip</a>
 
+**Update:** We think Typhoon is an excellent option if you need Dependeny Injection in your Swift projects, however we're happy to announce that we've finally been working on a pure Swift framework. If you've used Typhoon in the past, our Swift library will feel very familiar, and yet better in many ways. 
+
 ---------------------------------------
 
 # Usage
