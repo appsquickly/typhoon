@@ -9,7 +9,7 @@
 	<key>CFBundleIconFile</key>
 	<string></string>
 	<key>CFBundleIdentifier</key>
-	<string>typhoonframework.org.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
@@ -30,9 +30,9 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
-    <key>TyphoonInitialAssemblies</key>
-    <array>
-        <string>OSXPlistConfiguredAssembly</string>
-    </array>
+	<key>TyphoonInitialAssemblies</key>
+	<array>
+		<string>OSXPlistConfiguredAssembly</string>
+	</array>
 </dict>
 </plist>
