@@ -57,7 +57,9 @@
 
 - (void)cacheDefinition:(TyphoonDefinition *)definition
 {
-    _rollbackDefinitions[[definition key]] = [definition copy];
+    if ([definition key]) {
+        _rollbackDefinitions[[definition key]] = [definition copy];
+    }
 }
 
 
