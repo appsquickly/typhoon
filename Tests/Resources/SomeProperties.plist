@@ -8,6 +8,8 @@
 		<true/>
 		<key>damsels</key>
 		<integer>28</integer>
+		<key>fooUrl</key>
+		<string>NSURL(http://google.com/)</string>
 	</dict>
 </dict>
 </plist>
