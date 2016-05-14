@@ -88,7 +88,7 @@
 
 - (void)registerPlatformConverters
 {
-#if TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE || TARGET_OS_TV
     {
         [self registerTypeConverter:[[TyphoonClassFromString(@"TyphoonUIColorTypeConverter") alloc] init]];
         [self registerTypeConverter:[[TyphoonClassFromString(@"TyphoonBundledImageTypeConverter") alloc] init]];
