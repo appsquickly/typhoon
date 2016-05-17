@@ -19,9 +19,9 @@
 
 
 /**
- * TyphoonNibLoader will inject properties for each viewController instantiated with nib name.
+ * TyphoonNibLoader will inject properties for view controller instantiated with nib.
  *
- * TyphoonNibLoader injection performed by viewController's type.
+ * TyphoonNibLoader injection performed by view controller's type.
  */
 @interface TyphoonNibLoader : NSObject
 
@@ -37,7 +37,7 @@
  
  View controller class will be the same as the class by NSClassFromString(nibName).
  Default class is UIViewController if NSClassFromString(nibName) is nil.
- @param nibName The nib name.
+ @param nibName The view controlelr nib name.
  @return The view controller created by initWithNibName:bundle:.
  */
 - (__kindof UIViewController *)instantiateViewControllerWithIdentifier:(NSString *)nibName;
