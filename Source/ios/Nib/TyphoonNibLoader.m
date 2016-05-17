@@ -51,8 +51,6 @@
     
     id viewController = [[viewControllerClass alloc] initWithNibName:nibName bundle:self.bundle];
     
-    NSAssert(viewController, @"Project doesn't contain a view controller with nib name '%@' in bundle %@", nibName, [self.bundle description]);
-    
     [self.injector injectPropertiesForViewController:viewController withFactory:self.factory];
     
     return viewController;
