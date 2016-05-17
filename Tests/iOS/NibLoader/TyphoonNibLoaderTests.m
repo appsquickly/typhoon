@@ -60,13 +60,17 @@
 - (void)test_specified_nib_loaded
 {
     UIViewController *controller = [self.nibLoader instantiateViewControllerWithIdentifier:kTyphoonNibLoaderSpecifiedViewControllerIdentifier];
-    XCTAssertTrue([controller.view.subviews count]);
+    XCTAssertTrue([controller.view.subviews count] == 1);
+    XCTAssertTrue([[controller.view.subviews firstObject] isKindOfClass:[UILabel class]]);
+    XCTAssertEqualObjects([[controller.view.subviews firstObject] text], kTyphoonNibLoaderSpecifiedViewControllerIdentifier);
 }
 
 - (void)test_unspecified_nib_loaded
 {
     UIViewController *controller = [self.nibLoader instantiateViewControllerWithIdentifier:kTyphoonNibLoaderUnspecifiedViewControllerIdentifier];
-    XCTAssertTrue([controller.view.subviews count]);
+    XCTAssertTrue([controller.view.subviews count] == 1);
+    XCTAssertTrue([[controller.view.subviews firstObject] isKindOfClass:[UILabel class]]);
+    XCTAssertEqualObjects([[controller.view.subviews firstObject] text], kTyphoonNibLoaderUnspecifiedViewControllerIdentifier);
 }
 
 - (void)test_specified_injections

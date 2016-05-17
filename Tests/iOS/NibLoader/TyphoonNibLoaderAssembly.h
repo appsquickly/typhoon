@@ -13,7 +13,6 @@
 
 static NSString* const kTyphoonNibLoaderSpecifiedViewControllerIdentifier =     @"TyphoonNibLoaderSpecifiedViewController";
 static NSString* const kTyphoonNibLoaderUnspecifiedViewControllerIdentifier =   @"TyphoonNibLoaderUnspecifiedViewController";
-static NSString* const kTyphoonNibLoaderInexistentViewController =              @"TyphoonNibLoaderInexistentViewController";
 
 @interface TyphoonNibLoaderAssembly : TyphoonAssembly
 
