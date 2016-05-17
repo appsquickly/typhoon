@@ -99,6 +99,7 @@
         [initializer injectParameterWith:TyphoonConfig(@"plist.damsels")];
     }];
     [knightDefinition injectProperty:@selector(hasHorseWillTravel) with:TyphoonConfig(@"plist.hasHorse")];
+    [knightDefinition injectProperty:@selector(foobar) with:TyphoonConfig(@"plist.fooUrl")];
     [factory registerDefinition:knightDefinition];
 
     [self postProcessFactory:factory withPostProcessor:_configurer];
@@ -106,6 +107,7 @@
     Knight *knight = [factory componentForType:[Knight class]];
     XCTAssertEqual(knight.damselsRescued, (NSUInteger)28);
     XCTAssertEqual(knight.hasHorseWillTravel, (BOOL)YES);
+    XCTAssertEqualObjects(knight.foobar, [NSURL URLWithString:@"http://google.com/"]);
 }
 
 - (void)test_config_as_runtime_argument

@@ -50,50 +50,47 @@
     TyphoonTypeDescriptor *type = context.destinationType;
     TyphoonComponentFactory *factory = context.factory;
 
-    id value = nil;
-    
-    if (type) {
-        value = [self convertText:self.textValue toType:type withTypeConverterRegistry:factory.typeConverterRegistry];
-    }
-    else {
-        value = [self convertText:self.textValue withTypeConverterRegistry:factory.typeConverterRegistry];
-    }
+    id value = [self convertText:self.textValue toType:type withTypeConverterRegistry:factory.typeConverterRegistry];
     
     result(value);
 }
 
 - (id)convertText:(NSString *)text toType:(TyphoonTypeDescriptor *)type withTypeConverterRegistry:(TyphoonTypeConverterRegistry *)typeConverterRegistry
 {
-    if (type.isPrimitive) {
-        TyphoonPrimitiveTypeConverter *converter = [typeConverterRegistry primitiveTypeConverter];
-        return [converter valueFromText:text withType:type];
+    // First, let's see if the text explicitly states the value type.
+    NSString *typeStringFromText = [TyphoonTypeConversionUtils typeFromTextValue:text];
+    if (typeStringFromText) {
+        id <TyphoonTypeConverter> converter = [typeConverterRegistry converterForType:typeStringFromText];
+        if (converter) {
+            return [converter convert:text];
+        }
     }
-    else {
-        NSString *typeString;
-        
-        if (type.typeBeingDescribed) {
-            typeString = NSStringFromClass(type.typeBeingDescribed);
+    
+    // In case we know the type from the method argument, let's try to use it.
+    if (type) {
+        if (type.isPrimitive) {
+            TyphoonPrimitiveTypeConverter *converter = [typeConverterRegistry primitiveTypeConverter];
+            return [converter valueFromText:text withType:type];
         }
         else {
-            typeString = [NSString stringWithFormat:@"<%@>", type.declaredProtocol];
-        }
-
-        id<TyphoonTypeConverter> converter = [typeConverterRegistry converterForType:typeString];
-        return [converter convert:text];
-    }
-}
-
-- (id)convertText:(NSString *)text withTypeConverterRegistry:(TyphoonTypeConverterRegistry *)typeConverterRegistry
-{
-    id result = text;
-    NSString *typeString = [TyphoonTypeConversionUtils typeFromTextValue:text];
-    if (typeString) {
-        id <TyphoonTypeConverter> converter = [typeConverterRegistry converterForType:typeString];
-        if (converter) {
-            result = [converter convert:text];
+            NSString *typeString;
+            
+            if (type.typeBeingDescribed) {
+                typeString = NSStringFromClass(type.typeBeingDescribed);
+            }
+            else {
+                typeString = [NSString stringWithFormat:@"<%@>", type.declaredProtocol];
+            }
+            
+            id<TyphoonTypeConverter> converter = [typeConverterRegistry converterForType:typeString];
+            if (converter) {
+                return [converter convert:text];
+            }
         }
     }
-    return result;
+    
+    // Fallback to injecting string.
+    return text;
 }
 
 - (NSUInteger)customHash
