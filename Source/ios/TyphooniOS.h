@@ -12,6 +12,5 @@
 
 #import "TyphoonStoryboard.h"
 #import "TyphoonNibLoader.h"
-#import "TyphoonViewControllerInitializer.h"
 #import "TyphoonBundledImageTypeConverter.h"
 #import "TyphoonLoadedView.h"
