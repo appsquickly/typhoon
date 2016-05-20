@@ -36,13 +36,13 @@
 - (void)test_specified_exists
 {
     id controller = [self.nibLoader instantiateViewControllerWithIdentifier:kTyphoonNibLoaderSpecifiedViewControllerIdentifier];
-    XCTAssertTrue(controller);
+    XCTAssertNotNil(controller);
 }
 
 - (void)test_unspecified_exists
 {
     id controller = [self.nibLoader instantiateViewControllerWithIdentifier:kTyphoonNibLoaderUnspecifiedViewControllerIdentifier];
-    XCTAssertTrue(controller);
+    XCTAssertNotNil(controller);
 }
 
 - (void)test_specified_class
