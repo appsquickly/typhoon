@@ -142,7 +142,9 @@ static const char *kTyphoonKey;
     }
 
     for (UIViewController *controller in viewController.childViewControllers) {
-        [self injectPropertiesForViewController:controller];
+        if ([controller.storyboard isEqual:self]) {
+            [self injectPropertiesForViewController:controller];
+        }
     }
 
     __weak __typeof (viewController) weakViewController = viewController;
