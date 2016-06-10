@@ -16,25 +16,23 @@
 
 @implementation StoryboardWithReferenceAssembly
 
+- (Model *)model
+{
+    return [TyphoonDefinition withClass:[Model class]];
+}
+
 - (StoryboardTabBarFirstViewController *)storyboardTabBarFirstViewController
 {
     return [TyphoonDefinition withClass:[StoryboardTabBarFirstViewController class] configuration:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(title) with:@"TabBar First ViewController"];
-        [definition injectProperty:@selector(model)];
+        [definition injectProperty:@selector(model) with:[self model]];
     }];
 }
 
 - (StoryboardTabBarSecondViewController *)storyboardTabBarSecondViewController
 {
     return [TyphoonDefinition withClass:[StoryboardTabBarSecondViewController class] configuration:^(TyphoonDefinition *definition) {
-        [definition injectProperty:@selector(title) with:@"TabBar Second ViewController"];
-        [definition injectProperty:@selector(model)];
+        [definition injectProperty:@selector(model) with:[self model]];
     }];
-}
-
-- (Model *)model
-{
-    return [TyphoonDefinition withClass:[Model class]];
 }
 
 @end

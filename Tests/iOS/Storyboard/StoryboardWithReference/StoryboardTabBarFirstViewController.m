@@ -23,4 +23,10 @@
     return self;
 }
 
+- (void)setModel:(Model *)model
+{
+    self.countOfModelInstanceInjections++;
+    _model = model;
+}
+
 @end
