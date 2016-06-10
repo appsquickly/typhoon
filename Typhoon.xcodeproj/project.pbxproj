@@ -384,6 +384,20 @@
 		6B43ED5C1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B43ED5B1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift */; };
 		6B43ED5D1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B43ED5B1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift */; };
 		6B43ED5F1A8FAA350071EFC7 /* SwiftTyphoonAssemblyActivatorTests..swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B43ED5E1A8FAA350071EFC7 /* SwiftTyphoonAssemblyActivatorTests..swift */; };
+		74AD3058BD8844BC61533784 /* SecondStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74AD30C1020D46B42084D815 /* SecondStoryboard.storyboard */; };
+		74AD331AC513419121A2256D /* StoryboardWithReference.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74AD312271F06DC6B1072883 /* StoryboardWithReference.storyboard */; };
+		74AD335F374ECC3FD0E34729 /* StoryboardTabBarSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AD31DCF1D597D6212D587A /* StoryboardTabBarSecondViewController.m */; };
+		74AD351B362D3B39E43832A0 /* StoryboardTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AD399EBA963C9A8C485A76 /* StoryboardTabBarViewController.m */; };
+		74AD3619DC60B184679A6EFE /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AD382C1698D7B4E78A2E42 /* Model.m */; };
+		74AD3878376497F3DE81296F /* StoryboardWithReferenceAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AD3381608371B09052C354 /* StoryboardWithReferenceAssembly.m */; };
+		74AD388BE02BC8F51BB96A75 /* StoryboardWithReference.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74AD312271F06DC6B1072883 /* StoryboardWithReference.storyboard */; };
+		74AD38DC07ADFDAAC4B2BA22 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AD382C1698D7B4E78A2E42 /* Model.m */; };
+		74AD3A1E495375915555E628 /* StoryboardTabBarFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AD391E6F16EF3B9F07BDC6 /* StoryboardTabBarFirstViewController.m */; };
+		74AD3AF77EFA83AC7AE542DF /* StoryboardTabBarSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AD31DCF1D597D6212D587A /* StoryboardTabBarSecondViewController.m */; };
+		74AD3B2E4247B1A090F3DDD2 /* SecondStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74AD30C1020D46B42084D815 /* SecondStoryboard.storyboard */; };
+		74AD3BC776AEA3E0CB7D78FE /* StoryboardTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AD399EBA963C9A8C485A76 /* StoryboardTabBarViewController.m */; };
+		74AD3EA79D08E844D6C8D992 /* StoryboardTabBarFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AD391E6F16EF3B9F07BDC6 /* StoryboardTabBarFirstViewController.m */; };
+		74AD3FD7DF2AD7D9554F060F /* StoryboardWithReferenceAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AD3381608371B09052C354 /* StoryboardWithReferenceAssembly.m */; };
 		8946F2E01B8E403E005C4954 /* TyphoonViewHelpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 8946F2DF1B8E403E005C4954 /* TyphoonViewHelpers.m */; };
 		8994D47E1B55BA6600662766 /* ClassForNoSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8994D47D1B55BA6600662766 /* ClassForNoSubclass.m */; };
 		8994D47F1B55BA6600662766 /* ClassForNoSubclass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8994D47D1B55BA6600662766 /* ClassForNoSubclass.m */; };
@@ -1353,6 +1367,18 @@
 		6B43ED5A1A8FA8870071EFC7 /* Typhoon-OSXTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Typhoon-OSXTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		6B43ED5B1A8FA8870071EFC7 /* SwiftMiddleAgesAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftMiddleAgesAssembly.swift; sourceTree = "<group>"; };
 		6B43ED5E1A8FAA350071EFC7 /* SwiftTyphoonAssemblyActivatorTests..swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftTyphoonAssemblyActivatorTests..swift; sourceTree = "<group>"; };
+		74AD30C1020D46B42084D815 /* SecondStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SecondStoryboard.storyboard; sourceTree = "<group>"; };
+		74AD312271F06DC6B1072883 /* StoryboardWithReference.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StoryboardWithReference.storyboard; sourceTree = "<group>"; };
+		74AD31A08E01BEE9B298E9CB /* StoryboardTabBarFirstViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboardTabBarFirstViewController.h; sourceTree = "<group>"; };
+		74AD31DCF1D597D6212D587A /* StoryboardTabBarSecondViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboardTabBarSecondViewController.m; sourceTree = "<group>"; };
+		74AD324C9E2156DF2D484631 /* StoryboardTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboardTabBarViewController.h; sourceTree = "<group>"; };
+		74AD3381608371B09052C354 /* StoryboardWithReferenceAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboardWithReferenceAssembly.m; sourceTree = "<group>"; };
+		74AD33A2CA149A36578915A2 /* Model.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Model.h; sourceTree = "<group>"; };
+		74AD33C14CCE11FFD823510F /* StoryboardTabBarSecondViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboardTabBarSecondViewController.h; sourceTree = "<group>"; };
+		74AD382C1698D7B4E78A2E42 /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
+		74AD391E6F16EF3B9F07BDC6 /* StoryboardTabBarFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboardTabBarFirstViewController.m; sourceTree = "<group>"; };
+		74AD399EBA963C9A8C485A76 /* StoryboardTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboardTabBarViewController.m; sourceTree = "<group>"; };
+		74AD3F0F83C575EBDE180F1D /* StoryboardWithReferenceAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboardWithReferenceAssembly.h; sourceTree = "<group>"; };
 		8946F2DC1B8E3F44005C4954 /* TyphoonViewHelpersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonViewHelpersTests.m; sourceTree = "<group>"; };
 		8946F2DE1B8E403E005C4954 /* TyphoonViewHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonViewHelpers.h; sourceTree = "<group>"; };
 		8946F2DF1B8E403E005C4954 /* TyphoonViewHelpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonViewHelpers.m; sourceTree = "<group>"; };
@@ -2617,6 +2643,25 @@
 			path = "Typhoon-osxTests";
 			sourceTree = "<group>";
 		};
+		74AD3FFA0A4C1A06C176CF4E /* StoryboardWithReference */ = {
+			isa = PBXGroup;
+			children = (
+				74AD399EBA963C9A8C485A76 /* StoryboardTabBarViewController.m */,
+				74AD324C9E2156DF2D484631 /* StoryboardTabBarViewController.h */,
+				74AD391E6F16EF3B9F07BDC6 /* StoryboardTabBarFirstViewController.m */,
+				74AD31A08E01BEE9B298E9CB /* StoryboardTabBarFirstViewController.h */,
+				74AD31DCF1D597D6212D587A /* StoryboardTabBarSecondViewController.m */,
+				74AD33C14CCE11FFD823510F /* StoryboardTabBarSecondViewController.h */,
+				74AD382C1698D7B4E78A2E42 /* Model.m */,
+				74AD33A2CA149A36578915A2 /* Model.h */,
+				74AD3381608371B09052C354 /* StoryboardWithReferenceAssembly.m */,
+				74AD3F0F83C575EBDE180F1D /* StoryboardWithReferenceAssembly.h */,
+				74AD312271F06DC6B1072883 /* StoryboardWithReference.storyboard */,
+				74AD30C1020D46B42084D815 /* SecondStoryboard.storyboard */,
+			);
+			path = StoryboardWithReference;
+			sourceTree = "<group>";
+		};
 		90ABC3EB1A36B09E008D8162 /* Typhoon */ = {
 			isa = PBXGroup;
 			children = (
@@ -2770,6 +2815,7 @@
 				BA7983C7D0A3DFE423250300 /* StoryboardControllerDependency.m */,
 				BA798969F71AF5247112BEE9 /* StoryboardControllerDependency.h */,
 				8946F2DC1B8E3F44005C4954 /* TyphoonViewHelpersTests.m */,
+				74AD3FFA0A4C1A06C176CF4E /* StoryboardWithReference */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -3316,6 +3362,8 @@
 				9F26AA6E1BF90E1000663188 /* PropertiesA.plist in Resources */,
 				BA798230EE2BC01117C252D1 /* config_typhoonframework.org.Typhoon-iOS.plist in Resources */,
 				9F26AA701BF9179F00663188 /* PropertiesB.plist in Resources */,
+				74AD331AC513419121A2256D /* StoryboardWithReference.storyboard in Resources */,
+				74AD3058BD8844BC61533784 /* SecondStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3332,6 +3380,8 @@
 				9F26AA741BF9BBFB00663188 /* PropertiesB.plist in Resources */,
 				6B077463193786EC0083714E /* Storyboard.storyboard in Resources */,
 				BA7983F3CBA8963020F0AD62 /* development_Config.plist in Resources */,
+				74AD388BE02BC8F51BB96A75 /* StoryboardWithReference.storyboard in Resources */,
+				74AD3B2E4247B1A090F3DDD2 /* SecondStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3520,6 +3570,11 @@
 				BA798D3A9A5F003A4DA84698 /* Knight.m in Sources */,
 				9F0F25301BEA2571002AD880 /* TyphoonColorConversionUtils.m in Sources */,
 				2DBA133CA352D9C555482734 /* TyphoonInjectionDefinition.m in Sources */,
+				74AD3BC776AEA3E0CB7D78FE /* StoryboardTabBarViewController.m in Sources */,
+				74AD3EA79D08E844D6C8D992 /* StoryboardTabBarFirstViewController.m in Sources */,
+				74AD3AF77EFA83AC7AE542DF /* StoryboardTabBarSecondViewController.m in Sources */,
+				74AD3619DC60B184679A6EFE /* Model.m in Sources */,
+				74AD3FD7DF2AD7D9554F060F /* StoryboardWithReferenceAssembly.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3648,6 +3703,11 @@
 				BA79831CFE04D8F860437C6C /* ConfigAssembly.m in Sources */,
 				BA79857DCBDAF5BDF56407BF /* TyphoonStartupTests_iOS.m in Sources */,
 				2DBA174F5FC9FCC422A92A9B /* TyphoonInjectionDefinitionTests.m in Sources */,
+				74AD351B362D3B39E43832A0 /* StoryboardTabBarViewController.m in Sources */,
+				74AD3A1E495375915555E628 /* StoryboardTabBarFirstViewController.m in Sources */,
+				74AD335F374ECC3FD0E34729 /* StoryboardTabBarSecondViewController.m in Sources */,
+				74AD38DC07ADFDAAC4B2BA22 /* Model.m in Sources */,
+				74AD3878376497F3DE81296F /* StoryboardWithReferenceAssembly.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
