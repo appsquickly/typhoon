@@ -15,6 +15,10 @@
 #import "TyphoonStoryboard.h"
 #import "StoryboardViewControllerAssembly.h"
 #import "StoryboardFirstViewController.h"
+#import "StoryboardTabBarViewController.h"
+#import "StoryboardTabBarFirstViewController.h"
+#import "StoryboardTabBarSecondViewController.h"
+#import "StoryboardWithReferenceAssembly.h"
 
 @interface StoryboardTests : XCTestCase
 
@@ -23,6 +27,7 @@
 @implementation StoryboardTests
 {
     UIStoryboard *storyboard;
+    UIStoryboard *storyboardWithReference;
 }
 
 - (void)setUp
@@ -32,8 +37,10 @@
     NSBundle *bundle = [NSBundle bundleForClass:[TyphoonBundleResource class]];
 
     TyphoonComponentFactory *factory = [TyphoonBlockComponentFactory factoryWithAssembly:[StoryboardViewControllerAssembly assembly]];
+    TyphoonComponentFactory *secondfactory = [TyphoonBlockComponentFactory factoryWithAssembly:[StoryboardWithReferenceAssembly assembly]];
 
     storyboard = [TyphoonStoryboard storyboardWithName:@"Storyboard" factory:factory bundle:bundle];
+    storyboardWithReference = [TyphoonStoryboard storyboardWithName:@"StoryboardWithReference" factory:secondfactory bundle:bundle];
 }
 
 - (void)test_initial
@@ -79,5 +86,15 @@
     UINavigationController *controller = [storyboard instantiateViewControllerWithIdentifier:@"unique"];
     XCTAssertEqualObjects(controller.title, @"Unique");
 }
+
+- (void)test_viewController_from_reference_storyboard_will_be_once_injected
+{
+    StoryboardTabBarViewController *tabBarViewController = [storyboardWithReference instantiateInitialViewController];
+    StoryboardTabBarFirstViewController *tabBarFirstViewController = (StoryboardTabBarFirstViewController *)[tabBarViewController.childViewControllers firstObject];
+    StoryboardTabBarSecondViewController *tabBarSecondViewController = (StoryboardTabBarSecondViewController *)[tabBarViewController.childViewControllers lastObject];
+    XCTAssertEqual(tabBarFirstViewController.countOfModelInstanceInjections, 1);
+    XCTAssertEqual(tabBarSecondViewController.countOfModelInstanceInjections, 1);
+}
+
 @end
 
