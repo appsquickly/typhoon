@@ -18,30 +18,51 @@
 
 - (id)typhoon_getArgumentObjectAtIndex:(NSInteger)idx
 {
-    const char *argumentType = [self.methodSignature getArgumentTypeAtIndex:(NSUInteger)idx];
-    
+    const char *argumentType = [self.methodSignature getArgumentTypeAtIndex:(NSUInteger) idx];
+
     if (CStringEquals(argumentType, "@") || // object
-        CStringEquals(argumentType, "@?") || // block
-        CStringEquals(argumentType, "#")) // metaclass
+            CStringEquals(argumentType, "@?") || // block
+            CStringEquals(argumentType, "#")) // metaclass
     {
         void *pointer;
         [self getArgument:&pointer atIndex:idx];
         id argument = (__bridge id) pointer;
-        
+
         if (IsBlock(argumentType)) {
             return [argument copy]; // Converting NSStackBlock to NSMallocBlock
         }
-        
+
         return argument;
     } else {
         NSUInteger argumentSize;
         NSGetSizeAndAlignment(argumentType, &argumentSize, NULL);
-        
+
         void *buffer = malloc(argumentSize);
         [self getArgument:buffer atIndex:idx];
-        
+
         id argument = [NSValue valueWithBytes:buffer objCType:argumentType];
-        
+
+        free(buffer);
+        return argument;
+    }
+}
+
+- (id)typhoon_getReturnValue
+{
+    const char *returnType = [self.methodSignature methodReturnType];
+
+    if (!strcmp(returnType, @encode(id))) {
+        void *pointer;
+        [self getReturnValue:&pointer];
+        return (__bridge id) pointer;
+    } else {
+        NSUInteger argumentSize;
+        NSGetSizeAndAlignment(returnType, &argumentSize, NULL);
+        void *buffer = malloc(argumentSize);
+        [self getReturnValue:buffer];
+
+        id argument = [NSValue valueWithBytes:buffer objCType:returnType];
+
         free(buffer);
         return argument;
     }
