@@ -619,6 +619,8 @@
 		A56819081AA9462F00ECC4F9 /* Typhoon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90ABC3EA1A36B09E008D8162 /* Typhoon.framework */; };
 		A56819091AA9462F00ECC4F9 /* Typhoon.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 90ABC3EA1A36B09E008D8162 /* Typhoon.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A568191A1AA960A400ECC4F9 /* TyphoonAssemblyActivator.m in Sources */ = {isa = PBXBuildFile; fileRef = BA79842846CF608977332EB1 /* TyphoonAssemblyActivator.m */; };
+		B7F7B3271D0E210C003D1AB4 /* RectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F7B3261D0E210C003D1AB4 /* RectModel.m */; };
+		B7F7B3281D0E210C003D1AB4 /* RectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B7F7B3261D0E210C003D1AB4 /* RectModel.m */; };
 		BA79800CECE8B23578FA08B1 /* TyphoonAssemblyAdviser.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798CAB2EE92B9A572C7DDF /* TyphoonAssemblyAdviser.m */; };
 		BA79802CB7E65F6E28932349 /* TyphoonBlockComponentFactoryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BA798AEA7455E7FC00A4E494 /* TyphoonBlockComponentFactoryTests.m */; };
 		BA79806A52A10605DC97BDF9 /* CavalryMan.m in Sources */ = {isa = PBXBuildFile; fileRef = 6B0770331936F63A0083714E /* CavalryMan.m */; };
@@ -1411,6 +1413,8 @@
 		9FFB52561BA152FF0078F6B2 /* TyphoonSingleAssembly.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonSingleAssembly.m; sourceTree = "<group>"; };
 		A56819151AA94E6200ECC4F9 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		A56819161AA951DE00ECC4F9 /* PrefixTests.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixTests.pch; sourceTree = "<group>"; };
+		B7F7B3251D0E210C003D1AB4 /* RectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RectModel.h; sourceTree = "<group>"; };
+		B7F7B3261D0E210C003D1AB4 /* RectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RectModel.m; sourceTree = "<group>"; };
 		BA79802001176CAE1C666D5B /* TyphoonAssemblyActivator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAssemblyActivator.h; sourceTree = "<group>"; };
 		BA79809B312F99BCEDF489BD /* TyphoonNSNumberTypeConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonNSNumberTypeConverter.m; sourceTree = "<group>"; };
 		BA7980A75A6786BBC2A387F9 /* UniqueViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UniqueViewController.m; sourceTree = "<group>"; };
@@ -2438,6 +2442,8 @@
 				C949792A85FC9383BEAD631B /* Mock.m */,
 				C949758EA994B0137DD95E6D /* Mock.h */,
 				2DBA1563B09BB6CE82F164EE /* AutoInjection */,
+				B7F7B3251D0E210C003D1AB4 /* RectModel.h */,
+				B7F7B3261D0E210C003D1AB4 /* RectModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3500,6 +3506,7 @@
 				BA7985E9B7C3C34D17FC40FD /* TyphoonNSNumberTypeConverter.m in Sources */,
 				BA798EF5AD7AC635BDD727C0 /* NSNullTypeConverter.m in Sources */,
 				2DBA14431D350F4F142A0E3B /* TyphoonFactoryDefinition.m in Sources */,
+				B7F7B3271D0E210C003D1AB4 /* RectModel.m in Sources */,
 				8946F2E01B8E403E005C4954 /* TyphoonViewHelpers.m in Sources */,
 				0183B75C1C827DD100644B62 /* TyphoonBlockDefinition.m in Sources */,
 				2DBA13903A06BF4A2A8C60CD /* TyphoonOptionMatcher.m in Sources */,
@@ -3528,6 +3535,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B0770F31936FEA80083714E /* AssemblyWithDefinitionConfiguration.m in Sources */,
+				B7F7B3281D0E210C003D1AB4 /* RectModel.m in Sources */,
 				6B0770F41936FEA80083714E /* DefinitionConfigurationTest.m in Sources */,
 				6B0770F71936FEA80083714E /* TyphoonBundleResourceTests.m in Sources */,
 				6B0770F81936FEA80083714E /* TyphoonComponentFactoryPostProcessorStubImpl.m in Sources */,

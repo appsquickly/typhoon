@@ -22,8 +22,26 @@
 #import "Mock.h"
 #import "TyphoonInject.h"
 #import "CollaboratingMiddleAgesAssembly.h"
+#import "RectModel.h"
 
 @implementation MiddleAgesAssembly
+
+- (id)rectModel
+{
+    return [TyphoonDefinition withClass:[RectModel class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(rectFrame) with:[self mainScreenBounds]];
+    }];
+}
+
+- (UIScreen *)mainScreen
+{
+    return [TyphoonDefinition withFactory:[UIScreen class] selector:@selector(mainScreen)];
+}
+
+- (NSValue *)mainScreenBounds
+{
+    return [TyphoonDefinition withFactory:[self mainScreen] selector:@selector(bounds)];
+}
 
 - (id)knight
 {

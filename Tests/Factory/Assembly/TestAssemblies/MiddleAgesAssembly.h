@@ -24,6 +24,8 @@
 
 @property (nonatomic, strong, readonly) CollaboratingMiddleAgesAssembly *collaboratingAssembly;
 
+- (id)rectModel;
+
 - (id)knight;
 
 - (id)cavalryMan;
