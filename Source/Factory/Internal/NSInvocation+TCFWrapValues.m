@@ -18,53 +18,59 @@
 
 - (id)typhoon_getArgumentObjectAtIndex:(NSInteger)idx
 {
-    const char *argumentType = [self.methodSignature getArgumentTypeAtIndex:(NSUInteger) idx];
-
-    if (CStringEquals(argumentType, "@") || // object
-            CStringEquals(argumentType, "@?") || // block
-            CStringEquals(argumentType, "#")) // metaclass
-    {
-        void *pointer;
-        [self getArgument:&pointer atIndex:idx];
-        id argument = (__bridge id) pointer;
-
-        if (IsBlock(argumentType)) {
-            return [argument copy]; // Converting NSStackBlock to NSMallocBlock
-        }
-
-        return argument;
-    } else {
-        NSUInteger argumentSize;
-        NSGetSizeAndAlignment(argumentType, &argumentSize, NULL);
-
-        void *buffer = malloc(argumentSize);
-        [self getArgument:buffer atIndex:idx];
-
-        id argument = [NSValue valueWithBytes:buffer objCType:argumentType];
-
-        free(buffer);
-        return argument;
-    }
+    return [self typhoon_getArgumentAtIndex:idx orInvocationReturnValueIfNeeded:NO];
 }
 
 - (id)typhoon_getReturnValue
 {
-    const char *returnType = [self.methodSignature methodReturnType];
+    return [self typhoon_getArgumentAtIndex:NSNotFound orInvocationReturnValueIfNeeded:YES];
+}
 
-    if (!strcmp(returnType, @encode(id))) {
-        void *pointer;
-        [self getReturnValue:&pointer];
-        return (__bridge id) pointer;
+- (id)typhoon_getArgumentAtIndex:(NSInteger)idx orInvocationReturnValueIfNeeded:(BOOL)getReturnValueIfNeeded
+{
+    const char *type;
+
+    if (getReturnValueIfNeeded) {
+        type = [self.methodSignature methodReturnType];
     } else {
-        NSUInteger argumentSize;
-        NSGetSizeAndAlignment(returnType, &argumentSize, NULL);
-        void *buffer = malloc(argumentSize);
-        [self getReturnValue:buffer];
+        type = [self.methodSignature getArgumentTypeAtIndex:(NSUInteger)idx];
+    }
 
-        id argument = [NSValue valueWithBytes:buffer objCType:returnType];
+    if (CStringEquals(type, "@") || // object
+            CStringEquals(type, "@?") || // block
+            CStringEquals(type, "#")) // metaclass
+    {
+        void *pointer;
+
+        if (getReturnValueIfNeeded) {
+            [self getReturnValue:&pointer];
+        } else {
+            [self getArgument:&pointer atIndex:idx];
+        }
+
+        id returnValue = (__bridge id)pointer;
+
+        if (IsBlock(type)) {
+            return [returnValue copy]; // Converting NSStackBlock to NSMallocBlock
+        }
+
+        return returnValue;
+    } else {
+        NSUInteger returnValueSize;
+        NSGetSizeAndAlignment(type, &returnValueSize, NULL);
+
+        void *buffer = malloc(returnValueSize);
+
+        if (getReturnValueIfNeeded) {
+            [self getReturnValue:buffer];
+        } else {
+            [self getArgument:buffer atIndex:idx];
+        }
+
+        id returnValue = [NSValue valueWithBytes:buffer objCType:type];
 
         free(buffer);
-        return argument;
+        return returnValue;
     }
 }
 
