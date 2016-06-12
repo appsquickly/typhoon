@@ -1,10 +1,13 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-//  RectModel.m
-//  Typhoon
+//  TYPHOON FRAMEWORK
+//  Copyright 2016, Typhoon Framework Contributors
+//  All Rights Reserved.
 //
-//  Created by Igor Vasilenko on 13/06/16.
-//  Copyright © 2016 typhoonframework.org. All rights reserved.
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
 //
+////////////////////////////////////////////////////////////////////////////////
 
 #import "RectModel.h"
 
