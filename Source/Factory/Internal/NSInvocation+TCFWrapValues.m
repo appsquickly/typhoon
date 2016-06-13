@@ -37,8 +37,8 @@
     }
 
     if (CStringEquals(type, "@") || // object
-            CStringEquals(type, "@?") || // block
-            CStringEquals(type, "#")) // metaclass
+        CStringEquals(type, "@?") || // block
+        CStringEquals(type, "#")) // metaclass
     {
         void *pointer;
 
