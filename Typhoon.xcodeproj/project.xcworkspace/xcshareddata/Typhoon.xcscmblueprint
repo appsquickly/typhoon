@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "9ABF21FB50867E6B13DCE6529AF3CCB1C77A9BA7",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "9ABF21FB50867E6B13DCE6529AF3CCB1C77A9BA7" : 0,
+    "45817BB3B2565CD583A7A6CD4B8797D002759C1C" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "96625EC7-C046-4FF3-9517-9651BEF51528",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "9ABF21FB50867E6B13DCE6529AF3CCB1C77A9BA7" : "Typhoon\/",
+    "45817BB3B2565CD583A7A6CD4B8797D002759C1C" : "Typhoon\/Source\/Vendor\/OCLogTemplate\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Typhoon",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Typhoon.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/typhoon-framework\/OCLogTemplate.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "45817BB3B2565CD583A7A6CD4B8797D002759C1C"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:typhoon-framework\/Typhoon.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9ABF21FB50867E6B13DCE6529AF3CCB1C77A9BA7"
+    }
+  ]
+}

@@ -5,8 +5,8 @@
       <sourceFolder url="file://$MODULE_DIR$/Typhoon/Warnings.xcconfig" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Typhoon/Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/TyphoonFrameworkSwiftExample/AppDelegate.swift" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/TyphoonFrameworkSwiftExample/Images.xcassets" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/TyphoonFrameworkSwiftExample/ViewController.swift" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/TyphoonFrameworkSwiftExample/Images.xcassets" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/TyphoonFrameworkSwiftExample/Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/TyphoonFrameworkSwiftExample/Assembly.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/TyphoonFrameworkSwiftExample/Base.lproj/LaunchScreen.xib" isTestSource="false" />
@@ -14,25 +14,106 @@
       <sourceFolder url="file://$MODULE_DIR$/TyphoonFrameworkSwiftExampleTests/TyphoonFrameworkSwiftExampleTests.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/TyphoonFrameworkSwiftExampleTests/Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/TyphoonTests/Info.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/TyphoonComponentFactory.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Hooks/NSObject+FactoryHooks.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/TyphoonComponentFactory.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblyAdviser.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonComponentFactory+InstanceBuilder.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblyAdviser.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/NSInvocation+TCFWrapValues.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblyBuilder+PlistProcessor.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/NSInvocation+TCFWrapValues.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/NSInvocation+TCFUnwrapValues.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblyBuilder+PlistProcessor.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonBlockComponentFactory.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonRuntimeArguments.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblyBuilder.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonBlockComponentFactory.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonRuntimeArguments.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblyBuilder.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonComponentFactory+TyphoonDefinitionRegisterer.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonMemoryManagementUtils.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/NSInvocation+TCFUnwrapValues.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblyPropertyInjectionPostProcessor.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/NSMethodSignature+TCFUnwrapValues.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonParentReferenceHydratingPostProcessor.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblyPropertyInjectionPostProcessor.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonCallStack.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblySelectorAdviser.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonCircularDependencyTerminator.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblyDefinitionBuilder.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonCircularDependencyTerminator.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonCollaboratingAssembliesCollector.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonMemoryManagementUtils.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblyDefinitionBuilder.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/NSValue+TCFUnwrapValues.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblySelectorAdviser.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonCollaboratingAssembliesCollector.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/NSValue+TCFUnwrapValues.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonStackElement.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonCollaboratingAssemblyProxy.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonStackElement.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/NSMethodSignature+TCFUnwrapValues.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/NSInvocation+TCFInstanceBuilder.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonCollaboratingAssemblyProxy.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonCollaboratingAssemblyPropertyEnumerator.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonCallStack.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonComponentFactory+InstanceBuilder.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonCollaboratingAssemblyPropertyEnumerator.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/NSInvocation+TCFInstanceBuilder.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonFactoryPropertyInjectionPostProcessor.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonFactoryPropertyInjectionPostProcessor.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonParentReferenceHydratingPostProcessor.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Pool/TyphoonWeakComponentsPool.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Pool/TyphoonComponentsPool.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Pool/TyphoonWeakComponentsPool.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Assembly/TyphoonAssemblyActivator.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Assembly/TyphoonAssemblyActivator.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Assembly/TyphoonAssembly+TyphoonAssemblyFriend.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Assembly/TyphoonAssembly.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Assembly/TyphoonAssembly.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/TyphoonDefinitionRegisterer.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/TyphoonPreattachedComponentsRegisterer.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/TyphoonPreattachedComponentsRegisterer.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/TyphoonDefinitionRegisterer.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Typhoon.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/TyphoonTypeConversionUtils.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/TyphoonTypeDescriptor.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Helpers/TyphoonColorConversionUtils.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Helpers/TyphoonColorConversionUtils.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/TyphoonNSURLTypeConverter.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/TyphoonNSURLTypeConverter.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/TyphoonNSNumberTypeConverter.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/NSNullTypeConverter.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/TyphoonPrimitiveTypeConverter.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/TyphoonPassThroughTypeConverter.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/TyphoonNSNumberTypeConverter.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/TyphoonPrimitiveTypeConverter.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/TyphoonPassThroughTypeConverter.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/NSNullTypeConverter.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/TyphoonTypeDescriptor.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/TyphoonTypeConverter.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/TyphoonTypeConverterRegistry.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/TyphoonTypeConversionUtils.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/TyphoonTypeConverterRegistry.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Typhoon+Infrastructure.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/ios/Storyboard/TyphoonStoryboard.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/ios/Storyboard/TyphoonViewHelpers.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/ios/Storyboard/TyphoonLoadedView.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/ios/Storyboard/TyphoonStoryboardProvider.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/ios/Storyboard/TyphoonStoryboardResolver.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/ios/Storyboard/TyphoonStoryboardResolver.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/ios/Storyboard/TyphoonLoadedView.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/ios/Storyboard/TyphoonStoryboardProvider.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/ios/Storyboard/TyphoonStoryboard.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/ios/Storyboard/TyphoonViewHelpers.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/ios/Storyboard/TyphoonStoryboardResolver.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/ios/TyphooniOS.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/ios/TypeConversion/Converters/TyphoonBundledImageTypeConverter.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/ios/TypeConversion/Converters/TyphoonBundledImageTypeConverter.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/ios/TypeConversion/Converters/TyphoonUIColorTypeConverter.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/ios/TypeConversion/Converters/TyphoonBundledImageTypeConverter.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/ios/TypeConversion/Converters/TyphoonUIColorTypeConverter.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/ios/Configuration/Resolver/TyphoonViewControllerNibResolver.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/ios/Configuration/Resolver/TyphoonViewControllerNibResolver.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Typhoon+Infrastructure.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Utils/NSArray+TyphoonManualEnumeration.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Utils/NSObject+TyphoonIntrospectionUtils.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Utils/NSObject+PropertyInjection.m" isTestSource="false" />
@@ -47,279 +128,198 @@
       <sourceFolder url="file://$MODULE_DIR$/Source/Utils/TyphoonUtils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Utils/TyphoonIntrospectionUtils.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Utils/NSArray+TyphoonManualEnumeration.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Utils/Swizzle/TyphoonSwizzlerDefaultImpl.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Utils/Swizzle/TyphoonSwizzlerDefaultImpl.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Utils/Swizzle/TyphoonMethodSwizzler.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Prefix.pch" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Utils/Swizzle/TyphoonSwizzlerDefaultImpl.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Utils/Swizzle/TyphoonSwizzlerDefaultImpl.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/osx/.gitkeep" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/osx/TypeConversion/Converters/TyphoonNSColorTypeConverter.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/osx/TypeConversion/Converters/TyphoonNSColorTypeConverter.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Vendor/OCLogTemplate/OCLogTemplate.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/TyphoonTypeConversionUtils.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/TyphoonTypeDescriptor.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/TyphoonTypeConverterRegistry.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Helpers/TyphoonColorConversionUtils.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Helpers/TyphoonColorConversionUtils.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/TyphoonNSURLTypeConverter.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/TyphoonNSURLTypeConverter.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/TyphoonNSNumberTypeConverter.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/NSNullTypeConverter.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/TyphoonPrimitiveTypeConverter.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/TyphoonPassThroughTypeConverter.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/TyphoonNSNumberTypeConverter.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/NSNullTypeConverter.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/TyphoonPrimitiveTypeConverter.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/Converters/TyphoonPassThroughTypeConverter.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/TyphoonTypeConversionUtils.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/TyphoonTypeConverter.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/TyphoonTypeDescriptor.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/TypeConversion/TyphoonTypeConverterRegistry.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/TyphoonComponentFactory.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Hooks/NSObject+FactoryHooks.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblyAdviser.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblyDefinitionBuilder.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonMemoryManagementUtils.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblyAdviser.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/NSInvocation+TCFWrapValues.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblyBuilder+PlistProcessor.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/NSInvocation+TCFWrapValues.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/NSInvocation+TCFUnwrapValues.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblyBuilder+PlistProcessor.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonBlockComponentFactory.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonRuntimeArguments.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblyBuilder.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonBlockComponentFactory.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonRuntimeArguments.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblyBuilder.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonComponentFactory+InstanceBuilder.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonCollaboratingAssemblyProxy.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/NSValue+TCFUnwrapValues.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblyPropertyInjectionPostProcessor.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonComponentFactory+TyphoonDefinitionRegisterer.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonParentReferenceHydratingPostProcessor.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblyPropertyInjectionPostProcessor.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonParentReferenceHydratingPostProcessor.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonCircularDependencyTerminator.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblyDefinitionBuilder.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonCircularDependencyTerminator.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/NSInvocation+TCFUnwrapValues.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonMemoryManagementUtils.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonCollaboratingAssembliesCollector.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/NSValue+TCFUnwrapValues.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonStackElement.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonComponentFactory+InstanceBuilder.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonStackElement.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonCollaboratingAssembliesCollector.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/NSInvocation+TCFInstanceBuilder.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonCollaboratingAssemblyPropertyEnumerator.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblySelectorAdviser.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/NSMethodSignature+TCFUnwrapValues.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/NSInvocation+TCFInstanceBuilder.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonCollaboratingAssemblyProxy.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonAssemblySelectorAdviser.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/NSMethodSignature+TCFUnwrapValues.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonCallStack.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonCollaboratingAssemblyPropertyEnumerator.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonCallStack.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonFactoryPropertyInjectionPostProcessor.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Internal/TyphoonFactoryPropertyInjectionPostProcessor.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/TyphoonComponentFactory.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/TyphoonPreattachedComponentsRegisterer.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Assembly/TyphoonAssembly+TyphoonAssemblyFriend.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Assembly/TyphoonAssembly.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Assembly/TyphoonAssemblyActivator.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Assembly/TyphoonAssemblyActivator.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Assembly/TyphoonAssembly.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/TyphoonDefinitionRegisterer.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Pool/TyphoonWeakComponentsPool.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Pool/TyphoonComponentsPool.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/Pool/TyphoonWeakComponentsPool.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/TyphoonPreattachedComponentsRegisterer.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Factory/TyphoonDefinitionRegisterer.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Test/Patcher/TyphoonPatcher.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Test/Patcher/TyphoonPatcher.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Test/TestUtils/TyphoonTestUtils.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Test/TestUtils/TyphoonTestUtils.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Prefix.pch" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/TyphoonAbstractDetachableComponentFactoryPostProcessor.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/Startup/TyphoonStartup.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/Startup/TyphoonStartup.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/TyphoonConfigPostProcessor.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/Internal/TyphoonConfigPostProcessor+Internal.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/TyphoonConfigPostProcessor.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/TyphoonDefinition+Config.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/TyphoonDefinition+Config.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/TyphoonConfiguration/TyphoonPropertyStyleConfiguration.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/TyphoonConfiguration/TyphoonPlistStyleConfiguration.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/TyphoonConfiguration/TyphoonJsonStyleConfiguration.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/TyphoonConfiguration/TyphoonPlistStyleConfiguration.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/TyphoonConfiguration/TyphoonPropertyStyleConfiguration.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/TyphoonConfiguration/TyphoonJsonStyleConfiguration.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/TyphoonConfiguration/TyphoonConfiguration.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/GlobalConfigResolver/TyphoonGlobalConfigCollector.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/GlobalConfigResolver/TyphoonGlobalConfigCollector.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/Resource/TyphoonBundleResource.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/Resource/TyphoonPathResource.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/Resource/TyphoonResource.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/Resource/TyphoonPathResource.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/Resource/TyphoonResource.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/Resource/TyphoonPathResource.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/Resource/TyphoonBundleResource.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/TyphoonAbstractDetachableComponentFactoryPostProcessor.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/TyphoonInstancePostProcessor.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/DefinitionOptionConfiguration/TyphoonDefinition+Option.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/DefinitionOptionConfiguration/Matcher/TyphoonOptionMatcher.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/DefinitionOptionConfiguration/Matcher/TyphoonOptionMatcher+Internal.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/DefinitionOptionConfiguration/Matcher/TyphoonOptionMatcher.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/DefinitionOptionConfiguration/TyphoonDefinition+Option.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/TyphoonInstancePostProcessor.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/TyphoonAbstractDetachableComponentFactoryPostProcessor.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/TyphoonOrdered.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/TyphoonConfigPostProcessor.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/Internal/TyphoonConfigPostProcessor+Internal.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/TyphoonConfigPostProcessor.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/TyphoonDefinition+Config.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/TyphoonDefinition+Config.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/TyphoonConfiguration/TyphoonJsonStyleConfiguration.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/TyphoonConfiguration/TyphoonPlistStyleConfiguration.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/TyphoonConfiguration/TyphoonJsonStyleConfiguration.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/TyphoonConfiguration/TyphoonPlistStyleConfiguration.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/TyphoonConfiguration/TyphoonPropertyStyleConfiguration.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/TyphoonConfiguration/TyphoonPropertyStyleConfiguration.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/ConfigPostProcessor/TyphoonConfiguration/TyphoonConfiguration.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/TyphoonDefinitionPostProcessor.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/GlobalConfigResolver/TyphoonGlobalConfigCollector.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Configuration/GlobalConfigResolver/TyphoonGlobalConfigCollector.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Namespacing/TyphoonDefinitionNamespace.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Namespacing/TyphoonDefinitionNamespace.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/TyphoonDefinition.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Method/TyphoonMethod.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Method/Internal/TyphoonMethod+InstanceBuilder.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Method/Internal/TyphoonMethod+InstanceBuilder.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Method/TyphoonMethod.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/TyphoonFactoryDefinition.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/TyphoonReferenceDefinition.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/NSDictionary+CustomInjection.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/TyphoonBlockDefinitionController.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/TyphoonFactoryDefinition.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/TyphoonDefinition+InstanceBuilder.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/NSDictionary+CustomInjection.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/TyphoonBlockDefinitionController.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/TyphoonDefinition+Internal.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/NSDictionary+CustomInjection.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/TyphoonBlockDefinition+InstanceBuilder.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/TyphoonReferenceDefinition.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/Collections+CustomInjection.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/TyphoonObjectWithCustomInjection.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/TyphoonBlockDefinition+InstanceBuilder.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/TyphoonDefinition+InstanceBuilder.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/Collections+CustomInjection.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/TyphoonInjectionDefinition.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/NSDictionary+CustomInjection.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/TyphoonBlockDefinition+Internal.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/TyphoonReferenceDefinition.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/TyphoonObjectWithCustomInjection.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/TyphoonDefinition+InstanceBuilder.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/TyphoonReferenceDefinition.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/TyphoonInjectionDefinition.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Internal/TyphoonBlockDefinition+Internal.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/TyphoonDefinition.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByReference.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByObjectFromString.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByConfig.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByReference.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInject.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByConfig.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByRuntimeArgument.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInject.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByCollection.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByCurrentRuntimeArguments.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByCollection.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByCurrentRuntimeArguments.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByObjectInstance.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByDictionary.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByObjectInstance.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjections.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByFactoryReference.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByObjectInstance.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByDictionary.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionContext.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonAbstractInjection.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionContext.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonAbstractInjection.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByDictionary.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjections.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByCurrentRuntimeArguments.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByRuntimeArgument.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjections.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByRuntimeArgument.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonParameterInjection.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByObjectFromString.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByType.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonParameterInjection.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByFactoryReference.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjection.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByType.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByFactoryReference.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByDictionary.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByComponentFactory.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonPropertyInjection.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Injections/TyphoonInjectionByComponentFactory.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/TyphoonDefinition.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/TyphoonBlockDefinition.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Infrastructure/TyphoonDefinition+Infrastructure.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/Infrastructure/TyphoonInjectionsEnumeration.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/AutoInjection/TyphoonInjectedObject.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/AutoInjection/TyphoonFactoryAutoInjectionPostProcessor.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/AutoInjection/TyphoonInjectedObject.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/AutoInjection/TyphoonFactoryAutoInjectionPostProcessor.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/AutoInjection/TyphoonAutoInjection.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/AutoInjection/TyphoonFactoryAutoInjectionPostProcessor.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/TyphoonBlockDefinition.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Source/Definition/TyphoonBlockDefinition.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Source/Definition/TyphoonDefinition.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/ClassWithConstructor.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Internal/TyphoonCollaboratingAssemblyPropertyEnumeratorTests_AssemblyWithProperty.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Internal/TyphoonBlockComponentFactory_CollectionTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Internal/InvalidCollaboratingAssembly.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Internal/TyphoonCollaboratingAssemblyPropertyEnumeratorTests.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Internal/TyphoonComponentsFactoryCollaboratingWithRuntimeArgsTests.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Internal/TyphoonAssemblyAdviserTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Internal/InvalidCollaboratingAssembly.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Internal/TyphoonBlockComponentFactory_OverridingTests.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Internal/TyphoonCollaboratingAssembliesCollectorTests.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Internal/InvalidCollaboratingAssembly_Initializer.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Internal/PrimitiveMan.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Internal/TyphoonComponentsFactoryCollaboratingWithRuntimeArgsTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Internal/InvalidCollaboratingAssembly_Initializer.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Internal/TyphoonAssemblyExtendTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Internal/PrimitiveMan.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Internal/TyphoonCollaboratingAssembliesCollectorTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Internal/TyphoonAssemblySelectorAdviserTests.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Internal/InvalidCollaboratingAssembly_Initializer.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Internal/TyphoonBlockComponentFactoryTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Internal/TyphoonComponentDefinition+InstanceBuilderTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Internal/TyphoonCollaboratingAssemblyPropertyEnumeratorTests_AssemblyWithProperty.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Internal/TyphoonAssemblyAdviserTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/TyphoonScopeTests.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/ClassWithConstructor.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/TyphoonNamespacingTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/WeakPool/TyphoonWeakComponentsPoolTests.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/ClassWithConstructor.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TyphoonAssemblyActivatorTests.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/SingletonsChainAssembly.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/SingletonsChainAssembly.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/ObjectGraphAssembly.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/TyphoonLoopedCollaboratingAssemblies.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/Typhoon-iOSTests-Bridging-Header.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/Config/iOSPlistConfiguredAssembly.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/Config/config_typhoonframework.org.Typhoon-iOS.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/Config/OSXPlistConfiguredAssembly.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/Config/config_typhoonframework.org.Typhoon-OSX.plist" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/Config/config_typhoonframework.org.Typhoon-iOS.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/Config/iOSPlistConfiguredAssembly.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/Config/ConfigAssembly.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/Config/OSXPlistConfiguredAssembly.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/Config/iOSPlistConfiguredAssembly.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/Config/iOSPlistConfiguredAssembly.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/Config/ConfigAssembly.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/ExtendedMiddleAgesAssembly.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/TyphoonLoopedCollaboratingAssemblies.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/ExtendedMiddleAgesAssembly.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/MiddleAgesAssembly.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/QuestProvider.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/InfrastructureComponentsAssembly.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/CircularDependenciesAssembly.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/SingletonsChainAssembly.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/MiddleAgesAssembly.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/SingletonsChainAssembly.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/InfrastructureComponentsAssembly.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/ExtendedMiddleAgesAssembly.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/MethodInjectinosAssembly.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/TyphoonNemoTestAssemblies.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/CollaboratingMiddleAgesAssembly.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/ObjectGraphAssembly.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/Typhoon-OSXTests-Bridging-Header.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/TyphoonConfigAssembly.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/MethodInjectinosAssembly.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/TyphoonConfigAssembly.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/TyphoonSingleAssembly.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/SimpleAssembly.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/TyphoonSingleAssembly.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/SimpleAssembly.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/TyphoonSingleAssembly.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/ExtendedSimpleAssembly.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/MiddleAgesAssembly.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/CollaboratingMiddleAgesAssembly.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/SwiftTyphoonAssemblyActivatorTests..swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/SwiftMiddleAgesAssembly.swift" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/CircularDependenciesAssembly.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/CollaboratingMiddleAgesAssembly.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/ExtendedSimpleAssembly.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/ExceptionTestAssembly.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/development_Config.plist" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/ObjectGraphAssembly.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/ExceptionTestAssembly.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/InfrastructureComponentsAssembly.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/CircularDependenciesAssembly.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/TyphoonNemoTestAssemblies.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/TyphoonConfigAssembly.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/ExceptionTestAssembly.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/development_Config.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TestAssemblies/InfrastructureComponentsAssembly.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/Assembly/TyphoonAssemblyTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/AutoInjection/TyphoonAutoInjectionAssembly.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/AutoInjection/TyphoonAutoInjectionAssembly.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/AutoInjection/TyphoonAutoInjectionTests.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/AutoInjection/TyphoonAutoInjectionAssembly.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Factory/TyphoonComponentFactoryTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Resources/SomeProperties.plist" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Resources/SomeProperties.properties" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Resources/SomeProperties.json" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Resources/SomeOtherProperties.properties" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Resources/PropertiesA.plist" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Resources/SomeResource" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Resources/SomeProperties.json" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Resources/SomeProperties.properties" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Resources/PropertiesB.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Resources/SomeResource" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Resources/PropertiesA.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/TypeConversion/ClassWithPrimitiveTypesForConversion.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/TypeConversion/TyphoonTypeConversionUtilsTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/TypeConversion/TyphoonTypeDescriptorTests.m" isTestSource="false" />
@@ -331,49 +331,59 @@
       <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/StoryBoardControllerDependency.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/TyphoonViewHelpersTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/StoryboardFirstViewController.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/StoryBoardControllerDependency.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/UniqueViewController.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/StoryboardTests.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/UniqueViewController.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/StoryboardViewControllerAssembly.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/StoryboardViewControllerAssembly.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/Storyboard.storyboard" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/StoryboardWithReference/Second.storyboard" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/StoryboardWithReference/StoryboardTabBarViewController.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/StoryboardWithReference/StoryboardTabBarFirstViewController.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/StoryboardWithReference/StoryboardWithReferenceAssembly.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/StoryboardWithReference/Model.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/StoryboardWithReference/StoryboardTabBarSecondViewController.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/StoryboardWithReference/StoryboardTabBarViewController.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/StoryboardWithReference/StoryboardTabBarFirstViewController.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/StoryboardWithReference/StoryboardWithReference.storyboard" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/StoryboardWithReference/StoryboardTabBarSecondViewController.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/StoryboardWithReference/StoryboardWithReferenceAssembly.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/StoryboardWithReference/Model.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/UniqueViewController.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/StoryboardTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/StoryboardFirstViewController.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/Storyboard.storyboard" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Storyboard/StoryBoardControllerDependency.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/TypeConversion/TyphoonUIColorConverterTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/StoryboardProvider/TyphoonStoryboardProviderTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Resolver/TyphoonViewControllerNibResolverTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Typhoon-iOSTests/Typhoon-iOSTests-Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Typhoon-iOSTests/en.lproj/InfoPlist.strings" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Typhoon-iOS/Typhoon-iOS-Info.plist" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Typhoon-iOS/Base.lproj/Main_iPad.storyboard" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Typhoon-iOS/Base.lproj/Main_iPhone.storyboard" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Typhoon-iOS/TyphoonViewController.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Typhoon-iOS/TyphooniOSAppDelegate.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Typhoon-iOS/TyphooniOSAppDelegate.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Typhoon-iOS/TyphoonViewController.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Typhoon-iOS/en.lproj/InfoPlist.strings" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Typhoon-iOS/Images.xcassets" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Typhoon-iOS/main.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Typhoon-iOS/Base.lproj/Main_iPad.storyboard" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Typhoon-iOS/Base.lproj/Main_iPhone.storyboard" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Tests-Info.plist" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Model/Quest.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/iOS/Typhoon-iOS/TyphooniOSAppDelegate.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CavalryMan.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CavalryMan.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CircularDependencies/UnsatisfiableClassGDependsOnFInInitializer.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CircularDependencies/PrototypeInitInjected.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CircularDependencies/ClassBDependsOnA.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CircularDependencies/ClassADependsOnB.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CircularDependencies/ClassDDependsOnC.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CircularDependencies/ClassEDependsOnC.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CircularDependencies/ClassBDependsOnA.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CircularDependencies/ClassADependsOnB.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CircularDependencies/UnsatisfiableClassGDependsOnFInInitializer.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CircularDependencies/ClassDDependsOnC.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CircularDependencies/ClassDDependsOnC.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CircularDependencies/PrototypePropertyInjected.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CircularDependencies/UnsatisfiableClassFDependsOnGInInitializer.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CircularDependencies/PrototypeInitInjected.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CircularDependencies/UnsatisfiableClassFDependsOnGInInitializer.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CircularDependencies/UnsatisfiableClassGDependsOnFInInitializer.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CircularDependencies/ClassCDependsOnDAndE.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CircularDependencies/PrototypePropertyInjected.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CircularDependencies/ClassDDependsOnC.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CircularDependencies/ClassCDependsOnDAndE.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CircularDependencies/ClassEDependsOnC.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/Factory/Sword.h" isTestSource="false" />
@@ -395,27 +405,29 @@
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/AutoInjection/AutoInjectionKnight.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/AutoInjection/AutoInjectionKnight.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/RescueQuest.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Model/MediocreQuest.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/Knight.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/DamselQuest.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/Fort.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Model/Knight.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CROSingletonB.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/Harlot.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/Fort.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Model/Knight.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CROSingletonB.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CROPrototypeB.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CampaignQuest.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CROPrototypeB.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CROSingletonA.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CROSingletonB.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Model/Quest.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CampaignQuest.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CROSingletonA.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CROPrototypeA.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/Mock.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/MediocreQuest.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/CROPrototypeA.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Model/MediocreQuest.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/Champion.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Model/Champion.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/PrefixTests.pch" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/OSX/TypeConversion/TyphoonNSColorTypeConverterTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/OSX/Typhoon-OSX/TyphoonOSXAppDelegate.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/OSX/Typhoon-OSX/Typhoon-OSX-Info.plist" isTestSource="false" />
@@ -429,28 +441,28 @@
       <sourceFolder url="file://$MODULE_DIR$/Tests/OSX/Typhoon-OSXTests/en.lproj/InfoPlist.strings" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Test/Patcher/TyphoonPatcherTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Test/TestUtils/TyphoonTestUtilsTests.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/PrefixTests.pch" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Tests-Info.plist" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Utils/TyphoonObjectDeallocCallbackTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Utils/TyphoonInvocationUtilsTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Utils/TyphoonInvocationUtilsTestObjects.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Utils/TyphoonMethodSwizzlerTestUtils.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Utils/TyphoonMethodSwizzlerTestUtils.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Utils/TyphoonSwizzlerTests.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Utils/TyphoonInvocationUtilsTestObjects.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Utils/TyphoonStringUtilsTests.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Utils/TyphoonInvocationUtilsTestObjects.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Utils/TyphoonSwizzlerTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Configuration/TyphoonComponentFactoryPostProcessorStubImpl.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Configuration/Startup/TyphoonStartupTests_iOS.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Configuration/Startup/TyphoonStartupTests_OSX.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Configuration/TyphoonTestAssemblyConfigPostProcessor.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Configuration/TyphoonTestAssemblyConfigPostProcessor.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Configuration/TyphoonComponentFactoryPostProcessorStubImpl.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Configuration/DefinitionOptionConfiguration/DefinitionConfigurationTest.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Configuration/DefinitionOptionConfiguration/AssemblyWithDefinitionConfiguration.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Configuration/DefinitionOptionConfiguration/AssemblyWithDefinitionConfiguration.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Configuration/TyphoonGlobalConfigCollectorTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Configuration/TyphoonBundleResourceTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Configuration/TyphoonInstancePostProcessorMock.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Configuration/TyphoonConfigPostProcessorTests.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Configuration/DefinitionOptionConfiguration/DefinitionConfigurationTest.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Configuration/DefinitionOptionConfiguration/AssemblyWithDefinitionConfiguration.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Configuration/DefinitionOptionConfiguration/AssemblyWithDefinitionConfiguration.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Configuration/TyphoonComponentFactoryPostProcessorStubImpl.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Configuration/TyphoonConfigAppDelegateMock.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Configuration/TyphoonInstancePostProcessorMock.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Configuration/TyphoonConfigAppDelegateMock.h" isTestSource="false" />
@@ -458,22 +470,22 @@
       <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/ClassForNoSubclass.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/TyphoonDefinitionTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/Internal/TyphoonFactoryDefinitionTests.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/Initializer/TyphoonMethodInjectionsTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/Initializer/TyphoonInitializerTests.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/Initializer/TyphoonMethodInjectionsTests.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/TyphoonDefinition+Tests.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/TyphoonDefinition+InfrastructureTests.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/TyphoonDefinition+Tests.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/Injection Aware/ComponentFactoryAwareAssembly.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/Injection Aware/ComponentFactoryAwareObject.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/Injection Aware/ComponentFactoryAwareAssembly.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/Injection Aware/ComponentFactoryAwareObject.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/Injection Aware/TyphoonComponentFactoryAwareTests.m" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/ClassForNoSubclass.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/Properties/ClassWithCollectionProperties.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/Properties/Collection/TyphoonPropertyInjectedAsCollectionTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/Properties/FactoryReferenceInjectionsTests.m" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/Properties/ClassWithCollectionProperties.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/Properties/TyphoonRuntimeInjectionsTests.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/TyphoonDefinition+Tests.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/TyphoonDefinition+Tests.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/Injection Aware/ComponentFactoryAwareAssembly.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/Injection Aware/TyphoonComponentFactoryAwareTests.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/Injection Aware/ComponentFactoryAwareObject.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/Injection Aware/ComponentFactoryAwareObject.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/Injection Aware/ComponentFactoryAwareAssembly.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/ClassForNoSubclass.m" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Tests/Definition/TyphoonDefinition+InfrastructureTests.m" isTestSource="false" />
     </content>
     <content url="file:///Users/jozsefvesza/Projects/Open source/Typhoon/Typhoon copy-Info.plist">
       <sourceFolder url="file:///Users/jozsefvesza/Projects/Open source/Typhoon/Typhoon copy-Info.plist" isTestSource="false" />

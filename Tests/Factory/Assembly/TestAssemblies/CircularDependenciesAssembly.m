@@ -161,4 +161,35 @@
     }];
 }
 
+//-------------------------------------------------------------------------------------------
+#pragma mark -
+//-------------------------------------------------------------------------------------------
+
+- (id)propertyInjectionA
+{
+    return [TyphoonDefinition withClass:[PrototypePropertyInjected class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(propertyB) with:[self propertyInjectionB]];
+        [definition injectProperty:@selector(propertyC) with:[self propertyInjectionC]];
+        definition.autoInjectionVisibility = TyphoonAutoInjectVisibilityNone;
+    }];
+}
+
+- (id)propertyInjectionB
+{
+    return [TyphoonDefinition withClass:[PrototypePropertyInjected class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(propertyA) with:[self propertyInjectionA]];
+        [definition performAfterInjections:@selector(checkThatPropertyAHasPropertyBandC)];
+        definition.autoInjectionVisibility = TyphoonAutoInjectVisibilityNone;
+    }];
+}
+
+- (id)propertyInjectionC
+{
+    return [TyphoonDefinition withClass:[PrototypePropertyInjected class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(propertyA) with:[self propertyInjectionA]];
+        [definition performAfterInjections:@selector(checkThatPropertyAHasPropertyBandC)];
+        definition.autoInjectionVisibility = TyphoonAutoInjectVisibilityNone;
+    }];
+}
+
 @end
