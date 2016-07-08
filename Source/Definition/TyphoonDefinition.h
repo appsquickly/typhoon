@@ -244,6 +244,11 @@ definition.factory = [self sqliteManager];
 - (void)performAfterInjections:(SEL)sel;
 - (void)performAfterInjections:(SEL)sel parameters:(void (^)(TyphoonMethod *params))parameterBlock;
 
+/*
+ * Custom callback that is invoked after all injections on built graph occurs.
+ */
+- (void)performAfterAllInjections:(SEL)sel;
+
 #pragma mark Making injections from definition
 
 /**

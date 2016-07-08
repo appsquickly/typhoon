@@ -69,6 +69,7 @@
  */
 @property (nonatomic, readonly) TyphoonMethod *afterInjections;
 
+@property (nonatomic, readonly) SEL afterAllInjections;
 
 - (instancetype)initWithClass:(Class)clazz key:(NSString *)key;
 

@@ -67,7 +67,7 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     [definition doInjectionEventsOn:instance withArgs:args factory:self];
 
     [_stack notifyOnceWhenStackEmptyUsingBlock:^{
-        [definition doAfterInjectionsOn:instance withArgs:args factory:self];
+        [definition doAfterAllInjectionsOn:instance];
 
         [self injectAssemblyOnInstanceIfTyphoonAware:instance];
 

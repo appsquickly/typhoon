@@ -178,7 +178,7 @@
 {
     return [TyphoonDefinition withClass:[PrototypePropertyInjected class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(propertyA) with:[self propertyInjectionA]];
-        [definition performAfterInjections:@selector(checkThatPropertyAHasPropertyBandC)];
+        [definition performAfterAllInjections:@selector(checkThatPropertyAHasPropertyBandC)];
         definition.autoInjectionVisibility = TyphoonAutoInjectVisibilityNone;
     }];
 }
@@ -187,7 +187,7 @@
 {
     return [TyphoonDefinition withClass:[PrototypePropertyInjected class] configuration:^(TyphoonDefinition *definition) {
         [definition injectProperty:@selector(propertyA) with:[self propertyInjectionA]];
-        [definition performAfterInjections:@selector(checkThatPropertyAHasPropertyBandC)];
+        [definition performAfterAllInjections:@selector(checkThatPropertyAHasPropertyBandC)];
         definition.autoInjectionVisibility = TyphoonAutoInjectVisibilityNone;
     }];
 }

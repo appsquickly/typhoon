@@ -24,9 +24,7 @@
 
 - (void)doInjectionEventsOn:(id)instance withArgs:(TyphoonRuntimeArguments *)args factory:(TyphoonComponentFactory *)factory;
 
-
-- (void)doAfterInjectionsOn:(id)instance withArgs:(TyphoonRuntimeArguments *)args
-                    factory:(TyphoonComponentFactory *)factory;
+- (void)doAfterAllInjectionsOn:(id)instance;
 
 - (id)targetForInitializerWithFactory:(TyphoonComponentFactory *)factory args:(TyphoonRuntimeArguments *)args;
 
