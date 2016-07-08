@@ -17,6 +17,7 @@
 @implementation TyphoonCallStack
 {
     NSMutableArray *_storage;
+    NSMutableArray *_emptyNotificationBlocks;
 }
 
 
@@ -36,6 +37,7 @@
     self = [super init];
     if (self) {
         _storage = [NSMutableArray array];
+        _emptyNotificationBlocks = [NSMutableArray new];
     }
     return self;
 }
@@ -60,6 +62,11 @@
     if (![self isEmpty]) {
         [_storage removeLastObject];
     }
+
+    if ([self isEmpty]) {
+        [self callNotificationBlocksAndClear];
+    }
+
     return element;
 }
 
@@ -83,6 +90,22 @@
 - (BOOL)isResolvingKey:(NSString *)key withArgs:(TyphoonRuntimeArguments *)args
 {
     return [self peekForKey:key args:args] != nil;
+}
+
+- (void)notifyOnceWhenStackEmptyUsingBlock:(void(^)())onEmpty
+{
+    [_emptyNotificationBlocks addObject:onEmpty];
+}
+
+//-------------------------------------------------------------------------------------------
+#pragma mark - Private
+
+- (void)callNotificationBlocksAndClear
+{
+    for (void(^notifyBlock)() in _emptyNotificationBlocks) {
+        notifyBlock();
+    }
+    [_emptyNotificationBlocks removeAllObjects];
 }
 
 @end

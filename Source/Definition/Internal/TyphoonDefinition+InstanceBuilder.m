@@ -65,7 +65,10 @@ TYPHOON_LINK_CATEGORY(TyphoonDefinition_InstanceBuilder)
     for (TyphoonMethod *method in self.injectedMethods) {
         [self doMethodInjection:method onInstance:instance args:args factory:factory];
     }
-    
+}
+
+- (void)doAfterInjectionsOn:(id)instance withArgs:(TyphoonRuntimeArguments *)args factory:(TyphoonComponentFactory *)factory
+{
     if (self.afterInjections) {
         [self doMethodInjection:self.afterInjections onInstance:instance args:args factory:factory];
     }
