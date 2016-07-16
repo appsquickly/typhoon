@@ -10,6 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "NSInvocation+TCFInstanceBuilder.h"
+#import "NSInvocation+TCFWrapValues.h"
 
 #if __has_feature(objc_arc)
 #error You have to disable ARC for this file
@@ -50,11 +51,10 @@ static BOOL typhoon_IsSelectorReturnsRetained(SEL selector) {
 
 - (id)typhoon_resultOfInvokingOn:(id)instanceOrClass NS_RETURNS_RETAINED
 {
-    id returnValue = nil;
+    [self invokeWithTarget:instanceOrClass];
+    id returnValue = [self typhoon_getReturnValue];
 
     BOOL isReturnsRetained = typhoon_IsSelectorReturnsRetained([self selector]);
-    [self invokeWithTarget:instanceOrClass];
-    [self getReturnValue:&returnValue];
     if (!isReturnsRetained) {
         [returnValue retain]; /* Retain to take ownership on autoreleased object */
     }
