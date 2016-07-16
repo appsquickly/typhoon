@@ -122,4 +122,6 @@
 
 - (id)notSoBlockKnight;
 
+- (id)rectModel;
+
 @end

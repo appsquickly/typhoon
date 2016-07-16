@@ -22,6 +22,7 @@
 #import "Mock.h"
 #import "TyphoonInject.h"
 #import "CollaboratingMiddleAgesAssembly.h"
+#import "RectModel.h"
 
 @implementation MiddleAgesAssembly
 
@@ -436,11 +437,11 @@
 {
     return [TyphoonBlockDefinition withClass:[Knight class] initializer:^id{
         return [[Knight alloc] initWithQuest:[self defaultQuest]];
-        
+
     } injections:^(Knight *knight) {
         knight.damselsRescued = 42;
         [knight setFoobar:@(123) andHasHorse:YES friends:nil];
-        
+
     } configuration:^(TyphoonDefinition *definition) {
         definition.scope = TyphoonScopeWeakSingleton;
     }];
@@ -473,7 +474,7 @@
     return [TyphoonBlockDefinition withClass:[Knight class] block:^id{
         Knight *knight = [[Knight alloc] init];
         knight.favoriteDamsels = favoriteDamsels;
-        knight.quest = [self blockQuestWithURL:questURL];        
+        knight.quest = [self blockQuestWithURL:questURL];
         return knight;
     }];
 }
@@ -508,7 +509,7 @@
 {
     return [TyphoonBlockDefinition withInitializer:^id{
         return [[Knight alloc] initWithDamselsRescued:123 foo:nil];
-        
+
     } injections:^(Knight *instance) {
         instance.quest = [self blockQuestForKnightWithCircularDependency];
     }];
@@ -518,7 +519,7 @@
 {
     return [TyphoonBlockDefinition withInitializer:^id{
         return [[DamselQuest alloc] init];
-        
+
     } injections:^(DamselQuest *instance) {
         instance.bounty = ((Knight *)[self blockKnightWithCircularDependency]).damselsRescued;
     }];
@@ -541,6 +542,23 @@
         }];
         [definition injectProperty:@selector(damselsRescued) with:@(12)];
     }];
+}
+
+- (id)rectModel
+{
+    return [TyphoonDefinition withClass:[RectModel class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(rectFrame) with:[self mainScreenBounds]];
+    }];
+}
+
+- (UIScreen *)mainScreen
+{
+    return [TyphoonDefinition withFactory:[UIScreen class] selector:@selector(mainScreen)];
+}
+
+- (NSValue *)mainScreenBounds
+{
+    return [TyphoonDefinition withFactory:[self mainScreen] selector:@selector(bounds)];
 }
 
 @end

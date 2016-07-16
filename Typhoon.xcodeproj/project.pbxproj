@@ -387,6 +387,7 @@
 		74AD335F374ECC3FD0E34729 /* StoryboardTabBarSecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AD31DCF1D597D6212D587A /* StoryboardTabBarSecondViewController.m */; };
 		74AD351B362D3B39E43832A0 /* StoryboardTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AD399EBA963C9A8C485A76 /* StoryboardTabBarViewController.m */; };
 		74AD3619DC60B184679A6EFE /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AD382C1698D7B4E78A2E42 /* Model.m */; };
+		74AD3799741B915315903C70 /* RectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AD3F0957BBA795250E1CAD /* RectModel.m */; };
 		74AD3878376497F3DE81296F /* StoryboardWithReferenceAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AD3381608371B09052C354 /* StoryboardWithReferenceAssembly.m */; };
 		74AD38DC07ADFDAAC4B2BA22 /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AD382C1698D7B4E78A2E42 /* Model.m */; };
 		74AD3A1E495375915555E628 /* StoryboardTabBarFirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AD391E6F16EF3B9F07BDC6 /* StoryboardTabBarFirstViewController.m */; };
@@ -1376,6 +1377,8 @@
 		74AD382C1698D7B4E78A2E42 /* Model.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Model.m; sourceTree = "<group>"; };
 		74AD391E6F16EF3B9F07BDC6 /* StoryboardTabBarFirstViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboardTabBarFirstViewController.m; sourceTree = "<group>"; };
 		74AD399EBA963C9A8C485A76 /* StoryboardTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboardTabBarViewController.m; sourceTree = "<group>"; };
+		74AD3E3B22E9A37E861C75B9 /* RectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RectModel.h; sourceTree = "<group>"; };
+		74AD3F0957BBA795250E1CAD /* RectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RectModel.m; sourceTree = "<group>"; };
 		74AD3F0F83C575EBDE180F1D /* StoryboardWithReferenceAssembly.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboardWithReferenceAssembly.h; sourceTree = "<group>"; };
 		8946F2DC1B8E3F44005C4954 /* TyphoonViewHelpersTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonViewHelpersTests.m; sourceTree = "<group>"; };
 		8946F2DE1B8E403E005C4954 /* TyphoonViewHelpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonViewHelpers.h; sourceTree = "<group>"; };
@@ -2464,6 +2467,8 @@
 				C949792A85FC9383BEAD631B /* Mock.m */,
 				C949758EA994B0137DD95E6D /* Mock.h */,
 				2DBA1563B09BB6CE82F164EE /* AutoInjection */,
+				74AD3F0957BBA795250E1CAD /* RectModel.m */,
+				74AD3E3B22E9A37E861C75B9 /* RectModel.h */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3708,6 +3713,7 @@
 				74AD335F374ECC3FD0E34729 /* StoryboardTabBarSecondViewController.m in Sources */,
 				74AD38DC07ADFDAAC4B2BA22 /* Model.m in Sources */,
 				74AD3878376497F3DE81296F /* StoryboardWithReferenceAssembly.m in Sources */,
+				74AD3799741B915315903C70 /* RectModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
