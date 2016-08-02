@@ -138,7 +138,7 @@
 - (void)transferConstraintOutletsForKey:(NSString *)propertyName
                              fromView:(UIView *)view
 {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self isMemberOfClass: %@",
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self isKindOfClass: %@",
                               [NSLayoutConstraint class]];
     NSArray *constraints = [self valueForKey:propertyName];
     NSArray *filtered = [constraints filteredArrayUsingPredicate:predicate];
