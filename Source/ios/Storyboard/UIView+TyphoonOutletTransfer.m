@@ -15,17 +15,20 @@
 
 @implementation UIView (TyphoonOutletTransfer)
 
-- (void)setTyphoonNeedTransferOutlets:(BOOL)typhoonNeedTransferOutlets {
+- (void)setTyphoonNeedTransferOutlets:(BOOL)typhoonNeedTransferOutlets
+{
     objc_setAssociatedObject(self, @selector(typhoonNeedTransferOutlets), @(typhoonNeedTransferOutlets), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (BOOL)typhoonNeedTransferOutlets {
+- (BOOL)typhoonNeedTransferOutlets
+{
     return [objc_getAssociatedObject(self, @selector(typhoonNeedTransferOutlets)) boolValue];
 }
 
 
 // Swizzle didMoveToWindow
-+ (void)load {
++ (void)load
+{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         Class class = [self class];
@@ -43,10 +46,12 @@
         } else {
             method_exchangeImplementations(originalMethod, swizzledMethod);
         }
+        
     });
 }
 
-- (void)typhoon_didMoveToWindow {
+- (void)typhoon_didMoveToWindow
+{
     [self typhoon_didMoveToWindow];
     // When view have superview transfer outlets if needed
     if (self.typhoonNeedTransferOutlets) {
@@ -61,8 +66,8 @@
 }
 
 - (void)transferOutlets:(UIView *)view
-           transferView:(UIView *)transferView {
-    
+           transferView:(UIView *)transferView
+{
     [self transferFromView:transferView];
     
     for (UIView *subview in view.subviews) {
@@ -71,8 +76,8 @@
     }
 }
 
-- (void)transferFromView:(UIView *)view {
-    
+- (void)transferFromView:(UIView *)view
+{
     unsigned count;
     objc_property_t *properties = class_copyPropertyList([self class], &count);
     
@@ -84,20 +89,27 @@
         
         if(propName) {
             
-            const char *propType = getPropertyType(property);
             NSString *propertyName = [NSString stringWithCString:propName
                                                         encoding:[NSString defaultCStringEncoding]];
+            const char *propertyAttributes = property_getAttributes(property);
+            const char *propType = getPropertyType(propertyAttributes);
             NSString *propertyType = [NSString stringWithCString:propType
                                                         encoding:[NSString defaultCStringEncoding]];
-            // IBOutlet
-            if (NSClassFromString(propertyType) == [NSLayoutConstraint class]) {
-                [self transferConstraintOutletForKey:propertyName
-                                           fromView:view];
-            }
-            // IBOutlet​Collection
-            if ([NSClassFromString(propertyType) isSubclassOfClass:[NSArray class]]) {
-                [self transferConstraintOutletsForKey:propertyName
-                                             fromView:view];
+            BOOL isReadonly = isReadonlyProperty(propertyAttributes);
+            
+            if (!isReadonly && [self respondsToSelector:NSSelectorFromString(propertyName)]) {
+                
+                // IBOutlet
+                if (NSClassFromString(propertyType) == [NSLayoutConstraint class]) {
+                    [self transferConstraintOutletForKey:propertyName
+                                                fromView:view];
+                }
+                // IBOutlet​Collection
+                if ([NSClassFromString(propertyType) isSubclassOfClass:[NSArray class]]) {
+                    [self transferConstraintOutletsForKey:propertyName
+                                                 fromView:view];
+                }
+                
             }
             
         }
@@ -108,7 +120,8 @@
 }
 
 - (void)transferConstraintOutletForKey:(NSString *)propertyName
-                             fromView:(UIView *)view {
+                             fromView:(UIView *)view
+{
     NSLayoutConstraint *constraint = [self valueForKey:propertyName];
     if (constraint.typhoonTransferIdentifier) {
         for (NSLayoutConstraint *transferConstraint in view.constraints) {
@@ -123,8 +136,8 @@
 }
 
 - (void)transferConstraintOutletsForKey:(NSString *)propertyName
-                             fromView:(UIView *)view {
-    
+                             fromView:(UIView *)view
+{
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self isMemberOfClass: %@",
                               [NSLayoutConstraint class]];
     NSArray *constraints = [self valueForKey:propertyName];
@@ -172,8 +185,16 @@
     }
 }
 
-static const char *getPropertyType(objc_property_t property) {
-    const char *attributes = property_getAttributes(property);
+- (UIView *)findRootView:(UIView *)view
+{
+    if (view.superview) {
+        return [view.superview findRootView:view.superview];
+    }
+    return view;
+}
+
+static const char *getPropertyType(const char * attributes)
+{
     char buffer[1 + strlen(attributes)];
     strlcpy(buffer, attributes, sizeof(buffer));
     char *state = buffer, *attribute;
@@ -188,11 +209,11 @@ static const char *getPropertyType(objc_property_t property) {
     return "@";
 }
 
-- (UIView *)findRootView:(UIView *)view {
-    if (view.superview) {
-        return [view.superview findRootView:view.superview];
-    }
-    return view;
+static BOOL isReadonlyProperty(const char * propertyAttributes)
+{
+    NSArray *attributes = [[NSString stringWithUTF8String:propertyAttributes]
+                           componentsSeparatedByString:@","];
+    return [attributes containsObject:@"R"];
 }
 
 @end
