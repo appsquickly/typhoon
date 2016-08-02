@@ -70,6 +70,11 @@
 {
     [self transferFromView:transferView];
     
+    // Optimization. The outlet from view to the subview of TyphoonLoadedView is invalid.
+    if (view == transferView) {
+        return;
+    }
+    
     for (UIView *subview in view.subviews) {
         [subview transferOutlets:subview
                     transferView:transferView];
@@ -187,11 +192,28 @@
 
 - (UIView *)findRootView:(UIView *)view
 {
-    if (view.superview) {
+    NSArray *expulsionViewClasses = [self expulsionViewClasses];
+    // Optimization. The outlet from view to the UICollectionViewCell is invalid.
+    // Outlets cannot be connected to repeating content.
+    BOOL expulsion = NO;
+    for (Class expulsionClass in expulsionViewClasses) {
+        if ([view isKindOfClass:expulsionClass]) {
+            expulsion = YES;
+        }
+    }
+
+    if (view.superview && !expulsion) {
         return [view.superview findRootView:view.superview];
     }
     return view;
 }
+
+- (NSArray *)expulsionViewClasses
+{
+    return @[[UITableViewCell class],
+             [UICollectionViewCell class]];
+}
+
 
 static const char *getPropertyType(const char * attributes)
 {
