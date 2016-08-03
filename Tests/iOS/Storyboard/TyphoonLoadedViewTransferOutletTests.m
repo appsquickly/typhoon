@@ -38,10 +38,9 @@
 - (void)test_transfer_constraints
 {
     // given
-    UIWindow *window = [UIWindow new];
-    RootView *rootView = [self loadView];
+   
     // when
-    [window addSubview:rootView];
+    RootView *rootView = [self loadView];
     // then
     XCTAssertEqualObjects(rootView.loadedView, rootView.subviews[0]);
     [self checkViewSuccessInjected:rootView.loadedView];
@@ -54,9 +53,7 @@
 - (void)test_change_transfered_constraints
 {
     // given
-    UIWindow *window = [UIWindow new];
     RootView *rootView = [self loadView];
-    [window addSubview:rootView];
     rootView.widthConstraint.constant = 10;
     rootView.heightConstraint.constant = 10;
     // when

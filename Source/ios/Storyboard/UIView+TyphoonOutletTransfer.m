@@ -26,15 +26,16 @@
 }
 
 
-// Swizzle didMoveToWindow
+// Swizzle awakeFromNib
+// After the [super awakeFromNib] all the outlets on view will be setted
 + (void)load
 {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         Class class = [self class];
         
-        SEL originalSelector = @selector(didMoveToWindow);
-        SEL swizzledSelector = @selector(typhoon_didMoveToWindow);
+        SEL originalSelector = @selector(awakeFromNib);
+        SEL swizzledSelector = @selector(typhoon_awakeFromNib);
         
         Method originalMethod = class_getInstanceMethod(class, originalSelector);
         Method swizzledMethod = class_getInstanceMethod(class, swizzledSelector);
@@ -50,9 +51,9 @@
     });
 }
 
-- (void)typhoon_didMoveToWindow
+- (void)typhoon_awakeFromNib
 {
-    [self typhoon_didMoveToWindow];
+    [self typhoon_awakeFromNib];
     // When view have superview transfer outlets if needed
     if (self.typhoonNeedTransferOutlets) {
         // recursive search of root view (superview without superview)
