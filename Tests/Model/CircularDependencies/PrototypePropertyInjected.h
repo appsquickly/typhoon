@@ -17,4 +17,10 @@
 
 @property(nonatomic, strong) PrototypeInitInjected *prototypeInitInjected;
 
+@property (nonatomic, strong) PrototypePropertyInjected *propertyA;
+@property (nonatomic, strong) PrototypePropertyInjected *propertyB;
+@property (nonatomic, strong) PrototypePropertyInjected *propertyC;
+
+- (void)checkThatPropertyAHasPropertyBandC;
+
 @end

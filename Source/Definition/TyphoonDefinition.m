@@ -400,6 +400,11 @@ static NSString *TyphoonScopeToString(TyphoonScope scope)
 #endif
 }
 
+- (void)performAfterAllInjections:(SEL)sel
+{
+    _afterAllInjections = sel;
+}
+
 //-------------------------------------------------------------------------------------------
 #pragma mark: - TyphoonDefinition+Infrastructure methods
 //-------------------------------------------------------------------------------------------

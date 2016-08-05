@@ -65,12 +65,16 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
     }
     
     [definition doInjectionEventsOn:instance withArgs:args factory:self];
-    
-    [self injectAssemblyOnInstanceIfTyphoonAware:instance];
-    
-    if ([instance respondsToSelector:@selector(typhoonDidInject)]) {
-        [instance typhoonDidInject];
-    }
+
+    [_stack notifyOnceWhenStackEmptyUsingBlock:^{
+        [definition doAfterAllInjectionsOn:instance];
+
+        [self injectAssemblyOnInstanceIfTyphoonAware:instance];
+
+        if ([instance respondsToSelector:@selector(typhoonDidInject)]) {
+            [instance typhoonDidInject];
+        }
+    }];
 }
 
 - (id)postProcessInstance:(id)instance

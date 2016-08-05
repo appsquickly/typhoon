@@ -347,6 +347,14 @@
 }
 
 //-------------------------------------------------------------------------------------------
+#pragma mark - Circular dependencies with "afterInjections" hook
+
+- (void)test_after_injections_called_after_parents_injections
+{
+    XCTAssertNoThrow([_circularDependenciesFactory componentForKey:@"propertyInjectionA"]);
+}
+
+//-------------------------------------------------------------------------------------------
 #pragma mark - Currently Resolving Overwriting Problem
 
 - (void)

@@ -17,6 +17,7 @@
 
 - (NSString *)notView;
 - (UIView *)view;
+BOOL equalProperties(NSLayoutConstraint *c1, NSLayoutConstraint *c2);
 
 @end
 
@@ -165,8 +166,7 @@ BOOL equalProperties(NSLayoutConstraint *c1, NSLayoutConstraint *c2){
                 id secondItem = replaceSecondItem ? dst : srcConstraint.secondItem;
                 
                 if ([dstConstraint.firstItem isEqual:firstItem] &&
-                    [dstConstraint.secondItem isEqual:secondItem] &&
-                    dstConstraint == srcConstraint) {
+                    [dstConstraint.secondItem isEqual:secondItem]) {
                     didFindEqualPointer = YES;
                     break;
                 }

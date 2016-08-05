@@ -110,6 +110,11 @@ static const char *kTyphoonKey;
 
 - (void)injectPropertiesForViewController:(UIViewController *)viewController withFactory:(id)factory
 {
+    [self injectPropertiesForViewController:viewController withFactory:factory storyboard:nil];
+}
+
+- (void)injectPropertiesForViewController:(UIViewController *)viewController withFactory:(id<TyphoonComponentFactory>)factory storyboard:(UIStoryboard *)storyboard
+{
     if (viewController.typhoonKey.length > 0) {
         [factory inject:viewController withSelector:NSSelectorFromString(viewController.typhoonKey)];
     }
@@ -118,6 +123,9 @@ static const char *kTyphoonKey;
     }
     
     for (UIViewController *controller in viewController.childViewControllers) {
+        if (storyboard && controller.storyboard && ![controller.storyboard isEqual:storyboard]) {
+            continue;
+        }
         [self injectPropertiesForViewController:controller withFactory:factory];
     }
     

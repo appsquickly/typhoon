@@ -14,6 +14,21 @@
 
 @interface TyphoonViewControllerInjector : NSObject
 
+/**
+ * Inject properties.
+ *
+ @param viewController View controller.
+ @param factory Typhoon factory.
+ */
 - (void)injectPropertiesForViewController:(UIViewController *)viewController withFactory:(id<TyphoonComponentFactory>)factory;
+
+/**
+ *  * Inject properties and check view controller's storyboard is equal to param storyboard.
+ *
+ @param viewController View controller.
+ @param factory Typhoon factory.
+ @param storyboard Storyboard to compare with.
+ */
+- (void)injectPropertiesForViewController:(UIViewController *)viewController withFactory:(id<TyphoonComponentFactory>)factory storyboard:(UIStoryboard *)storyboard;
 
 @end

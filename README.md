@@ -15,7 +15,7 @@ Check out the <a href="http://www.typhoonframework.org/#features">feature list</
 
 Typhoon works with Swift, but is written in Objective-C and uses the Objective-C runtime for reflection, injection and instrumenting assemblies. We think Typhoon is an excellent option if you need Dependeny Injection in your Swift projects, however we're happy to announce that we've been working on a pure Swift framework! If you've used Typhoon in the past, our Swift library will feel very familiar yet completely harmonious with static, idiomatic Swift. 
 
-We didn't want to create a pure Swift version of Typhoon unless it would be better in every way, so it has been a while  coming. But when it coms to performance the new library is as Swift as hell :)
+We didn't want to create a pure Swift version of Typhoon unless it would be better in every way, so it has been a while  coming. But when it comes to performance the new library is as Swift as hell :)
 
 ---------------------------------------
 

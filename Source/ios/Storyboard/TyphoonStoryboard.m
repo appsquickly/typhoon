@@ -43,7 +43,7 @@
 
     id viewController = [super instantiateViewControllerWithIdentifier:identifier];
 
-    [self.injector injectPropertiesForViewController:viewController withFactory:self.factory];
+    [self.injector injectPropertiesForViewController:viewController withFactory:self.factory storyboard:self];
 
     return viewController;
 }
