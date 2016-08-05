@@ -126,7 +126,7 @@ static const char *kTyphoonKey;
         if (storyboard && controller.storyboard && ![controller.storyboard isEqual:storyboard]) {
             continue;
         }
-        [self injectPropertiesForViewController:controller withFactory:factory];
+        [self injectPropertiesForViewController:controller withFactory:factory storyboard:storyboard];
     }
     
     __weak __typeof (viewController) weakViewController = viewController;
