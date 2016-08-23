@@ -1,10 +1,13 @@
+////////////////////////////////////////////////////////////////////////////////
 //
-//  RootViewAssembly.m
-//  Typhoon
+//  TYPHOON FRAMEWORK
+//  Copyright 2016, Typhoon Framework Contributors
+//  All Rights Reserved.
 //
-//  Created by Smal Vadim on 01/08/16.
-//  Copyright © 2016 typhoonframework.org. All rights reserved.
+//  NOTICE: The authors permit you to use, modify, and distribute this file
+//  in accordance with the terms of the license agreement accompanying it.
 //
+////////////////////////////////////////////////////////////////////////////////
 
 #import "RootViewAssembly.h"
 #import "LoadedView.h"

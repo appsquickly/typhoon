@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 //  TYPHOON FRAMEWORK
-//  Copyright 2015, Typhoon Framework Contributors
+//  Copyright 2016, Typhoon Framework Contributors
 //  All Rights Reserved.
 //
 //  NOTICE: The authors permit you to use, modify, and distribute this file
@@ -11,41 +11,34 @@
 
 #import "UIResponder+TyphoonOutletTransfer.h"
 #import "NSLayoutConstraint+TyphoonOutletTransfer.h"
-#import <objc/runtime.h>
+#import "TyphoonIntrospectionUtils.h"
+#import "TyphoonTypeDescriptor.h"
 
 @implementation UIResponder (TyphoonOutletTransfer)
 
-- (void)transferFromView:(UIView *)view
+- (void)transferConstraintsFromView:(UIView *)view
 {
-    unsigned count;
-    objc_property_t *properties = class_copyPropertyList([self class], &count);
-    unsigned i;
-    for (i = 0; i < count; i++) {
-        objc_property_t property = properties[i];
-        const char *propName = property_getName(property);
-        if(propName) {
-            NSString *propertyName = [NSString stringWithCString:propName
-                                                        encoding:[NSString defaultCStringEncoding]];
-            const char *propertyAttributes = property_getAttributes(property);
-            const char *propType = getPropertyType(propertyAttributes);
-            NSString *propertyType = [NSString stringWithCString:propType
-                                                        encoding:[NSString defaultCStringEncoding]];
-            BOOL isReadonly = isReadonlyProperty(propertyAttributes);
-            if (!isReadonly && [self respondsToSelector:NSSelectorFromString(propertyName)]) {
-                // IBOutlet
-                if (NSClassFromString(propertyType) == [NSLayoutConstraint class]) {
-                    [self transferConstraintOutletForKey:propertyName
-                                                fromView:view];
-                }
-                // IBOutlet​Collection
-                if ([NSClassFromString(propertyType) isSubclassOfClass:[NSArray class]]) {
-                    [self transferConstraintOutletsForKey:propertyName
-                                                 fromView:view];
-                }
+    Class currentClass = [self class];
+    NSSet *properties = [TyphoonIntrospectionUtils propertiesForClass:currentClass
+                                                      upToParentClass:[NSObject class]];
+    for (NSString *propertyName in properties) {
+        TyphoonTypeDescriptor *type = [TyphoonIntrospectionUtils typeForPropertyNamed:propertyName
+                                                                              inClass:currentClass];
+        SEL setter = [TyphoonIntrospectionUtils setterForPropertyWithName:propertyName
+                                                                  inClass:currentClass];
+        if (setter) {
+            // IBOutlet
+            if (type.typeBeingDescribed == [NSLayoutConstraint class]) {
+                [self transferConstraintOutletForKey:propertyName
+                                            fromView:view];
+            }
+            // IBOutlet​Collection
+            if ([type.typeBeingDescribed isSubclassOfClass:[NSArray class]]) {
+                [self transferConstraintOutletsForKey:propertyName
+                                             fromView:view];
             }
         }
     }
-    free(properties);
 }
 
 - (void)transferConstraintOutletForKey:(NSString *)propertyName
@@ -67,29 +60,18 @@
 - (void)transferConstraintOutletsForKey:(NSString *)propertyName
                                fromView:(UIView *)view
 {
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self isKindOfClass: %@",
-                              [NSLayoutConstraint class]];
     NSArray *constraints = [self valueForKey:propertyName];
-    NSArray *filtered = [constraints filteredArrayUsingPredicate:predicate];
-    if (filtered.count > 0) {
+    if ([self isOutletCollection:constraints]) {
         BOOL needChange = NO;
         NSMutableArray *newOutlets = [NSMutableArray new];
-        for (id outlet in constraints) {
-            id changeOutlet = outlet;
-            if ([outlet isMemberOfClass:[NSLayoutConstraint class]]) {
-                NSLayoutConstraint *constraint = outlet;
-                if (constraint.typhoonTransferIdentifier) {
-                    for (NSLayoutConstraint *transferConstraint in view.constraints) {
-                        BOOL equalObjects = constraint == transferConstraint;
-                        BOOL equalIdentifier = [constraint.typhoonTransferIdentifier isEqualToString:transferConstraint.typhoonTransferIdentifier];
-                        if (!equalObjects && equalIdentifier) {
-                            changeOutlet = transferConstraint;
-                            needChange = YES;
-                        }
-                    }
-                }
+        for (NSLayoutConstraint *constraint in constraints) {
+            NSLayoutConstraint *transferConstraint = [self transferConstraint:constraint
+                                                                     fromView:view];
+            if (transferConstraint) {
+                needChange = YES;
             }
-            [newOutlets addObject:changeOutlet];
+            transferConstraint = transferConstraint ? transferConstraint : constraint;
+            [newOutlets addObject:transferConstraint];
         }
         
         if (needChange) {
@@ -100,27 +82,28 @@
     }
 }
 
-static const char *getPropertyType(const char * attributes)
+- (NSLayoutConstraint *)transferConstraint:(NSLayoutConstraint *)transferConstraint
+                                  fromView:(UIView *)view
 {
-    char buffer[1 + strlen(attributes)];
-    strlcpy(buffer, attributes, sizeof(buffer));
-    char *state = buffer, *attribute;
-    while ((attribute = strsep(&state, ",")) != NULL) {
-        if (attribute[0] == 'T') {
-            if (strlen(attribute) <= 4) {
-                break;
-            }
-            return (const char *)[[NSData dataWithBytes:(attribute + 3) length:strlen(attribute) - 4] bytes];
+    if (!transferConstraint.typhoonTransferIdentifier) {
+        return nil;
+    }
+    for (NSLayoutConstraint *constraint in view.constraints) {
+        BOOL equalObjects = constraint == transferConstraint;
+        BOOL equalIdentifier = [constraint.typhoonTransferIdentifier isEqualToString:transferConstraint.typhoonTransferIdentifier];
+        if (!equalObjects && equalIdentifier) {
+            return constraint;
         }
     }
-    return "@";
+    return nil;
 }
 
-static BOOL isReadonlyProperty(const char * propertyAttributes)
+- (BOOL)isOutletCollection:(NSArray *)array
 {
-    NSArray *attributes = [[NSString stringWithUTF8String:propertyAttributes]
-                           componentsSeparatedByString:@","];
-    return [attributes containsObject:@"R"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self isKindOfClass: %@",
+                              [NSLayoutConstraint class]];
+    NSArray *filtered = [array filteredArrayUsingPredicate:predicate];
+    return filtered.count == array.count;
 }
 
 @end

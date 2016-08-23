@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 //  TYPHOON FRAMEWORK
-//  Copyright 2015, Typhoon Framework Contributors
+//  Copyright 2016, Typhoon Framework Contributors
 //  All Rights Reserved.
 //
 //  NOTICE: The authors permit you to use, modify, and distribute this file
@@ -62,7 +62,7 @@
         // Change UIViewController outlets properties
         UIResponder *nextRexponder = [rootView nextResponder];
         if ([nextRexponder isKindOfClass:[UIViewController class]]) {
-            [nextRexponder transferFromView:self];
+            [nextRexponder transferConstraintsFromView:self];
         }
         
         // recursive check and change super outlets properties
@@ -76,7 +76,7 @@
 - (void)transferOutlets:(UIView *)view
            transferView:(UIView *)transferView
 {
-    [view transferFromView:transferView];
+    [view transferConstraintsFromView:transferView];
     
     // Optimization. The outlet from view to the subview of TyphoonLoadedView is invalid.
     if (view == transferView) {

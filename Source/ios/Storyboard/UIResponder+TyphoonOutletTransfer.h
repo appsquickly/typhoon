@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 //
 //  TYPHOON FRAMEWORK
-//  Copyright 2015, Typhoon Framework Contributors
+//  Copyright 2016, Typhoon Framework Contributors
 //  All Rights Reserved.
 //
 //  NOTICE: The authors permit you to use, modify, and distribute this file
@@ -13,6 +13,6 @@
 
 @interface UIResponder (TyphoonOutletTransfer)
 
-- (void)transferFromView:(UIView *)view;
+- (void)transferConstraintsFromView:(UIView *)view;
 
 @end
