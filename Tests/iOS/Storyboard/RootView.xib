@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10117"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="RootView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" restorationIdentifier="loadedView" translatesAutoresizingMaskIntoConstraints="NO" id="qtR-EY-xFN" customClass="TyphoonLoadedView">
+                    <rect key="frame" x="124" y="159" width="240" height="128"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="HoI-3C-zYj"/>
+                        <constraint firstAttribute="height" constant="128" id="pW3-3B-cNg"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FB2-OV-oFQ" customClass="RootView">
+                    <rect key="frame" x="180" y="236" width="240" height="128"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <connections>
+                        <outlet property="heightConstraint" destination="pW3-3B-cNg" id="EHG-Ae-zVB"/>
+                        <outlet property="leadingConstraint" destination="I8q-d1-qWV" id="bVT-LU-SPD"/>
+                        <outlet property="topConstraint" destination="K5q-hH-0ID" id="7bU-8Z-Elb"/>
+                        <outlet property="widthConstraint" destination="HoI-3C-zYj" id="tqo-ee-Grq"/>
+                        <outletCollection property="outlets" destination="HoI-3C-zYj" id="sfS-Gb-9VA"/>
+                        <outletCollection property="outlets" destination="pW3-3B-cNg" id="cAG-Sv-OYo"/>
+                    </connections>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="FB2-OV-oFQ" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="CaF-Gu-JcX"/>
+                <constraint firstItem="FB2-OV-oFQ" firstAttribute="width" secondItem="qtR-EY-xFN" secondAttribute="width" id="E9h-Hq-5JX"/>
+                <constraint firstItem="qtR-EY-xFN" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="124" id="I8q-d1-qWV"/>
+                <constraint firstItem="qtR-EY-xFN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="159" id="K5q-hH-0ID"/>
+                <constraint firstItem="FB2-OV-oFQ" firstAttribute="height" secondItem="qtR-EY-xFN" secondAttribute="height" id="TzA-9H-20E"/>
+                <constraint firstItem="FB2-OV-oFQ" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="b1j-ae-q28"/>
+            </constraints>
+            <connections>
+                <outlet property="anotherView" destination="FB2-OV-oFQ" id="Wae-Bq-2E6"/>
+                <outlet property="heightConstraint" destination="pW3-3B-cNg" id="NV8-HY-23d"/>
+                <outlet property="leadingConstraint" destination="I8q-d1-qWV" id="1p9-OK-QRP"/>
+                <outlet property="loadedView" destination="qtR-EY-xFN" id="fRQ-M4-Glt"/>
+                <outlet property="topConstraint" destination="K5q-hH-0ID" id="kYi-w1-t8h"/>
+                <outlet property="widthConstraint" destination="HoI-3C-zYj" id="gRy-X8-4oZ"/>
+                <outletCollection property="outlets" destination="HoI-3C-zYj" id="aSf-aE-yTU"/>
+                <outletCollection property="outlets" destination="pW3-3B-cNg" id="mZl-qA-mUn"/>
+            </connections>
+        </view>
+    </objects>
+</document>
