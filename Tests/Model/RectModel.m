@@ -9,15 +9,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import "RectModel.h"
 
-#import <Foundation/Foundation.h>
-
-@interface NSInvocation (TCFWrapValues)
-
-/** Get argument at index, wrapping primitive values in NSValue if needed */
-- (id)typhoon_getArgumentObjectAtIndex:(NSInteger)idx;
-
-/** Get return value, wrapping primitive values in NSValue if needed */
-- (id)typhoon_getReturnValue;
-
+@implementation RectModel
 @end
