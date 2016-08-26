@@ -27,7 +27,7 @@
 
 
 // Swizzle awakeFromNib
-// After the [super awakeFromNib] all the outlets on view will be setted
+// After the [super awakeFromNib] all the outlets on view will be set
 + (void)load
 {
     static dispatch_once_t onceToken;
@@ -56,7 +56,7 @@
     [self typhoon_awakeFromNib];
     // When view have superview transfer outlets if needed
     if (self.typhoonNeedTransferOutlets) {
-        // recursive search of root view (superview without superview)
+        // recursive search for root view (superview without superview)
         UIView *rootView = [self findRootView:self];
         
         // Change UIViewController outlets properties
