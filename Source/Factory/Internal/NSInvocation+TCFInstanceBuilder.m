@@ -51,14 +51,20 @@ static BOOL typhoon_IsSelectorReturnsRetained(SEL selector) {
 
 - (id)typhoon_resultOfInvokingOn:(id)instanceOrClass NS_RETURNS_RETAINED
 {
-    [self invokeWithTarget:instanceOrClass];
-    id returnValue = [self typhoon_getReturnValue];
-
+    id returnValue = nil;
+    
     BOOL isReturnsRetained = typhoon_IsSelectorReturnsRetained([self selector]);
+    [self invokeWithTarget:instanceOrClass];
+    /* getReturnValue method call must be called inside this file, because ARC is turned off here.
+     * The reason to turn off ARC, because it doesn't work properly with NSInvocation return values and unknown selector.
+     * ARC calls retain/release, which works bad on class clusters (initial value might be autoreleased or released 
+     * inside initializer, then over-released by ARC and that lead crash. It also doesnt work well with primitives, so we need to
+     * solve it all here, in NON-ARC file */
+    [self getReturnValue:&returnValue];
     if (!isReturnsRetained) {
         [returnValue retain]; /* Retain to take ownership on autoreleased object */
     }
-
+    
     return returnValue;
 }
 
