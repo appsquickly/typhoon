@@ -103,16 +103,18 @@ static NSMutableSet *reservedSelectorsAsStrings;
 
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation {
-    if (_factory) {
-        [_factory forwardInvocation:anInvocation];
-    }
-    else {
-        TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];
-        NSString *key = NSStringFromSelector(anInvocation.selector);
-        TyphoonDefinition *definition = [_definitionBuilder builtDefinitionForKey:key args:args];
-
-        [anInvocation retainArguments];
-        [anInvocation setReturnValue:&definition];
+    @synchronized (self) {
+        if (_factory) {
+            [_factory forwardInvocation:anInvocation];
+        }
+        else {
+            TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];
+            NSString *key = NSStringFromSelector(anInvocation.selector);
+            TyphoonDefinition *definition = [_definitionBuilder builtDefinitionForKey:key args:args];
+            
+            [anInvocation retainArguments];
+            [anInvocation setReturnValue:&definition];
+        }
     }
 }
 

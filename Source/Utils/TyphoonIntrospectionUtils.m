@@ -34,7 +34,7 @@ Class TyphoonClassFromFrameworkString(NSString *className);
             return (NULL);
         }
 
-        static char buffer[256];
+        char buffer[256];
         const char *e = strchr(attributes, ',');
         if (e == NULL) {
             return (NULL);
