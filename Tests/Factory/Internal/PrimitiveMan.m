@@ -53,5 +53,9 @@
     return self;
 }
 
+- (CGRect)makeRect
+{
+    return CGRectMake(0, 0, 100, 100);
+}
 
 @end

@@ -52,5 +52,6 @@ typedef struct
 @property(nonatomic, assign) NSValue *pointerInsideValue;
 @property(nonatomic, assign) PrimitiveManStruct unknownStructure;
 
+- (CGRect)makeRect;
 
 @end

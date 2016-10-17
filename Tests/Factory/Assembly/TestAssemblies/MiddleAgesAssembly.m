@@ -23,6 +23,7 @@
 #import "TyphoonInject.h"
 #import "CollaboratingMiddleAgesAssembly.h"
 #import "RectModel.h"
+#import "PrimitiveMan.h"
 
 @implementation MiddleAgesAssembly
 
@@ -551,14 +552,15 @@
     }];
 }
 
-- (UIScreen *)mainScreen
+
+- (PrimitiveMan *)mainScreen
 {
-    return [TyphoonDefinition withFactory:[UIScreen class] selector:@selector(mainScreen)];
+    return [TyphoonDefinition withFactory:[PrimitiveMan class] selector:@selector(new)];
 }
 
 - (NSValue *)mainScreenBounds
 {
-    return [TyphoonDefinition withFactory:[self mainScreen] selector:@selector(bounds)];
+    return [TyphoonDefinition withFactory:[self mainScreen] selector:@selector(makeRect)];
 }
 
 @end

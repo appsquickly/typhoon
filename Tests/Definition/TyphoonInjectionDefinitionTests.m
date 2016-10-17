@@ -79,8 +79,8 @@
 - (void)test_primitive_definition_component
 {
     RectModel *rectModel = [_assembly rectModel];
-    XCTAssertNotEqual([NSValue valueWithCGRect:rectModel.rectFrame],
-            [NSValue valueWithCGRect:CGRectZero]);
+    
+    XCTAssertFalse(CGRectEqualToRect(rectModel.rectFrame, CGRectZero));
 }
 
 @end

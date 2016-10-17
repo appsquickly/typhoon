@@ -11,39 +11,39 @@
 
 import Foundation
 
-public class SwiftMiddleAgesAssembly : TyphoonAssembly {
+open class SwiftMiddleAgesAssembly : TyphoonAssembly {
     
-    public dynamic func basicKnight() -> AnyObject {
+    open dynamic func basicKnight() -> AnyObject {
         
         return TyphoonDefinition.withClass(Knight.self) {
             (definition) in
             
-            definition.useInitializer("initWithQuest:") {
+            definition!.useInitializer(#selector(Knight.init(quest:))) {
                 (initializer) in
                 
-                initializer.injectParameterWith(self.defaultQuest())
+                initializer!.injectParameter(with: self.defaultQuest())
                 
             }
-        }
+        } as AnyObject
     }
     
-    public dynamic func defaultQuest() -> AnyObject {
-        return TyphoonDefinition.withClass(CampaignQuest.self)
+    open dynamic func defaultQuest() -> AnyObject {
+        return TyphoonDefinition.withClass(CampaignQuest.self) as AnyObject
     }
 
 
-    public dynamic func wanderingKnight(homeFort : Fort) -> AnyObject {
+    open dynamic func wanderingKnight(_ homeFort : Fort) -> AnyObject {
 
         return TyphoonDefinition.withClass(Knight.self) {
             (definition) in
 
-            definition.useInitializer("initWithQuest:") {
+            definition?.useInitializer(#selector(Knight.init(quest:))) {
                 (initializer) in
 
-                initializer.injectParameterWith(self.defaultQuest())
+                initializer?.injectParameter(with: self.defaultQuest())
             }
-            definition.injectProperty("homeFort", with: homeFort)
-        }
+            definition?.injectProperty(#selector(getter: Knight.homeFort), with: homeFort)
+        } as AnyObject
     }
     
 }
