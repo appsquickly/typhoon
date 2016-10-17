@@ -85,13 +85,13 @@
 Attach a TyphoonDefinitionPostProcessor to this component factory.
 @param postProcessor The definition post processor to attach.
 */
-- (void)attachDefinitionPostProcessor:(id<TyphoonDefinitionPostProcessor>)postProcessor;
+- (void)attachDefinitionPostProcessor:(id<TyphoonDefinitionPostProcessor>)postProcessor NS_SWIFT_NAME(attachDefinitionPostProcessor(postProcessor:));
 
 /**
  Attach a TyphoonInstancePostProcessor to this component factory.
  @param postProcessor The instance post processor to attach.
  */
-- (void)attachInstancePostProcessor:(id<TyphoonInstancePostProcessor>)postProcessor;
+- (void)attachInstancePostProcessor:(id<TyphoonInstancePostProcessor>)postProcessor NS_SWIFT_NAME(attachInstancePostProcessor(postProcessor:));
 
 /**
  Attach a TyphoonTypeConverter to this component factory.
