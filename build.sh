@@ -42,7 +42,7 @@ ditto ${resourceDir}/build-failed.png ${reportsDir}/build-status/build-status.pn
 platform=iOS_Simulator
 mkdir -p ${reportsDir}/${platform}
 xcodebuild clean test -project Typhoon.xcodeproj -scheme 'Typhoon-iOSTests' -configuration Debug \
--sdk iphonesimulator9.3 | xcpretty -c --report junit
+-destination "platform=iOS Simulator,name=iPhone 5s,OS=latest" | xcpretty -c --report junit
 mv ${reportsDir}/junit.xml ${reportsDir}/${platform}/junit.xml
 
 groovy http://frankencover.it/with --source-dir Source --output-dir ${reportsDir}/${platform} -r${requiredCoverage}

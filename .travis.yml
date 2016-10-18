@@ -1,3 +1,4 @@
 language: objective-c
 osx_image: xcode7.3
-script: ./build.sh
+script: ./.travisbuild.sh
+
