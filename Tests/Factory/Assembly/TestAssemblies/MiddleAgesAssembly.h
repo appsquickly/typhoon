@@ -124,4 +124,6 @@
 
 - (id)rectModel;
 
+- (NSNumber *)doublePrimitive;
+
 @end

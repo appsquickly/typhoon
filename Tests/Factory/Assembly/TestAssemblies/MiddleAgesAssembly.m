@@ -563,4 +563,10 @@
     return [TyphoonDefinition withFactory:[self mainScreen] selector:@selector(makeRect)];
 }
 
+- (NSNumber *)doublePrimitive
+{
+    return [TyphoonDefinition withFactory:@(123.32) selector:@selector(doubleValue)];
+    
+}
+
 @end

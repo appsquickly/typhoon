@@ -81,6 +81,16 @@
     RectModel *rectModel = [_assembly rectModel];
     
     XCTAssertFalse(CGRectEqualToRect(rectModel.rectFrame, CGRectZero));
+    
+    XCTAssertTrue(rectModel.rectFrame.size.height == 100);
+}
+
+- (void)test_double_definition
+{
+    NSNumber *primitive = [_assembly doublePrimitive];
+    
+    XCTAssertEqualObjects(primitive, @(123.32));
+    
 }
 
 @end
