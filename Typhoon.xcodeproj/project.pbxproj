@@ -3716,6 +3716,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = typhoonframework.org;
 				TargetAttributes = {
+					6B076E591936F5850083714E = {
+						LastSwiftMigration = 0800;
+					};
 					6B076E7D1936F5850083714E = {
 						LastSwiftMigration = 0800;
 						TestTargetID = 6B076E591936F5850083714E;
@@ -4964,6 +4967,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -4987,6 +4991,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
