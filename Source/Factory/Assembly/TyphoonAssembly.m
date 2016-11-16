@@ -243,24 +243,28 @@ static NSMutableSet *reservedSelectorsAsStrings;
 #pragma mark - Interface Methods
 //-------------------------------------------------------------------------------------------
 
-- (instancetype)activate
+- (instancetype)activated
 {
-    return [self activateWithCollaboratingAssemblies:nil];
+    if (self.factory) {
+        return (id)self.accessor;
+    } else {
+        return [self activatedWithCollaboratingAssemblies:nil];
+    }
 }
 
-- (instancetype)activateWithConfigResourceName:(NSString *)resourceName
+- (instancetype)activatedWithConfigResourceName:(NSString *__nonnull)resourceName
 {
     TyphoonConfigPostProcessor *processor = [TyphoonConfigPostProcessor processor];
     [processor useResourceWithName:resourceName];
-    return [self activateWithCollaboratingAssemblies:nil postProcessors:@[processor]];
+    return [self activatedWithCollaboratingAssemblies:nil postProcessors:@[processor]];
 }
 
-- (instancetype)activateWithCollaboratingAssemblies:(NSArray *)assemblies
+- (instancetype)activatedWithCollaboratingAssemblies:(NSArray *__nullable)assemblies
 {
-    return [self activateWithCollaboratingAssemblies:assemblies postProcessors:nil];
+    return [self activatedWithCollaboratingAssemblies:assemblies postProcessors:nil];
 }
 
-- (instancetype)activateWithCollaboratingAssemblies:(NSArray *)assemblies postProcessors:(NSArray *)postProcessors
+- (instancetype)activatedWithCollaboratingAssemblies:(NSArray *__nullable)assemblies postProcessors:(NSArray *__nullable)postProcessors
 {
     [self attachProcessors:postProcessors];
 
@@ -292,7 +296,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
                                                                                   [reconciledAssemblies allObjects]];
     [TyphoonMemoryManagementUtils makeAssemblies:reconciledAssemblies retainFactory:factory];
 
-    return self.accessor;
+    return (id)self.accessor;
 }
 
 //-------------------------------------------------------------------------------------------

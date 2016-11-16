@@ -34,7 +34,7 @@
 {
     [super setUp];
 
-    _assembly = [[MiddleAgesAssembly assembly] activate];
+    _assembly = [[MiddleAgesAssembly assembly] activated];
 }
 
 - (void)test_allows_patching_out_a_component_with_a_mock

@@ -26,7 +26,7 @@
 - (void)setUp
 {
     [super setUp];
-    assembly = [[AssemblyWithDefinitionConfiguration assembly] activate];
+    assembly = [[AssemblyWithDefinitionConfiguration assembly] activated];
 }
 
 - (void)test_macros_defined_definition

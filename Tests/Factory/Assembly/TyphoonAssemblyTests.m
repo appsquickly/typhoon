@@ -31,7 +31,7 @@
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
     XCTAssertTrue([[assembly knight] isKindOfClass:[TyphoonDefinition class]]);
 
-    assembly = [assembly activate];
+    assembly = [assembly activated];
 
     XCTAssertTrue([[assembly knight] isKindOfClass:[Knight class]]);
     LogInfo(@"Knight: %@", [assembly knight]);
@@ -39,8 +39,8 @@
 
 - (void)test_activated_assembly_returns_activated_collaborators
 {
-    MiddleAgesAssembly *assembly = [[MiddleAgesAssembly assembly] activateWithCollaboratingAssemblies:@[
-        [CollaboratingMiddleAgesAssembly assembly]
+    MiddleAgesAssembly *assembly = [[MiddleAgesAssembly assembly] activatedWithCollaboratingAssemblies:@[
+            [CollaboratingMiddleAgesAssembly assembly]
     ]];
 
     id<Quest> quest = assembly.collaboratingAssembly.quests.environmentDependentQuest;
@@ -55,10 +55,10 @@
      *  We need a couple of similar tests to be sure in the absence of edge cases.
      */
     TyphoonFirstLoopAssembly *firstAssembly = [TyphoonFirstLoopAssembly assembly];
-    firstAssembly = [firstAssembly activateWithCollaboratingAssemblies:@[
-                                                        [TyphoonSecondLoopAssembly new],
-                                                        [TyphoonThirdLoopAssembly new]
-                                                        ]];
+    firstAssembly = [firstAssembly activatedWithCollaboratingAssemblies:@[
+            [TyphoonSecondLoopAssembly new],
+            [TyphoonThirdLoopAssembly new]
+    ]];
     id<Quest> quest = [firstAssembly testQuest];
     
     XCTAssertNotNil(quest);
@@ -68,9 +68,9 @@
 - (void)test_activation_with_looped_collaborators_1_2_1
 {
     TyphoonFourthLoopAssembly *fourthAssembly = [TyphoonFourthLoopAssembly assembly];
-    fourthAssembly = [fourthAssembly activateWithCollaboratingAssemblies:@[
-                                                         [TyphoonFifthLoopAssembly new]
-                                                         ]];
+    fourthAssembly = [fourthAssembly activatedWithCollaboratingAssemblies:@[
+            [TyphoonFifthLoopAssembly new]
+    ]];
     id<Quest> quest = [fourthAssembly testQuest];
     
     XCTAssertNotNil(quest);
@@ -165,7 +165,7 @@
 - (void)test_after_activation_TyphoonComponentFactory_methods_are_available
 {
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
-    assembly = [assembly activate];
+    assembly = [assembly activated];
 
     XCTAssertTrue([[assembly componentForKey:@"knight"] isKindOfClass:[Knight class]]);
 }
@@ -173,7 +173,7 @@
 - (void)test_after_activation_can_inject_pre_obtained_instance
 {
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
-    assembly = [assembly activate];
+    assembly = [assembly activated];
 
     Knight *knight = [[Knight alloc] init];
     [assembly inject:knight withSelector:@selector(knight)];
@@ -183,7 +183,7 @@
 - (void)test_after_activation_assembly_can_be_made_default
 {
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
-    assembly = [assembly activate];
+    assembly = [assembly activated];
     [assembly makeDefault];
     
     MiddleAgesAssembly *defaultAssembly = [MiddleAgesAssembly defaultAssembly];
@@ -194,7 +194,7 @@
 - (void)test_nil_definition_with_injection_hooks
 {
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
-    [assembly activate];
+    [assembly activated];
 
     @try {
         Knight *knight = [assembly occasionallyNilKnightWithBeforeInjections];

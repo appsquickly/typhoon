@@ -27,7 +27,7 @@ We didn't want to create a pure Swift version of Typhoon unless it would be bett
 * <a href="http://ios.caph.jp/typhoon/introduction">日本のドキュメンテーション</a>
 
 ```swift
-let assembly = MyAssembly().activate()
+let assembly = MyAssembly().activated()
 let viewControler = assembly.recommendationController() as! RecommendationController
 ```
 

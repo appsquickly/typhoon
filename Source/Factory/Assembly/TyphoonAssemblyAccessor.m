@@ -17,6 +17,7 @@
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonAssemblySelectorAdviser.h"
 #import "TyphoonInjectionByComponentFactory.h"
+#import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 
 @implementation TyphoonAssemblyAccessor
 

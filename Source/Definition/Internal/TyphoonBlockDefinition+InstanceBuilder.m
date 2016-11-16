@@ -23,6 +23,7 @@
 #import "TyphoonLinkerCategoryBugFix.h"
 #import "TyphoonAssembly.h"
 #import "NSInvocation+TCFCustomImplementation.h"
+#import "TyphoonAssembly+TyphoonAssemblyFriend.h"
 
 TYPHOON_LINK_CATEGORY(TyphoonBlockDefinition_InstanceBuilder)
 

@@ -31,7 +31,7 @@
 {
     [super setUp];
 
-    factory = [[MiddleAgesAssembly assembly] activate];
+    factory = [[MiddleAgesAssembly assembly] activated];
 }
 
 - (void)test_runtime_arguments
