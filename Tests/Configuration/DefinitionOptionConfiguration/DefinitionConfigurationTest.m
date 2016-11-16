@@ -14,7 +14,6 @@
 #import <XCTest/XCTest.h>
 #import "AssemblyWithDefinitionConfiguration.h"
 #import "TyphoonBlockComponentFactory.h"
-#import "TyphoonAssemblyActivator.h"
 
 @interface DefinitionConfigurationTest : XCTestCase
 

@@ -15,7 +15,6 @@
 #import "CollaboratingMiddleAgesAssembly.h"
 #import "MiddleAgesAssembly.h"
 #import "Knight.h"
-#import "TyphoonAssemblyActivator.h"
 
 @interface TyphoonComponentsFactoryCollaboratingWithRuntimeArgsTests : XCTestCase
 
