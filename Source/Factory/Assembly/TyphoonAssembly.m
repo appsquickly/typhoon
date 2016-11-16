@@ -27,6 +27,7 @@
 #import "TyphoonCollaboratingAssembliesCollector.h"
 #import "TyphoonConfigPostProcessor.h"
 #import "TyphoonMemoryManagementUtils.h"
+#import "TyphoonAssemblyAccessor.h"
 
 static NSMutableSet *reservedSelectorsAsStrings;
 
@@ -40,6 +41,8 @@ static NSMutableSet *reservedSelectorsAsStrings;
 @property(readonly) TyphoonAssemblyAdviser *adviser;
 @property(readonly, unsafe_unretained) TyphoonComponentFactory *factory;
 @property(readonly) TyphoonCollaboratingAssembliesCollector *collector;
+
+@property (nonatomic, strong) TyphoonAssemblyAccessor *accessor;
 
 @end
 
@@ -129,7 +132,11 @@ static NSMutableSet *reservedSelectorsAsStrings;
         _adviser = [[TyphoonAssemblyAdviser alloc] initWithAssembly:self];
         _collector = [[TyphoonCollaboratingAssembliesCollector alloc] initWithAssemblyClass:[self class]];
         _preattachedInfrastructureComponents = [NSArray array];
-        
+
+        _accessor = [TyphoonAssemblyAccessor new];
+        _accessor.assembly = self;
+        _accessor.definitionBuilder = _definitionBuilder;
+
         [self proxyCollaboratingAssembliesPriorToActivation];
     }
     return self;
@@ -288,9 +295,9 @@ static NSMutableSet *reservedSelectorsAsStrings;
     TyphoonBlockComponentFactory *factory = [TyphoonBlockComponentFactory factoryWithAssemblies:
             [reconciledAssemblies allObjects]];
     [TyphoonMemoryManagementUtils makeAssemblies:reconciledAssemblies retainFactory:factory];
-    return self;
-}
 
+    return self.accessor;
+}
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - Private Methods
@@ -306,13 +313,22 @@ static NSMutableSet *reservedSelectorsAsStrings;
     TyphoonCollaboratingAssemblyPropertyEnumerator *enumerator = [[TyphoonCollaboratingAssemblyPropertyEnumerator alloc]
             initWithAssembly:self];
 
+    NSMutableDictionary *collaboratingAssemblies = [NSMutableDictionary new];
+
     for (NSString *propertyName in enumerator.collaboratingAssemblyProperties) {
-        [self setValue:[TyphoonCollaboratingAssemblyProxy proxy] forKey:propertyName];
+        TyphoonCollaboratingAssemblyProxy *proxy = [TyphoonCollaboratingAssemblyProxy proxy];
+        [self setValue:proxy forKey:propertyName];
+        collaboratingAssemblies[propertyName] = proxy;
     }
+
+    _accessor.collaboratingAssemblies = collaboratingAssemblies;
 }
 
 - (void)activateWithFactory:(TyphoonComponentFactory *)factory collaborators:(NSSet *)collaborators {
     _factory = factory;
+    _accessor.factory = _factory;
+
+    NSMutableDictionary *collaboratingAssemblies = [NSMutableDictionary new];
     
     for (NSString *propertyName in [self typhoonPropertiesUpToParentClass:[TyphoonAssembly class]]) {
         TyphoonTypeDescriptor *descriptor = [self typhoonTypeForPropertyNamed:propertyName];
@@ -324,6 +340,7 @@ static NSMutableSet *reservedSelectorsAsStrings;
                         propertyName, NSStringFromClass([self class]));
             }
             [self setValue:collaborator forKey:propertyName];
+            collaboratingAssemblies[propertyName] = collaborator;
         }
         else if ([descriptor.typeBeingDescribed isSubclassOfClass:[TyphoonAssembly class]]) {
             TyphoonAssembly *collaborator = [self assemblyWithType:descriptor.typeBeingDescribed in:collaborators];
@@ -333,8 +350,11 @@ static NSMutableSet *reservedSelectorsAsStrings;
                         NSStringFromClass([self class]));
             }
             [self setValue:collaborator forKey:propertyName];
+            collaboratingAssemblies[propertyName] = collaborator;
         }
     }
+
+    _accessor.collaboratingAssemblies = collaboratingAssemblies;
 }
 
 - (TyphoonAssembly *)assemblyConformingTo:(NSString *)protocolName in:(NSSet *)assemblies {
@@ -363,7 +383,6 @@ static NSMutableSet *reservedSelectorsAsStrings;
 - (void)prepareForUse {
     self.definitionSelectors = [self.adviser definitionSelectors];
     self.assemblyClassPerDefinitionKey = [self.adviser assemblyClassPerDefinitionKey];
-    [self.adviser adviseAssembly];
 }
 
 - (Class)assemblyClassForKey:(NSString *)key

@@ -29,7 +29,7 @@
 #import <objc/runtime.h>
 #import <objc/message.h>
 
-static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSignature *signature);
+static id objc_msgSend_InjectionArguments(id target, id implTarget, SEL selector, NSMethodSignature *signature);
 static id InjectionForArgumentType(const char *argumentType, NSUInteger index);
 static BOOL IsPrimitiveArgumentType(const char *argumentType);
 static BOOL IsPrimitiveArgumentAllowed(id result);
@@ -69,7 +69,7 @@ static BOOL IsPrimitiveArgumentAllowed(id result);
     [[TyphoonBlockDefinitionController currentController] useConfigurationRouteWithinBlock:^{
         [[self.assembly definitionSelectors] enumerateObjectsUsingBlock:^(TyphoonSelector *wrappedSEL, BOOL *stop) {
             SEL selector = [wrappedSEL selector];
-            NSString *key = [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector];
+            NSString *key = [TyphoonAssemblySelectorAdviser keyForSEL:selector];
             [self buildDefinitionForKey:key];
         }];
     }];
@@ -185,7 +185,7 @@ static BOOL IsPrimitiveArgumentAllowed(id result);
     NSMethodSignature *signature = [self.assembly methodSignatureForSelector:sel];
 
     id cached =
-        objc_msgSend_InjectionArguments(self.assembly, sel, signature); // the advisedSEL will call through to the original, unwrapped implementation because prepareForUse has been called, and all our definition methods have been swizzled.
+        objc_msgSend_InjectionArguments(self.assembly.accessor, self.assembly, sel, signature); // the advisedSEL will call through to the original, unwrapped implementation because prepareForUse has been called, and all our definition methods have been swizzled.
     // This method will likely call through to other definition methods on the assembly, which will go through the advising machinery because of this swizzling.
     // Therefore, the definitions a definition depends on will be fully constructed before they are needed to construct that definition.
     
@@ -194,10 +194,10 @@ static BOOL IsPrimitiveArgumentAllowed(id result);
 
 - (SEL)assemblySelectorForKey:(NSString *)key
 {
-    return [TyphoonAssemblySelectorAdviser advisedSELForKey:key class:[self.assembly assemblyClassForKey:key]];
+    return [TyphoonAssemblySelectorAdviser SELForKey:key class:[self.assembly assemblyClassForKey:key]];
 }
 
-static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSignature *signature)
+static id objc_msgSend_InjectionArguments(id target, id implTarget, SEL selector, NSMethodSignature *signature)
 {
     if (signature.numberOfArguments > 2) {
         void *unsafeResult;
@@ -205,7 +205,10 @@ static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSigna
         
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
         [invocation setSelector:selector];
+        [invocation setTarget:implTarget];
         [invocation retainArguments];
+
+        [invocation setArgument:&target atIndex:0];
         /* Fill invocation arguments with TyphoonInjectionWithRuntimeArgumentAtIndex injections */
         for (NSUInteger i = 0; i < signature.numberOfArguments - 2; i++) {
             const char *argumentType = [signature getArgumentTypeAtIndex:i + 2];
@@ -216,19 +219,20 @@ static id objc_msgSend_InjectionArguments(id target, SEL selector, NSMethodSigna
                 primitiveArgumentIndex = i;
             }
         }
-        [invocation invokeWithTarget:target];
+        [invocation invoke];
         [invocation getReturnValue:&unsafeResult];
         
         id result = (__bridge id) unsafeResult;
         
         if (primitiveArgumentIndex != NSNotFound && !IsPrimitiveArgumentAllowed(result)) {
-            [NSException raise:NSInvalidArgumentException format:@"The method '%@' in assembly '%@', contains a runtime argument of primitive type (BOOL, int, CGFloat, etc) at index %@. Runtime arguments for TyphoonDefinitions can only be objects. Use TyphoonBlockDefinition, or wrappers like NSNumber or NSValue (they will be unwrapped into primitive value during injection) ", [TyphoonAssemblySelectorAdviser keyForAdvisedSEL:selector], [target class], @(primitiveArgumentIndex)];
+            [NSException raise:NSInvalidArgumentException format:@"The method '%@' in assembly '%@', contains a runtime argument of primitive type (BOOL, int, CGFloat, etc) at index %@. Runtime arguments for TyphoonDefinitions can only be objects. Use TyphoonBlockDefinition, or wrappers like NSNumber or NSValue (they will be unwrapped into primitive value during injection) ", [TyphoonAssemblySelectorAdviser keyForSEL:selector], [target class], @(primitiveArgumentIndex)];
         }
         
         return result;
     }
     else {
-        return ((id (*)(id, SEL))objc_msgSend)(target, selector);
+        id(*impl)(id, SEL) = (id(*)(id, SEL))[((NSObject *)implTarget) methodForSelector:selector];
+        return impl(target, selector);
     }
 }
 

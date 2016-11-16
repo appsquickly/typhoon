@@ -43,12 +43,12 @@ AnalyticsService* service = [assembly analyticsService];
 */
 @interface TyphoonAssembly : NSObject <TyphoonComponentFactory>
 
-+ (instancetype)assembly;
++ (__nonnull instancetype)assembly;
 
 /**
 * Returns the [TyphoonComponentFactory defaultFactory] posing as a TyphoonAssembly.
 */
-+ (instancetype)defaultAssembly;
++ (__nullable instancetype)defaultAssembly;
 
 
 /**
@@ -58,7 +58,7 @@ AnalyticsService* service = [assembly analyticsService];
  * @see activateWithCollaboratingAssemblies
  *
  */
-- (instancetype)activate;
+- (__nonnull instancetype)activate;
 
 
 /**
@@ -75,7 +75,7 @@ TyphoonConfigPostProcessor *processor = [TyphoonConfigPostProcessor processor];
 @endcode
  *
  */
-- (instancetype)activateWithConfigResourceName:(NSString *)resourceName;
+- (__nonnull instancetype)activateWithConfigResourceName:(NSString  * __nonnull)resourceName;
 
 
 /**
@@ -85,8 +85,10 @@ TyphoonConfigPostProcessor *processor = [TyphoonConfigPostProcessor processor];
  * references another assembly of type NetworkProvider, specifying a subclass TestNetworkProvider will override
  * the base type. If collaborating assemblies are backed by a protocol, they must be specified explicitly. 
  */
-- (instancetype)activateWithCollaboratingAssemblies:(NSArray *)assemblies;
+- (__nonnull instancetype)activateWithCollaboratingAssemblies:(NSArray * __nullable)assemblies;
 
-- (instancetype)activateWithCollaboratingAssemblies:(NSArray *)assemblies postProcessors:(NSArray *)postProcessors;
+- (__nonnull instancetype)activateWithCollaboratingAssemblies:(NSArray * __nullable)assemblies postProcessors:(NSArray * __nullable)postProcessors;
+
+- (__nonnull instancetype)accessor;
 
 @end
