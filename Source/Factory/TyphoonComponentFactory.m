@@ -261,14 +261,6 @@ static TyphoonComponentFactory *uiResolvingFactory = nil;
     [_typeConverterRegistry registerTypeConverter:typeConverter];
 }
 
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-implementations"
-- (void)attachPostProcessor:(id<TyphoonDefinitionPostProcessor>)postProcessor
-{
-    [self attachDefinitionPostProcessor:postProcessor];
-}
-#pragma clang diagnostic pop
-
 - (void)inject:(id)instance
 {
     @synchronized (self) {

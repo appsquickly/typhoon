@@ -99,8 +99,6 @@ Attach a TyphoonDefinitionPostProcessor to this component factory.
  */
 - (void)attachTypeConverter:(id<TyphoonTypeConverter>)typeConverter;
 
-- (void)attachPostProcessor:(id<TyphoonDefinitionPostProcessor>)postProcessor DEPRECATED_MSG_ATTRIBUTE("use attachDefinitionPostProcessor instead");
-
 @end
 
 /**

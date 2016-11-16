@@ -165,7 +165,7 @@
 - (void)test_after_activation_TyphoonComponentFactory_methods_are_available
 {
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
-    [assembly activate];
+    assembly = [assembly activate];
 
     XCTAssertTrue([[assembly componentForKey:@"knight"] isKindOfClass:[Knight class]]);
 }
@@ -173,7 +173,7 @@
 - (void)test_after_activation_can_inject_pre_obtained_instance
 {
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
-    [assembly activate];
+    assembly = [assembly activate];
 
     Knight *knight = [[Knight alloc] init];
     [assembly inject:knight withSelector:@selector(knight)];
@@ -183,8 +183,12 @@
 - (void)test_after_activation_assembly_can_be_made_default
 {
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
-    [assembly activate];
+    assembly = [assembly activate];
     [assembly makeDefault];
+    
+    MiddleAgesAssembly *defaultAssembly = [MiddleAgesAssembly defaultAssembly];
+    XCTAssertTrue([defaultAssembly.knight isKindOfClass:[Knight class]]);
+    
 }
 
 - (void)test_nil_definition_with_injection_hooks

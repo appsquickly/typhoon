@@ -28,7 +28,7 @@
 {
     [super setUp];
     self.assembly = [RootViewAssembly new];
-    [self.assembly activate];
+    self.assembly = [self.assembly activate];
     [TyphoonComponentFactory setFactoryForResolvingUI:(id)self.assembly];
 }
 

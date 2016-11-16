@@ -16,6 +16,7 @@
 #import "TyphoonAssemblyDefinitionBuilder.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonAssemblySelectorAdviser.h"
+#import "TyphoonInjectionByComponentFactory.h"
 
 @implementation TyphoonAssemblyAccessor
 
@@ -58,6 +59,15 @@
             return [factory methodSignatureForSelector:aSelector];
         }
     }
+}
+
+//-------------------------------------------------------------------------------------------
+#pragma mark - <TyphoonObjectWithCustomInjection>
+//-------------------------------------------------------------------------------------------
+
+- (id<TyphoonPropertyInjection, TyphoonParameterInjection>)typhoonCustomObjectInjection
+{
+    return [[TyphoonInjectionByComponentFactory alloc] init];
 }
 
 //-------------------------------------------------------------------------------------------
@@ -122,7 +132,7 @@
 }
 
 - (id)objectForKeyedSubscript:(id)key {
-
     return [self.factory objectForKeyedSubscript:key];
 }
+
 @end
