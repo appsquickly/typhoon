@@ -32,7 +32,6 @@
 
 static id objc_msgSend_InjectionArguments(id target, id implTarget, SEL selector, NSMethodSignature *signature);
 static id InjectionForArgumentType(const char *argumentType, NSUInteger index);
-static BOOL IsPrimitiveArgumentAllowed(id result);
 
 @implementation TyphoonAssemblyDefinitionBuilder
 {
@@ -203,10 +202,6 @@ static id objc_msgSend_InjectionArguments(id target, id implTarget, SEL selector
 
         void *unsafeResult;
         
-        if (selector == NSSelectorFromString(@"blockKnightWithPrimitiveDamsels:")) {
-            NSLog(@"Test");
-        }
-
         IMP method = [((NSObject *)implTarget) methodForSelector:selector];
 
         NSUInteger primitiveArgumentIndex = NSNotFound;
@@ -222,8 +217,8 @@ static id objc_msgSend_InjectionArguments(id target, id implTarget, SEL selector
             if (!IsPrimitiveArgumentType(argumentType)) {
                 id injection = InjectionForArgumentType(argumentType, i);
                 [invocation setArgument:&injection atIndex:(NSInteger)(i + 2)];
-            } else if (primitiveArgumentIndex == NSNotFound) {
-                primitiveArgumentIndex = i;
+            } else {
+                [NSException raise:NSInvalidArgumentException format:@"The method '%@' in assembly '%@', contains a runtime argument of primitive type (BOOL, int, CGFloat, etc) at index %@. Runtime arguments for TyphoonDefinitions can only be objects. Use TyphoonBlockDefinition, or wrappers like NSNumber or NSValue (they will be unwrapped into primitive value during injection) ", [TyphoonAssemblySelectorAdviser keyForSEL:selector], [target class], @(primitiveArgumentIndex)];
             }
         }
         [invocation invokeWithCustomImplementation:method];
@@ -231,9 +226,7 @@ static id objc_msgSend_InjectionArguments(id target, id implTarget, SEL selector
         
         id result = (__bridge id) unsafeResult;
         
-        if (primitiveArgumentIndex != NSNotFound && !IsPrimitiveArgumentAllowed(result)) {
-            [NSException raise:NSInvalidArgumentException format:@"The method '%@' in assembly '%@', contains a runtime argument of primitive type (BOOL, int, CGFloat, etc) at index %@. Runtime arguments for TyphoonDefinitions can only be objects. Use TyphoonBlockDefinition, or wrappers like NSNumber or NSValue (they will be unwrapped into primitive value during injection) ", [TyphoonAssemblySelectorAdviser keyForSEL:selector], [target class], @(primitiveArgumentIndex)];
-        }
+     
         
         return result;
     }
@@ -260,12 +253,6 @@ BOOL IsPrimitiveArgumentType(const char *argumentType)
     return (!CStringEquals(argumentType, "@") &&   // object
             !CStringEquals(argumentType, "@?") &&  // block
             !CStringEquals(argumentType, "#"));    // metaClass
-}
-
-static BOOL IsPrimitiveArgumentAllowed(id result)
-{
-    /* Primitive arguments are only allowed for TyphoonBlockDefinition */
-    return [result isKindOfClass:[TyphoonBlockDefinition class]];
 }
 
 - (TyphoonDefinition *)populateCacheWithDefinition:(TyphoonDefinition *)definition forKey:(NSString *)key

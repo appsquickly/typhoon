@@ -2193,12 +2193,7 @@
 		6B076F051936F63A0083714E /* Internal */ = {
 			isa = PBXGroup;
 			children = (
-				6B076F081936F63A0083714E /* NSInvocation+TCFInstanceBuilder.h */,
-				6B076F091936F63A0083714E /* NSInvocation+TCFInstanceBuilder.m */,
-				6B076F0A1936F63A0083714E /* NSInvocation+TCFUnwrapValues.h */,
-				6B076F0B1936F63A0083714E /* NSInvocation+TCFUnwrapValues.m */,
-				01A28DF81C5D8E51006F0A95 /* NSInvocation+TCFWrapValues.h */,
-				01A28DF91C5D8E51006F0A95 /* NSInvocation+TCFWrapValues.m */,
+				FA932D991DDC9670000FE54C /* NSInvocation */,
 				6B076F0C1936F63A0083714E /* NSMethodSignature+TCFUnwrapValues.h */,
 				6B076F0D1936F63A0083714E /* NSMethodSignature+TCFUnwrapValues.m */,
 				6B076F0E1936F63A0083714E /* NSValue+TCFUnwrapValues.h */,
@@ -2240,8 +2235,6 @@
 				9F2C08A71BA0C7AF0049D751 /* TyphoonCollaboratingAssembliesCollector.m */,
 				01A28E051C5EBCD7006F0A95 /* TyphoonMemoryManagementUtils.h */,
 				01A28E061C5EBCD7006F0A95 /* TyphoonMemoryManagementUtils.m */,
-				2DBA195FDBF2A06E8A9C5A4D /* NSInvocation+TCFCustomImplementation.m */,
-				2DBA17CC731625D59B3E3138 /* NSInvocation+TCFCustomImplementation.h */,
 			);
 			path = Internal;
 			sourceTree = "<group>";
@@ -3143,6 +3136,21 @@
 				BA798F958813EEAAAF528D26 /* TyphoonStartupTests_OSX.m */,
 			);
 			path = Startup;
+			sourceTree = "<group>";
+		};
+		FA932D991DDC9670000FE54C /* NSInvocation */ = {
+			isa = PBXGroup;
+			children = (
+				6B076F081936F63A0083714E /* NSInvocation+TCFInstanceBuilder.h */,
+				6B076F091936F63A0083714E /* NSInvocation+TCFInstanceBuilder.m */,
+				6B076F0A1936F63A0083714E /* NSInvocation+TCFUnwrapValues.h */,
+				6B076F0B1936F63A0083714E /* NSInvocation+TCFUnwrapValues.m */,
+				01A28DF81C5D8E51006F0A95 /* NSInvocation+TCFWrapValues.h */,
+				01A28DF91C5D8E51006F0A95 /* NSInvocation+TCFWrapValues.m */,
+				2DBA17CC731625D59B3E3138 /* NSInvocation+TCFCustomImplementation.h */,
+				2DBA195FDBF2A06E8A9C5A4D /* NSInvocation+TCFCustomImplementation.m */,
+			);
+			name = NSInvocation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
