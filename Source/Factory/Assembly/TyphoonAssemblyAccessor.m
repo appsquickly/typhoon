@@ -60,4 +60,69 @@
     }
 }
 
+//-------------------------------------------------------------------------------------------
+#pragma mark - <TyphoonComponentFactory>
+//-------------------------------------------------------------------------------------------
+
+- (id)componentForType:(id)classOrProtocol {
+    return [self.factory componentForType:classOrProtocol];
+}
+
+- (NSArray *)allComponentsForType:(id)classOrProtocol {
+  
+    return [self.factory allComponentsForType:classOrProtocol];
+}
+
+- (id)componentForKey:(NSString *)key {
+  
+    return [self.factory componentForKey:key];
+}
+
+- (id)componentForKey:(NSString *)key args:(TyphoonRuntimeArguments *)args {
+  
+    return [self.factory componentForKey:key args:args];
+}
+
+- (void)inject:(id)instance {
+  
+    [self.factory inject:instance];
+}
+
+- (void)inject:(id)instance withSelector:(SEL)selector {
+
+    [self.factory inject:instance withSelector:selector];
+}
+
+
+- (void)makeDefault {
+
+    [self.factory makeDefault];
+}
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-implementations"
+- (void)attachPostProcessor:(id <TyphoonDefinitionPostProcessor>)postProcessor {
+    [self attachDefinitionPostProcessor:postProcessor];
+}
+#pragma clang diagnostic pop
+
+- (void)attachDefinitionPostProcessor:(id <TyphoonDefinitionPostProcessor>)postProcessor {
+
+    [self.factory attachDefinitionPostProcessor:postProcessor];
+}
+
+- (void)attachInstancePostProcessor:(id<TyphoonInstancePostProcessor>)postProcessor {
+
+    [self.factory attachInstancePostProcessor:postProcessor];
+}
+
+- (void)attachTypeConverter:(id<TyphoonTypeConverter>)typeConverter {
+
+    [self.factory attachTypeConverter:typeConverter];
+}
+
+- (id)objectForKeyedSubscript:(id)key {
+
+    return [self.factory objectForKeyedSubscript:key];
+}
 @end

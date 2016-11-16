@@ -25,13 +25,13 @@
 #import "TyphoonRuntimeArguments.h"
 #import "TyphoonReferenceDefinition.h"
 #import "TyphoonBlockDefinitionController.h"
+#import "NSInvocation+TCFCustomImplementation.h"
 
 #import <objc/runtime.h>
 #import <objc/message.h>
 
 static id objc_msgSend_InjectionArguments(id target, id implTarget, SEL selector, NSMethodSignature *signature);
 static id InjectionForArgumentType(const char *argumentType, NSUInteger index);
-static BOOL IsPrimitiveArgumentType(const char *argumentType);
 static BOOL IsPrimitiveArgumentAllowed(id result);
 
 @implementation TyphoonAssemblyDefinitionBuilder
@@ -200,15 +200,22 @@ static BOOL IsPrimitiveArgumentAllowed(id result);
 static id objc_msgSend_InjectionArguments(id target, id implTarget, SEL selector, NSMethodSignature *signature)
 {
     if (signature.numberOfArguments > 2) {
+
         void *unsafeResult;
+        
+        if (selector == NSSelectorFromString(@"blockKnightWithPrimitiveDamsels:")) {
+            NSLog(@"Test");
+        }
+
+        IMP method = [((NSObject *)implTarget) methodForSelector:selector];
+
         NSUInteger primitiveArgumentIndex = NSNotFound;
         
         NSInvocation *invocation = [NSInvocation invocationWithMethodSignature:signature];
         [invocation setSelector:selector];
-        [invocation setTarget:implTarget];
+        [invocation setTarget:target];
         [invocation retainArguments];
 
-        [invocation setArgument:&target atIndex:0];
         /* Fill invocation arguments with TyphoonInjectionWithRuntimeArgumentAtIndex injections */
         for (NSUInteger i = 0; i < signature.numberOfArguments - 2; i++) {
             const char *argumentType = [signature getArgumentTypeAtIndex:i + 2];
@@ -219,7 +226,7 @@ static id objc_msgSend_InjectionArguments(id target, id implTarget, SEL selector
                 primitiveArgumentIndex = i;
             }
         }
-        [invocation invoke];
+        [invocation invokeWithCustomImplementation:method];
         [invocation getReturnValue:&unsafeResult];
         
         id result = (__bridge id) unsafeResult;
@@ -248,7 +255,7 @@ static id InjectionForArgumentType(const char *argumentType, NSUInteger index)
     }
 }
 
-static BOOL IsPrimitiveArgumentType(const char *argumentType)
+BOOL IsPrimitiveArgumentType(const char *argumentType)
 {
     return (!CStringEquals(argumentType, "@") &&   // object
             !CStringEquals(argumentType, "@?") &&  // block

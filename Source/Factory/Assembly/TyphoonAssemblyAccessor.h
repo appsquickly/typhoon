@@ -10,12 +10,13 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
+#import "TyphoonComponentFactory.h"
 
 @class TyphoonComponentFactory;
 @class TyphoonAssembly;
 @class TyphoonAssemblyDefinitionBuilder;
 
-@interface TyphoonAssemblyAccessor : NSObject
+@interface TyphoonAssemblyAccessor : NSObject <TyphoonComponentFactory>
 
 @property (nonatomic, weak) TyphoonComponentFactory *factory;
 @property (nonatomic, weak) TyphoonAssembly *assembly;

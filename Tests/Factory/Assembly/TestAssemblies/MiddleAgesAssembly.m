@@ -480,14 +480,14 @@
     }];
 }
 
-- (id)blockKnightWithPrimitiveDamsels:(NSUInteger)damsels
-{
-    return [TyphoonBlockDefinition withClass:[Knight class] block:^id{
-        Knight *knight = [[Knight alloc] init];
-        knight.damselsRescued = damsels;
-        return knight;
-    }];
-}
+//- (id)blockKnightWithPrimitiveDamsels:(NSUInteger)damsels
+//{
+//    return [TyphoonBlockDefinition withClass:[Knight class] block:^id{
+//        Knight *knight = [[Knight alloc] init];
+//        knight.damselsRescued = damsels;
+//        return knight;
+//    }];
+//}
 
 - (id)blockKnightWithQuestsByType
 {

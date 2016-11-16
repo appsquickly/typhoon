@@ -21,6 +21,8 @@
 #import "TyphoonInjection.h"
 #import "NSInvocation+TCFUnwrapValues.h"
 #import "TyphoonLinkerCategoryBugFix.h"
+#import "TyphoonAssembly.h"
+#import "NSInvocation+TCFCustomImplementation.h"
 
 TYPHOON_LINK_CATEGORY(TyphoonBlockDefinition_InstanceBuilder)
 
@@ -67,7 +69,8 @@ TYPHOON_LINK_CATEGORY(TyphoonBlockDefinition_InstanceBuilder)
 
 - (id)invokeAssemblySelector
 {
-    id target = self.assembly;
+    TyphoonAssembly *assembly = self.assembly;
+    id target = assembly.accessor;
     SEL selector = self.assemblySelector;
     
     if (!target || !selector) {
@@ -92,7 +95,10 @@ TYPHOON_LINK_CATEGORY(TyphoonBlockDefinition_InstanceBuilder)
     
     // Don't use [NSInvocation typhoon_resultOfInvokingOnInstance] here for performance reasons.
     // We're invoking a definition selector on assembly so there's no need to check for memory management stuff.
-    [invocation invoke];
+    
+    IMP assemblyMethod = [assembly methodForSelector:selector];
+    
+    [invocation invokeWithCustomImplementation:assemblyMethod];
     
     void *unsafeResult;
     [invocation getReturnValue:&unsafeResult];

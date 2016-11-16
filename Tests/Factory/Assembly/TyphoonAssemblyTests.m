@@ -31,7 +31,7 @@
     MiddleAgesAssembly *assembly = [MiddleAgesAssembly assembly];
     XCTAssertTrue([[assembly knight] isKindOfClass:[TyphoonDefinition class]]);
 
-    [assembly activate];
+    assembly = [assembly activate];
 
     XCTAssertTrue([[assembly knight] isKindOfClass:[Knight class]]);
     LogInfo(@"Knight: %@", [assembly knight]);
@@ -55,7 +55,7 @@
      *  We need a couple of similar tests to be sure in the absence of edge cases.
      */
     TyphoonFirstLoopAssembly *firstAssembly = [TyphoonFirstLoopAssembly assembly];
-    [firstAssembly activateWithCollaboratingAssemblies:@[
+    firstAssembly = [firstAssembly activateWithCollaboratingAssemblies:@[
                                                         [TyphoonSecondLoopAssembly new],
                                                         [TyphoonThirdLoopAssembly new]
                                                         ]];
@@ -68,7 +68,7 @@
 - (void)test_activation_with_looped_collaborators_1_2_1
 {
     TyphoonFourthLoopAssembly *fourthAssembly = [TyphoonFourthLoopAssembly assembly];
-    [fourthAssembly activateWithCollaboratingAssemblies:@[
+    fourthAssembly = [fourthAssembly activateWithCollaboratingAssemblies:@[
                                                          [TyphoonFifthLoopAssembly new]
                                                          ]];
     id<Quest> quest = [fourthAssembly testQuest];

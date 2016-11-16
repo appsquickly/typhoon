@@ -450,14 +450,14 @@ test_currently_resolving_references_dictionary_is_not_overwritten_when_initializ
     XCTAssertEqualObjects(quest.imageUrl, [NSURL URLWithString:@"https://foobar.org"]);
 }
 
-- (void)test_block_definition_can_have_primitive_arguments
-{
-    MiddleAgesAssembly *assembly = (MiddleAgesAssembly *)_componentFactory;
-    
-    Knight *knight = [assembly blockKnightWithPrimitiveDamsels:42];
-    XCTAssertNotNil(knight);
-    XCTAssertEqual(knight.damselsRescued, (NSUInteger)42);
-}
+//- (void)test_block_definition_can_have_primitive_arguments
+//{
+//    MiddleAgesAssembly *assembly = (MiddleAgesAssembly *)_componentFactory;
+//    
+//    Knight *knight = [assembly blockKnightWithPrimitiveDamsels:42];
+//    XCTAssertNotNil(knight);
+//    XCTAssertEqual(knight.damselsRescued, (NSUInteger)42);
+//}
 
 - (void)test_block_definition_with_injection_by_type
 {

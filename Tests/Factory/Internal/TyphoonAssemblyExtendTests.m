@@ -41,21 +41,21 @@
 - (void)testMultipleOverrides
 {
     NemoCoreNemoAssembly *assembly = [NemoCoreNemoAssembly new];
-    [assembly activate];
+    assembly = [assembly activate];
     XCTAssertTrue([assembly.firstViewController isKindOfClass:[NemoCoreFirstViewController class]]);
 
     NemoCoreSecondAssembly *assembly2 = [NemoCoreSecondAssembly new];
-    [assembly2 activate];
+    assembly2 = [assembly2 activate];
     XCTAssertTrue([assembly2.firstViewController isKindOfClass:[NemoCoreSecondViewController class]]);
 
 
     NemoCoreNemoAssembly *assembly3 = [NemoCoreNemoAssembly new];
-    [assembly3 activate];
+    assembly3 = [assembly3 activate];
 
     XCTAssertTrue([assembly3.firstViewController isKindOfClass:[NemoCoreFirstViewController class]]);
 
     NemoCoreSecondAssembly *assembly4 = [NemoCoreSecondAssembly new];
-    [assembly4 activate];
+    assembly4 = [assembly4 activate];
     XCTAssertTrue([assembly4.firstViewController isKindOfClass:[NemoCoreSecondViewController class]]);
 
 
