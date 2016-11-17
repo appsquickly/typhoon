@@ -152,4 +152,19 @@
     }
 }
 
+- (BOOL)respondsToSelector:(SEL)aSelector
+{
+    if ([super respondsToSelector:aSelector]){
+        return YES;
+    }
+    
+    NSString *key = NSStringFromSelector(aSelector);
+    TyphoonDefinition *definition = [self definitionForKey:key];
+    
+    if (definition) {
+        return YES;
+    }
+    return NO;
+}
+
 @end
