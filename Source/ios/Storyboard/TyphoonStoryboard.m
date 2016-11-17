@@ -10,15 +10,14 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "TyphoonStoryboard.h"
-
-#import "TyphoonViewControllerInjector.h"
 #import "OCLogTemplate.h"
 
-@interface TyphoonStoryboard ()
+#import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
+#import "TyphoonComponentFactory+Storyboard.h"
+#import "TyphoonViewControllerFactory.h"
+#import "OCLogTemplate.h"
+#import "UIViewController+TyphoonStoryboardIntegration.h"
 
-@property (nonatomic, strong) TyphoonViewControllerInjector *injector;
-
-@end
 
 @implementation TyphoonStoryboard
 
@@ -33,19 +32,26 @@
 {
     TyphoonStoryboard *storyboard = (id) [super storyboardWithName:name bundle:bundleOrNil];
     storyboard.factory = factory;
-    storyboard.injector = [[TyphoonViewControllerInjector alloc] init];
-    return storyboard;
+    storyboard.storyboardName = name;
+        return storyboard;
+}
+
+- (UIViewController *)instantiatePrototypeViewControllerWithIdentifier:(NSString *)identifier {
+    return [super instantiateViewControllerWithIdentifier:identifier];
 }
 
 - (id)instantiateViewControllerWithIdentifier:(NSString *)identifier
 {
     NSAssert(self.factory, @"TyphoonStoryboard's factory property can't be nil!");
+    
+    UIViewController *cachedInstance = [TyphoonViewControllerFactory cachedViewControllerWithIdentifier:identifier storyboardName:self.storyboardName factory:self.factory];
+    if (cachedInstance) {
+        return cachedInstance;
+    }
+    
+    UIViewController *result = [TyphoonViewControllerFactory viewControllerWithIdentifier:identifier storyboard:self];
 
-    id viewController = [super instantiateViewControllerWithIdentifier:identifier];
-
-    [self.injector injectPropertiesForViewController:viewController withFactory:self.factory storyboard:self];
-
-    return viewController;
+    return result;
 }
 
 @end

@@ -13,6 +13,8 @@
 #import "TyphoonStartup.h"
 #import "TyphoonStoryboard.h"
 #import "TyphoonStoryboardProvider.h"
+#import "TyphoonComponentFactory+Storyboard.h"
+#import "TyphoonComponentsPool.h"
 
 #import <objc/runtime.h>
 
@@ -40,7 +42,12 @@
         id componentFactory = [TyphoonComponentFactory factoryForResolvingUI];
 
         if ([instance class] == [UIStoryboard class] && componentFactory && [storyboardNames containsObject:name]) {
-            return [TyphoonStoryboard storyboardWithName:name factory:componentFactory bundle:bundle];
+            TyphoonStoryboard *storyboard = [TyphoonStoryboard storyboardWithName:name factory:componentFactory bundle:bundle];
+            @synchronized(self) {
+                id<TyphoonComponentsPool> storyboardPool = [componentFactory storyboardPool];
+                storyboardPool[name] = storyboard;
+            }
+            return storyboard;
         } else {
             return originalImp(instance, sel, name, bundle);
         }

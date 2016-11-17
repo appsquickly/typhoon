@@ -24,4 +24,16 @@
 
 - (UIViewController *)uniqueViewController;
 
+- (UIViewController *)singletonViewController;
+
+- (UIViewController *)lazySingletonViewController;
+
+- (UIViewController *)weakSingletonViewController;
+
+- (UIViewController *)prototypeViewController;
+
+- (UIStoryboard *)storyboard;
+
+- (UIViewController *)oneMoreViewControllerWithId:(NSString *)controllerId title:(NSString *)title;
+
 @end

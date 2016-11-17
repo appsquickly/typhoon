@@ -12,91 +12,13 @@
 #import <UIKit/UIKit.h>
 
 #import "TyphoonViewControllerInjector.h"
+#import "UIViewController+TyphoonStoryboardIntegration.h"
+#import "UIView+TyphoonDefinitionKey.h"
 
 #import "TyphoonComponentFactory+TyphoonDefinitionRegisterer.h"
 
+
 #import <objc/runtime.h>
-
-//-------------------------------------------------------------------------------------------
-#pragma mark - UIViewController + TyphoonDefinitionKey
-
-@interface UIViewController (TyphoonInterfaceBuilderIntegration)
-
-@property(nonatomic, strong) NSString *typhoonKey;
-
-- (void)setViewDidLoadNotificationBlock:(void(^)(void))viewDidLoadBlock;
-
-+ (void)swizzleViewDidLoadMethod;
-
-@end
-
-@implementation UIViewController (TyphoonInterfaceBuilderIntegration)
-
-static const char *kTyphoonKey;
-static const char *kTyphoonViewDidLoadBlock;
-
-- (void)setTyphoonKey:(NSString *)typhoonKey
-{
-    objc_setAssociatedObject(self, &kTyphoonKey, typhoonKey, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (NSString *)typhoonKey
-{
-    return objc_getAssociatedObject(self, &kTyphoonKey);
-}
-
-- (void)setViewDidLoadNotificationBlock:(void(^)(void))viewDidLoadBlock
-{
-    objc_setAssociatedObject(self, &kTyphoonViewDidLoadBlock, viewDidLoadBlock, OBJC_ASSOCIATION_COPY_NONATOMIC);
-}
-
-+ (void)swizzleViewDidLoadMethod
-{
-    SEL sel = @selector(viewDidLoad);
-    Method method = class_getInstanceMethod([UIViewController class], sel);
-    
-    void(*originalImp)(id, SEL) = (void (*)(id, SEL)) method_getImplementation(method);
-    
-    IMP adjustedImp = imp_implementationWithBlock(^void(id instance) {
-        
-        void(^didLoadBlock)(void) = objc_getAssociatedObject(instance, &kTyphoonViewDidLoadBlock);
-        if (didLoadBlock) {
-            didLoadBlock();
-            objc_setAssociatedObject(instance, &kTyphoonViewDidLoadBlock, nil, OBJC_ASSOCIATION_COPY_NONATOMIC);
-        }
-        
-        originalImp(instance, sel);
-    });
-    
-    method_setImplementation(method, adjustedImp);
-}
-
-@end
-
-//-------------------------------------------------------------------------------------------
-#pragma mark - UIView + TyphoonDefinitionKey
-
-@interface UIView (TyphoonDefinitionKey)
-
-@property(nonatomic, strong) NSString *typhoonKey;
-
-@end
-
-@implementation UIView (TyphoonDefinitionKey)
-
-static const char *kTyphoonKey;
-
-- (void)setTyphoonKey:(NSString *)typhoonKey
-{
-    objc_setAssociatedObject(self, &kTyphoonKey, typhoonKey, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-}
-
-- (NSString *)typhoonKey
-{
-    return objc_getAssociatedObject(self, &kTyphoonKey);
-}
-
-@end
 
 //-------------------------------------------------------------------------------------------
 #pragma mark - TyphoonViewControllerInjector

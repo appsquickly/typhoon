@@ -14,6 +14,10 @@
 #import "TyphoonDefinition.h"
 #import "TyphoonDefinition+Option.h"
 
+#ifdef TARGET_OS_IPHONE
+#import "TyphoonDefinition+Storyboard.h"
+#endif
+
 @class TyphoonComponentFactory;
 
 /**

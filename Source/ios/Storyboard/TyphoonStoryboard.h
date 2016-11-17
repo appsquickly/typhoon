@@ -34,10 +34,13 @@
 @interface TyphoonStoryboard : UIStoryboard
 
 @property(nonatomic, strong) id<TyphoonComponentFactory> factory;
+@property(nonatomic, strong) NSString *storyboardName;
 
 + (TyphoonStoryboard *)storyboardWithName:(NSString *)name bundle:(NSBundle *)storyboardBundleOrNil;
 
 + (TyphoonStoryboard *)storyboardWithName:(NSString *)name factory:(id<TyphoonComponentFactory>)factory bundle:(NSBundle *)bundleOrNil;
+
+- (UIViewController *)instantiatePrototypeViewControllerWithIdentifier:(NSString *)identifier;
 
 @end
 
