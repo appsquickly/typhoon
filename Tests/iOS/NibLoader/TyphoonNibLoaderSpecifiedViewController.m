@@ -9,8 +9,8 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import "TyphoonNibLoaderSpecifiedViewController.h"
 
-#import "TyphoonStoryboard.h"
-#import "TyphoonNibLoader.h"
-#import "TyphoonBundledImageTypeConverter.h"
-#import "TyphoonLoadedView.h"
+@implementation TyphoonNibLoaderSpecifiedViewController
+
+@end

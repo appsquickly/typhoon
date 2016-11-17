@@ -9,8 +9,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
+#import <Typhoon/Typhoon.h>
 
-#import "TyphoonStoryboard.h"
-#import "TyphoonNibLoader.h"
-#import "TyphoonBundledImageTypeConverter.h"
-#import "TyphoonLoadedView.h"
+static NSString* const kTyphoonNibLoaderSpecifiedViewControllerIdentifier =     @"TyphoonNibLoaderSpecifiedViewController";
+static NSString* const kTyphoonNibLoaderUnspecifiedViewControllerIdentifier =   @"TyphoonNibLoaderUnspecifiedViewController";
+
+@interface TyphoonNibLoaderAssembly : TyphoonAssembly
+
+- (id)specifiedViewController;
+- (id)unspecifiedViewController;
+
+@end
