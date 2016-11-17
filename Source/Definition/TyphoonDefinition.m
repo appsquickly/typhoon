@@ -609,7 +609,7 @@ static NSString *TyphoonScopeToString(TyphoonScope scope)
 
 + (BOOL)isOldStyleStoryboardDefinitionWithFactory:(id)factory
 {
-#ifdef TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE
     if ([factory isKindOfClass:[TyphoonDefinition class]]) {
         Class factoryClass = ((TyphoonDefinition *)factory).type;
         return [factoryClass isSubclassOfClass:[UIStoryboard class]];
