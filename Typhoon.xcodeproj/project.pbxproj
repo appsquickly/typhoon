@@ -3729,15 +3729,18 @@
 					};
 					90ABC3E91A36B09E008D8162 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 0810;
 					};
 					90ABC3F31A36B09E008D8162 = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
 					90ABC4BA1A36BA53008D8162 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 0810;
 					};
 					90ABC4CE1A36BA53008D8162 = {
 						CreatedOnToolsVersion = 6.1.1;
+						LastSwiftMigration = 0810;
 						TestTargetID = 90ABC4BA1A36BA53008D8162;
 					};
 					BB7F97561CA6EE67003B3E1F = {
@@ -5207,6 +5210,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -5233,6 +5237,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -5295,6 +5300,7 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -5310,6 +5316,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -5332,6 +5339,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TyphoonFrameworkSwiftExample.app/TyphoonFrameworkSwiftExample";
 			};
 			name = Debug;
@@ -5351,6 +5359,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TyphoonFrameworkSwiftExample.app/TyphoonFrameworkSwiftExample";
 			};
 			name = Release;
