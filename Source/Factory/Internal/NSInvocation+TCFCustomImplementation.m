@@ -99,7 +99,7 @@
             break;
 
         default:
-            NSAssert(NO, @"NSInvocation isn't support more than 20 arguments");
+            NSAssert(NO, @"NSInvocation isn't supporting more than 20 arguments");
             break;
     }
     [self setReturnValue:&result];
