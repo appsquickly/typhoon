@@ -135,7 +135,7 @@
 {
     @synchronized (self) {
         
-        if ([self respondsToSelector:aSelector]) {
+        if ([super respondsToSelector:aSelector]) {
             return [[self class] instanceMethodSignatureForSelector:aSelector];
         }
         
