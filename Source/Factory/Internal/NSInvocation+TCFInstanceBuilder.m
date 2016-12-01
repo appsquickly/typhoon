@@ -10,9 +10,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "NSInvocation+TCFInstanceBuilder.h"
-#import "NSInvocation+TCFWrapValues.h"
-#import "TyphoonUtils.h"
 #import "TyphoonIntrospectionUtils.h"
+#import "TyphoonUtils.h"
 
 #if __has_feature(objc_arc)
 #error You have to disable ARC for this file

@@ -12,11 +12,11 @@
 import Foundation
 import Typhoon
 
-public class Assembly: TyphoonAssembly {
+open class Assembly: TyphoonAssembly {
     
-    public dynamic func viewController() -> AnyObject {
+    open dynamic func viewController() -> AnyObject {
         return TyphoonDefinition.withClass(ViewController.self) { definition in
-            definition.injectProperty("foo", with: "bar")
-        }
+            definition!.injectProperty("foo", with: "bar")
+        } as AnyObject
     }
 }
