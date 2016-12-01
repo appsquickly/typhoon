@@ -21,6 +21,15 @@ Pod::Spec.new do |spec|
   spec.subspec 'no-arc' do |sna|
     sna.requires_arc = false
     sna.source_files = non_arc_files
+    sna.dependency 'Typhoon/IntrospectionUtils'
+  end
+
+  spec.subspec 'IntrospectionUtils' do |sna|
+    sna.source_files = 'Source/Utils/TyphoonIntrospectionUtils.{h, m}', 'Source/TypeConversion/TyphoonTypeDescriptor.{h, m}', 'Source/Utils/TyphoonUtils.h'
+  end
+
+  spec.subspec 'DeallocNotifier' do |sna|
+    sna.source_files = 'Source/Utils/NSObject+DeallocNotification.{h, m}'
   end
 
 
