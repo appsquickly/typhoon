@@ -14,6 +14,7 @@ Check out the <a href="http://www.typhoonframework.org/#features">feature list</
 ### Looking for a pure Swift Solution?
 
 We have you covered <a href="https://github.com/appsquickly/TyphoonSwift">right here!</a>
+
 ---------------------------------------
 
 # Usage
