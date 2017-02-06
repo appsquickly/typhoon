@@ -19,6 +19,7 @@
 
 NSString *TyphoonTypeStringFor(id classOrProtocol);
 
+Class TyphoonClassFromClass(Class clazz);
 Class TyphoonClassFromString(NSString *className);
 
 BOOL IsClass(id classOrProtocol);
