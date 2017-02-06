@@ -18,6 +18,12 @@
 #import "TyphoonNSURLTypeConverter.h"
 #import "TyphoonIntrospectionUtils.h"
 #import "TyphoonNSNumberTypeConverter.h"
+#if TARGET_OS_IPHONE || TARGET_OS_TV
+    #import "TyphoonUIColorTypeConverter.h"
+    #import "TyphoonBundledImageTypeConverter.h"
+#else
+    #import "TyphoonNSColorTypeConverter.h"
+#endif
 
 @interface TyphoonTypeConverterRegistry ()
 
@@ -90,12 +96,12 @@
 {
 #if TARGET_OS_IPHONE || TARGET_OS_TV
     {
-        [self registerTypeConverter:[[TyphoonClassFromString(@"TyphoonUIColorTypeConverter") alloc] init]];
-        [self registerTypeConverter:[[TyphoonClassFromString(@"TyphoonBundledImageTypeConverter") alloc] init]];
+        [self registerTypeConverter:[TyphoonClassFromClass([TyphoonUIColorTypeConverter class]) new]];
+        [self registerTypeConverter:[TyphoonClassFromClass([TyphoonBundledImageTypeConverter class])new]];
     }
 #else
     {
-        [self registerTypeConverter:[[TyphoonClassFromString(@"TyphoonNSColorTypeConverter") alloc] init]];
+        [self registerTypeConverter:[TyphoonClassFromClass([TyphoonNSColorTypeConverter class]) new]];
     }
 #endif
 }

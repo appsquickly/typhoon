@@ -257,6 +257,11 @@ BOOL TyphoonIsInvalidClassName(NSString *className)
     return NO;
 }
 
+Class TyphoonClassFromClass(Class clazz)
+{
+    return TyphoonClassFromString(NSStringFromClass(clazz));
+}
+
 Class TyphoonClassFromString(NSString *className)
 {
     if (TyphoonIsInvalidClassName(className)) {
