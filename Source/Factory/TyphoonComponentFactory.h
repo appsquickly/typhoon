@@ -159,6 +159,7 @@ Attach a TyphoonDefinitionPostProcessor to this component factory.
 */
 + (id)defaultFactory;
 
++ (instancetype)newFactoryForResolvingUI;
 
 + (void)setFactoryForResolvingUI:(TyphoonComponentFactory *)factory;
 

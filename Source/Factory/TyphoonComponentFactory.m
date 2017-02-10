@@ -48,6 +48,11 @@ static TyphoonComponentFactory *uiResolvingFactory = nil;
     return defaultFactory;
 }
 
++ (instancetype)newFactoryForResolvingUI
+{
+    return [[self alloc] initFactoryForResolvingUI];
+}
+
 + (void)setFactoryForResolvingUI:(TyphoonComponentFactory *)factory
 {
     uiResolvingFactory = factory;
@@ -66,6 +71,12 @@ static TyphoonComponentFactory *uiResolvingFactory = nil;
 //-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction
 //-------------------------------------------------------------------------------------------
+
+- (id)initFactoryForResolvingUI
+{
+    uiResolvingFactory = self;
+    return [self init];
+}
 
 - (id)init
 {

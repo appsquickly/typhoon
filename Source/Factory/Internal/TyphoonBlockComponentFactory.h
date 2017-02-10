@@ -26,11 +26,13 @@
 
 + (id)factoryWithAssemblies:(NSArray *)assemblies;
 
++ (id)factoryForResolvingUIWithAssemblies:(NSArray *)assemblies;
+
 - (id)initWithAssembly:(TyphoonAssembly *)assembly;
 
 - (id)initWithAssemblies:(NSArray *)assemblies;
 
-
+ 
 @end
 
 
