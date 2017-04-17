@@ -41,9 +41,9 @@ let viewControler = assembly.recommendationController() as! RecommendationContro
 
 Typhoon is available through <a href="http://cocoapods.org/?q=Typhoon">CocoaPods</a> or <a href="https://github.com/Carthage/Carthage">Carthage</a>, and also builds easily from source.
 
-##With CocoaPods . . . 
+## With CocoaPods . . . 
 
-###Static Library
+### Static Library
 
 ```ruby
 
@@ -57,7 +57,7 @@ pod 'Typhoon'
 end
 ```
 
-###Dynamic Framework
+### Dynamic Framework
 
 If you're using Swift, you may wish to install dynamic frameworks, which can be done with the Podfile shown below: 
 
@@ -78,13 +78,13 @@ Simply import the Typhoon module in any Swift file that uses the framework:
 import Typhoon
 ```
 
-##With Carthage
+## With Carthage
 
 ```
 github "appsquickly/Typhoon"
 ```
 
-##From Source
+## From Source
 
 Alternatively, add the source files to your project's target or set up an Xcode workspace. 
 
