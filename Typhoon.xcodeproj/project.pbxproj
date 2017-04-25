@@ -852,7 +852,7 @@
 		9FA1C16F1BF904BF007030A5 /* TyphoonNamespacingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FA1C16E1BF904BF007030A5 /* TyphoonNamespacingTests.m */; };
 		9FDF58CE1BA4162100678B2B /* TyphoonStoryboardProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF58CD1BA4162100678B2B /* TyphoonStoryboardProvider.m */; };
 		9FDF58D11BA4168100678B2B /* TyphoonStoryboardProviderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FDF58D01BA4168100678B2B /* TyphoonStoryboardProviderTests.m */; };
-		A54786AE1CCF5A7800630D62 /* TyphoonNibLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = A54786AC1CCF5A7800630D62 /* TyphoonNibLoader.h */; };
+		A54786AE1CCF5A7800630D62 /* TyphoonNibLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = A54786AC1CCF5A7800630D62 /* TyphoonNibLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A54786AF1CCF5A7800630D62 /* TyphoonNibLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A54786AD1CCF5A7800630D62 /* TyphoonNibLoader.m */; };
 		A54786B01CCF5A7800630D62 /* TyphoonNibLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A54786AD1CCF5A7800630D62 /* TyphoonNibLoader.m */; };
 		A54786B31CCF5E5200630D62 /* TyphoonViewControllerInjector.h in Headers */ = {isa = PBXBuildFile; fileRef = A54786B11CCF5E5200630D62 /* TyphoonViewControllerInjector.h */; };
@@ -1189,7 +1189,7 @@
 		FA580A291DF01482003ED00D /* NSInvocation+TCFWrapValues.m in Sources */ = {isa = PBXBuildFile; fileRef = FA580A231DF01470003ED00D /* NSInvocation+TCFWrapValues.m */; };
 		FA580A2A1DF01486003ED00D /* NSInvocation+TCFWrapValues.m in Sources */ = {isa = PBXBuildFile; fileRef = FA580A231DF01470003ED00D /* NSInvocation+TCFWrapValues.m */; };
 		FA580A2B1DF01486003ED00D /* NSInvocation+TCFWrapValues.m in Sources */ = {isa = PBXBuildFile; fileRef = FA580A231DF01470003ED00D /* NSInvocation+TCFWrapValues.m */; };
-		FA8043D61DF0769D00AB8C5D /* TyphoonNibLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = A54786AC1CCF5A7800630D62 /* TyphoonNibLoader.h */; };
+		FA8043D61DF0769D00AB8C5D /* TyphoonNibLoader.h in Headers */ = {isa = PBXBuildFile; fileRef = A54786AC1CCF5A7800630D62 /* TyphoonNibLoader.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA8043D71DF0769D00AB8C5D /* TyphoonNibLoader.m in Sources */ = {isa = PBXBuildFile; fileRef = A54786AD1CCF5A7800630D62 /* TyphoonNibLoader.m */; };
 		FA8043D81DF0769D00AB8C5D /* TyphoonViewControllerNibResolver.h in Headers */ = {isa = PBXBuildFile; fileRef = A54786B61CCF5E6E00630D62 /* TyphoonViewControllerNibResolver.h */; };
 		FA8043D91DF0769D00AB8C5D /* TyphoonViewControllerNibResolver.m in Sources */ = {isa = PBXBuildFile; fileRef = A54786B71CCF5E6E00630D62 /* TyphoonViewControllerNibResolver.m */; };
@@ -3485,6 +3485,7 @@
 				90ABC4531A36B29E008D8162 /* TyphoonOptionMatcher+Internal.h in Headers */,
 				90ABC4571A36B29E008D8162 /* TyphoonConfiguration.h in Headers */,
 				90ABC4581A36B29E008D8162 /* TyphoonJsonStyleConfiguration.h in Headers */,
+				A54786AE1CCF5A7800630D62 /* TyphoonNibLoader.h in Headers */,
 				90ABC47A1A36B29F008D8162 /* TyphoonFactoryDefinition.h in Headers */,
 				90ABC4591A36B29E008D8162 /* TyphoonPlistStyleConfiguration.h in Headers */,
 				90ABC45A1A36B29E008D8162 /* TyphoonPropertyStyleConfiguration.h in Headers */,
@@ -3585,7 +3586,6 @@
 				BA798EBDD083DCB98251DEAD /* TyphoonRuntimeArguments.h in Headers */,
 				BA798B131A19FFFD8F8941C0 /* TyphoonAssemblySelectorAdviser.h in Headers */,
 				2DBA19387E1690F34F9686EF /* NSInvocation+TCFCustomImplementation.h in Headers */,
-				A54786AE1CCF5A7800630D62 /* TyphoonNibLoader.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
