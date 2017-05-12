@@ -36,7 +36,8 @@ Class TyphoonClassFromFrameworkString(NSString *className);
 
         char buffer[256];
         const char *e = strchr(attributes, ',');
-        if (e == NULL) {
+        // R - stands for readonly properties. Typhoon should not try to inject readonly properties.
+        if ((e == NULL) || (strstr(attributes, ",R,"))) {
             return (NULL);
         }
 
