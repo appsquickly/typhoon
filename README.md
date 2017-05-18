@@ -20,6 +20,8 @@ Typhoon uses the Objective-C runtime to collect metadata and instantiate objects
 
 Both of the above solutions have the 'ObjectGraph' scope (you can read more about it in the docs), which provides a way to assemble a complex object-graph from a blue-print and then retain it as long as needed. This scope was introduced by Typhoon, and is an important consideration for mobile and desktop apps. Moreover, scope management is one of the main advantages to simply applying the DI pattern 'by hand'. 
 
+Please think carefully before choosing a DI library that forces you to write complex adapters, modify your code or tightly couple it to a library. It shouldn't be more complicated than understanding and applying the pattern without a supporting framework.
+
 ---------------------------------------
 
 # Usage
