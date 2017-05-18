@@ -13,7 +13,12 @@ Check out the <a href="http://www.typhoonframework.org/#features">feature list</
 
 ### Looking for a pure Swift Solution?
 
-We have you covered <a href="https://github.com/appsquickly/TyphoonSwift">right here!</a>
+Typhoon uses the Objective-C runtime to collect metadata and instantiate objects. It powers thousands of Objective-C applications and is also pretty popular for Swift. Nonetheless there are some advantages to using a pure Swift library. 
+
+* Typhoon Swift is available <a href="https://github.com/appsquickly/TyphoonSwift"> here</a>. It uses 'compile-time' code generation. 
+* <a href="https://github.com/jkolb/FieryCrucible">Fiery Crucible</a> is also an excellent light-weight (just one file) and very straight-forward DI library for Swift. 
+
+Both of the above solutions have the 'ObjectGraph' scope (you can read more about it in the docs), which, for mobile and desktop apps, is one of the main advantages to simply applying the DI pattern 'by hand'. 
 
 ---------------------------------------
 
