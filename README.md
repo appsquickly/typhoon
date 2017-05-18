@@ -18,7 +18,7 @@ Typhoon uses the Objective-C runtime to collect metadata and instantiate objects
 * Typhoon Swift is available <a href="https://github.com/appsquickly/TyphoonSwift"> here</a>. It uses 'compile-time' code generation. 
 * <a href="https://github.com/jkolb/FieryCrucible">Fiery Crucible</a> is also an excellent light-weight (just one file) and very straight-forward DI library for Swift. 
 
-Both of the above solutions have the 'ObjectGraph' scope (you can read more about it in the docs), which, for mobile and desktop apps, is one of the main advantages to simply applying the DI pattern 'by hand'. 
+Both of the above solutions have the 'ObjectGraph' scope (you can read more about it in the docs), which was introduced by Typhoon, and is an important consideration for mobile and desktop apps. Scope management is one of the main advantages to simply applying the DI pattern 'by hand'. 
 
 ---------------------------------------
 
