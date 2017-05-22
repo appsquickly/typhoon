@@ -1212,37 +1212,15 @@
                 <h3 class="faq-on" onclick="showhide('faq-nine');">Does Typhoon use Swizzling?</h3>
 
                 <p id="faq-nine" class="answer">
-                    <strong>A.</strong> Typhoon uses swizzlign in two places.<br/><br/>
+                    <strong>A.</strong> Only if you use the plist integration feature.<br/><br/>
 
-                    The first is to instrument TyphoonAssemblies in order to assign a unique ID.
-                    This is so that we can avoid the use of 'magic-strings' and therefore take advandate of IDE tools
-                    like
-                    code-completion, refactoring and so on. Typhoon assemblies contain blue-prints for instantiating
-                    objects,
-                    and so the information is only collected at launch-time, and they're discarded after
-                    startup.<br/><br/>
-
-                    The second place that Typhoon is applied is the plist style of instantiation for iOS. This is so
+                    Its used in the plist plist style of instantiation for iOS. This is so
                     bootstrapping occurs early enough that
                     UIStateRestoration works correctly in Storyboards. The alternative, generic style of boot-strapping
                     Typhoon does not provide any special integration and can be used if you do not need
                     UIStateResotoration.<br/><br>
 
-                    A lot of mystery surrounds swizzling, and its sometimes incorrectly referred to in informal forums
-                    as
-                    'a hack'. This is not the case. Swizzling is a method of instrumenting a class to provide
-                    information or behavior that
-                    was not available at compile time. In Objective-C, there are two approaches - the first is to
-                    instrument the method lookup table -
-                    this affects all instances of a class. The second is to exchange the isa-pointer, and this affects a
-                    single instance of a class. <br/><br/>
-
-                    In some other languages, like Java instrumenting a class in this way requires the heavy artillery,
-                    with large external libraries, but its something that Objective-C,
-                    by virtue of its message-based dispatch is very good at. Two Apple frameworks that rely on these
-                    techniques are Core Data and Cocoa's elegant property observers.<br/><br/>
-
-                    Swizzling <i>is</i> powerful, so obviously in the wrong hands can be used to make a mess of things.
+                    We used to use it to proxy assembly methods, but v4 replaced that with NSProxy, because it is faster.<br/><br/>
                 </p>
 
 
