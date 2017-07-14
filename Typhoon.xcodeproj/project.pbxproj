@@ -1840,6 +1840,7 @@
 		FA33295B1F18D1690035456E /* Second.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Second.storyboard; sourceTree = "<group>"; };
 		FA3329641F18DBC20035456E /* StoryboardControllerDependency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboardControllerDependency.h; sourceTree = "<group>"; };
 		FA3329651F18DBC20035456E /* StoryboardControllerDependency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboardControllerDependency.m; sourceTree = "<group>"; };
+		FA3329681F18E1AB0035456E /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		FA580A221DF01470003ED00D /* NSInvocation+TCFWrapValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+TCFWrapValues.h"; sourceTree = "<group>"; };
 		FA580A231DF01470003ED00D /* NSInvocation+TCFWrapValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+TCFWrapValues.m"; sourceTree = "<group>"; };
 		FA8044301DF0A74700AB8C5D /* TyphoonStoryboardDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonStoryboardDefinition.h; sourceTree = "<group>"; };
@@ -2005,6 +2006,7 @@
 		6B076E511936F5850083714E = {
 			isa = PBXGroup;
 			children = (
+				FA3329681F18E1AB0035456E /* .travis.yml */,
 				FAF38E611DF04DFD00F44BC0 /* Typhoon.podspec */,
 				6B076E951936F63A0083714E /* Source */,
 				6B076F931936F63A0083714E /* Tests */,

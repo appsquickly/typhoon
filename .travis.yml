@@ -1,4 +1,11 @@
 language: objective-c
 osx_image: xcode8.3
-script: ./travisbuild.sh
+script:
+  - fastlane scan Typhoon.xcodeproj --scheme Typhoon-iOSTests
+  - fastlane scan Typhoon.xcodeproj --scheme Typhoon-OSXTests
+  - fastlane scan Typhoon.xcodeproj --scheme TyphoonFrameworkSwiftExample
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
 
