@@ -28,4 +28,6 @@
 
 @property (readonly) NSSet *definitionSelectors;
 
+- (instancetype)accessor;
+
 @end

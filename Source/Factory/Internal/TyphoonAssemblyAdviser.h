@@ -18,11 +18,11 @@
 
 @interface TyphoonAssemblyAdviser : NSObject
 
-+ (BOOL)assemblyClassIsAdvised:(Class)klass;
+//+ (BOOL)assemblyClassIsAdvised:(Class)klass;
 
 - (id)initWithAssembly:(TyphoonAssembly *)assembly;
 
-- (void)adviseAssembly;
+//- (void)adviseAssembly;
 
 - (NSSet *)definitionSelectors;
 

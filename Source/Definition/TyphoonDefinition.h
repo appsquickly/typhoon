@@ -36,7 +36,7 @@
  * <strong>TyphoonScopeSingleton</strong>
  * Indicates that Typhoon should retain the instance that exists for as long as the TyphoonComponentFactory exists.
  *
- * <strong>TnglyphoonScopeLazySieton</strong>
+ * <strong>TyphoonScopeLazySingleton</strong>
  * This scope behaves the same as TyphoonScopeSingleton, but the object is not created unless or until it is needed.
  *
  * <strong>TyphoonScopeWeakSingleton</strong>

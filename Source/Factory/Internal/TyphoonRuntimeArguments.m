@@ -128,6 +128,11 @@
     }];
 }
 
+- (NSUInteger)count
+{
+    return [_arguments count];
+}
+
 - (id)copyWithZone:(NSZone *)zone
 {
     return [[TyphoonRuntimeArguments alloc] initWithArguments:[_arguments mutableCopy]];

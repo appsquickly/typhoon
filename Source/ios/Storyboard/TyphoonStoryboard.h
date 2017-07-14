@@ -18,12 +18,12 @@
 
 
 /**
- * TyphoonStoryboard will inject properties for each viewController created by storyboard.
+ * TyphoonStoryboard will inject properties for each view controller created by storyboard.
  *
- * Normally, TyphoonStoryboard injection performed by viewController's type. But if you want to specify definition 
- * for viewController injection - use viewController's 'typhoonKey'runtime property.
+ * Normally, TyphoonStoryboard injection performed by view controller's type. But if you want to specify definition
+ * for view controller injection - use view controller's 'typhoonKey'runtime property.
  *
- * To specify 'typhoonKey' in storyboard IB, select your viewController, navigate to 'identity inspector'(cmd+option+3) tab,
+ * To specify 'typhoonKey' in storyboard IB, select your view controller, navigate to 'identity inspector'(cmd+option+3) tab,
  * section 'User Defined Runtime Attributes'. Add new row with columns:
  * @code
  * Key Path : typhoonKey
@@ -34,10 +34,13 @@
 @interface TyphoonStoryboard : UIStoryboard
 
 @property(nonatomic, strong) id<TyphoonComponentFactory> factory;
+@property(nonatomic, strong) NSString *storyboardName;
 
 + (TyphoonStoryboard *)storyboardWithName:(NSString *)name bundle:(NSBundle *)storyboardBundleOrNil;
 
 + (TyphoonStoryboard *)storyboardWithName:(NSString *)name factory:(id<TyphoonComponentFactory>)factory bundle:(NSBundle *)bundleOrNil;
+
+- (UIViewController *)instantiatePrototypeViewControllerWithIdentifier:(NSString *)identifier;
 
 @end
 

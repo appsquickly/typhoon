@@ -13,9 +13,14 @@ Check out the <a href="http://www.typhoonframework.org/#features">feature list</
 
 ### Looking for a pure Swift Solution?
 
-Typhoon works with Swift, but is written in Objective-C and uses the Objective-C runtime for reflection, injection and instrumenting assemblies. We think Typhoon is an excellent option if you need Dependeny Injection in your Swift projects, however we're happy to announce that we've been working on a pure Swift framework! If you've used Typhoon in the past, our Swift library will feel very familiar yet completely harmonious with static, idiomatic Swift. 
+Typhoon uses the Objective-C runtime to collect metadata and instantiate objects. It powers thousands of Objective-C applications and is also pretty popular for Swift. Nonetheless there are some advantages to using a pure Swift library. 
 
-We didn't want to create a pure Swift version of Typhoon unless it would be better in every way, so it has been a while  coming. But when it comes to performance the new library is as Swift as hell :)
+* <a href="https://github.com/appsquickly/TyphoonSwift">Typhoon Swift</a> is available! It uses 'compile-time' code generation. 
+* <a href="https://github.com/jkolb/FieryCrucible">Fiery Crucible</a> is also an excellent light-weight (just one file) and very straight-forward DI library for Swift. 
+
+Both of the above solutions have the 'ObjectGraph' scope (you can read more about it in the docs), which provides a way to assemble a complex object-graph from a blue-print and then retain it as long as needed. This scope was introduced by Typhoon, and is an important consideration for mobile and desktop apps. Moreover, scope management is one of the main advantages to simply applying the DI pattern 'by hand'. 
+
+Please think carefully before choosing a DI library that forces you to write complex adapters, modify your code or tightly couple it to a library. It shouldn't be more complicated than understanding and applying the pattern without a supporting framework.
 
 ---------------------------------------
 
@@ -27,7 +32,7 @@ We didn't want to create a pure Swift version of Typhoon unless it would be bett
 * <a href="http://ios.caph.jp/typhoon/introduction">日本のドキュメンテーション</a>
 
 ```swift
-let assembly = MyAssembly().activate()
+let assembly = MyAssembly().activated()
 let viewControler = assembly.recommendationController() as! RecommendationController
 ```
 
@@ -43,9 +48,9 @@ let viewControler = assembly.recommendationController() as! RecommendationContro
 
 Typhoon is available through <a href="http://cocoapods.org/?q=Typhoon">CocoaPods</a> or <a href="https://github.com/Carthage/Carthage">Carthage</a>, and also builds easily from source.
 
-##With CocoaPods . . . 
+## With CocoaPods . . . 
 
-###Static Library
+### Static Library
 
 ```ruby
 
@@ -59,7 +64,7 @@ pod 'Typhoon'
 end
 ```
 
-###Dynamic Framework
+### Dynamic Framework
 
 If you're using Swift, you may wish to install dynamic frameworks, which can be done with the Podfile shown below: 
 
@@ -80,13 +85,13 @@ Simply import the Typhoon module in any Swift file that uses the framework:
 import Typhoon
 ```
 
-##With Carthage
+## With Carthage
 
 ```
 github "appsquickly/Typhoon"
 ```
 
-##From Source
+## From Source
 
 Alternatively, add the source files to your project's target or set up an Xcode workspace. 
 

@@ -44,6 +44,14 @@
     return [dictionaryWithNonRetainedObjects objectForKey:aKey];
 }
 
+- (id)objectForKeyedSubscript:(id <NSCopying>)aKey {
+    return [self objectForKey:aKey];
+}
+
+- (void)setObject:(id)object forKeyedSubscript:(id <NSCopying>)aKey {
+    return [self setObject:object forKey:aKey];
+}
+
 - (NSArray *)allValues
 {
     return [dictionaryWithNonRetainedObjects allValues];

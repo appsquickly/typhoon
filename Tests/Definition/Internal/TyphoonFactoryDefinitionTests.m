@@ -128,7 +128,7 @@
 - (void)test_factory_definition_with_runtime_argument
 {
     FactoriesAssembly *assembly = [FactoriesAssembly new];
-    [assembly activate];
+    assembly = [assembly activated];
 
     CavalryMan *knight = (CavalryMan *)[assembly createKnight];
 

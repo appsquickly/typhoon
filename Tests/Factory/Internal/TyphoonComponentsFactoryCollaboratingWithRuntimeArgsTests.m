@@ -15,7 +15,6 @@
 #import "CollaboratingMiddleAgesAssembly.h"
 #import "MiddleAgesAssembly.h"
 #import "Knight.h"
-#import "TyphoonAssemblyActivator.h"
 
 @interface TyphoonComponentsFactoryCollaboratingWithRuntimeArgsTests : XCTestCase
 
@@ -31,7 +30,7 @@
     [super setUp];
 
     _assembly = [[CollaboratingMiddleAgesAssembly assembly]
-        activateWithCollaboratingAssemblies:@[[MiddleAgesAssembly assembly]]];
+            activatedWithCollaboratingAssemblies:@[[MiddleAgesAssembly assembly]]];
 }
 
 - (void)test_collaborating_assembly_with_runtime_args

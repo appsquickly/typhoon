@@ -26,5 +26,6 @@
 
 + (id)proxy;
 
+- (instancetype)accessor;
 
 @end

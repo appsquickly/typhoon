@@ -304,6 +304,10 @@ static NSString *TyphoonScopeToString(TyphoonScope scope)
     if (configuration) {
         configuration(definition);
     }
+    
+    if ([self isOldStyleStoryboardDefinitionWithFactory:factory]) {
+        LogInfo(@"*** Warning *** You are using TyphoonFactoryDefinition for ViewController injections. The preferred way are special TyphoonStoryboardDefinitions.");
+    }
 
     return definition;
 }
@@ -601,6 +605,22 @@ static NSString *TyphoonScopeToString(TyphoonScope scope)
     if (!hasAppropriateSuper) {
         [NSException raise:NSInvalidArgumentException format:@"Subclass of NSProxy or NSObject is required."];
     }
+}
+
++ (BOOL)isOldStyleStoryboardDefinitionWithFactory:(id)factory
+{
+#if TARGET_OS_IPHONE
+    if ([factory isKindOfClass:[TyphoonDefinition class]]) {
+        Class factoryClass = ((TyphoonDefinition *)factory).type;
+        return [factoryClass isSubclassOfClass:[UIStoryboard class]];
+    }
+    
+    if ([factory isKindOfClass:[UIStoryboard class]]) {
+        return YES;
+    }
+#endif
+    
+    return NO;
 }
 
 @end

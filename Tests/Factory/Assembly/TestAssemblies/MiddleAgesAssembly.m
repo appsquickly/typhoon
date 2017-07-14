@@ -480,14 +480,15 @@
     }];
 }
 
-- (id)blockKnightWithPrimitiveDamsels:(NSUInteger)damsels
-{
-    return [TyphoonBlockDefinition withClass:[Knight class] block:^id{
-        Knight *knight = [[Knight alloc] init];
-        knight.damselsRescued = damsels;
-        return knight;
-    }];
-}
+// This is no longer supported. And it's impossible to support with latest changes to Core. (at least at this stage)
+//- (id)blockKnightWithPrimitiveDamsels:(NSUInteger)damsels
+//{
+//    return [TyphoonBlockDefinition withClass:[Knight class] block:^id{
+//        Knight *knight = [[Knight alloc] init];
+//        knight.damselsRescued = damsels;
+//        return knight;
+//    }];
+//}
 
 - (id)blockKnightWithQuestsByType
 {

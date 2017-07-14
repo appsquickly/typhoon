@@ -24,7 +24,7 @@
 }
 
 - (void)setUp {
-    _assembly = [[MiddleAgesAssembly assembly] activate];
+    _assembly = [[MiddleAgesAssembly assembly] activated];
     [super setUp];
 }
 

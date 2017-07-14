@@ -48,6 +48,11 @@ static TyphoonComponentFactory *uiResolvingFactory = nil;
     return defaultFactory;
 }
 
++ (instancetype)newFactoryForResolvingUI
+{
+    return [[self alloc] initFactoryForResolvingUI];
+}
+
 + (void)setFactoryForResolvingUI:(TyphoonComponentFactory *)factory
 {
     uiResolvingFactory = factory;
@@ -66,6 +71,12 @@ static TyphoonComponentFactory *uiResolvingFactory = nil;
 //-------------------------------------------------------------------------------------------
 #pragma mark - Initialization & Destruction
 //-------------------------------------------------------------------------------------------
+
+- (id)initFactoryForResolvingUI
+{
+    uiResolvingFactory = self;
+    return [self init];
+}
 
 - (id)init
 {
@@ -260,14 +271,6 @@ static TyphoonComponentFactory *uiResolvingFactory = nil;
     LogTrace(@"Attaching type conveter: %@", typeConverter);
     [_typeConverterRegistry registerTypeConverter:typeConverter];
 }
-
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-implementations"
-- (void)attachPostProcessor:(id<TyphoonDefinitionPostProcessor>)postProcessor
-{
-    [self attachDefinitionPostProcessor:postProcessor];
-}
-#pragma clang diagnostic pop
 
 - (void)inject:(id)instance
 {

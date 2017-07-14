@@ -22,8 +22,8 @@ class TyphoonFrameworkSwiftExampleTests: XCTestCase {
             Assembly()
         ])
         
-        let storyboard = TyphoonStoryboard(name: "Main", factory: factory, bundle: NSBundle.mainBundle())
-        let controller = storyboard.instantiateViewControllerWithIdentifier("viewController") as! ViewController
+        let storyboard = TyphoonStoryboard(name: "Main", factory: factory, bundle: Bundle.main)
+        let controller = storyboard?.instantiateViewController(withIdentifier: "viewController") as! ViewController
         
         XCTAssertEqual(controller.foo!, "bar", "injected foo should equal bar")
     }

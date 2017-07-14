@@ -15,7 +15,6 @@
 #import "MiddleAgesAssembly.h"
 #import "Knight.h"
 #import "Mock.h"
-#import "TyphoonAssemblyActivator.h"
 #import "Sword.h"
 #import "DecoratedQuest.h"
 
@@ -32,7 +31,7 @@
 {
     [super setUp];
 
-    factory = [[MiddleAgesAssembly assembly] activate];
+    factory = [[MiddleAgesAssembly assembly] activated];
 }
 
 - (void)test_runtime_arguments

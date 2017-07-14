@@ -36,6 +36,11 @@
     return instance;
 }
 
+- (instancetype)accessor
+{
+    return self;
+}
+
 - (void)forwardInvocation:(NSInvocation *)anInvocation
 {
     TyphoonRuntimeArguments *args = [TyphoonRuntimeArguments argumentsFromInvocation:anInvocation];

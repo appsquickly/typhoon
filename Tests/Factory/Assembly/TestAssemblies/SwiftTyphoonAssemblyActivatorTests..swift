@@ -17,20 +17,24 @@ class SwiftTyphoonAssemblyActivatorTests : XCTestCase {
     
     internal func test_activates() {
         
-        let assembly = SwiftMiddleAgesAssembly().activate()
+        let assembly = SwiftMiddleAgesAssembly().activated()
         
-        let knight = assembly?.basicKnight() as! Knight
+        let knight = assembly.basicKnight() as! Knight
         XCTAssertTrue(knight.isKind(of: Knight.self))
     }
     
     internal func test_injects_runtime_args() {
         
-        let assembly = SwiftMiddleAgesAssembly().activate()
-        
+        let assembly = SwiftMiddleAgesAssembly().activated()
+                
         let fort = Fort()
-        let knight = assembly?.wanderingKnight(fort) as! Knight
-        XCTAssertTrue(knight.isKind(of: Knight.self))
-        XCTAssertNotNil(knight.homeFort)
+        if let knight = assembly.wanderingKnight(fort) as? Knight {
+            XCTAssertTrue(knight.isKind(of: Knight.self))
+            XCTAssertNotNil(knight.homeFort)
+        } else {
+            XCTFail("Cannot convert to Knight")
+        }
+        
     }
 
 

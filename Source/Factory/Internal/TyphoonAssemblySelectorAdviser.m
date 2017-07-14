@@ -55,6 +55,11 @@ static NSString *const TYPHOON_BEFORE_ADVICE_SUFFIX = @"__typhoonBeforeAdvice__"
     return NSStringFromSelector(sel);
 }
 
++ (SEL)SELForKey:(NSString *)key class:(Class)clazz
+{
+    return NSSelectorFromString(key);
+}
+
 + (BOOL)selectorIsAdvised:(SEL)sel
 {
     NSString *name = NSStringFromSelector(sel);

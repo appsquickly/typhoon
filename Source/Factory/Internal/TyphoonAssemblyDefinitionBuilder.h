@@ -16,6 +16,8 @@
 @class TyphoonDefinition;
 @class TyphoonRuntimeArguments;
 
+BOOL IsPrimitiveArgumentType(const char *argumentType);
+
 @interface TyphoonAssemblyDefinitionBuilder : NSObject
 
 
@@ -28,3 +30,4 @@
 @property(readonly, unsafe_unretained) TyphoonAssembly *assembly;
 
 @end
+

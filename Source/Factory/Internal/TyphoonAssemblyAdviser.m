@@ -48,49 +48,49 @@ static NSMutableSet *advisedAssemblyClasses;
 
 #pragma mark - Advising
 
-- (void)adviseAssembly
-{
-    @synchronized (self) {
-        [self swizzleAssemblyMethods];
-    }
-}
+//- (void)adviseAssembly
+//{
+//    @synchronized (self) {
+//        [self swizzleAssemblyMethods];
+//    }
+//}
+//
+//- (void)swizzleAssemblyMethods
+//{
+//    [self enumerateDefinitionSelectorsUsingBlock:^(NSSet *definitionSelectors, Class assemblyClass) {
+//        if (![[self class] assemblyClassIsAdvised:assemblyClass]) {
+//            [self swizzleDefinitionSelectors:definitionSelectors onAssemblyClass:assemblyClass];
+//            [[self class] markAsAdvisedAssemblyClass:assemblyClass];
+//        }
+//    }];
+//}
 
-- (void)swizzleAssemblyMethods
-{
-    [self enumerateDefinitionSelectorsUsingBlock:^(NSSet *definitionSelectors, Class assemblyClass) {
-        if (![[self class] assemblyClassIsAdvised:assemblyClass]) {
-            [self swizzleDefinitionSelectors:definitionSelectors onAssemblyClass:assemblyClass];
-            [[self class] markAsAdvisedAssemblyClass:assemblyClass];
-        }
-    }];
-}
-
-- (void)swizzleDefinitionSelectors:(NSSet *)definitionSelectors onAssemblyClass:(Class)assemblyClass
-{
-    [definitionSelectors enumerateObjectsUsingBlock:^(TyphoonSelector *selectorObj, BOOL *stop) {
-        [self swapImplementationOfDefinitionSelectorWithAdvisedImplementation:selectorObj onAssemblyClass:assemblyClass];
-    }];
-}
-
-- (void)swapImplementationOfDefinitionSelectorWithAdvisedImplementation:(TyphoonSelector *)wrappedSEL onAssemblyClass:(Class)assemblyClass
-{
-    SEL methodSelector = [wrappedSEL selector];
-    SEL advisedSelector = [TyphoonAssemblySelectorAdviser advisedSELForSEL:methodSelector class:assemblyClass];
-
-    NSError *error;
-    BOOL success = [_swizzler swizzleMethod:methodSelector withMethod:advisedSelector onClass:assemblyClass error:&error];
-    if (!success) {
-        [TyphoonAssemblyAdviser onFailureToSwizzleDefinitionSelector:methodSelector withAdvisedSelector:advisedSelector onAssemblyClass:assemblyClass error:error];
-    }
-}
+//- (void)swizzleDefinitionSelectors:(NSSet *)definitionSelectors onAssemblyClass:(Class)assemblyClass
+//{
+//    [definitionSelectors enumerateObjectsUsingBlock:^(TyphoonSelector *selectorObj, BOOL *stop) {
+//        [self swapImplementationOfDefinitionSelectorWithAdvisedImplementation:selectorObj onAssemblyClass:assemblyClass];
+//    }];
+//}
+//
+//- (void)swapImplementationOfDefinitionSelectorWithAdvisedImplementation:(TyphoonSelector *)wrappedSEL onAssemblyClass:(Class)assemblyClass
+//{
+//    SEL methodSelector = [wrappedSEL selector];
+//    SEL advisedSelector = [TyphoonAssemblySelectorAdviser advisedSELForSEL:methodSelector class:assemblyClass];
+//
+//    NSError *error;
+//    BOOL success = [_swizzler swizzleMethod:methodSelector withMethod:advisedSelector onClass:assemblyClass error:&error];
+//    if (!success) {
+//        [TyphoonAssemblyAdviser onFailureToSwizzleDefinitionSelector:methodSelector withAdvisedSelector:advisedSelector onAssemblyClass:assemblyClass error:error];
+//    }
+//}
 
 
-+ (void)onFailureToSwizzleDefinitionSelector:(SEL)methodSelector withAdvisedSelector:(SEL)swizzled onAssemblyClass:(Class)assemblyClass error:(NSError *)err
-{
-    LogError(@"Failed to swizzle method '%@' on class '%@' with method '%@'.", NSStringFromSelector(methodSelector), NSStringFromClass(assemblyClass), NSStringFromSelector(swizzled));
-    LogError(@"'%@'", err);
-    [NSException raise:NSInternalInconsistencyException format:@"Failed to swizzle method, everything is broken!"];
-}
+//+ (void)onFailureToSwizzleDefinitionSelector:(SEL)methodSelector withAdvisedSelector:(SEL)swizzled onAssemblyClass:(Class)assemblyClass error:(NSError *)err
+//{
+//    LogError(@"Failed to swizzle method '%@' on class '%@' with method '%@'.", NSStringFromSelector(methodSelector), NSStringFromClass(assemblyClass), NSStringFromSelector(swizzled));
+//    LogError(@"'%@'", err);
+//    [NSException raise:NSInternalInconsistencyException format:@"Failed to swizzle method, everything is broken!"];
+//}
 
 #pragma mark - Definition Selector Enumerator
 
@@ -160,7 +160,7 @@ static NSMutableSet *advisedAssemblyClasses;
 
 - (BOOL)isSelector:(SEL)sel notAdvisedOnClass:(Class)aClass
 {
-    return ![TyphoonAssemblySelectorAdviser selectorIsAdvised:sel];
+    return YES;//![TyphoonAssemblySelectorAdviser selectorIsAdvised:sel];
 }
 
 - (NSSet *)propertySelectorsForClass:(Class)clazz
@@ -182,24 +182,24 @@ static NSMutableSet *advisedAssemblyClasses;
 
 #pragma mark - Advising Registry
 
-- (BOOL)classIsNotAlreadyAdvised:(Class)class
-{
-    return ![[self class] assemblyClassIsAdvised:class];
-}
-
-+ (void)markAsAdvisedAssemblyClass:(Class)assemblyClass
-{
-    [advisedAssemblyClasses addObject:assemblyClass];
-}
-
-+ (void)markAsNotAdvisedAssemblyClass:(Class)assemblyClass
-{
-    [advisedAssemblyClasses removeObject:assemblyClass];
-}
-
-+ (BOOL)assemblyClassIsAdvised:(Class)assemblyClass
-{
-    return [advisedAssemblyClasses containsObject:assemblyClass];
-}
+//- (BOOL)classIsNotAlreadyAdvised:(Class)class
+//{
+//    return ![[self class] assemblyClassIsAdvised:class];
+//}
+//
+//+ (void)markAsAdvisedAssemblyClass:(Class)assemblyClass
+//{
+//    [advisedAssemblyClasses addObject:assemblyClass];
+//}
+//
+//+ (void)markAsNotAdvisedAssemblyClass:(Class)assemblyClass
+//{
+//    [advisedAssemblyClasses removeObject:assemblyClass];
+//}
+//
+//+ (BOOL)assemblyClassIsAdvised:(Class)assemblyClass
+//{
+//    return [advisedAssemblyClasses containsObject:assemblyClass];
+//}
 
 @end
