@@ -70,6 +70,7 @@
 static TyphoonComponentFactory *initialFactory;
 static NSUInteger initialFactoryRequestCount = 0;
 static BOOL initialFactoryWasCreated = NO;
+static id initialAppDelegate = nil;
 
 + (void)requireInitialFactory
 {
@@ -92,13 +93,17 @@ static BOOL initialFactoryWasCreated = NO;
 {
     SEL sel = @selector(setDelegate:);
     Method method = class_getInstanceMethod(ApplicationClass, sel);
-
+    
     void(*originalImp)(id, SEL, id) = (void (*)(id, SEL, id))method_getImplementation(method);
-
+    
     IMP adjustedImp = imp_implementationWithBlock(^(id instance, id delegate) {
-        if (!delegate) {
+        if (!delegate || initialAppDelegate) {
             return;
         }
+        //This ensures that Typhoon startup runs only once
+        initialAppDelegate = delegate;
+        
+        
         [self requireInitialFactory];
         id factoryFromDelegate = [self factoryFromAppDelegate:delegate];
         if (factoryFromDelegate && initialFactory) {
