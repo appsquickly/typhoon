@@ -150,7 +150,14 @@
 
     XCTAssertNotNil(knight.quest);
     XCTAssertEqual(knight.damselsRescued, (NSUInteger)321);
+}
 
+- (void)test_method_injection_single_argument
+{
+    Knight *knight = [(MiddleAgesAssembly *) _componentFactory knightWithMethodInjectionSingleArgument];
+    
+    XCTAssertNotNil(knight.favoriteQuest);
+    XCTAssertEqual([knight.favoriteQuest.imageUrl absoluteString], @"http://appsquick.ly");
 }
 
 - (void)test_fake_property_injection

@@ -24,6 +24,7 @@
 #import "CollaboratingMiddleAgesAssembly.h"
 #import "RectModel.h"
 #import "PrimitiveMan.h"
+#import "DummyQuest.h"
 
 @implementation MiddleAgesAssembly
 
@@ -247,6 +248,25 @@
         [definition injectMethod:@selector(setQuest:andDamselsRescued:) parameters:^(TyphoonMethod *method) {
             [method injectParameterWith:[self defaultQuest]];
             [method injectParameterWith:@321];
+        }];
+    }];
+}
+
+- (id)knightWithMethodInjectionSingleArgumentQuest
+{
+    return [TyphoonDefinition withClass:[DummyQuest class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectProperty:@selector(imageUrl) with:[NSURL URLWithString:@"http://appsquick.ly"]];
+        [definition injectMethod:@selector(setContext:) parameters:^(TyphoonMethod *method) {
+            [method injectParameterWith:[self knightWithMethodInjectionSingleArgument]];
+        }];
+    }];
+}
+
+- (id)knightWithMethodInjectionSingleArgument
+{
+    return [TyphoonDefinition withClass:[Knight class] configuration:^(TyphoonDefinition *definition) {
+        [definition injectMethod:@selector(setFavoriteQuest:) parameters:^(TyphoonMethod *method) {
+            [method injectParameterWith:[self knightWithMethodInjectionSingleArgumentQuest]];
         }];
     }];
 }

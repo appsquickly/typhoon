@@ -1174,6 +1174,8 @@
 		FA3329621F18D5160035456E /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA33295B1F18D1690035456E /* Second.storyboard */; };
 		FA3329631F18D5190035456E /* StoryboardWithReference.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B79797D01D0AE4C80006ADEE /* StoryboardWithReference.storyboard */; };
 		FA3329661F18DBC20035456E /* StoryboardControllerDependency.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3329651F18DBC20035456E /* StoryboardControllerDependency.m */; };
+		FA3DC1BB1F6A77D600B22D3C /* DummyQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3DC1B91F6A77C800B22D3C /* DummyQuest.m */; };
+		FA3DC1BC1F6A77D700B22D3C /* DummyQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3DC1B91F6A77C800B22D3C /* DummyQuest.m */; };
 		FA580A241DF01470003ED00D /* NSInvocation+TCFWrapValues.m in Sources */ = {isa = PBXBuildFile; fileRef = FA580A231DF01470003ED00D /* NSInvocation+TCFWrapValues.m */; };
 		FA580A251DF01476003ED00D /* NSInvocation+TCFWrapValues.h in Headers */ = {isa = PBXBuildFile; fileRef = FA580A221DF01470003ED00D /* NSInvocation+TCFWrapValues.h */; };
 		FA580A261DF01477003ED00D /* NSInvocation+TCFWrapValues.h in Headers */ = {isa = PBXBuildFile; fileRef = FA580A221DF01470003ED00D /* NSInvocation+TCFWrapValues.h */; };
@@ -1841,6 +1843,8 @@
 		FA3329641F18DBC20035456E /* StoryboardControllerDependency.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboardControllerDependency.h; sourceTree = "<group>"; };
 		FA3329651F18DBC20035456E /* StoryboardControllerDependency.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboardControllerDependency.m; sourceTree = "<group>"; };
 		FA3329681F18E1AB0035456E /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
+		FA3DC1B81F6A77C800B22D3C /* DummyQuest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DummyQuest.h; sourceTree = "<group>"; };
+		FA3DC1B91F6A77C800B22D3C /* DummyQuest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DummyQuest.m; sourceTree = "<group>"; };
 		FA580A221DF01470003ED00D /* NSInvocation+TCFWrapValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+TCFWrapValues.h"; sourceTree = "<group>"; };
 		FA580A231DF01470003ED00D /* NSInvocation+TCFWrapValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+TCFWrapValues.m"; sourceTree = "<group>"; };
 		FA8044301DF0A74700AB8C5D /* TyphoonStoryboardDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonStoryboardDefinition.h; sourceTree = "<group>"; };
@@ -2816,6 +2820,8 @@
 				6B0770581936F63A0083714E /* Harlot.h */,
 				6B0770591936F63A0083714E /* Knight.h */,
 				6B07705A1936F63A0083714E /* Knight.m */,
+				FA3DC1B81F6A77C800B22D3C /* DummyQuest.h */,
+				FA3DC1B91F6A77C800B22D3C /* DummyQuest.m */,
 				6B07705B1936F63A0083714E /* MediocreQuest.h */,
 				6B07705C1936F63A0083714E /* MediocreQuest.m */,
 				6B07705D1936F63A0083714E /* Quest.h */,
@@ -4445,6 +4451,7 @@
 				BA798936B108F1E9BEC1B760 /* TyphoonBlockComponentFactory_OverridingTests.m in Sources */,
 				BA79846AF7C6E16C31DFEAF3 /* InvalidCollaboratingAssembly_Initializer.m in Sources */,
 				BA79828B819CBDE6C1790952 /* TyphoonAssemblySelectorAdviserTests.m in Sources */,
+				FA3DC1BB1F6A77D600B22D3C /* DummyQuest.m in Sources */,
 				BA7987DEDB4963E855DCD172 /* TyphoonAssemblyExtendTests.m in Sources */,
 				BA79842CDF9A4CB3E878C0EA /* TyphoonCollaboratingAssemblyPropertyEnumeratorTests.m in Sources */,
 				BA7980BF2F239BB0E445DC9C /* TyphoonAssemblyAdviserTests.m in Sources */,
@@ -4591,6 +4598,7 @@
 				6B0773FD1937839D0083714E /* FactoryReferenceInjectionsTests.m in Sources */,
 				6B0773FE1937839D0083714E /* TyphoonRuntimeInjectionsTests.m in Sources */,
 				6B0773FF1937839D0083714E /* TyphoonDefinition+InfrastructureTests.m in Sources */,
+				FA3DC1BC1F6A77D700B22D3C /* DummyQuest.m in Sources */,
 				6B0774001937839D0083714E /* TyphoonDefinition+Tests.m in Sources */,
 				6B0774011937839D0083714E /* TyphoonDefinitionTests.m in Sources */,
 				6B0774081937839D0083714E /* CircularDependenciesAssembly.m in Sources */,

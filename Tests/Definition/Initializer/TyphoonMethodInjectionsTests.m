@@ -16,6 +16,7 @@
 #import "MiddleAgesAssembly.h"
 #import "Knight.h"
 #import "Quest.h"
+#import "NSArray+TyphoonManualEnumeration.h"
 
 @interface TyphoonMethodInjectionsTests : XCTestCase
 
@@ -66,6 +67,26 @@
     XCTAssertTrue(knight.foobar == nil);
 }
 
+- (NSArray *)dummyArray
+{
+    return [@[@1, @2, @3, @4, @5, @6, @7] copy];
+}
+
+- (void)test_array_enumerator
+{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Waiting for manual iteration"];
+    
+    [[self dummyArray] typhoon_enumerateObjectsWithManualIteration:^(id object, id<TyphoonIterator> iterator) {
+        NSLog(@"object: %@", object);
+        [(NSObject *)iterator performSelector:@selector(next) withObject:nil afterDelay:0.1];
+    } completion:^{
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:10 handler:^(NSError * _Nullable error) {
+        
+    }];
+}
 
 
 
