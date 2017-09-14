@@ -46,16 +46,13 @@
 
 - (void)test_provider_returns_all_storyboards_in_bundle
 {
-    NSArray *expectedStoryboardNames = @[@"Storyboard1", @"Storyboard2"];
+    NSSet *expectedStoryboardNames = [NSSet setWithArray:@[@"Storyboard1", @"Storyboard2"]];
     
     NSArray *result = [self.provider collectStoryboardsFromBundle:self.testBundle];
     
     XCTAssertEqual(result.count, expectedStoryboardNames.count);
     
-    for (NSString *resultName in result) {
-        NSUInteger index = [result indexOfObject:resultName];
-        XCTAssertEqualObjects(resultName, expectedStoryboardNames[index]);
-    }
+    XCTAssertTrue([expectedStoryboardNames isEqualToSet:[NSSet setWithArray:result]]);
 }
 
 - (void)test_provider_filters_storyboards_with_black_list
