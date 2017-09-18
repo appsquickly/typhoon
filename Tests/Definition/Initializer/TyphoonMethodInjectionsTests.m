@@ -24,12 +24,16 @@
 
 @implementation TyphoonMethodInjectionsTests {
     MethodInjectinosAssembly *factory;
+    NSArray *_dummyArray;
 }
 
 - (void)setUp
 {
     factory = [TyphoonBlockComponentFactory factoryWithAssemblies:@[[MiddleAgesAssembly assembly], [MethodInjectinosAssembly assembly]]];
     [super setUp];
+    
+    _dummyArray = [NSMutableArray arrayWithObjects:@"foo", nil];
+    
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
@@ -72,18 +76,37 @@
     return [@[@1, @2, @3, @4, @5, @6, @7] copy];
 }
 
+- (NSArray *)singleElementArray
+{
+    return [_dummyArray copy];
+}
+
 - (void)test_array_enumerator
 {
     XCTestExpectation *expectation = [self expectationWithDescription:@"Waiting for manual iteration"];
     
     [[self dummyArray] typhoon_enumerateObjectsWithManualIteration:^(id object, id<TyphoonIterator> iterator) {
-        NSLog(@"object: %@", object);
         [(NSObject *)iterator performSelector:@selector(next) withObject:nil afterDelay:0.1];
     } completion:^{
         [expectation fulfill];
     }];
     
     [self waitForExpectationsWithTimeout:10 handler:^(NSError * _Nullable error) {
+        
+    }];
+}
+
+- (void)test_array_enumerator_single_element
+{
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Waiting for manual iteration"];
+    
+    [[self singleElementArray] typhoon_enumerateObjectsWithManualIteration:^(id object, id<TyphoonIterator> iterator) {
+        [(NSObject *)iterator performSelector:@selector(next) withObject:nil afterDelay:0.5];
+    } completion:^{
+        [expectation fulfill];
+    }];
+    
+    [self waitForExpectationsWithTimeout:1 handler:^(NSError * _Nullable error) {
         
     }];
 }
