@@ -98,6 +98,7 @@ static id initialAppDelegate = nil;
     
     IMP adjustedImp = imp_implementationWithBlock(^(id instance, id delegate) {
         if (!delegate || initialAppDelegate) {
+            originalImp(instance, sel, delegate);
             return;
         }
         //This ensures that Typhoon startup runs only once
