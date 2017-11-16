@@ -35,14 +35,14 @@ static NSString * const kThreadDictionaryKey = @"org.typhoonframework.blockDefin
     return _route == TyphoonBlockDefinitionRouteInitializer || _route == TyphoonBlockDefinitionRouteInjections;
 }
 
-- (void)useConfigurationRouteWithinBlock:(void (^)())block
+- (void)useConfigurationRouteWithinBlock:(void (^)(void))block
 {
     [self useRoute:TyphoonBlockDefinitionRouteConfiguration withinBlock:block];
 }
 
 - (void)useInitializerRouteWithDefinition:(TyphoonBlockDefinition *)definition
                          injectionContext:(TyphoonInjectionContext *)context
-                              withinBlock:(void (^)())block
+                              withinBlock:(void (^)(void))block
 {
     _definition = definition;
     _injectionContext = context;
@@ -53,7 +53,7 @@ static NSString * const kThreadDictionaryKey = @"org.typhoonframework.blockDefin
 - (void)useInjectionsRouteWithDefinition:(TyphoonBlockDefinition *)definition
                                 instance:(id)instance
                         injectionContext:(TyphoonInjectionContext *)context
-                             withinBlock:(void (^)())block
+                             withinBlock:(void (^)(void))block
 {
     _definition = definition;
     _instance = instance;
@@ -64,7 +64,7 @@ static NSString * const kThreadDictionaryKey = @"org.typhoonframework.blockDefin
 
 #pragma mark - Private Methods
 
-- (void)useRoute:(TyphoonBlockDefinitionRoute)route withinBlock:(void (^)())block
+- (void)useRoute:(TyphoonBlockDefinitionRoute)route withinBlock:(void (^)(void))block
 {
     _route = route;
     

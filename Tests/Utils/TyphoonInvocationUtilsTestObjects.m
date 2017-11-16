@@ -14,7 +14,7 @@
 
 @implementation ObjectBlockArgument
 
-+ (void)setBlock:(void (^)())block
++ (void)setBlock:(void (^)(void))block
 {
     block();
 }

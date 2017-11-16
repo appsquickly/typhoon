@@ -74,7 +74,7 @@
     NSObject *retainedObject = [NSObject new];
     
     NSInvocation *invocation = [TyphoonInvocationUtilsTests invocationForClassSelector:@selector(setBlock:) class:[ObjectBlockArgument class]];
-    void (^Block)() = ^{
+    void (^Block)(void) = ^{
         if (retainedObject) {
             ///
         }
