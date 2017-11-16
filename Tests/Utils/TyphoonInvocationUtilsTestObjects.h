@@ -14,7 +14,7 @@
 
 @interface ObjectBlockArgument : NSObject
 
-+ (void)setBlock:(void(^)())block;
++ (void)setBlock:(void(^)(void))block;
 
 @end
 

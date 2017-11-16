@@ -36,15 +36,15 @@ typedef NS_ENUM(NSInteger, TyphoonBlockDefinitionRoute) {
 
 @property (nonatomic, strong, readonly) TyphoonInjectionContext *injectionContext;
 
-- (void)useConfigurationRouteWithinBlock:(void (^)())block;
+- (void)useConfigurationRouteWithinBlock:(void (^)(void))block;
 
 - (void)useInitializerRouteWithDefinition:(TyphoonBlockDefinition *)definition
                          injectionContext:(TyphoonInjectionContext *)context
-                              withinBlock:(void (^)())block;
+                              withinBlock:(void (^)(void))block;
 
 - (void)useInjectionsRouteWithDefinition:(TyphoonBlockDefinition *)definition
                                 instance:(id)instance
                         injectionContext:(TyphoonInjectionContext *)context
-                             withinBlock:(void (^)())block;
+                             withinBlock:(void (^)(void))block;
 
 @end

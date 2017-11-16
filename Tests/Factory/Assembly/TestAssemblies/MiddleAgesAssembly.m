@@ -408,7 +408,7 @@
 
 - (NSString *(^)(void))blockDefinition
 {
-    return [TyphoonDefinition with:^NSString *(){
+    return [TyphoonDefinition with:^NSString *(void){
         return @"321";
     }];
 }
