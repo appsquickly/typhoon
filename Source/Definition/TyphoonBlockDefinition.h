@@ -12,7 +12,7 @@
 
 #import "TyphoonDefinition.h"
 
-typedef id (^TyphoonBlockDefinitionInitializerBlock)();
+typedef id (^TyphoonBlockDefinitionInitializerBlock)(void);
 
 typedef void (^TyphoonBlockDefinitionInjectionsBlock)(id instance);
 
