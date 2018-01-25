@@ -152,7 +152,7 @@
     NSUInteger hash = 0;
     
     for (id arg in _arguments) {
-        hash = (hash << 5) - hash + [arg hash];
+        hash = hash ^ [arg hash];
     }
     
     return hash;

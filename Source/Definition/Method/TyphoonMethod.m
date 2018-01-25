@@ -92,7 +92,7 @@
     NSUInteger hash = (NSUInteger) sel_getName(_selector);
 
     for (id <TyphoonParameterInjection> parameter in _injectedParameters) {
-        hash = (NSUInteger) ((5u << hash) - hash + [[parameter description] hash]);
+        hash = hash ^ [parameter hash];
     }
 
     return hash;
