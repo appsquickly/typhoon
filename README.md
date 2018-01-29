@@ -1,6 +1,3 @@
-![Typhoon](http://typhoonframework.org/typhoon-splash.png)
-## <a href="http://typhoonframework.org">typhoonframework.org</a>  
-
 Powerful dependency injection for Cocoa and CocoaTouch. Lightweight, yet full-featured and super-easy to use. 
 
 ## Not familiar with Dependency Injection? 
