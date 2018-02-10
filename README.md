@@ -1,4 +1,5 @@
-# Typhoon
+![Typhoon](http://appsquickly.github.io/Typhoon/typhoon-splash.png)
+# <a href="http://appsquickly.github.io/Typhoon">Typhoon</a>
 
 Powerful dependency injection for Cocoa and CocoaTouch. Lightweight, yet full-featured and super-easy to use. 
 
