@@ -1,2 +1,2 @@
-www.typhoonframework.org
-========================
+Typhoon
+=======
