@@ -118,7 +118,7 @@ Please raise a <a href="https://github.com/appsquickly/Typhoon/issues">GitHub is
 
 Typhoon is a non-profit, community driven project. We only ask that if you've found it useful to star us on Github or send a tweet mentioning us (<a href="https://twitter.com/appsquickly">@appsquickly</a>). If you've written a Typhoon related blog or tutorial, or published a new Typhoon powered app, we'd certainly be happy to hear about that too. 
 
-Typhoon is sponsored and lead by <a href="http://appsquick.ly">AppsQuick.ly</a> with <a href="https://github.com/appsquickly/Typhoon/graphs/contributors">contributions from around the world</a>. 
+Typhoon is sponsored and led by <a href="http://appsquick.ly">AppsQuick.ly</a> with <a href="https://github.com/appsquickly/Typhoon/graphs/contributors">contributions from around the world</a>. 
  
 ---------------------------------------
 © 2012 - 2015 Jasper Blues, Aleksey Garbarev and contributors.
