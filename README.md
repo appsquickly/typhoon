@@ -5,7 +5,7 @@ Powerful dependency injection for Cocoa and CocoaTouch. Lightweight, yet full-fe
 
 ## Not familiar with Dependency Injection? 
 
-Visit <a href="http://typhoonframework.org">the Typhoon website</a> for an introduction. There's also a nice intro over at <a href="https://www.bignerdranch.com/blog/dependency-injection-ios/">Big Nerd Ranch</a>, or <a href="https://www.objc.io/issues/15-testing/dependency-injection/">here's an article</a>, by <a href="http://qualitycoding.org/">John Reid</a>. Quite a few books have been written on the topic, though we're not familiar with one that focuses specifically on Objective-C, Swift or Cocoa yet. 
+Visit <a href="http://appsquickly.github.io/Typhoon">the Typhoon website</a> for an introduction. There's also a nice intro over at <a href="https://www.bignerdranch.com/blog/dependency-injection-ios/">Big Nerd Ranch</a>, or <a href="https://www.objc.io/issues/15-testing/dependency-injection/">here's an article</a>, by <a href="http://qualitycoding.org/">John Reid</a>. Quite a few books have been written on the topic, though we're not familiar with one that focuses specifically on Objective-C, Swift or Cocoa yet. 
 
 ## Is Typhoon the right DI framework for you? 
 
@@ -28,7 +28,6 @@ Please think carefully before choosing a DI library that forces you to write com
 
 * Read the ***Quick Start*** for <a href="https://github.com/appsquickly/Typhoon/wiki/Quick-Start">Objective-C</a> or <a href="https://github.com/appsquickly/Typhoon/wiki/Swift-Quick-Start">Swift</a>. 
 * Here's the <a href="https://github.com/appsquickly/Typhoon/wiki/Types-of-Injections">User Guide</a>.
-* And here are the <a href="http://typhoonframework.org/docs/latest/api/modules.html">API Docs</a>. Generally googling a Typhoon class name will return the correct page as the first hit. 
 * <a href="http://ios.caph.jp/typhoon/introduction">日本のドキュメンテーション</a>
 
 ```swift
