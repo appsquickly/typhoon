@@ -20,6 +20,10 @@
 
 - (id)objectForKey:(id <NSCopying>)aKey;
 
+- (id)objectForKeyedSubscript:(id <NSCopying>)aKey;
+
+- (void)setObject:(id)object forKeyedSubscript:(id <NSCopying>)aKey;
+
 - (NSArray *)allValues;
 
 - (void)removeAllObjects;
