@@ -79,13 +79,13 @@ static NSDictionary *viewControllerTyphoonKeyMap;
         storyboardName = value;
     }];
 
-    UIStoryboard *storyboard = storyboardPool[storyboardName];
+    UIStoryboard *storyboard = [storyboardPool objectForKey:storyboardName];
     if (!storyboard) {
         storyboard = [TyphoonStoryboard storyboardWithName:storyboardName
                                                    factory:factory
                                                     bundle:[NSBundle bundleForClass:[self class]]];
         @synchronized(self) {
-            storyboardPool[storyboardName] = storyboard;
+            [storyboardPool setObject:storyboard forKey:storyboardName];
         }
     }
     
