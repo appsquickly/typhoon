@@ -23,10 +23,11 @@ typedef void(^TyphoonInstanceCompleteBlock)(id instance);
 @property(nonatomic, strong, readonly) NSString *key;
 @property(nonatomic, strong, readonly) TyphoonRuntimeArguments *args;
 @property(nonatomic, strong, readonly) id instance;
+@property(nonatomic, readonly) BOOL isPrototypeElement;
 
 /* Raises a circular init exception if instance in initializing state. */
 
-+ (instancetype)elementWithKey:(NSString *)key args:(TyphoonRuntimeArguments *)args;
++ (instancetype)elementWithKey:(NSString *)key args:(TyphoonRuntimeArguments *)args isPrototype:(BOOL)isPrototype;
 
 - (NSString *)description;
 

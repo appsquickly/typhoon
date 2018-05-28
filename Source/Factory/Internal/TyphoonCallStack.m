@@ -74,10 +74,18 @@
 {
     NSUInteger argsHash = [args hash];
     
+    NSInteger depth = 0;
     for (TyphoonStackElement *item in [_storage reverseObjectEnumerator]) {
         if ([item.key isEqualToString:key] && argsHash == [item.args hash]) {
-            return item;
+            // Circular reference to prototype objects is supported, but only for one level of depth
+            // i.e. backward reference is suported, but reference through several levels would be considered
+            // as reference to another prototyped instance
+            if (!item.isPrototypeElement || depth <= 1) {
+                return item;
+            }
+            
         }
+        depth += 1;
     }
     return nil;
 }

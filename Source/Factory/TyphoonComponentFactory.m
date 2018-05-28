@@ -416,7 +416,8 @@ static TyphoonComponentFactory *uiResolvingFactory = nil;
     @synchronized (self) {
         id<TyphoonComponentsPool> pool = [self poolForDefinition:definition];
         [pool setObject:instance forKey:definition.key];
-        TyphoonStackElement *element = [TyphoonStackElement elementWithKey:definition.key args:nil];
+        BOOL isPrototype = (definition.scope == TyphoonScopePrototype);
+        TyphoonStackElement *element = [TyphoonStackElement elementWithKey:definition.key args:nil isPrototype:isPrototype];
         [element takeInstance:instance];
         [_stack push:element];
         [self doInjectionEventsOn:instance withDefinition:definition args:nil];

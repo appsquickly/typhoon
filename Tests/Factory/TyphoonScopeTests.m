@@ -80,9 +80,6 @@
     XCTAssertEqualObjects(mordred.name, @"Mordred");
     XCTAssertNotEqual(mordred.personalGuard, arthur.personalGuard);
     XCTAssertEqualObjects(mordred.personalGuard.name, @"Mordred's personal guard");
-    
-
-    
 }
 
 @end

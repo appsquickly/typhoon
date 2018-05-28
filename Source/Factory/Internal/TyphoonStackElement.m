@@ -19,18 +19,19 @@
     id _instance;
 }
 
-+ (instancetype)elementWithKey:(NSString *)key args:(TyphoonRuntimeArguments *)args
++ (instancetype)elementWithKey:(NSString *)key args:(TyphoonRuntimeArguments *)args isPrototype:(BOOL)isPrototype
 {
-    return [[self alloc] initWithKey:key args:args];
+    return [[self alloc] initWithKey:key args:args isPrototype:isPrototype];
 }
 
 
-- (instancetype)initWithKey:(NSString *)key args:(TyphoonRuntimeArguments *)args
+- (instancetype)initWithKey:(NSString *)key args:(TyphoonRuntimeArguments *)args isPrototype:(BOOL)isPrototype
 {
     self = [super init];
     if (self) {
         _key = key;
         _args = args;
+        _isPrototypeElement = isPrototype;
         completeBlocks = [NSMutableSet new];
     }
     return self;

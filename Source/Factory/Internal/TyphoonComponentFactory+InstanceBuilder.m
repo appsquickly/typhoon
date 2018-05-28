@@ -37,7 +37,8 @@ TYPHOON_LINK_CATEGORY(TyphoonComponentFactory_InstanceBuilder)
 
 - (id)buildInstanceWithDefinition:(TyphoonDefinition *)definition args:(TyphoonRuntimeArguments *)args
 {
-    TyphoonStackElement *stackElement = [TyphoonStackElement elementWithKey:definition.key args:args];
+    BOOL isPrototype = (definition.scope == TyphoonScopePrototype);
+    TyphoonStackElement *stackElement = [TyphoonStackElement elementWithKey:definition.key args:args isPrototype:isPrototype];
     [_stack push:stackElement];
 
     id instance = [self initializeInstanceWithDefinition:definition args:args];
