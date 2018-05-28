@@ -15,6 +15,7 @@
 
 @class CampaignQuest;
 @class Fort;
+@class Kingdom;
 
 #import "Quest.h"
 
@@ -30,6 +31,9 @@
 @property(nonatomic, strong) NSSet *friends;
 @property(nonatomic, strong) NSDictionary *friendsDictionary;
 @property(nonatomic, strong) Fort *homeFort;
+
+@property(nonatomic, strong) NSString *name;
+@property(nonatomic, strong) Kingdom *kingdom;
 
 + (id)knightWithDamselsRescued:(NSUInteger)damselsRescued;
 

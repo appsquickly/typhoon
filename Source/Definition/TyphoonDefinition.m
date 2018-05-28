@@ -243,10 +243,10 @@ static NSString *TyphoonScopeToString(TyphoonScope scope)
 #pragma mark: - Class Methods
 //-------------------------------------------------------------------------------------------
 
-- (id)factory
-{
-    return nil;
-}
+//- (id)factory
+//{
+//    return nil;
+//}
 
 + (id)withClass:(Class)clazz
 {

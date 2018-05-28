@@ -1176,6 +1176,14 @@
 		FA3329661F18DBC20035456E /* StoryboardControllerDependency.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3329651F18DBC20035456E /* StoryboardControllerDependency.m */; };
 		FA3DC1BB1F6A77D600B22D3C /* DummyQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3DC1B91F6A77C800B22D3C /* DummyQuest.m */; };
 		FA3DC1BC1F6A77D700B22D3C /* DummyQuest.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3DC1B91F6A77C800B22D3C /* DummyQuest.m */; };
+		FA563A9320BC440700B06B8A /* PrototypeAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = FA563A9220BC440700B06B8A /* PrototypeAssembly.m */; };
+		FA563A9420BC440700B06B8A /* PrototypeAssembly.m in Sources */ = {isa = PBXBuildFile; fileRef = FA563A9220BC440700B06B8A /* PrototypeAssembly.m */; };
+		FA563A9920BC473900B06B8A /* King.m in Sources */ = {isa = PBXBuildFile; fileRef = FA563A9820BC473900B06B8A /* King.m */; };
+		FA563A9A20BC473900B06B8A /* King.m in Sources */ = {isa = PBXBuildFile; fileRef = FA563A9820BC473900B06B8A /* King.m */; };
+		FA563A9B20BC473900B06B8A /* King.m in Sources */ = {isa = PBXBuildFile; fileRef = FA563A9820BC473900B06B8A /* King.m */; };
+		FA563A9F20BC480E00B06B8A /* Kingdom.m in Sources */ = {isa = PBXBuildFile; fileRef = FA563A9E20BC480E00B06B8A /* Kingdom.m */; };
+		FA563AA020BC480E00B06B8A /* Kingdom.m in Sources */ = {isa = PBXBuildFile; fileRef = FA563A9E20BC480E00B06B8A /* Kingdom.m */; };
+		FA563AA120BC480E00B06B8A /* Kingdom.m in Sources */ = {isa = PBXBuildFile; fileRef = FA563A9E20BC480E00B06B8A /* Kingdom.m */; };
 		FA580A241DF01470003ED00D /* NSInvocation+TCFWrapValues.m in Sources */ = {isa = PBXBuildFile; fileRef = FA580A231DF01470003ED00D /* NSInvocation+TCFWrapValues.m */; };
 		FA580A251DF01476003ED00D /* NSInvocation+TCFWrapValues.h in Headers */ = {isa = PBXBuildFile; fileRef = FA580A221DF01470003ED00D /* NSInvocation+TCFWrapValues.h */; };
 		FA580A261DF01477003ED00D /* NSInvocation+TCFWrapValues.h in Headers */ = {isa = PBXBuildFile; fileRef = FA580A221DF01470003ED00D /* NSInvocation+TCFWrapValues.h */; };
@@ -1845,6 +1853,12 @@
 		FA3329681F18E1AB0035456E /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .travis.yml; sourceTree = "<group>"; };
 		FA3DC1B81F6A77C800B22D3C /* DummyQuest.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DummyQuest.h; sourceTree = "<group>"; };
 		FA3DC1B91F6A77C800B22D3C /* DummyQuest.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DummyQuest.m; sourceTree = "<group>"; };
+		FA563A9120BC440700B06B8A /* PrototypeAssembly.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrototypeAssembly.h; sourceTree = "<group>"; };
+		FA563A9220BC440700B06B8A /* PrototypeAssembly.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrototypeAssembly.m; sourceTree = "<group>"; };
+		FA563A9720BC473900B06B8A /* King.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = King.h; sourceTree = "<group>"; };
+		FA563A9820BC473900B06B8A /* King.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = King.m; sourceTree = "<group>"; };
+		FA563A9D20BC480E00B06B8A /* Kingdom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Kingdom.h; sourceTree = "<group>"; };
+		FA563A9E20BC480E00B06B8A /* Kingdom.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Kingdom.m; sourceTree = "<group>"; };
 		FA580A221DF01470003ED00D /* NSInvocation+TCFWrapValues.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSInvocation+TCFWrapValues.h"; sourceTree = "<group>"; };
 		FA580A231DF01470003ED00D /* NSInvocation+TCFWrapValues.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSInvocation+TCFWrapValues.m"; sourceTree = "<group>"; };
 		FA8044301DF0A74700AB8C5D /* TyphoonStoryboardDefinition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonStoryboardDefinition.h; sourceTree = "<group>"; };
@@ -2712,6 +2726,7 @@
 				BA79887A6576C154598811BD /* Config */,
 				9FFB52551BA152FF0078F6B2 /* TyphoonSingleAssembly.h */,
 				9FFB52561BA152FF0078F6B2 /* TyphoonSingleAssembly.m */,
+				FA563A9620BC443B00B06B8A /* PrototypeScope */,
 			);
 			path = TestAssemblies;
 			sourceTree = "<group>";
@@ -2832,6 +2847,10 @@
 				2DBA1563B09BB6CE82F164EE /* AutoInjection */,
 				74AD3F0957BBA795250E1CAD /* RectModel.m */,
 				74AD3E3B22E9A37E861C75B9 /* RectModel.h */,
+				FA563A9720BC473900B06B8A /* King.h */,
+				FA563A9820BC473900B06B8A /* King.m */,
+				FA563A9D20BC480E00B06B8A /* Kingdom.h */,
+				FA563A9E20BC480E00B06B8A /* Kingdom.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -3279,6 +3298,15 @@
 				BA798F958813EEAAAF528D26 /* TyphoonStartupTests_OSX.m */,
 			);
 			path = Startup;
+			sourceTree = "<group>";
+		};
+		FA563A9620BC443B00B06B8A /* PrototypeScope */ = {
+			isa = PBXGroup;
+			children = (
+				FA563A9120BC440700B06B8A /* PrototypeAssembly.h */,
+				FA563A9220BC440700B06B8A /* PrototypeAssembly.m */,
+			);
+			path = PrototypeScope;
 			sourceTree = "<group>";
 		};
 		FA80442F1DF0A74700AB8C5D /* Definition */ = {
@@ -4353,6 +4381,7 @@
 				6B0771071936FEA80083714E /* TyphoonDefinition+InfrastructureTests.m in Sources */,
 				9F98B2E81BA0BF5D00196820 /* TyphoonLoopedCollaboratingAssemblies.m in Sources */,
 				6B0771081936FEA80083714E /* TyphoonDefinition+Tests.m in Sources */,
+				FA563A9F20BC480E00B06B8A /* Kingdom.m in Sources */,
 				6B43ED5F1A8FAA350071EFC7 /* SwiftTyphoonAssemblyActivatorTests..swift in Sources */,
 				6B0771091936FEA80083714E /* TyphoonDefinitionTests.m in Sources */,
 				6B0771101936FEA80083714E /* CircularDependenciesAssembly.m in Sources */,
@@ -4368,6 +4397,7 @@
 				9F65CEDF1BA153DD0015765B /* TyphoonSingleAssembly.m in Sources */,
 				6B07711A1936FEA80083714E /* SimpleAssembly.m in Sources */,
 				6B07711B1936FEA80083714E /* SingletonsChainAssembly.m in Sources */,
+				FA563A9920BC473900B06B8A /* King.m in Sources */,
 				9F1187B31BEFF06E008859E0 /* TyphoonConfigAppDelegateMock.m in Sources */,
 				6B0771201936FEA80083714E /* ClassWithConstructor.m in Sources */,
 				9F0F25171BEA13CA002AD880 /* TyphoonTypeConversionUtilsTests.m in Sources */,
@@ -4418,6 +4448,7 @@
 				6B0771591936FEA80083714E /* TyphoonPrimitiveTypeConverterTests.m in Sources */,
 				0183B7681C8295B000644B62 /* DamselQuest.m in Sources */,
 				6B07715A1936FEA80083714E /* TyphoonTypeConverterRegistryTests.m in Sources */,
+				FA563A9320BC440700B06B8A /* PrototypeAssembly.m in Sources */,
 				A5B9A3D31CEB19FF00F5A0B7 /* TyphoonNibLoaderAssembly.m in Sources */,
 				6B07715B1936FEA80083714E /* TyphoonTypeDescriptorTests.m in Sources */,
 				6B07715D1936FEA80083714E /* TyphoonInvocationUtilsTestObjects.m in Sources */,
@@ -4603,7 +4634,9 @@
 				6B0774011937839D0083714E /* TyphoonDefinitionTests.m in Sources */,
 				6B0774081937839D0083714E /* CircularDependenciesAssembly.m in Sources */,
 				6B0774091937839D0083714E /* CollaboratingMiddleAgesAssembly.m in Sources */,
+				FA563A9420BC440700B06B8A /* PrototypeAssembly.m in Sources */,
 				6B07740A1937839D0083714E /* ExceptionTestAssembly.m in Sources */,
+				FA563A9A20BC473900B06B8A /* King.m in Sources */,
 				6B07740B1937839D0083714E /* ExtendedMiddleAgesAssembly.m in Sources */,
 				6B07740C1937839D0083714E /* ExtendedSimpleAssembly.m in Sources */,
 				6B07740D1937839D0083714E /* InfrastructureComponentsAssembly.m in Sources */,
@@ -4646,6 +4679,7 @@
 				6B0774431937839D0083714E /* Fort.m in Sources */,
 				6B0774441937839D0083714E /* Knight.m in Sources */,
 				9F1187B21BEFF06D008859E0 /* TyphoonConfigAppDelegateMock.m in Sources */,
+				FA563AA020BC480E00B06B8A /* Kingdom.m in Sources */,
 				6B0774451937839D0083714E /* MediocreQuest.m in Sources */,
 				6B0774461937839D0083714E /* NotSingletonA.m in Sources */,
 				6B0774471937839D0083714E /* SingletonA.m in Sources */,
@@ -4812,6 +4846,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA563A9B20BC473900B06B8A /* King.m in Sources */,
+				FA563AA120BC480E00B06B8A /* Kingdom.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

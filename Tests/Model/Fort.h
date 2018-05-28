@@ -14,4 +14,5 @@
 
 
 @interface Fort : NSObject
+@property (nonatomic, weak) id owner;
 @end
