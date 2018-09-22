@@ -32,7 +32,7 @@ Please think carefully before choosing a DI library that forces you to write com
 
 ```swift
 let assembly = MyAssembly().activated()
-let viewControler = assembly.recommendationController() as! RecommendationController
+let viewController = assembly.recommendationController() as! RecommendationController
 ```
 
 # Open Source Sample Applications
