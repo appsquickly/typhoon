@@ -45,7 +45,7 @@
             TyphoonStoryboard *storyboard = [TyphoonStoryboard storyboardWithName:name factory:componentFactory bundle:bundle];
             @synchronized(self) {
                 id<TyphoonComponentsPool> storyboardPool = [componentFactory storyboardPool];
-                storyboardPool[name] = storyboard;
+                [storyboardPool setObject:storyboardPool forKey:name];
             }
             return storyboard;
         } else {
