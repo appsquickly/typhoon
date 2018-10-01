@@ -25,6 +25,8 @@
 #import "CROPrototypeA.h"
 #import "CROPrototypeB.h"
 
+#import "Viper.h"
+
 @interface CircularDependenciesAssembly : TyphoonAssembly
 
 - (id)classA;
@@ -51,5 +53,7 @@
 - (id)croPrototypeA;
 
 - (id)croPrototypeB;
+
+- (LoginViewController *)loginView;
 
 @end

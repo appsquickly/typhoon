@@ -192,4 +192,60 @@
     }];
 }
 
+//-------------------------------------------------------------------------------------------
+#pragma mark - Viper example
+//-------------------------------------------------------------------------------------------
+
+- (LoginViewController *)loginView
+{
+    return [TyphoonDefinition withClass:[LoginViewController class]
+                          configuration:^(TyphoonDefinition *definition) {
+                              [definition injectProperty:@selector(output)
+                                                    with:[self presenterLogin]];
+                          }];
+}
+
+- (LoginPresenter *)presenterLogin
+{
+    return [TyphoonDefinition withClass:[LoginPresenter class]
+                          configuration:^(TyphoonDefinition *definition) {
+                              [definition injectProperty:@selector(view)
+                                                    with:[self loginView]];
+                              [definition injectProperty:@selector(interactor)
+                                                    with:[self interactorLogin]];
+                              [definition injectProperty:@selector(router)
+                                                    with:[self routerLogin]];
+                          }];
+}
+
+- (LoginInteractor *)interactorLogin
+{
+    return [TyphoonDefinition withClass:[LoginInteractor class]
+                          configuration:^(TyphoonDefinition *definition) {
+                              [definition injectProperty:@selector(output)
+                                                    with:[self presenterLogin]];
+                          }];
+}
+
+- (LoginRouter *)routerLogin
+{
+    return [TyphoonDefinition withClass:[LoginRouter class]
+                          configuration:^(TyphoonDefinition *definition) {
+                              [definition injectProperty:@selector(routeRegistration)
+                                                    with:[self routeRegistration]];
+                          }];
+}
+
+- (JRViewControllerRoute *)routeRegistration
+{
+    return [TyphoonDefinition withClass:[JRViewControllerRoute class]
+                          configuration:^(TyphoonDefinition *definition) {
+                              [definition injectProperty:@selector(owner)
+                                                    with:[self loginView]];
+                              [definition injectProperty:@selector(destinationFactoryBlock)
+                                                    with:^UIViewController * {
+                                                        return [UIViewController new];
+                                                    }];
+                          }];
+}
 @end

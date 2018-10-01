@@ -1241,6 +1241,9 @@
 		FA932D971DDC7890000FE54C /* TyphoonAssemblyAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = FA932D941DDC7890000FE54C /* TyphoonAssemblyAccessor.m */; };
 		FA932D981DDC7890000FE54C /* TyphoonAssemblyAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = FA932D941DDC7890000FE54C /* TyphoonAssemblyAccessor.m */; };
 		FA93C5901DB52C2200A54336 /* RectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AD3F0957BBA795250E1CAD /* RectModel.m */; };
+		FACC2888216277BA00F18D59 /* Viper.m in Sources */ = {isa = PBXBuildFile; fileRef = FACC2886216277A700F18D59 /* Viper.m */; };
+		FACC2889216277BB00F18D59 /* Viper.m in Sources */ = {isa = PBXBuildFile; fileRef = FACC2886216277A700F18D59 /* Viper.m */; };
+		FACC288A216277BB00F18D59 /* Viper.m in Sources */ = {isa = PBXBuildFile; fileRef = FACC2886216277A700F18D59 /* Viper.m */; };
 		FAF2E92219C2260F00211DF6 /* TyphoonInjectedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1899426943444774AC27 /* TyphoonInjectedObject.m */; };
 /* End PBXBuildFile section */
 
@@ -1867,6 +1870,8 @@
 		FA8044331DF0A74700AB8C5D /* TyphoonStoryboardDefinitionContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonStoryboardDefinitionContext.m; sourceTree = "<group>"; };
 		FA932D931DDC7890000FE54C /* TyphoonAssemblyAccessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TyphoonAssemblyAccessor.h; sourceTree = "<group>"; };
 		FA932D941DDC7890000FE54C /* TyphoonAssemblyAccessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TyphoonAssemblyAccessor.m; sourceTree = "<group>"; };
+		FACC2885216277A700F18D59 /* Viper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Viper.h; sourceTree = "<group>"; };
+		FACC2886216277A700F18D59 /* Viper.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Viper.m; sourceTree = "<group>"; };
 		FAF38E611DF04DFD00F44BC0 /* Typhoon.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = Typhoon.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 /* End PBXFileReference section */
 
@@ -2851,6 +2856,8 @@
 				FA563A9820BC473900B06B8A /* King.m */,
 				FA563A9D20BC480E00B06B8A /* Kingdom.h */,
 				FA563A9E20BC480E00B06B8A /* Kingdom.m */,
+				FACC2885216277A700F18D59 /* Viper.h */,
+				FACC2886216277A700F18D59 /* Viper.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -4434,6 +4441,7 @@
 				6B07714B1936FEA80083714E /* CROSingletonB.m in Sources */,
 				6B07714C1936FEA80083714E /* Sword.m in Sources */,
 				6B07714D1936FEA80083714E /* SwordFactory.m in Sources */,
+				FACC2888216277BA00F18D59 /* Viper.m in Sources */,
 				6B07714E1936FEA80083714E /* Fort.m in Sources */,
 				6B07714F1936FEA80083714E /* Knight.m in Sources */,
 				6B0771501936FEA80083714E /* MediocreQuest.m in Sources */,
@@ -4688,6 +4696,7 @@
 				6B0774491937839D0083714E /* TyphoonPatcherTests.m in Sources */,
 				6B07744A1937839D0083714E /* TyphoonTestUtilsTests.m in Sources */,
 				6B07744B1937839D0083714E /* ClassWithPrimitiveTypesForConversion.m in Sources */,
+				FACC2889216277BB00F18D59 /* Viper.m in Sources */,
 				6B07744D1937839D0083714E /* TyphoonPassthroughTypeConverterTests.m in Sources */,
 				6B07744E1937839D0083714E /* TyphoonPrimitiveTypeConverterTests.m in Sources */,
 				6B07744F1937839D0083714E /* TyphoonTypeConverterRegistryTests.m in Sources */,
@@ -4846,6 +4855,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FACC288A216277BB00F18D59 /* Viper.m in Sources */,
 				FA563A9B20BC473900B06B8A /* King.m in Sources */,
 				FA563AA120BC480E00B06B8A /* Kingdom.m in Sources */,
 			);

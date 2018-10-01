@@ -506,5 +506,25 @@ test_currently_resolving_references_dictionary_is_not_overwritten_when_initializ
     XCTAssertEqual(knight.damselsRescued, (NSUInteger)12);
 }
 
+//-------------------------------------------------------------------------------------------
+#pragma mark - Viper example
+//-------------------------------------------------------------------------------------------
+
+- (void)test_viper_example_circular_reference
+{
+    CircularDependenciesAssembly *activatedAssembly = [[CircularDependenciesAssembly assembly] activated];
+    
+    LoginViewController *viewController = [activatedAssembly loginView];
+    XCTAssertNotNil(viewController);
+    
+    LoginPresenter *presenter = viewController.output;
+    LoginRouter *router = presenter.router;
+    JRViewControllerRoute *route = router.routeRegistration;
+    
+    XCTAssert(route.owner == viewController, @"owner should be same viewController");
+    
+}
+
+
 @end
 
