@@ -3,12 +3,12 @@ Pod::Spec.new do |spec|
   spec.version = '4.0.7'
   spec.license = 'Apache2.0'
   spec.summary = 'Dependency injection for Objective-C and Swift. Light-weight, yet flexible and full-featured.'
-  spec.homepage = 'http://www.typhoonframework.org'
+  spec.homepage = 'http://appsquickly.github.io/Typhoon/'
   spec.author = {'Jasper Blues, Aleksey Garbarev, Robert Gilliam, Daniel Rodríguez, Erik Sundin & Contributors' => 'info@typhoonframework.org'}
   spec.source = {:git => 'https://github.com/appsquickly/Typhoon.git', :tag => spec.version.to_s, :submodules => true}
 
   spec.ios.deployment_target = '5.0'
-  spec.osx.deployment_target = '10.7'
+  spec.osx.deployment_target = '10.9'
   spec.tvos.deployment_target = '9.0'
 
   spec.source_files = 'Source/**/*.{h,m}'
