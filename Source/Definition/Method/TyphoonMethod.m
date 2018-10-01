@@ -14,6 +14,7 @@
 #import "TyphoonMethod.h"
 #import "TyphoonParameterInjection.h"
 #import "TyphoonInjections.h"
+#import "TyphoonUtils.h"
 
 @implementation TyphoonMethod {
     BOOL _needUpdateHash;
@@ -92,7 +93,7 @@
     NSUInteger hash = (NSUInteger) sel_getName(_selector);
 
     for (id <TyphoonParameterInjection> parameter in _injectedParameters) {
-        hash = (NSUInteger) ((5u << hash) - hash + [[parameter description] hash]);
+        hash = TyphoonHashByAppendingInteger(hash, [[parameter description] hash]);
     }
 
     return hash;

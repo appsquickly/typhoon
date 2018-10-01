@@ -16,6 +16,7 @@
 #import "TyphoonInjections.h"
 #import "TyphoonInjectionByReference.h"
 #import "NSInvocation+TCFWrapValues.h"
+#import "TyphoonUtils.h"
 
 @implementation TyphoonRuntimeArguments
 {
@@ -152,7 +153,7 @@
     NSUInteger hash = 0;
     
     for (id arg in _arguments) {
-        hash = (hash << 5) - hash + [arg hash];
+        hash = TyphoonHashByAppendingInteger(hash, [arg hash]);
     }
     
     return hash;
