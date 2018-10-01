@@ -1171,6 +1171,7 @@
 		DDB5C2631D51DFF900C8B9EE /* UIResponder+TyphoonOutletTransfer.m in Sources */ = {isa = PBXBuildFile; fileRef = DDB5C2621D51DFF900C8B9EE /* UIResponder+TyphoonOutletTransfer.m */; };
 		DDB5C26F1D51EBA400C8B9EE /* LoadedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD38B1FC1D4FAC1200B62029 /* LoadedView.xib */; };
 		DDB5C2721D51ECF400C8B9EE /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DDB5C2701D51ECEA00C8B9EE /* RootView.xib */; };
+		FA30516521628748003E89B2 /* Viper.m in Sources */ = {isa = PBXBuildFile; fileRef = FACC2886216277A700F18D59 /* Viper.m */; };
 		FA3329621F18D5160035456E /* Second.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA33295B1F18D1690035456E /* Second.storyboard */; };
 		FA3329631F18D5190035456E /* StoryboardWithReference.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B79797D01D0AE4C80006ADEE /* StoryboardWithReference.storyboard */; };
 		FA3329661F18DBC20035456E /* StoryboardControllerDependency.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3329651F18DBC20035456E /* StoryboardControllerDependency.m */; };
@@ -1242,7 +1243,6 @@
 		FA932D981DDC7890000FE54C /* TyphoonAssemblyAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = FA932D941DDC7890000FE54C /* TyphoonAssemblyAccessor.m */; };
 		FA93C5901DB52C2200A54336 /* RectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 74AD3F0957BBA795250E1CAD /* RectModel.m */; };
 		FACC2888216277BA00F18D59 /* Viper.m in Sources */ = {isa = PBXBuildFile; fileRef = FACC2886216277A700F18D59 /* Viper.m */; };
-		FACC2889216277BB00F18D59 /* Viper.m in Sources */ = {isa = PBXBuildFile; fileRef = FACC2886216277A700F18D59 /* Viper.m */; };
 		FACC288A216277BB00F18D59 /* Viper.m in Sources */ = {isa = PBXBuildFile; fileRef = FACC2886216277A700F18D59 /* Viper.m */; };
 		FAF2E92219C2260F00211DF6 /* TyphoonInjectedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 2DBA1899426943444774AC27 /* TyphoonInjectedObject.m */; };
 /* End PBXBuildFile section */
@@ -4696,7 +4696,7 @@
 				6B0774491937839D0083714E /* TyphoonPatcherTests.m in Sources */,
 				6B07744A1937839D0083714E /* TyphoonTestUtilsTests.m in Sources */,
 				6B07744B1937839D0083714E /* ClassWithPrimitiveTypesForConversion.m in Sources */,
-				FACC2889216277BB00F18D59 /* Viper.m in Sources */,
+				FA30516521628748003E89B2 /* Viper.m in Sources */,
 				6B07744D1937839D0083714E /* TyphoonPassthroughTypeConverterTests.m in Sources */,
 				6B07744E1937839D0083714E /* TyphoonPrimitiveTypeConverterTests.m in Sources */,
 				6B07744F1937839D0083714E /* TyphoonTypeConverterRegistryTests.m in Sources */,
@@ -5294,6 +5294,14 @@
 				INFOPLIST_FILE = "Tests/iOS/Typhoon-iOSTests/Typhoon-iOSTests-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = (
+					"-Wextra",
+					"-Wno-unused-parameter",
+					"-Wformat=2",
+					"-Wunreachable-code",
+					"-Werror",
+					"-Warc-maybe-repeated-use-of-weak",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",

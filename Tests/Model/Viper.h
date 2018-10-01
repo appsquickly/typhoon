@@ -30,7 +30,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface JRViewControllerRoute : NSObject
 @property (nonatomic, weak) id owner;
-@property (nonatomic, copy) UIViewController*(^destinationFactoryBlock)();
+@property (nonatomic, copy) id(^destinationFactoryBlock)();
 @end
 
 NS_ASSUME_NONNULL_END

@@ -65,7 +65,8 @@
     Knight *knight = [assembly prototypeKnightWithFort];
     XCTAssertNotNil(knight);
     XCTAssertNotNil(knight.homeFort);
-    XCTAssertEqual(knight.homeFort.owner, knight);
+    id owner = knight.homeFort.owner;
+    XCTAssertEqual(owner, knight);
 }
 
 - (void)test_general_knight_for_different_kings

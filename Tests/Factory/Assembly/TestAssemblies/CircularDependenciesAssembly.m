@@ -243,8 +243,8 @@
                               [definition injectProperty:@selector(owner)
                                                     with:[self loginView]];
                               [definition injectProperty:@selector(destinationFactoryBlock)
-                                                    with:^UIViewController * {
-                                                        return [UIViewController new];
+                                                    with:^id{
+                                                        return [NSObject new];
                                                     }];
                           }];
 }
