@@ -43,7 +43,7 @@ let viewController = assembly.recommendationController() as! RecommendationContr
 *Have a Typhoon example app that you'd like to share? Great! Get in touch with us :)*
 
 # Installing 
-[![Build Status](https://travis-ci.org/appsquickly/Typhoon.svg?branch=master)](https://travis-ci.org/appsquickly/Typhoon)
+[![Build Status](https://travis-ci.org/appsquickly/typhoon.svg?branch=master)](https://travis-ci.org/appsquickly/typhoon)
 [![codecov](https://codecov.io/gh/appsquickly/Typhoon/branch/master/graph/badge.svg)](https://codecov.io/gh/appsquickly/Typhoon)
 ![CocoaPods Version](https://cocoapod-badges.herokuapp.com/v/Typhoon/badge.png) [![Pod Platform](https://img.shields.io/cocoapods/p/Typhoon.svg?style=flat)](http://appsquickly.github.io/Typhoon/docs/latest/api/modules.html) [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![Dependency Status](https://www.versioneye.com/objective-c/typhoon/1.1.1/badge.svg?style=flat)](https://www.versioneye.com/objective-c/typhoon) [![Pod License](https://img.shields.io/cocoapods/l/Typhoon.svg?style=flat)](https://github.com/appsquickly/typhoon/blob/master/LICENSE)
 
