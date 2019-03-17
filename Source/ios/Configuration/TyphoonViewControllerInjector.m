@@ -46,11 +46,11 @@
     else {
         [factory inject:viewController];
     }
-    
+
     NSArray<__kindof UIViewController *> *childViewControllers = [viewController isKindOfClass:UITabBarController.class]
     ? ((UITabBarController *)viewController).viewControllers
     : viewController.childViewControllers;
-    
+
     for (UIViewController *controller in childViewControllers) {
         if (storyboard && controller.storyboard && ![controller.storyboard isEqual:storyboard]) {
             continue;

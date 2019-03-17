@@ -37,7 +37,7 @@
 - (void)setUp
 {
     [super setUp];
-    
+
     self.factory = [TyphoonBlockComponentFactory factoryWithAssembly:[StoryboardViewControllerAssembly assembly]];
     self.factoryWithReference = [TyphoonBlockComponentFactory factoryWithAssembly:[StoryboardWithReferenceAssembly assembly]];
     
@@ -68,7 +68,7 @@
     StoryboardFirstViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"first"];
     StoryboardControllerDependency *dependency = controller.dependency;
     StoryboardFirstViewController *circular = dependency.circularDependencyBackToViewController;
-    
+
     XCTAssertTrue(controller == circular);
 }
 
