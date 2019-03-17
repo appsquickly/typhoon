@@ -9,9 +9,14 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <Foundation/Foundation.h>
-#import "StoryboardPageViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface StoryboardTabBarFirstViewController : StoryboardPageViewController
+@class Model;
+
+@interface StoryboardMainViewController : UIViewController
+
+@property (strong, nonatomic) Model *model;
+@property (assign, nonatomic) NSInteger countOfModelInstanceInjections;
+@property (strong, nonatomic) IBOutlet UIButton *button;
 
 @end

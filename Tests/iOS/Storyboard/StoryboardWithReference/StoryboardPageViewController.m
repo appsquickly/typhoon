@@ -9,9 +9,23 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-#import <Foundation/Foundation.h>
 #import "StoryboardPageViewController.h"
 
-@interface StoryboardTabBarFirstViewController : StoryboardPageViewController
+@implementation StoryboardPageViewController
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.countOfModelInstanceInjections = 0;
+    }
+    return self;
+}
+
+- (void)setModel:(Model *)model
+{
+    self.countOfModelInstanceInjections++;
+    _model = model;
+}
 
 @end

@@ -13,6 +13,8 @@
 
 @class StoryboardTabBarFirstViewController;
 @class StoryboardTabBarSecondViewController;
+@class StoryboardMainViewController;
+@class StoryboardDetailViewController;
 @class Model;
 
 @interface StoryboardWithReferenceAssembly : TyphoonAssembly
@@ -20,5 +22,8 @@
 - (Model *)model;
 - (StoryboardTabBarFirstViewController *)storyboardTabBarFirstViewController;
 - (StoryboardTabBarSecondViewController *)storyboardTabBarSecondViewController;
+- (StoryboardMainViewController *)storyboardMainViewController;
+- (StoryboardDetailViewController *)storyboardDetailViewController;
+- (UIStoryboard *)storyboardWithReference;
 
 @end

@@ -10,12 +10,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import <Foundation/Foundation.h>
+#import "StoryboardPageViewController.h"
 
-@class Model;
-
-@interface StoryboardTabBarSecondViewController : UIViewController
-
-@property (strong, nonatomic) Model *model;
-@property (assign, nonatomic) NSInteger countOfModelInstanceInjections;
+@interface StoryboardTabBarSecondViewController : StoryboardPageViewController
 
 @end

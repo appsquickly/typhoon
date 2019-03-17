@@ -16,13 +16,15 @@
 #import "StoryboardViewControllerAssembly.h"
 #import "StoryboardFirstViewController.h"
 #import "StoryboardTabBarViewController.h"
-#import "StoryboardTabBarFirstViewController.h"
-#import "StoryboardTabBarSecondViewController.h"
+#import "StoryboardPageViewController.h"
+#import "StoryboardMainViewController.h"
+#import "StoryboardDetailViewController.h"
 #import "StoryboardWithReferenceAssembly.h"
 
 @interface StoryboardTests : XCTestCase
 
 @property (strong, nonatomic) id factory;
+@property (strong, nonatomic) id factoryWithReference;
 
 @end
 
@@ -35,15 +37,18 @@
 - (void)setUp
 {
     [super setUp];
-
+    
     self.factory = [TyphoonBlockComponentFactory factoryWithAssembly:[StoryboardViewControllerAssembly assembly]];
-
+    self.factoryWithReference = [TyphoonBlockComponentFactory factoryWithAssembly:[StoryboardWithReferenceAssembly assembly]];
+    
     storyboard = [self.factory storyboard];
+    storyboardWithReference = [self.factoryWithReference storyboardWithReference];
 }
 
 - (void)tearDown
 {
     self.factory = nil;
+    self.factoryWithReference = nil;
     [super tearDown];
 }
 
@@ -63,7 +68,7 @@
     StoryboardFirstViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"first"];
     StoryboardControllerDependency *dependency = controller.dependency;
     StoryboardFirstViewController *circular = dependency.circularDependencyBackToViewController;
-
+    
     XCTAssertTrue(controller == circular);
 }
 
@@ -154,5 +159,27 @@
     UIViewController *result = [self.factory oneMoreViewControllerWithId:controllerId title:testTitle];
     XCTAssertEqualObjects(result.title, testTitle);
 }
+
+- (void)test_count_of_models_in_controller {
+    StoryboardMainViewController *mainController = [storyboardWithReference instantiateViewControllerWithIdentifier:@"StoryboardMainViewController"];
+    [[UIApplication sharedApplication] keyWindow].rootViewController = mainController;
+    [mainController performSegueWithIdentifier:@"detail" sender:nil];
+    XCTAssertNotNil(mainController.presentedViewController);
+    StoryboardDetailViewController *detailViewController = (StoryboardDetailViewController *) mainController.presentedViewController;
+    XCTAssertEqual(detailViewController.countOfModelInstanceInjections, 1);
+}
+
+- (void)test_count_of_models_in_tab_controller {
+    StoryboardTabBarViewController *tabController = [storyboardWithReference instantiateViewControllerWithIdentifier:@"StoryboardTabBarViewController"];
+    
+    NSLog(@"test_count_of_models_in_tab_controller");
+    
+    for (StoryboardPageViewController *viewController in tabController.viewControllers) {
+        NSLog(@"viewController %@",viewController);
+        NSLog(@"%ld",(long)viewController.countOfModelInstanceInjections);
+        XCTAssertEqual(viewController.countOfModelInstanceInjections, 1);
+    }
+}
+
 
 @end
