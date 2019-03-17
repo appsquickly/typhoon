@@ -37,7 +37,10 @@
 
 - (void)injectPropertiesForViewController:(UIViewController *)viewController withFactory:(id<TyphoonComponentFactory>)factory storyboard:(UIStoryboard *)storyboard
 {
-    if (viewController.typhoonKey.length > 0) {
+    if (storyboard && viewController.storyboard && ![viewController.storyboard isEqual:storyboard]) {
+        return;
+    }
+    else if (viewController.typhoonKey.length > 0) {
         [factory inject:viewController withSelector:NSSelectorFromString(viewController.typhoonKey)];
     }
     else {
@@ -45,9 +48,9 @@
     }
     
     NSArray<__kindof UIViewController *> *childViewControllers = [viewController isKindOfClass:UITabBarController.class]
-        ? ((UITabBarController *)viewController).viewControllers
-        : viewController.childViewControllers;
-
+    ? ((UITabBarController *)viewController).viewControllers
+    : viewController.childViewControllers;
+    
     for (UIViewController *controller in childViewControllers) {
         if (storyboard && controller.storyboard && ![controller.storyboard isEqual:storyboard]) {
             continue;
