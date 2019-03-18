@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="lYN-QZ-pxc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment version="2352" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -34,7 +34,7 @@
         <!--Storyboard Tab Bar View Controller-->
         <scene sceneID="37s-Hs-sCx">
             <objects>
-                <tabBarController id="lYN-QZ-pxc" customClass="StoryboardTabBarViewController" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="StoryboardTabBarViewController" id="lYN-QZ-pxc" customClass="StoryboardTabBarViewController" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" id="U7N-JB-PXx">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -47,7 +47,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ReU-aa-nIu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1150" y="-967"/>
+            <point key="canvasLocation" x="-1508" y="-1034"/>
         </scene>
         <!--Second-->
         <scene sceneID="naa-dV-KCI">
@@ -58,6 +58,48 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e27-Ab-6fK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-638" y="-729"/>
+        </scene>
+        <!--StoryboardDetailViewController-->
+        <scene sceneID="bls-qy-WAO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Second" referencedIdentifier="StoryboardDetailViewController" id="XPp-Id-rgP" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EPG-YF-UPb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-655" y="-379"/>
+        </scene>
+        <!--Storyboard Main View Controller-->
+        <scene sceneID="s5i-vV-Yo2">
+            <objects>
+                <viewController storyboardIdentifier="StoryboardMainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="IUK-br-Jj2" customClass="StoryboardMainViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fHS-Fk-vNL"/>
+                        <viewControllerLayoutGuide type="bottom" id="ub0-SI-Xw6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="waM-Nu-yMD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sg7-uc-dfa">
+                                <rect key="frame" x="164.5" y="318.5" width="46" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="XPp-Id-rgP" kind="show" identifier="detail" id="vYp-2y-bYm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Sg7-uc-dfa" firstAttribute="centerY" secondItem="waM-Nu-yMD" secondAttribute="centerY" id="0IY-8N-xHO"/>
+                            <constraint firstItem="Sg7-uc-dfa" firstAttribute="centerX" secondItem="waM-Nu-yMD" secondAttribute="centerX" id="M7N-Mq-uIz"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="button" destination="Sg7-uc-dfa" id="p7m-s3-NiH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TJb-Xh-4eV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1508" y="-320"/>
         </scene>
     </scenes>
 </document>

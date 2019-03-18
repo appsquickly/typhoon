@@ -10,23 +10,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #import "StoryboardTabBarFirstViewController.h"
-#import "Model.h"
 
 @implementation StoryboardTabBarFirstViewController
-
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
-{
-    self = [super initWithCoder:aDecoder];
-    if (self) {
-        self.countOfModelInstanceInjections = 0;
-    }
-    return self;
-}
-
-- (void)setModel:(Model *)model
-{
-    self.countOfModelInstanceInjections++;
-    _model = model;
-}
 
 @end
