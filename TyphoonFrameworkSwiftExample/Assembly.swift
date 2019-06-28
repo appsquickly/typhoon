@@ -14,9 +14,9 @@ import Typhoon
 
 open class Assembly: TyphoonAssembly {
     
-    open dynamic func viewController() -> AnyObject {
+	@objc open dynamic func viewController() -> AnyObject {
         return TyphoonDefinition.withClass(ViewController.self) { definition in
-            definition!.injectProperty("foo", with: "bar")
+			definition!.injectProperty(Selector(("foo")), with: "bar")
         } as AnyObject
     }
 }

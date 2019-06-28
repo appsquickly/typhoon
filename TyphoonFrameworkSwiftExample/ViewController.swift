@@ -18,7 +18,7 @@ open class ViewController: UIViewController {
     open override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        print("Worked! \(foo)")
+        print("Worked! \((self.foo ?? ""))")
     }
 
     open override func didReceiveMemoryWarning() {
