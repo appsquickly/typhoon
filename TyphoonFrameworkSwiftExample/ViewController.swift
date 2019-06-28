@@ -13,8 +13,8 @@ import UIKit
 
 open class ViewController: UIViewController {
 
-    open var foo: String?
-    
+    @objc dynamic open var foo: String?
+
     open override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
