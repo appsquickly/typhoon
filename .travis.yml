@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode8.3
+osx_image: xcode10.2
 script:
   - fastlane scan Typhoon.xcodeproj --scheme Typhoon-iOSTests
   - fastlane scan Typhoon.xcodeproj --scheme Typhoon-OSXTests
