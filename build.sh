@@ -17,7 +17,7 @@ resourceDir=Resources
 
 
 
-requiredCoverage=87
+requiredCoverage=86
 
 #Fail immediately if a task fails
 set -e
@@ -42,10 +42,10 @@ ditto ${resourceDir}/build-failed.png ${reportsDir}/build-status/build-status.pn
 platform=iOS_Simulator
 mkdir -p ${reportsDir}/${platform}
 xcodebuild clean test -project Typhoon.xcodeproj -scheme 'Typhoon-iOSTests' -configuration Debug \
--destination "platform=iOS Simulator,name=iPhone 5s,OS=latest" | xcpretty -c --report junit
+-destination "platform=iOS Simulator,name=iPhone 11,OS=latest" | xcpretty -c --report junit
 mv ${reportsDir}/junit.xml ${reportsDir}/${platform}/junit.xml
 
-groovy http://frankencover.it/with --source-dir Source --output-dir ${reportsDir}/${platform} -r${requiredCoverage}
+groovy https://appsquickly.github.io/frankencover.it/with --exclude once,NSRange --source-dir Source --output-dir ${reportsDir}/${platform} -r${requiredCoverage}
 echo '----------------------------------------------------------------------------------------------------'
 
 #Compile, run tests and produce coverage report for OSX
@@ -56,7 +56,7 @@ mkdir -p ${reportsDir}/${platform}
 xcodebuild -project Typhoon.xcodeproj/ -scheme 'Typhoon-OSXTests' clean test | xcpretty -c --report junit
 mv ${reportsDir}/junit.xml ${reportsDir}/${platform}/junit.xml
 
-groovy http://frankencover.it/with --source-dir Source --output-dir ${reportsDir}/OSX -r${requiredCoverage}
+groovy https://appsquickly.github.io/frankencover.it/with --exclude once,NSRange --source-dir Source --output-dir ${reportsDir}/OSX -r${requiredCoverage}
 echo '--------------------------------------------------------------------------------'
 echo '   💉  Typhoon is ready to inject.'
 echo '--------------------------------------------------------------------------------'

@@ -25,7 +25,7 @@
 
 - (NSString *)description
 {
-    if (self.type == TyphoonInjectionTypeUndefinied) {
+    if (self.type == TyphoonInjectionTypeUndefined) {
         return [NSString stringWithFormat:@"<%@: %p, %@type=Undefined>", [self class], self, [self customDescription]];
     }
     else if (self.type == TyphoonInjectionTypeParameter) {
@@ -52,7 +52,7 @@
 
 - (NSUInteger)hash
 {
-    NSUInteger hash = self.type;
+    NSUInteger hash = (NSUInteger) self.type;
 
     if (self.type == TyphoonInjectionTypeProperty) {
         hash = TyphoonHashByAppendingInteger(hash, [self.propertyName hash]);

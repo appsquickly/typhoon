@@ -15,7 +15,7 @@
 #import "TyphoonInjectionContext.h"
 
 typedef NS_ENUM(NSInteger, TyphoonInjectionType) {
-    TyphoonInjectionTypeUndefinied,
+    TyphoonInjectionTypeUndefined,
     TyphoonInjectionTypeProperty,
     TyphoonInjectionTypeParameter
 };
