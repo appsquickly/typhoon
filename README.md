@@ -12,16 +12,9 @@ Check out the <a href="http://appsquickly.github.io/typhoon/#features">feature l
 
 ### Looking for a pure Swift Solution?
 
-Typhoon uses the Objective-C runtime to collect metadata and instantiate objects. It powers thousands of Objective-C applications and is also pretty popular for Swift. Nonetheless there are some advantages to using a pure Swift library. 
+Typhoon uses the Objective-C runtime to collect metadata and instantiate objects. It powers thousands of Objective-C applications but it is not all that great for Swift. 
 
-* <a href="https://github.com/scribd/Weaver">Weaver</a> is a good compile time DI library for Swift. 
-* <a href="https://github.com/jkolb/FieryCrucible">Fiery Crucible</a> is also an excellent light-weight (just one file) and 
-very straight-forward DI library for Swift. 
-
-
-Both of the above solutions have the 'ObjectGraph' scope (you can read more about it in the docs), which provides a way to assemble a complex object-graph from a blue-print and then retain it as long as needed. This scope was introduced by Typhoon, and is an important consideration for mobile and desktop apps. Moreover, scope management is one of the main advantages to simply applying the DI pattern 'by hand'. 
-
-Please think carefully before choosing a DI library that forces you to write complex adapters, modify your code or tightly couple it to a library. It shouldn't be more complicated than understanding and applying the pattern without a supporting framework.
+* <a href="https://pilgrim.ph">Pilgrim</a> is a pure Swift successor to Typhoon. 
 
 ---------------------------------------
 
