@@ -14,7 +14,7 @@ Check out the <a href="http://appsquickly.github.io/typhoon/#features">feature l
 
 Typhoon uses the Objective-C runtime to collect metadata and instantiate objects. It powers thousands of Objective-C applications but it is not all that great for Swift. 
 
-* <a href="https://pilgrim.ph">Pilgrim</a> is a pure Swift successor to Typhoon. 
+**<a href="https://pilgrim.ph">Pilgrim</a> is a pure Swift successor to Typhoon.**
 
 ---------------------------------------
 
