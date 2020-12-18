@@ -2,6 +2,12 @@
 
 Powerful dependency injection for Cocoa and CocoaTouch. Lightweight, yet full-featured and super-easy to use. 
 
+### Looking for a pure Swift Solution?
+
+**<a href="https://pilgrim.ph">Pilgrim</a> is a pure Swift successor to Typhoon.**
+
+Typhoon uses the Objective-C runtime to collect metadata and instantiate objects. It powers thousands of Objective-C applications but it is not all that great for modern Swift. It is fairly easy to migrate your Typhoon apps to Pilgrim. 
+
 ## Not familiar with Dependency Injection? 
 
 Visit <a href="http://appsquickly.github.io/typhoon">the Typhoon website</a> for an introduction. There's also a nice intro over at <a href="https://www.bignerdranch.com/blog/dependency-injection-ios/">Big Nerd Ranch</a>, or <a href="https://www.objc.io/issues/15-testing/dependency-injection/">here's an article</a>, by <a href="http://qualitycoding.org/">John Reid</a>. Quite a few books have been written on the topic, though we're not familiar with one that focuses specifically on Objective-C, Swift or Cocoa yet. 
@@ -10,11 +16,6 @@ Visit <a href="http://appsquickly.github.io/typhoon">the Typhoon website</a> for
 
 Check out the <a href="http://appsquickly.github.io/typhoon/#features">feature list</a>. 
 
-### Looking for a pure Swift Solution?
-
-Typhoon uses the Objective-C runtime to collect metadata and instantiate objects. It powers thousands of Objective-C applications but it is not all that great for Swift. 
-
-**<a href="https://pilgrim.ph">Pilgrim</a> is a pure Swift successor to Typhoon.**
 
 ---------------------------------------
 
