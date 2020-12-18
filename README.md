@@ -2,11 +2,16 @@
 
 Powerful dependency injection for Cocoa and CocoaTouch. Lightweight, yet full-featured and super-easy to use. 
 
+
+---------------------------------------
+
 # Looking for a pure Swift Solution?
 
 ## <a href="https://pilgrim.ph">Pilgrim</a> is a pure Swift successor to Typhoon!!
 
 Typhoon uses the Objective-C runtime to collect metadata and instantiate objects. It powers thousands of Objective-C applications but it is not all that great for modern Swift. It is fairly easy to migrate your Typhoon apps to Pilgrim. 
+
+---------------------------------------
 
 ## Not familiar with Dependency Injection? 
 
