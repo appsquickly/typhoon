@@ -9,7 +9,7 @@ Powerful dependency injection for Cocoa and CocoaTouch. Lightweight, yet full-fe
 
 ## <a href="https://pilgrim.ph">Pilgrim</a> is a pure Swift successor to Typhoon!!
 
-Typhoon uses the Objective-C runtime to collect metadata and instantiate objects. It powers thousands of Objective-C applications but it is not all that great for modern Swift. It is fairly easy to migrate your Typhoon apps to Pilgrim. 
+Typhoon uses the Objective-C runtime to collect metadata and instantiate objects. It powers thousands of Objective-C applications but it is not all that great for modern Swift. Pilgrim is a pure Swift successor to Typhoon, and it is easy to migrate your Typhoon apps to Pilgrim. 
 
 ---------------------------------------
 
